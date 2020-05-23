@@ -8,7 +8,7 @@ php artisan config:cache --no-interaction
 php artisan view:clear --no-interaction
 php artisan route:clear --no-interaction
 php artisan nova:publish --no-interaction
-php artisan horizon:assets --no-interaction
+php artisan horizon:install --no-interaction
 php artisan cache:clear --no-interaction
 
 if [ -f ".last_deployment_hash" ]; then
