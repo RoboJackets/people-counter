@@ -6,7 +6,6 @@ use App\Http\Requests\StoreUser;
 use App\Http\Resources\User as UserResource;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 
 class UserController extends Controller

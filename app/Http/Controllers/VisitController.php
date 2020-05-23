@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Visit as VisitResource;
 use App\Visit;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 
 class VisitController extends Controller
