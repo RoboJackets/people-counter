@@ -9,7 +9,7 @@
     @component('layouts/title')
     @endcomponent
 
-	<dashboard />
+	<dashboard max-people="{{config('app.maxpeople')}}"/>
 
 
 @endsection

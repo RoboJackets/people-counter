@@ -228,4 +228,5 @@ return [
 
     ],
 
+    'maxpeople' => env('MAX_PEOPLE'),
 ];

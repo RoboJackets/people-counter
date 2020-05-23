@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-lg-8 col-sm-12 people-count">
+      <div class="col-lg-8 col-sm-12 text-center">
         <h2>There are currently</h2>
-        <span>9</span>
+        <span><span class="people-count">{{ current }}</span> <span class="h2">of {{ max }}</span></span>
         <h2>people in the SCC</h2>
       </div>
       <div class="col-lg-4 col-sm-12">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="row pt-3">
-      <div class="col-12 tap-instructions">
+      <div class="col-12 text-center">
         <h4>Tap your BuzzCard to sign in or out</h4>
       </div>
     </div>
@@ -21,9 +21,10 @@
 
 <script>
 export default {
-  props: [],
+  props: ['max-people'],
   data() {
     return {
+      'current': 9,
     };
   },
   mounted() {
