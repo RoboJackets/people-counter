@@ -50,7 +50,7 @@ class UserPolicy
             return true;
         }
 
-        return $requesting_user->id == $target_user->user_id;
+        return $requesting_user->id === $target_user->user_id;
     }
 
     /**
@@ -79,7 +79,7 @@ class UserPolicy
             return true;
         }
 
-        return $requesting_user->id == $target_user->user_id;
+        return $requesting_user->id === $target_user->user_id;
     }
 
     /**
@@ -94,5 +94,4 @@ class UserPolicy
     {
         return $requesting_user->can('manage-users');
     }
-    
 }

@@ -24,7 +24,6 @@ class UpdateVisit extends FormRequest
     public function rules()
     {
         return [
-            //
         ];
     }
 }

@@ -28,7 +28,7 @@ class StoreUser extends FormRequest
             'username' => 'required,unique:App\User',
             'email' => 'required,unique:App\User,email',
             'first_name' => 'required',
-            'last_name' => 'required'
+            'last_name' => 'required',
         ];
     }
 }

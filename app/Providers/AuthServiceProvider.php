@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use App\User;
-use App\Visit;
 use App\Policies\UserPolicy;
 use App\Policies\VisitPolicy;
-use Illuminate\Support\Facades\Gate;
+use App\User;
+use App\Visit;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider

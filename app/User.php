@@ -41,5 +41,4 @@ class User extends Authenticatable
     {
         return $this->hasRole('super-admin');
     }
-
 }

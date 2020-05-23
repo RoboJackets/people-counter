@@ -24,7 +24,6 @@ class CreateVisit extends FormRequest
     public function rules()
     {
         return [
-            //
         ];
     }
 }
