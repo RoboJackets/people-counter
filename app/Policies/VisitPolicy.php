@@ -13,8 +13,8 @@ class VisitPolicy
     /**
      * Override for Super Admin to authorize all actions automatically
      *
-     * @param $user \App\User|null $user
-     * @param $ability string
+     * @param \App\User|null $user
+     * @param string $ability
      * @return bool
      */
     public function before($user, $ability)
@@ -28,7 +28,7 @@ class VisitPolicy
      * Determine whether the user can view any visits.
      *
      * @param  \App\User  $user
-     * @return mixed
+     * @return bool
      */
     public function viewAny(User $user)
     {
@@ -40,7 +40,7 @@ class VisitPolicy
      *
      * @param  \App\User  $user
      * @param  \App\Visit  $visit
-     * @return mixed
+     * @return bool
      */
     public function view(User $user, Visit $visit)
     {
@@ -57,7 +57,7 @@ class VisitPolicy
      * Determine whether the user can create visits.
      *
      * @param  \App\User  $user
-     * @return mixed
+     * @return bool
      */
     public function create(User $user)
     {
@@ -69,7 +69,7 @@ class VisitPolicy
      *
      * @param  \App\User  $user
      * @param  \App\Visit  $visit
-     * @return mixed
+     * @return bool
      */
     public function update(User $user, Visit $visit)
     {
@@ -87,7 +87,7 @@ class VisitPolicy
      *
      * @param  \App\User  $user
      * @param  \App\Visit  $visit
-     * @return mixed
+     * @return bool
      */
     public function delete(User $user, Visit $visit)
     {

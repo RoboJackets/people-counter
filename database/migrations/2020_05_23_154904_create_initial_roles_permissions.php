@@ -6,6 +6,10 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateInitialRolesPermissions extends Migration
 {
+    /**
+     * Permissions to be used elsewhere
+     * @var array
+     */
     public $allPermissions = [
         'manage-users',
         'manage-visits',

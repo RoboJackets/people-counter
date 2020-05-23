@@ -33,7 +33,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Visit');
     }
 
-    public function isSuperAdmin()
+    /**
+     * Returns if the User a super admin
+     * @return bool
+     */
+    public function isSuperAdmin(): bool
     {
         return $this->hasRole('super-admin');
     }
