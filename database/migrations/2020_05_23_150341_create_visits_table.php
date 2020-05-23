@@ -13,7 +13,7 @@ class CreateVisitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('visits', function (Blueprint $table) {
+        Schema::create('visits', static function (Blueprint $table): void {
             $table->id();
             $table->integer('gtid');
             $table->timestamp('in_time');

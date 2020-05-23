@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+// phpcs:disable PEAR.Files.IncludingFile.UseInclude
+
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
 

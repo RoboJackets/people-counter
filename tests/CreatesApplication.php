@@ -4,6 +4,8 @@ namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 
+// phpcs:disable PEAR.Files.IncludingFile.UseInclude
+
 trait CreatesApplication
 {
     /**
@@ -13,7 +15,7 @@ trait CreatesApplication
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $app = require __DIR__ . '/../bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();
 
