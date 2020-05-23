@@ -12,7 +12,7 @@ class VisitController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
@@ -43,7 +43,7 @@ class VisitController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @return \App\Http\Resources\Visit
+     * @return \App\Http\Resources\Visit|\Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Visit $visit)
     {
@@ -58,7 +58,7 @@ class VisitController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Visit $visit)
     {
