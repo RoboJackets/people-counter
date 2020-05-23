@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Http\Resources\Visit as VisitResource;
 
 class VisitController extends Controller
 {
@@ -15,6 +16,7 @@ class VisitController extends Controller
      */
     public function index()
     {
+        return VisitResource::collection(Visit::all());
     }
 
     /**
@@ -24,6 +26,8 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
+        $visit = Visit::create($request->all());
+        return new VisitResource($visit);
     }
 
     /**
@@ -33,6 +37,7 @@ class VisitController extends Controller
      */
     public function show(Visit $visit)
     {
+        return new VisitResource($visit);
     }
 
     /**
@@ -42,6 +47,7 @@ class VisitController extends Controller
      */
     public function update(Request $request, Visit $visit)
     {
+
     }
 
     /**
@@ -51,5 +57,11 @@ class VisitController extends Controller
      */
     public function destroy(Visit $visit)
     {
+        try {
+            $visit->delete();
+            return response()->json('success');
+        } catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 }
