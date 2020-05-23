@@ -47,7 +47,11 @@ class VisitController extends Controller
      */
     public function update(Request $request, Visit $visit)
     {
-
+        try {
+            $visit->update($request->all());
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 
     /**

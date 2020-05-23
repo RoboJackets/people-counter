@@ -48,6 +48,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        try {
+            $user->update($request->all());
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 
     /**
