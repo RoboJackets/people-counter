@@ -16,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Horizon::auth(static function (): bool {
             // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
-            if (auth()->guard('web')->user() instanceof User
+            if (
+                auth()->guard('web')->user() instanceof User
                 // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
                 && auth()->guard('web')->user()->can('access-horizon')
             ) {
