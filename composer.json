@@ -20,7 +20,8 @@
         "oitnetworkservices/buzzapiclient": "^0.1.1",
         "robojackets/error-pages": "^2.1",
         "robojackets/network-check": "^1.0",
-        "spatie/laravel-permission": "^3.13"
+        "spatie/laravel-permission": "^3.13",
+        "laravel/nova": "~3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
