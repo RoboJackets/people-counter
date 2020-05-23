@@ -16,7 +16,7 @@ class User extends Authenticatable
 
     /**
      * Attributes that are not mass assignable
-     * 
+     *
      * @var array<string>
      */
     protected $guarded = [
