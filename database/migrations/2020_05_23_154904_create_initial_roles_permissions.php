@@ -8,7 +8,7 @@ class CreateInitialRolesPermissions extends Migration
 {
     /**
      * Permissions to be used elsewhere
-     * @var array
+     * @var array $allPermissions
      */
     public $allPermissions = [
         'manage-users',

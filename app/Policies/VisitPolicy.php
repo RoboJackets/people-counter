@@ -14,11 +14,10 @@ class VisitPolicy
      * Override for Super Admin to authorize all actions automatically
      *
      * @param \App\User|null $user
-     * @param string $ability
      *
      * @return bool
      */
-    public function before($user, $ability)
+    public function before($user)
     {
         if ($user->isSuperAdmin()) {
             return true;

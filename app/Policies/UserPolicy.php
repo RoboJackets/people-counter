@@ -13,11 +13,10 @@ class UserPolicy
      * Override for Super Admin to authorize all actions automatically
      *
      * @param \App\User|null $user
-     * @param string $ability
      *
      * @return bool
      */
-    public function before($user, $ability)
+    public function before($user)
     {
         if ($user->isSuperAdmin()) {
             return true;
@@ -86,11 +85,10 @@ class UserPolicy
      * Determine whether the user can delete the user.
      *
      * @param  \App\User  $requesting_user
-     * @param  \App\User  $target_user
      *
      * @return bool
      */
-    public function delete(User $requesting_user, User $target_user)
+    public function delete(User $requesting_user)
     {
         return $requesting_user->can('manage-users');
     }
