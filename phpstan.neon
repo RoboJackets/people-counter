@@ -56,3 +56,5 @@ parameters:
     - '#Dynamic call to static method Spatie\\Permission\\Models\\Role::givePermissionTo\(\)\.#'
     - '#Dynamic call to static method Spatie\\Permission\\Models\\Role::revokePermissionTo\(\)\.#'
     - '#Dynamic call to static method Spatie\\Permission\\Models\\Role::syncPermissions\(\)\.#'
+    - '#Dynamic call to static method PHPUnit\\Framework\\Assert::assertTrue\(\)\.#'
+    - '#Undefined variable: \$factory#'
