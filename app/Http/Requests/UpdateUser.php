@@ -24,7 +24,6 @@ class UpdateUser extends FormRequest
     public function rules()
     {
         return [
-            //
         ];
     }
 }

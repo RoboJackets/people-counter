@@ -1,8 +1,8 @@
 <?php
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Migrations\Migration;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class CreateInitialRolesPermissions extends Migration
 {
@@ -16,7 +16,7 @@ class CreateInitialRolesPermissions extends Migration
         'update-visits',
         'update-visits-own',
         'delete-visits',
-        'delete-visits-own'
+        'delete-visits-own',
     ];
 
     /**
@@ -43,7 +43,7 @@ class CreateInitialRolesPermissions extends Migration
             'create-visits-own',
             'read-visits-own',
             'update-visits-own',
-            'delete-visits-own'
+            'delete-visits-own',
         ];
         $member->syncPermissions($memberRoles);
     }
