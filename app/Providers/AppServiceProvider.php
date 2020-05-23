@@ -7,7 +7,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Horizon\Horizon;
 
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -18,10 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Horizon::auth(static function (): bool {
-            // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
             if (
                 auth()->guard('web')->user() instanceof User
-                // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
                 && auth()->guard('web')->user()->can('access-horizon')
             ) {
                 return true;

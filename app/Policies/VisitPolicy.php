@@ -17,7 +17,11 @@ class VisitPolicy
      */
     public function before(?\App\User $user)
     {
-        return $user->isSuperAdmin() ? true : null;
+        if ($user) {
+            return $user->isSuperAdmin() ? true : null;
+        } else {
+            return null;
+        }
     }
 
     /**
