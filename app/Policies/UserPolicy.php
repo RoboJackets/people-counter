@@ -38,7 +38,7 @@ class UserPolicy
      *
      * @return bool
      */
-    public function view(?User $requesting_user, User $target_user)
+    public function view(User $requesting_user, User $target_user)
     {
         if ($requesting_user->can('manage-users')) {
             return true;
