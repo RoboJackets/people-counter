@@ -16,7 +16,7 @@ class User extends Authenticatable
 
     /**
      * Attributes that are not mass assignable
-     * 
+     *
      * @var array<string>
      */
     protected $guarded = [
@@ -32,4 +32,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Visit');
     }
+
+    public function isSuperAdmin()
+    {
+        return $this->hasRole('super-admin');
+    }
+
 }
