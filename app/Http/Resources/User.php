@@ -5,12 +5,14 @@ namespace App\Http\Resources;
 use App\Http\Resources\Visit as VisitResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+// phpcs:disable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
+
 class User extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array<mixed>
      */

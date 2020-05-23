@@ -12,7 +12,7 @@ class VisitController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection<VisitResource>
      */
     public function index()
     {

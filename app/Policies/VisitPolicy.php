@@ -13,7 +13,7 @@ class VisitPolicy
     /**
      * Override for Super Admin to authorize all actions automatically
      *
-     * @return bool
+     * @return bool|null
      */
     public function before(?\App\User $user)
     {

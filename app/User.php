@@ -8,6 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * Represents a single User
+ *
+ * @property int $id Database identifier for this model
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
