@@ -12,12 +12,9 @@ class UserPolicy
     /**
      * Override for Super Admin to authorize all actions automatically
      *
-     * @param \App\User|null $user
-     * @param string $ability
-     *
      * @return bool
      */
-    public function before($user, $ability)
+    public function before(?\App\User $user, string $ability)
     {
         if ($user->isSuperAdmin()) {
             return true;
@@ -26,8 +23,6 @@ class UserPolicy
 
     /**
      * Determine whether the user can view any users.
-     *
-     * @param  \App\User  $user
      *
      * @return bool
      */
@@ -38,9 +33,6 @@ class UserPolicy
 
     /**
      * Determine whether the user can view the user.
-     *
-     * @param  \App\User|null $requesting_user
-     * @param  \App\User  $target_user
      *
      * @return bool
      */
@@ -56,8 +48,6 @@ class UserPolicy
     /**
      * Determine whether the user can create users.
      *
-     * @param  \App\User  $user
-     *
      * @return bool
      */
     public function create(User $user)
@@ -67,9 +57,6 @@ class UserPolicy
 
     /**
      * Determine whether the user can update the user.
-     *
-     * @param  \App\User  $requesting_user
-     * @param  \App\User  $target_user
      *
      * @return bool
      */
@@ -84,9 +71,6 @@ class UserPolicy
 
     /**
      * Determine whether the user can delete the user.
-     *
-     * @param  \App\User  $requesting_user
-     * @param  \App\User  $target_user
      *
      * @return bool
      */
