@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-8 col-sm-12 text-center">
         <h2>There are currently</h2>
-        <span><span class="people-count">{{ current }}</span> <span class="h2">of {{ max }}</span></span>
+        <span><span class="people-count">{{ current }}</span> <span class="h2">of {{ maxPeople }}</span></span>
         <h2>people in the SCC</h2>
       </div>
       <div class="col-lg-4 col-sm-12">
