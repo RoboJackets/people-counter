@@ -37,7 +37,7 @@ class CreateInitialRolesPermissions extends Migration
         app()['cache']->forget('spatie.permission.cache');
 
         // Create Permissions
-        foreach ($allPermissions as $vp) {
+        foreach ($this->allPermissions as $vp) {
             Permission::firstOrCreate(['name' => $vp]);
         }
 
