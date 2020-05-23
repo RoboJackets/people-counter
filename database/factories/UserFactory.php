@@ -2,7 +2,7 @@
 
 /**
  * The factory.
- * 
+ *
  * @var \Illuminate\Database\Eloquent\Factory $factory
  */
 

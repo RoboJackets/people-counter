@@ -21,7 +21,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
-
     /**
      * Define the routes for the application.
      *
@@ -32,8 +31,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**

@@ -9,7 +9,7 @@ class Visit extends Model
 {
     /**
      * Attributes that are not mass assignable
-     * 
+     *
      * @var array<string>
      */
     protected $guarded = [
@@ -17,7 +17,6 @@ class Visit extends Model
         'updated_at',
         'deleted_at',
     ];
-
 
     /**
      * Get the user that owns the visit.

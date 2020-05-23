@@ -1,6 +1,5 @@
 <?php
 
-use Exception;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -47,15 +46,21 @@ class CreatePermissionTables extends Migration
                 $table->index(
                     [
                         $columnNames['model_morph_key'],
-                        'model_type'
+                        'model_type',
                     ],
                     'model_has_permissions_model_id_model_type_index'
                 );
 
                 $table->foreign('permission_id')->references('id')->on($tableNames['permissions'])->onDelete('cascade');
 
-                $table->primary(['permission_id', $columnNames['model_morph_key'], 'model_type'],
-                        'model_has_permissions_permission_model_type_primary');
+                $table->primary(
+                    [
+                        'permission_id',
+                        $columnNames['model_morph_key'],
+                        'model_type',
+                    ],
+                    'model_has_permissions_permission_model_type_primary'
+                );
             }
         );
 
@@ -69,15 +74,21 @@ class CreatePermissionTables extends Migration
                 $table->index(
                     [
                         $columnNames['model_morph_key'],
-                        'model_type'
+                        'model_type',
                     ],
                     'model_has_roles_model_id_model_type_index'
                 );
 
                 $table->foreign('role_id')->references('id')->on($tableNames['roles'])->onDelete('cascade');
 
-                $table->primary(['role_id', $columnNames['model_morph_key'], 'model_type'],
-                        'model_has_roles_role_model_type_primary');
+                $table->primary(
+                    [
+                        'role_id',
+                        $columnNames['model_morph_key'],
+                        'model_type',
+                    ],
+                    'model_has_roles_role_model_type_primary'
+                );
             }
         );
 
@@ -93,7 +104,7 @@ class CreatePermissionTables extends Migration
         });
 
         app('cache')->store(
-            config('permission.cache.store') !== 'default' ? config('permission.cache.store') : null
+            'default' !== config('permission.cache.store') ? config('permission.cache.store') : null
         )->forget(config('permission.cache.key'));
     }
 
@@ -107,6 +118,8 @@ class CreatePermissionTables extends Migration
         $tableNames = config('permission.table_names');
 
         if (0 === count($tableNames)) {
+            // phpcs:disable Generic.Strings.UnnecessaryStringConcat.Found
+            
             throw new Exception(
                 'Error: config/permission.php not found and defaults could not be merged. Please publish the package'
                 . ' configuration before proceeding, or drop the tables manually.'
