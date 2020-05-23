@@ -1,1 +1,13 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
+
+.people-count {
+	text-align: center;
+
+	span {
+		font-size: 250px;
+	}
+}
+
+.tap-instructions {
+	text-align: center;
+}
