@@ -13,11 +13,9 @@ class VisitPolicy
     /**
      * Override for Super Admin to authorize all actions automatically
      *
-     * @param \App\User|null $user
-     *
      * @return bool
      */
-    public function before($user)
+    public function before(?\App\User $user)
     {
         if ($user->isSuperAdmin()) {
             return true;
@@ -26,8 +24,6 @@ class VisitPolicy
 
     /**
      * Determine whether the user can view any visits.
-     *
-     * @param  \App\User  $user
      *
      * @return bool
      */
@@ -38,9 +34,6 @@ class VisitPolicy
 
     /**
      * Determine whether the user can view the visit.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Visit  $visit
      *
      * @return bool
      */
@@ -56,8 +49,6 @@ class VisitPolicy
     /**
      * Determine whether the user can create visits.
      *
-     * @param  \App\User  $user
-     *
      * @return bool
      */
     public function create(User $user)
@@ -67,9 +58,6 @@ class VisitPolicy
 
     /**
      * Determine whether the user can update the visit.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Visit  $visit
      *
      * @return bool
      */
@@ -84,9 +72,6 @@ class VisitPolicy
 
     /**
      * Determine whether the user can delete the visit.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Visit  $visit
      *
      * @return bool
      */
