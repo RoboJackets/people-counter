@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6558f74828bca9ebecac73d90cea4b1a",
+    "content-hash": "bed1c933261fad64a324e621f08f62e8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1279,6 +1279,59 @@
                 "php"
             ],
             "time": "2020-04-10T16:34:50+00:00"
+        },
+        {
+            "name": "oitnetworkservices/buzzapiclient",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient.git",
+                "reference": "f8214e9146b5cc3730e60b29023173e86e2b1aa5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.robojackets.org/dist/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-0.1.1-2da4f8.zip",
+                "reference": "f8214e9146b5cc3730e60b29023173e86e2b1aa5",
+                "shasum": "b8e9c560a75e328a7bc00a351c03fa4e6b53a2fb"
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "laravel/framework": "@stable",
+                "phpstan/phpstan": "^0.11.12",
+                "psy/psysh": "@stable",
+                "slevomat/coding-standard": "^5.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "OITNetworkServices\\BuzzAPI\\BuzzAPIServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OITNetworkServices\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-update-cmd": [
+                    "rm composer.lock"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "OIT-NS Dev Team",
+                    "email": "oit-ns-dev@lists.gatech.edu"
+                }
+            ],
+            "description": "BuzzAPI Client Library",
+            "time": "2020-03-19T17:46:03+00:00"
         },
         {
             "name": "opis/closure",
