@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use App\Http\Resources\Visit as VisitResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,9 +11,11 @@ class User extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @return array
+     * @param  Request  $request
+     *
+     * @return array<mixed>
      */
-    public function toArray(\Illuminate\Http\Request $request)
+    public function toArray($request)
     {
         $parent = parent::toArray($request);
         return array_merge(

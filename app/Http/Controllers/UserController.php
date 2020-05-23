@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUser;
 use App\Http\Resources\User as UserResource;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 
 class UserController extends Controller
@@ -13,7 +14,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
@@ -23,7 +24,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\User
      */
     public function store(StoreUser $request)
     {
@@ -34,7 +35,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\User
      */
     public function show(User $user)
     {
@@ -44,12 +45,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\User|\Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
     {
         try {
             $user->update($request->all());
+            return new UserResource($user);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()]);
         }

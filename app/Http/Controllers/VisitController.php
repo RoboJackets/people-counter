@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Visit;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\Visit as VisitResource;
 
@@ -12,7 +13,7 @@ class VisitController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
@@ -22,7 +23,7 @@ class VisitController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Visit
      */
     public function store(Request $request)
     {
@@ -33,7 +34,7 @@ class VisitController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Visit
      */
     public function show(Visit $visit)
     {
@@ -43,12 +44,13 @@ class VisitController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Visit
      */
     public function update(Request $request, Visit $visit)
     {
         try {
             $visit->update($request->all());
+            return new VisitResource($visit);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()]);
         }

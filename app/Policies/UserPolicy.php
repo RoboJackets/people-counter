@@ -12,13 +12,11 @@ class UserPolicy
     /**
      * Override for Super Admin to authorize all actions automatically
      *
-     * @return bool
+     * @return bool|null
      */
     public function before(?\App\User $user)
     {
-        if ($user->isSuperAdmin()) {
-            return true;
-        }
+        return $user->isSuperAdmin() ? true : null;
     }
 
     /**
