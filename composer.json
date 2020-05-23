@@ -14,7 +14,9 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "oitnetworkservices/buzzapiclient": "^0.1.1"
+        "oitnetworkservices/buzzapiclient": "^0.1.1",
+        "robojackets/error-pages": "^2.1",
+        "robojackets/network-check": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
