@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Visit as VisitResource;
 use App\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Resources\Visit as VisitResource;
 
 class VisitController extends Controller
 {
@@ -49,7 +49,7 @@ class VisitController extends Controller
     {
         try {
             $visit->update($request->all());
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
     }

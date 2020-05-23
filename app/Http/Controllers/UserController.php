@@ -50,7 +50,7 @@ class UserController extends Controller
     {
         try {
             $user->update($request->all());
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
     }
