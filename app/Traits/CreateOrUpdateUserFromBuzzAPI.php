@@ -18,13 +18,6 @@ use RoboJackets\ErrorPages\Unauthorized;
 trait CreateOrUpdateUserFromBuzzAPI
 {
     /**
-     * Create a new instance.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Execute the job.
      *
      * @param string $username
@@ -60,7 +53,8 @@ trait CreateOrUpdateUserFromBuzzAPI
             if (! $accountsResponse->isSuccessful()) {
                 Log::error(
                     'GTED accounts search for ' . $username . ' failed',
-                    [$accountsResponse->errorInfo()->message]);
+                    [$accountsResponse->errorInfo()->message]
+                );
                 SystemError::render(0b1001);
                 exit;
             }
