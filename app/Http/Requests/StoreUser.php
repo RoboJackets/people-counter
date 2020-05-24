@@ -29,7 +29,7 @@ class StoreUser extends FormRequest
             'email' => 'required|unique:App\User|email',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'gtid' => 'required|starts_with:9|size:9|unique:App\User'
+            'gtid' => 'required|starts_with:9|digits:9|unique:App\User'
         ];
     }
 }
