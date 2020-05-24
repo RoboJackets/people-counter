@@ -18,10 +18,6 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     {
         parent::boot();
 
-        // Horizon::routeSmsNotificationsTo('15556667777');
-        // Horizon::routeMailNotificationsTo('example@example.com');
-        // Horizon::routeSlackNotificationsTo('slack-webhook-url', '#channel');
-
         Horizon::night();
     }
 
@@ -31,9 +27,14 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      * This gate determines who can access Horizon in non-local environments.
      *
      * @return void
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     protected function gate()
     {
+        // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+        // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+
         Gate::define('viewHorizon', static function (User $user): bool {
             return true;
         });
