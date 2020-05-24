@@ -25,10 +25,11 @@ class StoreUser extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required,unique:App\User',
-            'email' => 'required,unique:App\User,email',
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'username' => 'required|unique:App\User',
+            'email' => 'required|unique:App\User|email',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'gtid' => 'required|starts_with:9|size:9|unique:App\User'
         ];
     }
 }
