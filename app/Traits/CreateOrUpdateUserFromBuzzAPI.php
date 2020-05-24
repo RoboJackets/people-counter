@@ -34,10 +34,9 @@ trait CreateOrUpdateUserFromBuzzAPI
 
         // Check if user already exists
         $user = User::where('username', $username)->first();
-        $userIsNew = null === $user;
 
         // Create a new user (first login only) if they don't already exist
-        if ($userIsNew) {
+        if (null === $user) {
             $user = new User();
 
             $accountsResponse = BuzzAPI::select(
