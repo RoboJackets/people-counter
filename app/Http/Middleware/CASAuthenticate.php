@@ -80,7 +80,8 @@ class CASAuthenticate
                     BadNetwork::render('GTvisitor', $username, '');
                     exit;
                 }
-                if (NetworkCheck::EDUROAM_NON_GATECH_V4 === $network
+                if (
+                    NetworkCheck::EDUROAM_NON_GATECH_V4 === $network
                     || NetworkCheck::EDUROAM_NON_GATECH_V6 === $network
                 ) {
                     EduroamNonGatech::render($username, '');

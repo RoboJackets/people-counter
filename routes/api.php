@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', static function (Request $request) {
 });
 
 
-Route::middleware('auth:sanctum')->group(function (): void {
+Route::middleware('auth:sanctum')->group(static function (): void {
     Route::apiResource('users', 'UserController');
     Route::apiResource('visits', 'VisitController');
 });

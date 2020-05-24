@@ -29,7 +29,7 @@ class UpdateUser extends FormRequest
             'email' => 'unique:App\User|email|nullable',
             'first_name' => 'string|nullable',
             'last_name' => 'string|nullable',
-            'gtid' => 'starts_with:9|digits:9|unique:App\User|nullable'
+            'gtid' => 'starts_with:9|digits:9|unique:App\User|nullable',
         ];
     }
 }
