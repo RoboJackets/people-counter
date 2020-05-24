@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\UpdateUser;
 use App\Http\Resources\User as UserResource;
 use App\User;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class UserController extends Controller
      *
      * @return \App\Http\Resources\User|\Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUser $request, User $user)
     {
         try {
             $user->update($request->all());
