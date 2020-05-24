@@ -13,7 +13,8 @@ class UpdateUser extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // Handled in Policy
+        return true;
     }
 
     /**
