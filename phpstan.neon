@@ -15,6 +15,7 @@ parameters:
     - '#Access to an undefined property App\\[a-zA-Z]+\|\(Illuminate\\Database\\Eloquent\\Collection&iterable<App\\[a-zA-Z]+>\)::\$[a-zA-Z_]+.#'
     - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Access to an undefined property mixed::\$[a-zA-Z]+\.#'
+    - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
     - '#Access to an undefined property Spatie\\Permission\\Contracts\\Permission::\$id\.#'
     - '#Access to an undefined property Spatie\\Permission\\Contracts\\Permission::\$name\.#'
     - '#Access to an undefined property Spatie\\Permission\\Contracts\\Role::\$id\.#'

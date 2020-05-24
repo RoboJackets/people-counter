@@ -30,8 +30,9 @@ trait CreateOrUpdateUserFromBuzzAPI
      * @param string $username
      *
      * @return User
+     * @SuppressWarnings(PHPMD.ExitExpression)
      */
-    public function createOrUpdateUserFromBuzzAPI($username): User
+    public function createOrUpdateUserFromBuzzAPI(string $username): User
     {
         if (null === config('buzzapi.app_password')) {
             throw new Exception('BuzzAPI Not Configured');
@@ -57,14 +58,15 @@ trait CreateOrUpdateUserFromBuzzAPI
             )->from(Resources::GTED_ACCOUNTS)->where(['uid' => $username])->get();
 
             if (! $accountsResponse->isSuccessful()) {
-               Log::error('GTED accounts search for '.$username.' failed',
-                   [$accountsResponse->errorInfo()->message]);
-               SystemError::render(0b1001);
+                Log::error(
+                    'GTED accounts search for ' . $username . ' failed',
+                    [$accountsResponse->errorInfo()->message]);
+                SystemError::render(0b1001);
                 exit;
             }
             $numResults = count($accountsResponse->json->api_result_data);
             if (0 === $numResults) {
-                Log::notice('GTED accounts search was successful but gave no results for '.$username);
+                Log::notice('GTED accounts search was successful but gave no results for ' . $username);
                 SystemError::render(0b1010);
                 exit;
             }
@@ -75,10 +77,11 @@ trait CreateOrUpdateUserFromBuzzAPI
             $account = collect($accountsResponse->json->api_result_data)->firstWhere('uid', $searchUid);
 
             if (!isset($account->gtGTID)) {
-                Log::notice('No GTID returned from BuzzAPI for '.$username);
+                Log::notice('No GTID returned from BuzzAPI for ' . $username);
                 Unauthorized::render(0b1011);
                 exit;
             }
+
 
             $user->username = $account->uid;
             $user->gtid = $account->gtGTID;
