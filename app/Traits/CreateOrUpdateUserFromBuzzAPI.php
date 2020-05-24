@@ -8,7 +8,6 @@ namespace App\Traits;
 
 use App\User;
 use Exception;
-use function GuzzleHttp\Promise\queue;
 use Illuminate\Support\Facades\Log;
 use OITNetworkServices\BuzzAPI;
 use OITNetworkServices\BuzzAPI\Resources;
@@ -19,11 +18,9 @@ trait CreateOrUpdateUserFromBuzzAPI
 {
     /**
      * Create a new instance.
-     *
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -52,13 +49,11 @@ trait CreateOrUpdateUserFromBuzzAPI
                 'gtPrimaryGTAccountUsername',
                 'gtAccountEntitlement',
                 'uid'
-            )->from(Resources::GTED_ACCOUNTS)
-                ->where(['uid' => $username])
-                ->get();
+            )->from(Resources::GTED_ACCOUNTS)->where(['uid' => $username])->get();
 
             if (! $accountsResponse->isSuccessful()) {
-               Log::error("GTED accounts search for $username failed with message ".$accountsResponse->errorInfo()->message);
-               SystemError::render(0b1001);
+                Log::error("GTED accounts search for $username failed with message " . $accountsResponse->errorInfo()->message);
+                SystemError::render(0b1001);
                 exit;
             }
             $numResults = count($accountsResponse->json->api_result_data);

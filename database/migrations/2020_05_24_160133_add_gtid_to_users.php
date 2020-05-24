@@ -13,7 +13,7 @@ class AddGtidToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users', static function (Blueprint $table) {
             $table->integer('gtid')->after('last_name');
         });
     }
@@ -25,7 +25,7 @@ class AddGtidToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users', static function (Blueprint $table) {
             $table->dropColumn('gtid');
         });
     }

@@ -26,10 +26,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function routes()
     {
-        Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+        Nova::routes()->withAuthenticationRoutes()->withPasswordResetRoutes()->register();
     }
 
     /**
@@ -41,9 +38,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewNova', function ($user) {
+        Gate::define('viewNova', static function ($user) {
             return in_array($user->email, [
-                //
             ]);
         });
     }
@@ -56,7 +52,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            new Help(),
         ];
     }
 
@@ -87,6 +83,5 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function register()
     {
-        //
     }
 }

@@ -14,7 +14,7 @@ abstract class Resource extends NovaResource
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function indexQuery(NovaRequest $request, $query)
+    public static function indexQuery(NovaRequest $request, \Illuminate\Database\Eloquent\Builder $query)
     {
         return $query;
     }
@@ -26,7 +26,7 @@ abstract class Resource extends NovaResource
      * @param  \Laravel\Scout\Builder  $query
      * @return \Laravel\Scout\Builder
      */
-    public static function scoutQuery(NovaRequest $request, $query)
+    public static function scoutQuery(NovaRequest $request, \Laravel\Scout\Builder $query)
     {
         return $query;
     }
@@ -38,7 +38,7 @@ abstract class Resource extends NovaResource
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function detailQuery(NovaRequest $request, $query)
+    public static function detailQuery(NovaRequest $request, \Illuminate\Database\Eloquent\Builder $query)
     {
         return parent::detailQuery($request, $query);
     }
@@ -52,7 +52,7 @@ abstract class Resource extends NovaResource
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function relatableQuery(NovaRequest $request, $query)
+    public static function relatableQuery(NovaRequest $request, \Illuminate\Database\Eloquent\Builder $query)
     {
         return parent::relatableQuery($request, $query);
     }
