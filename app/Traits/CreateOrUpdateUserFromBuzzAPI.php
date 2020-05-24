@@ -23,6 +23,7 @@ trait CreateOrUpdateUserFromBuzzAPI
      * @param string $username
      *
      * @return User
+     *
      * @SuppressWarnings(PHPMD.ExitExpression)
      */
     public function createOrUpdateUserFromBuzzAPI(string $username): User

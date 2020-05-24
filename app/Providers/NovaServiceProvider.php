@@ -10,7 +10,6 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-
     /**
      * Register the Nova routes.
      *
@@ -35,7 +34,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
         // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 
-        Gate::define('viewNova', static function ($user) {
+        Gate::define('viewNova', static function (User $user): bool {
             return true;
         });
     }
