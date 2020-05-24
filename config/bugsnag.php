@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'app_version' => exec('cd '.__DIR__.' && git rev-parse HEAD'),
+    'app_version' => exec('cd ' . __DIR__ . ' && git rev-parse HEAD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -79,10 +79,7 @@ return [
     |
     */
 
-    'filters' => null === env('BUGSNAG_FILTERS') ? ['password'] : explode(
-        ',',
-        str_replace(' ', '', env('BUGSNAG_FILTERS'))
-    ),
+    'filters' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -106,11 +103,7 @@ return [
     |
     */
 
-    'proxy' => array_filter([
-        'http' => env('HTTP_PROXY'),
-        'https' => env('HTTPS_PROXY'),
-        'no' => env('NO_PROXY') ?? explode(',', str_replace(' ', '', env('NO_PROXY'))),
-    ]),
+    'proxy' => [],
 
     /*
     |--------------------------------------------------------------------------
