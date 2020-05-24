@@ -44,6 +44,11 @@ class CASAuthenticate
     /**
      * Handle an incoming request.
      *
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return \Illuminate\Http\Response|Closure
+     *
      * @SuppressWarnings(PHPMD.ExitExpression)
      */
     public function handle(Request $request, Closure $next)
