@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -9,15 +10,6 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        parent::boot();
-    }
 
     /**
      * Register the Nova routes.
@@ -35,12 +27,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      * This gate determines who can access Nova in non-local environments.
      *
      * @return void
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     protected function gate()
     {
+        // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+        // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+
         Gate::define('viewNova', static function ($user) {
-            return in_array($user->email, [
-            ]);
+            return true;
         });
     }
 
@@ -74,14 +70,5 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [];
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
     }
 }

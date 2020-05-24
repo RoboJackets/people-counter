@@ -27,7 +27,7 @@ class User extends Resource
     /**
      * The columns that should be searched.
      *
-     * @var array
+     * @var array<string>
      */
     public static $search = [
         'id', 'name', 'email',
@@ -36,7 +36,8 @@ class User extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function fields(Request $request)
@@ -44,13 +45,20 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
+            Text::make('Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            Text::make('Name')->sortable()->rules('required', 'max:255'),
+            Text::make('Email')
+                ->sortable()
+                ->rules('required', 'email', 'max:254')
+                ->creationRules('unique:users,email')
+                ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Text::make('Email')->sortable()->rules('required', 'email', 'max:254')->creationRules('unique:users,email')->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')->onlyOnForms()->creationRules('required', 'string', 'min:8')->updateRules('nullable', 'string', 'min:8'),
+            Password::make('Password')
+                ->onlyOnForms()
+                ->creationRules('required', 'string', 'min:8')
+                ->updateRules('nullable', 'string', 'min:8'),
         ];
     }
 
@@ -58,6 +66,7 @@ class User extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function cards(Request $request)
@@ -69,6 +78,7 @@ class User extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function filters(Request $request)
@@ -80,6 +90,7 @@ class User extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function lenses(Request $request)
@@ -91,6 +102,7 @@ class User extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function actions(Request $request)
