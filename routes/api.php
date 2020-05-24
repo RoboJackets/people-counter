@@ -18,5 +18,8 @@ Route::middleware('auth:api')->get('/user', static function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('users', 'UserController');
-Route::apiResource('visits', 'VisitController');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('users', 'UserController');
+    Route::apiResource('visits', 'VisitController');
+});
