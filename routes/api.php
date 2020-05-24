@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', static function (Request $request) {
-    return $request->user();
-});
-
-
-Route::middleware('auth:sanctum')->group(static function (): void {
+Route::middleware(['auth:sanctum', 'auth.cas.force'])->group(static function (): void {
+    Route::get('user', function(Request $request) { return $request->user(); });
     Route::apiResource('users', 'UserController');
     Route::apiResource('visits', 'VisitController');
 });
