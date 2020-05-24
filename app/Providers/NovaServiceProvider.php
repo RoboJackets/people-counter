@@ -42,7 +42,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the cards that should be displayed on the default Nova dashboard.
      *
-     * @return array
+     * @return array<\Laravel\Nova\Card>
      */
     protected function cards()
     {
@@ -54,7 +54,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the extra dashboards that should be displayed on the Nova dashboard.
      *
-     * @return array
+     * @return array<\Laravel\Nova\Dashboard>
      */
     protected function dashboards()
     {
@@ -64,7 +64,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the tools that should be listed in the Nova sidebar.
      *
-     * @return array
+     * @return array<\Laravel\Nova\Tool>
      */
     public function tools()
     {
