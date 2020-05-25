@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateVisit;
 use App\Http\Resources\Visit as VisitResource;
 use App\Visit;
 use Illuminate\Routing\Controller;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class VisitController extends Controller
 {
@@ -17,7 +19,21 @@ class VisitController extends Controller
      */
     public function index()
     {
-        return VisitResource::collection(Visit::all());
+        $visits = QueryBuilder::for(Visit::class)
+            ->allowedFilters(
+                [
+                    'in_time', 'in_door', 'out_time', 'out_door',
+                    AllowedFilter::exact('gtid'),
+                    AllowedFilter::exact('id'),
+                    AllowedFilter::scope('active'),
+                    AllowedFilter::scope('active_for_user')
+                ]
+            )
+            ->allowedSorts('in_time', 'out_time', 'in_door', 'out_door')
+            ->allowedIncludes(['user'])
+            ->get();
+
+        return VisitResource::collection($visits);
     }
 
     /**
@@ -38,6 +54,10 @@ class VisitController extends Controller
      */
     public function show(Visit $visit)
     {
+        $visit = QueryBuilder::for(Visit::class)
+            ->where('id', $visit->id)
+            ->allowedIncludes(['user'])
+            ->first();
         return new VisitResource($visit);
     }
 

@@ -26,6 +26,7 @@
         "robojackets/error-pages": "^2.1",
         "robojackets/network-check": "^1.0",
         "spatie/laravel-permission": "^3.13",
+        "spatie/laravel-query-builder": "^2.8",
         "subfission/cas": "^3.1"
     },
     "require-dev": {
