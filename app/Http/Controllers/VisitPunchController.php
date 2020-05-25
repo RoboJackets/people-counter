@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Punch;
 use App\Http\Requests\StoreVisitPunch;
 use App\User;
 use App\Visit;
 use Carbon\Carbon;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 
 class VisitPunchController extends Controller
 {
@@ -31,6 +33,7 @@ class VisitPunchController extends Controller
 
         if (count($active_visits) > 1) {
             // Eek! User has multiple active visits. This shouldn't happen!
+            Log::error('Multiple active visits found for ' . $gtid);
             return response()->json(
                 [
                     'status' => 'error',
@@ -46,7 +49,13 @@ class VisitPunchController extends Controller
             $visit->out_time = Carbon::now();
             $visit->out_door = $door;
             $visit->save();
-            return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name, 'visit' => $visit]);
+
+            Log::info('Punch out by ' . $gtid . ' at ' . $door);
+
+            //Notify all kiosks via websockets
+            event(new Punch('out', $name));
+
+            return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
         }
 
         // Create new visit and punch in
@@ -55,6 +64,12 @@ class VisitPunchController extends Controller
         $visit->in_door = $door;
         $visit->gtid = $gtid;
         $visit->save();
-        return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name, 'visit' => $visit], 201);
+
+        Log::info('Punch in by ' . $gtid . ' at ' . $door);
+
+        //Notify all kiosks via websockets
+        event(new Punch('in', $name));
+
+        return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name], 201);
     }
 }

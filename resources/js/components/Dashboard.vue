@@ -3,12 +3,14 @@
     <div class="row">
       <div class="col-lg-8 col-sm-12 text-center">
         <h2>There are currently</h2>
-        <span><span class="people-count">{{ current }}</span> <span class="h2">of {{ maxPeople }}</span></span>
+        <span><span class="people-count">{{ peopleHere.length }}</span> <span class="h2">of {{ maxPeople }}</span></span>
         <h2>people in the SCC</h2>
       </div>
       <div class="col-lg-4 col-sm-12">
         <h1>Here:</h1>
-        <p>fixme, fixme, fixme</p>
+        <ul>
+          <li v-for="person in peopleHere">{{ person }}</li>
+        </ul>
       </div>
     </div>
     <div class="row pt-3">
@@ -24,10 +26,19 @@ export default {
   props: ['max-people'],
   data() {
     return {
-      'current': 9,
+      'peopleHere': []
     };
   },
   mounted() {
+    Echo.channel('punches')
+            .listen('Punch', (e) => {
+              if (e.direction === 'in') {
+                this.peopleHere.push(e.name)
+              }
+              if (e.direction === 'out') {
+                this.peopleHere.splice(this.peopleHere.indexOf(e.name), 1);
+              }
+            });
   },
   computed: {
   },
