@@ -4,22 +4,26 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 class Punch implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
-     * @var string $type
+     * Whether the punch was in or out
+     *
+     * @var string $direction
      */
     public $direction;
 
     /**
+     * The name of the event
+     *
      * @var string $name
      */
     public $name;
@@ -38,7 +42,7 @@ class Punch implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return array<\Illuminate\Broadcasting\Channel>|\Illuminate\Broadcasting\Channel
      */
     public function broadcastOn()
     {

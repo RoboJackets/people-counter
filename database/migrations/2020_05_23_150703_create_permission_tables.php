@@ -8,10 +8,8 @@ class CreatePermissionTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
@@ -110,16 +108,14 @@ class CreatePermissionTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         $tableNames = config('permission.table_names');
 
         if (0 === count($tableNames)) {
             // phpcs:disable Generic.Strings.UnnecessaryStringConcat.Found
-            
+
             throw new Exception(
                 'Error: config/permission.php not found and defaults could not be merged. Please publish the package'
                 . ' configuration before proceeding, or drop the tables manually.'

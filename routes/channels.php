@@ -17,6 +17,6 @@ Broadcast::channel('App.User.{id}', static function ($user, $id): bool {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('punches', function () {
+Broadcast::channel('punches', static function (): bool {
     return true;
 });

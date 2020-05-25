@@ -3,16 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\Models\Permission;
 
-// phpcs:disable SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
-
 class AddPunchPermissions extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
@@ -22,14 +18,15 @@ class AddPunchPermissions extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         $dbPerm = Permission::where('name', 'record-punches')->first();
-        if (null !== $dbPerm) {
-            $dbPerm->delete();
+
+        if (null === $dbPerm) {
+            return;
         }
+
+        $dbPerm->delete();
     }
 }

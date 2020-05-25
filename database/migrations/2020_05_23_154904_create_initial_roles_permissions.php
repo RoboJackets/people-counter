@@ -26,10 +26,8 @@ class CreateInitialRolesPermissions extends Migration
 
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
@@ -53,10 +51,8 @@ class CreateInitialRolesPermissions extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         global $allPermissions;
 
