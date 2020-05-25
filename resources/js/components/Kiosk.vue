@@ -32,12 +32,7 @@ export default {
   mounted() {
     Echo.channel('punches')
             .listen('Punch', (e) => {
-              if (e.direction === 'in') {
-                this.peopleHere.push(e.name)
-              }
-              if (e.direction === 'out') {
-                this.peopleHere.splice(this.peopleHere.indexOf(e.name), 1);
-              }
+              this.peopleHere = e.people;
             });
   },
   computed: {

@@ -38,12 +38,12 @@ class VisitPunchController extends Controller
             } catch (\Exception $e) {
                 Log::error('Error querying BuzzAPI to create new user for punch by ' . $gtid,
                     [$e->getMessage()]);
-                $name = "";
             }
         }
 
         // Get full name from user model for use later
-        $name = $user->full_name;
+        // In case BuzzAPI had a problem, still process the punch but use a placeholder name
+        $name = (is_null($user)) ? "Unknown" : $user->full_name;
 
         // Find active visit for GTID (if any)
         $active_visits = Visit::activeForUser($gtid)->get();

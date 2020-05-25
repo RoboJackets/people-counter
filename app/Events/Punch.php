@@ -30,21 +30,15 @@ class Punch implements ShouldBroadcast
      */
     public function __construct()
     {
+        // Get all users with an active visit
         $users = User::whereHas('visits', function (Builder $query) {
             $query->active();
         })->get();
 
-        // Return a list of user full names as an array
-        // I'm confident there's a better way to do this
-        // If you know of one, by all means please fix it
-        $subset = $users->map(function ($user) {
-            $collect = collect($user->toArray())
-                ->only(['full_name'])
-                ->all();
-            return $collect['full_name'];
-        });
+        // We want just the names for this
+        $names = $users->pluck('full_name');
 
-        $this->people = (array) $subset;
+        $this->people = $names->toArray();
     }
 
     /**
