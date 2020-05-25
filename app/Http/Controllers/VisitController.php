@@ -6,7 +6,6 @@ use App\Http\Requests\StoreVisit;
 use App\Http\Requests\UpdateVisit;
 use App\Http\Resources\Visit as VisitResource;
 use App\Visit;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class VisitController extends Controller

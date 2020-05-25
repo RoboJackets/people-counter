@@ -29,7 +29,7 @@ class UpdateVisit extends FormRequest
             'in_door' => 'string',
             'out_door' => 'string',
             'in_time' => 'date',
-            'out_time' => 'date'
+            'out_time' => 'date',
         ];
     }
 }

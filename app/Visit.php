@@ -25,7 +25,7 @@ class Visit extends Model
      */
     protected $dates = [
         'in_time',
-        'out_time'
+        'out_time',
     ];
 
     /**
@@ -52,7 +52,7 @@ class Visit extends Model
      *
      * @return mixed
      */
-    public function scopeActiveForUser($query, $gtid)
+    public function scopeActiveForUser($query, int $gtid)
     {
         return $query->whereNotNull('in_time')->whereNull('out_time')->where('gtid', $gtid);
     }

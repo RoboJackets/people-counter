@@ -13,7 +13,7 @@ class AddSecondDoorToVisits extends Migration
      */
     public function up()
     {
-        Schema::table('visits', function (Blueprint $table) {
+        Schema::table('visits', static function (Blueprint $table) {
             $table->renameColumn('door', 'in_door');
             $table->string('out_door')->after('door')->nullable();
         });
@@ -26,7 +26,7 @@ class AddSecondDoorToVisits extends Migration
      */
     public function down()
     {
-        Schema::table('visits', function (Blueprint $table) {
+        Schema::table('visits', static function (Blueprint $table) {
             $table->dropColumn('out_door');
             $table->renameColumn('in_door', 'door');
         });
