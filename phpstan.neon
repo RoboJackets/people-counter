@@ -42,6 +42,7 @@ parameters:
     - '#Cannot call method members\(\) on App\\Major\|null\.#'
     - '#Cannot call method members\(\) on App\\Team\|null\.#'
     - '#Cannot call method name\(\) on array\|Illuminate\\Routing\\Route\.#'
+    - '#Cannot call method save\(\) on App\\[a-zA-Z]+\|null\.#'
     - '#Dynamic call to static method App\\Attendance::get\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Contracts\\Cache\\Repository::forget\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Connection::getDoctrineSchemaManager\(\)\.#'
