@@ -6,7 +6,6 @@ use App\Http\Requests\StoreVisitPunch;
 use App\User;
 use App\Visit;
 use Carbon\Carbon;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
 class VisitPunchController extends Controller
@@ -16,7 +15,7 @@ class VisitPunchController extends Controller
      *
      * @param StoreVisitPunch $request
      *
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreVisitPunch $request)
     {
@@ -36,7 +35,11 @@ class VisitPunchController extends Controller
 
         if (count($active_visits) > 1) {
             // Eek! User has multiple active visits. This shouldn't happen!
-            return response()->json(['status' => 'error', 'error' => 'Multiple active visits should never happen'], 500);
+            return response()->json([
+                'status' => 'error',
+                'error' => 'Multiple active visits should never happen'],
+                500
+            );
         } elseif (count($active_visits) == 1) {
             // Update existing visit to punch out
             $visit = $active_visits->first();

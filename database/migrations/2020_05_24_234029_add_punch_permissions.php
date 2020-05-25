@@ -26,6 +26,8 @@ class AddPunchPermissions extends Migration
     public function down()
     {
         $dbPerm = Permission::where('name', 'record-punches')->first();
-        $dbPerm->delete();
+        if ($dbPerm !== null) {
+            $dbPerm->delete();
+        }
     }
 }

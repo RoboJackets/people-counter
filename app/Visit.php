@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -21,7 +22,7 @@ class Visit extends Model
     /**
      * The attributes that should be mutated to dates.
      *
-     * @var array
+     * @var array<string>
      */
     protected $dates = [
         'in_time',
@@ -37,22 +38,26 @@ class Visit extends Model
     }
 
     /**
-     * @param $query
+     * Active Visits (In, but no Out)
      *
-     * @return mixed
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeActive($query)
+    public function scopeActive($query): Builder
     {
         return $query->whereNotNull('in_time')->whereNull('out_time');
     }
 
     /**
-     * @param $query
+     * Active Visits for a given user via GTID
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
      * @param int $gtid
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeActiveForUser($query, $gtid)
+    public function scopeActiveForUser($query, $gtid): Builder
     {
         return $query->whereNotNull('in_time')->whereNull('out_time')->where('gtid', $gtid);
     }
