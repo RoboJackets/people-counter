@@ -22,7 +22,7 @@ class Visit extends JsonResource
         return array_merge(
             $parent,
             [
-                'user' => UserResource::collection($this->whenLoaded('user')),
+                'user' => new UserResource($this->whenLoaded('user')),
             ]
         );
     }
