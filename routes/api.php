@@ -19,6 +19,9 @@ Route::middleware('auth:sanctum')->group(static function (): void {
     Route::get('user', static function (Request $request): User {
         return $request->user();
     });
+
     Route::apiResource('users', 'UserController');
+
+    Route::post('visits/punch', 'VisitPunchController@store')->name('visits.punch');
     Route::apiResource('visits', 'VisitController');
 });
