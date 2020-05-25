@@ -2,9 +2,11 @@
 
 namespace App\Events;
 
+use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -15,28 +17,34 @@ class Punch implements ShouldBroadcast
     use SerializesModels;
 
     /**
-     * Whether the punch was in or out
+     * List of people currently in the space
      *
      * @var string $direction
      */
-    public $direction;
-
-    /**
-     * The name of the event
-     *
-     * @var string $name
-     */
-    public $name;
+    public $people;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(string $direction, string $name)
+    public function __construct()
     {
-        $this->direction = $direction;
-        $this->name = $name;
+        $users = User::whereHas('visits', function (Builder $query) {
+            $query->active();
+        })->get();
+
+        // Return a list of user full names as an array
+        // I'm confident there's a better way to do this
+        // If you know of one, by all means please fix it
+        $subset = $users->map(function ($user) {
+            $collect = collect($user->toArray())
+                ->only(['full_name'])
+                ->all();
+            return $collect['full_name'];
+        });
+
+        $this->people = (array) $subset;
     }
 
     /**

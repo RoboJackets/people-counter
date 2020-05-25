@@ -70,7 +70,7 @@ class VisitPunchController extends Controller
             Log::info('Punch out by ' . $gtid . ' at ' . $door);
 
             //Notify all kiosks via websockets
-            event(new Punch('out', $name));
+            event(new Punch());
 
             return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
         }
@@ -85,7 +85,7 @@ class VisitPunchController extends Controller
         Log::info('Punch in by ' . $gtid . ' at ' . $door);
 
         //Notify all kiosks via websockets
-        event(new Punch('in', $name));
+        event(new Punch());
 
         return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name], 201);
     }
