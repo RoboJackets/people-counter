@@ -9,7 +9,6 @@
     @component('layouts/title')
     @endcomponent
 
-    <h1>Hello, World!</h1>
-
+    <kiosk max-people="{{config('app.maxpeople')}}">
 
 @endsection
