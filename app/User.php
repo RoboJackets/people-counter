@@ -40,6 +40,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['full_name'];
+
+    /**
      * Get the visits for the user.
      */
     public function visits(): HasMany
@@ -55,5 +62,15 @@ class User extends Authenticatable
     public function isSuperAdmin(): bool
     {
         return $this->hasRole('super-admin');
+    }
+
+    /**
+     * Get full name of User
+     *
+     * @return string
+     */
+    public function getFullNameAttribute(): string
+    {
+        return $this->first_name . " " . $this->last_name;
     }
 }
