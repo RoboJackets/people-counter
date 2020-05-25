@@ -19,12 +19,14 @@ class StoreVisitPunch extends FormRequest
         if (! $user instanceof User) {
             // Deny to unauthenticated (which shouldn't get this far anyhow)
             return false;
-        } elseif ($user->isSuperAdmin()) {
-            return true;
-        } else {
-            // Service accounts with permission, or anyone recording their own punch
-            return $user->can('record-punches') || $user->gtid === $request->input('gtid');
         }
+
+        if ($user->isSuperAdmin()) {
+            return true;
+        }
+
+        // Service accounts with permission, or anyone recording their own punch
+        return $user->can('record-punches') || $user->gtid === $request->input('gtid');
     }
 
     /**

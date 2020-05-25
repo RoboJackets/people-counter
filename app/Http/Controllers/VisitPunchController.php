@@ -24,11 +24,7 @@ class VisitPunchController extends Controller
 
         // Fetch user to include name in response if we've seen them before
         $user = User::where('gtid', $gtid)->first();
-        if (null === $user) {
-            $name = "";
-        } else {
-            $name = $user->first_name . " " . $user->last_name;
-        }
+        $name = null === $user ? '' : $user->first_name . ' ' . $user->last_name;
 
         // Find active visit for GTID (if any)
         $active_visits = Visit::activeForUser($gtid)->get();

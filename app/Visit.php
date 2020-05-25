@@ -26,7 +26,7 @@ class Visit extends Model
      */
     protected $dates = [
         'in_time',
-        'out_time'
+        'out_time',
     ];
 
     /**
@@ -57,7 +57,7 @@ class Visit extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeActiveForUser($query, $gtid): Builder
+    public function scopeActiveForUser($query, int $gtid): Builder
     {
         return $query->whereNotNull('in_time')->whereNull('out_time')->where('gtid', $gtid);
     }

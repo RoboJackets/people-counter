@@ -29,7 +29,7 @@ class StoreVisit extends FormRequest
             'in_door' => 'string|required',
             'out_door' => 'string|required_with:out_time',
             'in_time' => 'date|required',
-            'out_time' => 'date|required_with:out_door'
+            'out_time' => 'date|required_with:out_door',
         ];
     }
 }
