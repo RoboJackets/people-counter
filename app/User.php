@@ -44,7 +44,7 @@ class User extends Authenticatable
      */
     public function visits(): HasMany
     {
-        return $this->hasMany('App\Visit');
+        return $this->hasMany('App\Visit', 'gtid', 'gtid');
     }
 
     /**
