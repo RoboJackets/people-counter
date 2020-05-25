@@ -31,8 +31,6 @@ class CreateInitialRolesPermissions extends Migration
      */
     public function up()
     {
-        global $allPermissions;
-
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
 
@@ -74,7 +72,7 @@ class CreateInitialRolesPermissions extends Migration
             $dbRole->delete();
         }
 
-        foreach ($allPermissions as $permission) {
+        foreach ($this->allPermissions as $permission) {
             $dbPerm = Permission::where('name', $permission)->first();
             if (null === $dbPerm) {
                 continue;
