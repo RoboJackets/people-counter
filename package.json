@@ -25,6 +25,7 @@
         "laravel-echo": "^1.8.0",
         "popper.js": "1.16.1",
         "pusher-js": "^6.0.3",
-        "vue": "^2.6.11"
+        "vue": "^2.6.11",
+        "vue-sweetalert2": "^3.0.5"
     }
 }
