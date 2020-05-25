@@ -31,6 +31,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * Attributes that should be hidden for arrays
+     *
+     * @var array <string>
+     */
+    protected $hidden = [
+        'gtid'
+    ];
+
+    /**
      * Get the visits for the user.
      */
     public function visits(): HasMany
