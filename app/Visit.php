@@ -44,7 +44,7 @@ class Visit extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeActive($query): Builder
+    public function scopeActive(Builder $query): Builder
     {
         return $query->whereNotNull('in_time')->whereNull('out_time');
     }
@@ -57,7 +57,7 @@ class Visit extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeActiveForUser($query, int $gtid): Builder
+    public function scopeActiveForUser(Builder $query, int $gtid): Builder
     {
         return $query->whereNotNull('in_time')->whereNull('out_time')->where('gtid', $gtid);
     }

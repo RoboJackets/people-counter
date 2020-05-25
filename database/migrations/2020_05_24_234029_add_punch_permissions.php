@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\Models\Permission;
 
+// phpcs:disable SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
+
 class AddPunchPermissions extends Migration
 {
     /**
@@ -26,7 +28,7 @@ class AddPunchPermissions extends Migration
     public function down()
     {
         $dbPerm = Permission::where('name', 'record-punches')->first();
-        if ($dbPerm !== null) {
+        if (null !== $dbPerm) {
             $dbPerm->delete();
         }
     }

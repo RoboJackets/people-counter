@@ -31,28 +31,30 @@ class VisitPunchController extends Controller
 
         if (count($active_visits) > 1) {
             // Eek! User has multiple active visits. This shouldn't happen!
-            return response()->json([
+            return response()->json(
+                [
                 'status' => 'error',
-                'error' => 'Multiple active visits should never happen'],
+                'error' => 'Multiple active visits should never happen'
+                ],
                 500
             );
-        } elseif (count($active_visits) == 1) {
+        }
+
+        if (1 === count($active_visits)) {
             // Update existing visit to punch out
             $visit = $active_visits->first();
             $visit->out_time = Carbon::now();;
             $visit->out_door = $door;
             $visit->save();
-
             return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name, 'visit' => $visit]);
-        } else {
-            // Create new visit and punch in
-            $visit = new Visit();
-            $visit->in_time = Carbon::now();
-            $visit->in_door = $door;
-            $visit->gtid = $gtid;
-            $visit->save();
-
-            return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name, 'visit' => $visit], 201);
         }
+
+        // Create new visit and punch in
+        $visit = new Visit();
+        $visit->in_time = Carbon::now();
+        $visit->in_door = $door;
+        $visit->gtid = $gtid;
+        $visit->save();
+        return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name, 'visit' => $visit], 201);
     }
 }
