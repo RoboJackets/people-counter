@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Events\Punch;
 use App\Http\Requests\StoreVisitPunch;
+use App\Traits\CreateOrUpdateUserFromBuzzAPI;
 use App\User;
 use App\Visit;
 use Carbon\Carbon;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 
 class VisitPunchController extends Controller
 {
+    use DispatchesJobs, CreateOrUpdateUserFromBuzzAPI;
+
     /**
      * Record a new in/out punch for a Visit
      *
@@ -26,7 +30,20 @@ class VisitPunchController extends Controller
 
         // Fetch user to include name in response if we've seen them before
         $user = User::where('gtid', $gtid)->first();
-        $name = null === $user ? '' : $user->first_name . ' ' . $user->last_name;
+
+        // Fetch from BuzzAPI if they've not been seen before
+        if (!$user) {
+            try {
+                $user = $this->createOrUpdateUserFromBuzzAPI($gtid);
+            } catch (\Exception $e) {
+                Log::error('Error querying BuzzAPI to create new user for punch by ' . $gtid,
+                    [$e->getMessage()]);
+                $name = "";
+            }
+        }
+
+        // Get full name from user model for use later
+        $name = $user->full_name;
 
         // Find active visit for GTID (if any)
         $active_visits = Visit::activeForUser($gtid)->get();
