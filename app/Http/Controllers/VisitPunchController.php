@@ -33,8 +33,8 @@ class VisitPunchController extends Controller
             // Eek! User has multiple active visits. This shouldn't happen!
             return response()->json(
                 [
-                'status' => 'error',
-                'error' => 'Multiple active visits should never happen'
+                    'status' => 'error',
+                    'error' => 'Multiple active visits should never happen',
                 ],
                 500
             );
@@ -43,7 +43,7 @@ class VisitPunchController extends Controller
         if (1 === count($active_visits)) {
             // Update existing visit to punch out
             $visit = $active_visits->first();
-            $visit->out_time = Carbon::now();;
+            $visit->out_time = Carbon::now();
             $visit->out_door = $door;
             $visit->save();
             return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name, 'visit' => $visit]);
