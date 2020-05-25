@@ -16,7 +16,7 @@ class CreateVisitsTable extends Migration
         Schema::create('visits', static function (Blueprint $table): void {
             $table->id();
             $table->integer('gtid');
-            $table->timestamp('in_time');
+            $table->timestamp('in_time')->nullable();
             $table->timestamp('out_time')->nullable();
             $table->string('door');
             $table->timestamps();
