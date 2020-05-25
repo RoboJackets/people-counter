@@ -17,7 +17,7 @@ class Punch implements ShouldBroadcast
     /**
      * Whether the punch was in or out
      *
-     * @var string $type
+     * @var string $direction
      */
     public $direction;
 
@@ -42,7 +42,7 @@ class Punch implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return array<Illuminate\Broadcasting\Channel>|Illuminate\Broadcasting\Channel
+     * @return array<\Illuminate\Broadcasting\Channel>|\Illuminate\Broadcasting\Channel
      */
     public function broadcastOn()
     {
