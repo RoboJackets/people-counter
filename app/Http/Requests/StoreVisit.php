@@ -13,7 +13,8 @@ class StoreVisit extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // Handled in Policy
+        return true;
     }
 
     /**
@@ -24,6 +25,11 @@ class StoreVisit extends FormRequest
     public function rules()
     {
         return [
+            'gtid' => 'required|starts_with:9|digits:9',
+            'in_door' => 'string|required',
+            'out_door' => 'string|required_with:out_time',
+            'in_time' => 'date|required',
+            'out_time' => 'date|required_with:out_door'
         ];
     }
 }

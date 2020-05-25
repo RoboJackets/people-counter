@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreVisit;
+use App\Http\Requests\UpdateVisit;
 use App\Http\Resources\Visit as VisitResource;
 use App\Visit;
 use Illuminate\Http\Request;
@@ -24,7 +26,7 @@ class VisitController extends Controller
      *
      * @return \App\Http\Resources\Visit
      */
-    public function store(Request $request)
+    public function store(StoreVisit $request)
     {
         $visit = Visit::create($request->all());
         return new VisitResource($visit);
@@ -45,7 +47,7 @@ class VisitController extends Controller
      *
      * @return \App\Http\Resources\Visit|\Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Visit $visit)
+    public function update(UpdateVisit $request, Visit $visit)
     {
         try {
             $visit->update($request->all());

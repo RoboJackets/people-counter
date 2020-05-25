@@ -13,7 +13,8 @@ class UpdateVisit extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // Handled in Policy
+        return true;
     }
 
     /**
@@ -24,6 +25,11 @@ class UpdateVisit extends FormRequest
     public function rules()
     {
         return [
+            'gtid' => 'starts_with:9|digits:9',
+            'in_door' => 'string',
+            'out_door' => 'string',
+            'in_time' => 'date',
+            'out_time' => 'date'
         ];
     }
 }
