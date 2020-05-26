@@ -24,7 +24,7 @@
 <script>
 import Echo from 'laravel-echo';
 export default {
-  props: ['max-people'],
+  props: ['maxPeople'],
   data() {
     return {
       'peopleHere': [],
@@ -236,7 +236,7 @@ export default {
         cardData = null;
         this.$swal.fire({
           title: 'Hmm...',
-          text: 'There was an error reading your card. Please swipe again.',
+          text: 'There was an error reading your card. Please tap again.',
           showCancelButton: true,
           showConfirmButton: false,
           type: 'warning',
@@ -260,6 +260,53 @@ export default {
         })
       }
     },
+    submit() {
+      // Submit attendance data
+      this.submitting = true;
+      this.$swal.showLoading();
+      axios
+              .post(this.punchBaseUrl, this.punch)
+              .then(response => {
+                this.hasError = false;
+                let name = (response.data.name ? response.data.name : "Unknown User");
+                let direction = response.data.punch;
+                let swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                this.$swal.fire({
+                  title: "You're " + direction + "!",
+                  text: swalText,
+                  timer: 2500,
+                  showConfirmButton: false,
+                  type: 'success',
+                  customClass: {
+                    title: 'swal-swipe-title',
+                  }
+                });
+                this.clearFields();
+              })
+              .catch(error => {
+                console.log(error);
+                this.hasError = true;
+                this.feedback = '';
+                this.clearFields();
+                if (error.response.status === 403) {
+                  this.$swal.fire({
+                    title: 'Whoops!',
+                    text: "You don't have permission to perform that action.",
+                    type: 'error',
+                  });
+                } else {
+                  this.$swal.fire(
+                          'Error',
+                          'Unable to process data. Check your internet connection or try refreshing the page.',
+                          'error'
+                  );
+                }
+              })
+              .finally(() => {
+                this.submitting = false;
+                this.$swal.hideLoading();
+              });
+    },
     clearFields() {
       //Remove focus from button
       document.activeElement.blur();
@@ -269,6 +316,6 @@ export default {
     isNumeric(n) {
       return !isNaN(parseFloat(n)) && isFinite(n);
     },
-  },
+  }
 };
 </script>
