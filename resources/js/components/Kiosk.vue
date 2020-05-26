@@ -2,15 +2,15 @@
   <div :style="dynamicColor">
     <div class="row">
       <div class="col-lg-8 col-sm-12 text-center">
-        <h2>There are currently</h2>
-        <span><span class="people-count">{{ peopleHere.length }}</span> <span class="h2">of {{ maxPeople }}</span></span>
-        <h2>people in the SCC</h2>
+        <span><span class="people-count">{{ peopleHere.length }}</span></span>
+        <h2>people are in the SCC</h2>
       </div>
       <div class="col-lg-4 col-sm-12">
         <h1>Here:</h1>
         <ul>
           <li v-for="person in peopleHere">{{ person }}</li>
         </ul>
+        <h2>{{ maxPeople - peopleHere.length }} spots open</h2>
       </div>
     </div>
     <div class="row pt-3">
