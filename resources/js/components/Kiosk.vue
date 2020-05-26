@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="dynamicColor">
     <div class="row">
       <div class="col-lg-8 col-sm-12 text-center">
         <h2>There are currently</h2>
@@ -33,9 +33,12 @@ export default {
         'door': null,
         'include': 'user',
       },
-      submitting: false,
-      visitsBaseUrl: '/api/visits',
-      punchBaseUrl: '/api/visits/punch',
+        submitting: false,
+        visitsBaseUrl: '/api/visits',
+        punchBaseUrl: '/api/visits/punch',
+        dynamicColor: {
+          backgroundColor: ''
+        }
     };
   },
   mounted() {
@@ -111,6 +114,25 @@ export default {
     }
   },
   computed: {
+  },
+  watch: {
+      peopleHere: function () {
+          let max = this.maxPeople;
+          let here = this.peopleHere.length;
+          if (here / max < 0.5) {
+              // < 50% -> Green
+              this.dynamicColor.backgroundColor = '#66b266'
+          } else if (here / max <= 0.75) {
+              // 50%-75% -> Yellow
+              this.dynamicColor.backgroundColor = '#ffff66'
+          } else if (here / max <= 0.99) {
+              // 75% -> 99% -> Orange
+              this.dynamicColor.backgroundColor = '#ffb732';
+          } else {
+              // 100% -> red
+              this.dynamicColor.backgroundColor = '#ff3232';
+          }
+      }
   },
   methods: {
     setPunchDoor(doorString) {
