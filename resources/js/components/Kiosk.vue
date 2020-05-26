@@ -171,7 +171,7 @@ export default {
                   });
                   // Set global peopleHere to alphabetized tempPeopleHere
                   this.peopleHere = tempPeopleHere.sort(function (a, b) {
-                    return a.name > b.name ? 1 : b.name > a.name ? -1 : 0;
+                    return a > b ? 1 : b > a ? -1 : 0;
                   });
                 }
               })

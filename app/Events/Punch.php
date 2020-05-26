@@ -33,7 +33,7 @@ class Punch implements ShouldBroadcast
         // Get all users with an active visit
         $users = User::whereHas('visits', function (Builder $query) {
             $query->active();
-        })->get();
+        })->orderBy('first_name')->get();
 
         // We want just the names for this
         $names = $users->pluck('full_name');
