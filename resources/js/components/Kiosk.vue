@@ -72,13 +72,13 @@ export default {
 
     // Handle Token
     if (urlParams.has('token')) {
-      console.log('Found door in URL: ' + urlParams.get('token'));
+      console.log('Found API token in URL: ' + urlParams.get('token'));
       this.setApiToken(urlParams.get('token'))
     } else if (localStorage.getItem('api_token')) {
       console.log('Found API token in local storage');
       this.setApiToken(localStorage.getItem('api_token'))
     } else {
-      console.log('Did not find token');
+      console.log('Did not find API token');
       swalQueue.push({
         title: "Authentication",
         text: "Please provide an API token to process data",
