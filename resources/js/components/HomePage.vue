@@ -46,13 +46,23 @@
                     </template>
                     <template v-else>
                         <h5 class="card-title">{{ visits.here }} {{ personTerm }} Here</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Maximum {{ visits.max }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Maximum {{ visits.max }} People</h6>
                     </template>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+    .card-title {
+        padding-left: 1.25rem;
+        padding-top: 0.75rem;
+    }
+    .card-subtitle {
+        padding-left: 1.25rem;
+    }
+</style>
 
 <script>
     export default {
