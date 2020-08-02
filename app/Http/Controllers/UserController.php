@@ -6,7 +6,9 @@ use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
 use App\Http\Resources\User as UserResource;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
@@ -34,11 +36,34 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \App\Http\Resources\User
      */
-    public function show(User $user)
+    public function showSelf(Request $request)
     {
-        return new UserResource($user);
+        $q_user = QueryBuilder::for(User::class)
+            ->where('id', $request->user()->id)
+            ->allowedIncludes(['visits'])
+            ->first();
+
+        return new UserResource($q_user);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\User $user
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Http\Resources\User
+     */
+    public function show(User $user, Request $request)
+    {
+        $q_user = QueryBuilder::for(User::class)
+            ->where('id', $user->id)
+            ->allowedIncludes(['visits'])
+            ->first();
+
+        return new UserResource($q_user);
     }
 
     /**
