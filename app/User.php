@@ -31,15 +31,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Attributes that should be hidden for arrays
-     *
-     * @var array <string>
-     */
-    protected $hidden = [
-        'gtid'
-    ];
-
-    /**
      * The accessors to append to the model's array form.
      *
      * @var array
