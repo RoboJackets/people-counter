@@ -7,9 +7,9 @@
 @section('content')
 
     @component('layouts/title')
+        {{ config('app.name') }}
     @endcomponent
 
-    <h1>Hello, World!</h1>
-
+    <home-page></home-page>
 
 @endsection

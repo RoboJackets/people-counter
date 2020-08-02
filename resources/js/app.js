@@ -3,6 +3,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 Vue.component('kiosk', require('./components/Kiosk.vue').default);
+Vue.component('home-page', require('./components/HomePage.vue').default);
 
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
