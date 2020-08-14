@@ -27,7 +27,8 @@
         "robojackets/network-check": "^1.0",
         "spatie/laravel-permission": "^3.13",
         "spatie/laravel-query-builder": "^2.8",
-        "subfission/cas": "^3.1"
+        "subfission/cas": "^3.1",
+        "vyuldashev/nova-permission": "^2.9"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

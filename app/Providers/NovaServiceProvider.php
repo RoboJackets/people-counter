@@ -5,11 +5,25 @@ namespace App\Providers;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
+use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
+    /**
+     * Bootstrap any application services.
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     */
+    public function boot(): void
+    {
+        parent::boot();
+        Nova::serving(static function (ServingNova $event): void {
+            Nova::script('people-counter-custom', __DIR__.'/../../public/js/nova.js');
+        });
+    }
+
     /**
      * Register the Nova routes.
      *
@@ -35,7 +49,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 
         Gate::define('viewNova', static function (User $user): bool {
-            return true;
+            return $user->hasRole('super-admin');
         });
     }
 
@@ -68,6 +82,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+        ];
     }
 }

@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Visit extends Model
 {
+    use SoftDeletes;
+
     /**
      * Attributes that are not mass assignable
      *

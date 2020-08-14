@@ -99,10 +99,11 @@ return [
 
     'middleware' => [
         'web',
-        Authenticate::class,
+        \App\Http\Middleware\CASAuthenticate::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
         Authorize::class,
+        \Vyuldashev\NovaPermission\ForgetCachedPermissions::class,
     ],
 
     /*

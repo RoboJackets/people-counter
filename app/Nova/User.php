@@ -3,7 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphToMany;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 
@@ -21,7 +24,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'full_name';
 
     /**
      * The columns that should be searched.
@@ -29,7 +32,7 @@ class User extends Resource
      * @var array<string>
      */
     public static $search = [
-        'id', 'name', 'email',
+        'username', 'first_name', 'last_name', 'email',
     ];
 
     /**
@@ -42,9 +45,17 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            Text::make('Username')
+                ->sortable()
+                ->rules('required', 'max:255')
+                ->creationRules('unique:users,username')
+                ->updateRules('unique:users,username,{{resourceId}}'),
 
-            Text::make('Name')
+            Text::make('First Name', 'first_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Last Name', 'last_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
@@ -54,10 +65,31 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Password::make('Password')
+            Hidden::make('GTID')
+                ->onlyOnDetail()
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->can('read-users-gtid');
+                }),
+
+            // Hidden fields can't be edited, so add this field on the forms so it can be edited for service accounts
+            Text::make('GTID')
                 ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->can('read-users-gtid');
+                })
+                ->rules('required', 'integer', 'min:900000000', 'max:999999999')
+                ->creationRules('unique:users,gtid')
+                ->updateRules('unique:users,gtid,{{resourceId}}'),
+
+            MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class)
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->hasRole('super-admin');
+                }),
+
+            MorphToMany::make('Permissions', 'permissions', \Vyuldashev\NovaPermission\Permission::class)
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->hasRole('super-admin');
+                }),
         ];
     }
 
