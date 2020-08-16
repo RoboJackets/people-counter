@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Space extends Model
@@ -20,6 +21,16 @@ class Space extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Get the count of active visits in this space
+     *
+     * @return int
+     */
+    public function getActivevisitcountAttribute(): int
+    {
+        return $this->visits()->active()->count();
+    }
 
     /**
      * Define relationship between Space and its parent
@@ -49,5 +60,15 @@ class Space extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany('App\User');
+    }
+
+    /**
+     * Define the relationship between Space and Visit
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function visits(): HasMany
+    {
+        return $this->hasMany('App\Visit');
     }
 }
