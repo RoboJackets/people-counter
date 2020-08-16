@@ -36,6 +36,7 @@
                             </button>
                             <hr>
                             <b>Default Space:</b> Narnia
+                            <button type="button" class="btn btn-secondary btn-sm">Edit</button>
                         </div>
                     </template>
                 </div>
@@ -43,14 +44,19 @@
             <div class="col-md-6 col-sm-12">
                 <div class="card">
                     <h5 class="card-header">Space Status</h5>
-                    <template v-if="loading.visits">
+                    <template v-if="loading.spaces">
                         <div class="spinner-grow" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
                     </template>
                     <template v-else>
-<!--                        <h5 class="card-title">{{ visits.here }} {{ personTerm }} Here</h5>-->
-<!--                        <h6 class="card-subtitle mb-2 text-muted">Maximum {{ visits.max }} People</h6>-->
+                        <div class="card-body">
+                            <template v-for="space in spaces">
+                                <h5 class="space-name">{{ space.name }}</h5>
+                                <b> {{ space.activeVisitCount }}</b> here, {{ space.max_occupancy }} maximum
+                                <br/>
+                            </template>
+                        </div>
                     </template>
                 </div>
             </div>
@@ -59,12 +65,18 @@
 </template>
 
 <style scoped>
+    .card-body {
+        padding: 0 1.25rem 1.25rem;
+    }
     .card-title {
         padding-left: 1.25rem;
         padding-top: 0.75rem;
     }
     .card-subtitle {
         padding-left: 1.25rem;
+    }
+    .space-name {
+        padding-top: 10px;
     }
 </style>
 
