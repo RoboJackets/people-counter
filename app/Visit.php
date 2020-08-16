@@ -41,6 +41,16 @@ class Visit extends Model
     }
 
     /**
+     * Define the relationship between Visit and Space
+     *
+     * @return BelongsTo
+     */
+    public function space(): BelongsTo
+    {
+        return $this->belongsTo('App\Space');
+    }
+
+    /**
      * Active Visits (In, but no Out)
      *
      * @param \Illuminate\Database\Eloquent\Builder $query

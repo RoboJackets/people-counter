@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -44,10 +45,11 @@ class Visit extends Resource
     {
         return [
             BelongsTo::make('User')->searchable(),
+            BelongsTo::make('Space')->searchable(),
             DateTime::make('In Time'),
             Text::make('In Door'),
             DateTime::make('Out Time'),
-            Text::make('Out Door')
+            Text::make('Out Door'),
         ];
     }
 

@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphToMany;
@@ -83,6 +84,8 @@ class User extends Resource
                 ->updateRules('unique:users,gtid,{{resourceId}}'),
 
             BelongsToMany::make('Spaces'),
+
+            HasMany::make('Visits'),
 
             MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class)
                 ->canSee(static function (Request $request): bool {

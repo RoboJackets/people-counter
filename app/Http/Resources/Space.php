@@ -24,7 +24,8 @@ class Space extends JsonResource
             'deleted_at' => $this->deleted_at,
             'parent' => $this->whenLoaded('parent'),
             'children' => $this->whenLoaded('children'),
-            'users' => $this->whenLoaded('users')
+            'users' => $this->whenLoaded('users'),
+            'visits' => $this->whenLoaded('visits'),
         ];
     }
 }
