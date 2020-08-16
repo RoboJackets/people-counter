@@ -23,4 +23,6 @@ Route::middleware('auth:sanctum')->group(static function (): void {
     Route::get('visits/count', 'VisitController@count')->name('visits.count');
     Route::post('visits/punch', 'VisitPunchController@store')->name('visits.punch');
     Route::apiResource('visits', 'VisitController');
+
+    Route::apiResource('spaces', 'SpaceController');
 });
