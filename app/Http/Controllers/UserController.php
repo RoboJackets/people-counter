@@ -8,6 +8,7 @@ use App\Http\Resources\User as UserResource;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
@@ -19,11 +20,27 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::all());
+        $users = QueryBuilder::for(User::class)
+            ->allowedFilters(
+                [
+                    AllowedFilter::exact('id'),
+                    'username',
+                    'first_name',
+                    'last_name',
+                    'email',
+                    AllowedFilter::exact('gtid'),
+                ]
+            )
+            ->allowedSorts('username', 'first_name', 'last_name', 'gtid')
+            ->allowedIncludes(['visits', 'spaces'])
+            ->get();
+
+        return UserResource::collection($users);
     }
 
     /**
      * Store a newly created resource in storage.
+     * @param StoreUser $request
      *
      * @return \App\Http\Resources\User
      */
@@ -43,7 +60,7 @@ class UserController extends Controller
     {
         $q_user = QueryBuilder::for(User::class)
             ->where('id', $request->user()->id)
-            ->allowedIncludes(['visits'])
+            ->allowedIncludes(['visits', 'spaces'])
             ->first();
 
         return new UserResource($q_user);
@@ -60,7 +77,7 @@ class UserController extends Controller
     {
         $q_user = QueryBuilder::for(User::class)
             ->where('id', $user->id)
-            ->allowedIncludes(['visits'])
+            ->allowedIncludes(['visits', 'spaces'])
             ->first();
 
         return new UserResource($q_user);
@@ -68,14 +85,17 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param UpdateUser $request
+     * @param User $user
      *
-     * @return \App\Http\Resources\User|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateUser $request, User $user)
     {
         try {
             $user->update($request->all());
-            return new UserResource($user);
+            $updatedUser = new UserResource($user);
+            return response()->json($updatedUser);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
