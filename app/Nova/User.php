@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphToMany;
@@ -80,6 +81,8 @@ class User extends Resource
                 ->rules('required', 'integer', 'min:900000000', 'max:999999999')
                 ->creationRules('unique:users,gtid')
                 ->updateRules('unique:users,gtid,{{resourceId}}'),
+
+            BelongsToMany::make('Spaces'),
 
             MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class)
                 ->canSee(static function (Request $request): bool {

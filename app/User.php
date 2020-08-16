@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -43,6 +44,16 @@ class User extends Authenticatable
     public function visits(): HasMany
     {
         return $this->hasMany('App\Visit', 'gtid', 'gtid');
+    }
+
+    /**
+     * Define the relationship between User and Space
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function spaces(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Space');
     }
 
     /**

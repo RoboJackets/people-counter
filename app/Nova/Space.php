@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
@@ -56,6 +57,8 @@ class Space extends Resource
                 ->rules('required')
                 ->min(1)
                 ->max(100),
+
+            BelongsToMany::make('Users'),
 
             BelongsTo::make('Parent Space', 'parent', 'App\Nova\Space')
                 ->nullable()
