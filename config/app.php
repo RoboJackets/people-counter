@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/New_York',
 
     /*
     |--------------------------------------------------------------------------
@@ -231,6 +231,4 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
-    'maxpeople' => env('MAX_PEOPLE'),
 ];
