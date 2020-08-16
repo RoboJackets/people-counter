@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Space as SpaceResource;
 use App\Space;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -14,7 +15,7 @@ class SpaceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection<SpaceResource>
+     * @return JsonResponse
      */
     public function index()
     {
@@ -23,14 +24,16 @@ class SpaceController extends Controller
                 [
                     AllowedFilter::exact('id'),
                     'name',
-                    'max_occupancy'
+                    'max_occupancy',
+                    AllowedFilter::exact('parent_id'),
                 ]
             )
             ->allowedSorts('name')
-            ->allowedIncludes(['parent', 'children'])
+            ->allowedIncludes(['parent', 'children', 'users', 'visits'])
+            ->allowedAppends('activevisitcount')
             ->get();
 
-        return SpaceResource::collection($spaces);
+        return response()->json(SpaceResource::collection($spaces));
     }
 
     /**
