@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Space as SpaceResource;
 use App\Http\Resources\Visit as VisitResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -30,6 +31,7 @@ class User extends JsonResource
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
             'visits' => VisitResource::collection($this->whenLoaded('visits')),
+            'spaces' => SpaceResource::collection($this->whenLoaded('spaces'))
         ];
     }
 
