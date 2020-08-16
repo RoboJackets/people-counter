@@ -27,26 +27,30 @@
                         <h6 class="card-subtitle mb-2 text-muted" v-if="currentVisitState === 'out'">
                             Swipe your BuzzCard at a kiosk to record your presence.
                         </h6>
-                        <button type="button"
-                                class="btn btn-primary"
-                                v-if="currentVisitState === 'in'"
-                                v-on:click="submit">
-                            End Visit
-                        </button>
+                        <div class="card-body">
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    v-if="currentVisitState === 'in'"
+                                    v-on:click="submit">
+                                End Visit
+                            </button>
+                            <hr>
+                            <b>Default Space:</b> Narnia
+                        </div>
                     </template>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="card">
-                    <h5 class="card-header">SCC Status</h5>
+                    <h5 class="card-header">Space Status</h5>
                     <template v-if="loading.visits">
                         <div class="spinner-grow" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
                     </template>
                     <template v-else>
-                        <h5 class="card-title">{{ visits.here }} {{ personTerm }} Here</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Maximum {{ visits.max }} People</h6>
+<!--                        <h5 class="card-title">{{ visits.here }} {{ personTerm }} Here</h5>-->
+<!--                        <h6 class="card-subtitle mb-2 text-muted">Maximum {{ visits.max }} People</h6>-->
                     </template>
                 </div>
             </div>
@@ -70,29 +74,26 @@
         data() {
             return {
                 'user': {},
-                'visits': {
-                    'here': null,
-                    'max': null,
-                },
+                'spaces': {},
                 'punch': {
                     'gtid': null,
                     'door': 'web',
                 },
                 loading: {
                     'user': false,
-                    'visits': false,
+                    'spaces': false,
                 },
                 submitting: false,
                 userBaseUrl: '/api/user',
-                visitsBaseUrl: '/api/visits',
+                spacesBaseUrl: '/api/spaces',
                 punchBaseUrl: '/api/visits/punch',
             };
         },
         mounted() {
             // Fetch data about the currently authenticated user
             this.loadUser();
-            // Fetch data about SCC/global visits
-            this.loadVisits();
+            // Fetch data about spaces
+            this.loadSpaces();
         },
         computed: {
             currentVisitState: function() {
@@ -106,15 +107,15 @@
                     return {};
                 }
             },
-            personTerm: function() {
-                if (this.visits.here === 0) {
-                    return "People";
-                } else if (this.visits.here === 1) {
-                    return "Person";
-                } else {
-                    return "People";
-                }
-            }
+            // personTerm: function() {
+            //     if (this.visits.here === 0) {
+            //         return "People";
+            //     } else if (this.visits.here === 1) {
+            //         return "Person";
+            //     } else {
+            //         return "People";
+            //     }
+            // }
         },
         watch: {
         },
@@ -129,13 +130,13 @@
                         this.loading.user = false;
                     })
             },
-            async loadVisits() {
-                this.loading.visits = true;
+            async loadSpaces() {
+                this.loading.spaces = true;
                 await self.axios
-                    .get(this.visitsBaseUrl + '/count')
+                    .get(this.spacesBaseUrl + '?append=activevisitcount')
                     .then(response => {
-                        this.visits = response.data;
-                        this.loading.visits = false;
+                        this.spaces = response.data;
+                        this.loading.spaces = false;
                     })
                     .catch(error => {
                         if (error.response.status === 403) {
