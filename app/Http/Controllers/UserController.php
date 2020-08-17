@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
+use App\Http\Requests\UpdateUserSpaces;
 use App\Http\Resources\User as UserResource;
 use App\User;
 use Illuminate\Http\Request;
@@ -99,6 +100,25 @@ class UserController extends Controller
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
+    }
+
+    /**
+     * Update the specified resource in storage
+     * @param UpdateUserSpaces $request
+     * @param User $user
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateSpaces(UpdateUserSpaces $request, User $user)
+    {
+        try {
+            $user->spaces()->sync($request->input('spaces'));
+        } catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+        $dbUser = User::find($user->id)->with('spaces', 'visits')->first();
+        return response()->json(['status' => 'success', 'user' => $dbUser]);
     }
 
     /**
