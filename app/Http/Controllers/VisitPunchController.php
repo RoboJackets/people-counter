@@ -45,6 +45,19 @@ class VisitPunchController extends Controller
         // In case BuzzAPI had a problem, still process the punch but use a placeholder name
         $name = (is_null($user)) ? "Unknown" : $user->full_name;
 
+        // Check for default space for user
+        $userSpaces = $user->spaces;
+        $userSpaceIds = [];
+        if (!$userSpaces || count($userSpaces) == 0) {
+            return response()->json([
+                'status' => 'error',
+                'error' => 'No default space(s) set for user.'
+            ], 422);
+        }
+        foreach ($userSpaces as $space) {
+            $userSpaceIds[] = $space->id;
+        }
+
         // Find active visit for GTID (if any)
         $active_visits = Visit::activeForUser($gtid)->get();
 
@@ -81,8 +94,10 @@ class VisitPunchController extends Controller
         $visit->in_door = $door;
         $visit->gtid = $gtid;
         $visit->save();
+        $visit->spaces()->attach($userSpaceIds);
 
-        Log::info('Punch in by ' . $gtid . ' at ' . $door);
+        $implodedSpaceIds = implode(",", $userSpaceIds);
+        Log::info('Punch in by ' . $gtid . ' at ' . $door . ' for space(s) ' . $implodedSpaceIds);
 
         //Notify all kiosks via websockets
         event(new Punch());
