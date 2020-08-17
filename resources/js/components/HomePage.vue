@@ -35,8 +35,17 @@
                                 End Visit
                             </button>
                             <hr>
-                            <b>Default Space:</b> Narnia
-                            <button type="button" class="btn btn-secondary btn-sm">Edit</button>
+                            <b>Default Space:</b>
+                            <template v-if="user.spaces.length === 0">
+                                Not Set
+                            </template>
+                            <template v-else>
+                                {{ user.spaces.map(a => a.name).join(", ")}}
+                            </template>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                    v-on:click="openModal('defaultSpaceChangeModal')">
+                                Edit
+                            </button>
                         </div>
                     </template>
                 </div>
@@ -53,11 +62,43 @@
                         <div class="card-body">
                             <template v-for="space in spaces">
                                 <h5 class="space-name">{{ space.name }}</h5>
-                                <b> {{ space.activeVisitCount }}</b> here, {{ space.max_occupancy }} maximum
+                                <b> {{ space.active_visit_count }}</b> here, {{ space.max_occupancy }} maximum
                                 <br/>
                             </template>
                         </div>
                     </template>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+        <div class="modal fade" tabindex="-1" id="defaultSpaceChangeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change Default Space(s)</h5>
+                        <button type="button" class="close" aria-label="Close"
+                                v-on:click="closeModal('defaultSpaceChangeModal')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Please pick the space name(s) corresponding to your primary team(s).
+                            If you are not affiliated with a specific team, pick "SCC - Main".
+                        </p>
+                        <template v-for="space in spaces">
+                            <div class="form-group form-check">
+                                <input class="form-check-input" type="checkbox"
+                                       :id="space.id" :value="space.id" v-model="defaultSpaces">
+                                <label :for="space.id">{{ space.name }}</label>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                                v-on:click="closeModal('defaultSpaceChangeModal')">Close</button>
+                        <button type="button" class="btn btn-primary" v-on:click="saveUserSpaces">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,6 +128,7 @@
             return {
                 'user': {},
                 'spaces': {},
+                'defaultSpaces': [],
                 'punch': {
                     'gtid': null,
                     'door': 'web',
@@ -94,6 +136,7 @@
                 loading: {
                     'user': false,
                     'spaces': false,
+                    'userSpaces': false,
                 },
                 submitting: false,
                 userBaseUrl: '/api/user',
@@ -119,15 +162,6 @@
                     return {};
                 }
             },
-            // personTerm: function() {
-            //     if (this.visits.here === 0) {
-            //         return "People";
-            //     } else if (this.visits.here === 1) {
-            //         return "Person";
-            //     } else {
-            //         return "People";
-            //     }
-            // }
         },
         watch: {
         },
@@ -135,7 +169,7 @@
             async loadUser() {
                 this.loading.user = true;
                 await self.axios
-                    .get(this.userBaseUrl + '?include=visits')
+                    .get(this.userBaseUrl + '?include=visits,spaces')
                     .then(response => {
                         this.user = response.data;
                         this.punch.gtid = this.user.gtid;
@@ -145,7 +179,7 @@
             async loadSpaces() {
                 this.loading.spaces = true;
                 await self.axios
-                    .get(this.spacesBaseUrl + '?append=activevisitcount')
+                    .get(this.spacesBaseUrl + '?append=activevisitcount&sort=+name')
                     .then(response => {
                         this.spaces = response.data;
                         this.loading.spaces = false;
@@ -167,6 +201,18 @@
                             );
                         }
                     });
+            },
+            saveUserSpaces() {
+                // this.loading.userSpaces = true;
+                this.$swal.showLoading();
+                axios
+                    .put(this.userBaseUrl + 's/' + this.user.id + '/spaces', {'spaces': this.defaultSpaces})
+                    .then(response => {
+                        this.user = response.data.user;
+                        this.$swal.hideLoading();
+                        this.$swal.close();
+                        this.closeModal('defaultSpaceChangeModal')
+                })
             },
             submit() {
                 // Submit attendance data
@@ -218,6 +264,16 @@
                         this.$swal.hideLoading();
                     });
             },
+            openModal(modalId) {
+                document.getElementById("backdrop").style.display = "block"
+                document.getElementById(modalId).style.display = "block"
+                document.getElementById(modalId).className += "show"
+            },
+            closeModal(modalId) {
+                document.getElementById("backdrop").style.display = "none"
+                document.getElementById(modalId).style.display = "none"
+                document.getElementById(modalId).className += document.getElementById(modalId).className.replace("show", "")
+            }
         }
     };
 </script>
