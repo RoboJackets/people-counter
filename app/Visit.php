@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Visit extends Model
@@ -43,11 +44,11 @@ class Visit extends Model
     /**
      * Define the relationship between Visit and Space
      *
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function space(): BelongsTo
+    public function spaces(): BelongsToMany
     {
-        return $this->belongsTo('App\Space');
+        return $this->belongsToMany('App\Space');
     }
 
     /**

@@ -67,8 +67,8 @@ class Space extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function visits(): HasMany
+    public function visits(): BelongsToMany
     {
-        return $this->hasMany('App\Visit');
+        return $this->belongsToMany('App\Visit');
     }
 }

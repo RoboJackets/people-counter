@@ -45,7 +45,7 @@ class Visit extends Resource
     {
         return [
             BelongsTo::make('User')->searchable(),
-            BelongsTo::make('Space')->searchable(),
+            BelongsToMany::make('Spaces')->searchable(),
             DateTime::make('In Time'),
             Text::make('In Door'),
             DateTime::make('Out Time'),

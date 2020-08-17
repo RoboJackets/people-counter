@@ -60,7 +60,7 @@ class Space extends Resource
 
             BelongsToMany::make('Users'),
 
-            HasMany::make('Visits'),
+            BelongsToMany::make('Visits'),
 
             BelongsTo::make('Parent Space', 'parent', 'App\Nova\Space')
                 ->nullable()
