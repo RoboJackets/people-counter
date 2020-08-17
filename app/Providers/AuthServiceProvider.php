@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Policies\SpacePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\VisitPolicy;
+use App\Space;
 use App\User;
 use App\Visit;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Visit::class => VisitPolicy::class,
+        Space::class => SpacePolicy::class,
     ];
 
     /**
