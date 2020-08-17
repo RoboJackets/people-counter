@@ -18,7 +18,7 @@ class Space extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'max_occupancy' => $this->max_occupancy,
-            'activeVisitCount' => $this->activeVisitCount,
+            'active_visit_count' => $this->activeVisitCount,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
