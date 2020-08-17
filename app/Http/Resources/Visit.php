@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Space as SpaceResource;
 use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,6 +24,7 @@ class Visit extends JsonResource
             $parent,
             [
                 'user' => new UserResource($this->whenLoaded('user')),
+                'spaces' => new SpaceResource($this->whenLoaded('spaces')),
             ]
         );
     }
