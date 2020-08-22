@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Space extends Model
@@ -27,9 +28,19 @@ class Space extends Model
      *
      * @return int
      */
-    public function getActivevisitcountAttribute(): int
+    public function getActiveVisitCountAttribute(): int
     {
         return $this->visits()->active()->count();
+    }
+
+    /**
+     * Get the count of active visits of child spaces of this space
+     *
+     * @return int
+     */
+    public function getActiveChildVisitCountAttribute(): int
+    {
+        return $this->children->sum('active_visit_count');
     }
 
     /**

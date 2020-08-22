@@ -30,7 +30,7 @@ class SpaceController extends Controller
             )
             ->allowedSorts('name')
             ->allowedIncludes(['parent', 'children', 'users', 'visits'])
-            ->allowedAppends('activevisitcount')
+            ->allowedAppends(['active_visit_count', 'active_child_visit_count'])
             ->get();
 
         return response()->json(SpaceResource::collection($spaces));
