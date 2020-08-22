@@ -179,7 +179,7 @@
             async loadSpaces() {
                 this.loading.spaces = true;
                 await self.axios
-                    .get(this.spacesBaseUrl + '?append=activevisitcount&sort=+name')
+                    .get(this.spacesBaseUrl + '?append=active_visit_count,active_child_visit_count&sort=+name')
                     .then(response => {
                         this.spaces = response.data;
                         this.loading.spaces = false;
