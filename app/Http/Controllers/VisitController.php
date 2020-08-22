@@ -90,18 +90,4 @@ class VisitController extends Controller
             return response()->json(['error' => $e->getMessage()]);
         }
     }
-
-    /**
-     * Return useful counters for visits
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function count()
-    {
-        $hereCount = Visit::active()->count();
-        return response()->json([
-            'here' => $hereCount,
-            'max' => env('MAX_PEOPLE'),
-        ]);
-    }
 }

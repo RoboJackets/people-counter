@@ -21,7 +21,6 @@ Route::middleware('auth:sanctum')->group(static function (): void {
     Route::put('users/{user}/spaces', 'UserController@updateSpaces')->name('users.spaces');
     Route::apiResource('users', 'UserController');
 
-    Route::get('visits/count', 'VisitController@count')->name('visits.count');
     Route::post('visits/punch', 'VisitPunchController@store')->name('visits.punch');
     Route::apiResource('visits', 'VisitController');
 
