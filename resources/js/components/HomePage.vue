@@ -192,7 +192,11 @@
                                 type: 'error',
                             });
                         } else if (error.response.status === 401) {
-                            // this.tokenSetup(true);
+                            this.$swal.fire({
+                                title: 'Whoops!',
+                                text: "You are not authenticated. Please try again.",
+                                type: 'error',
+                            });
                         } else {
                             this.$swal.fire(
                                 'Error',
