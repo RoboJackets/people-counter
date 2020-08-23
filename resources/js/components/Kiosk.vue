@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-8 col-sm-12 text-center">
                 <span><span class="people-count">{{ peopleHere.length }}</span></span>
-                <h2>people are in the SCC</h2>
+                <h2>people are in the {{ currentSpaceName }} space</h2>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <h1>Here:</h1>
@@ -24,10 +24,10 @@
 <script>
 import Echo from 'laravel-echo';
 export default {
-    props: ['maxPeople'],
     data() {
         return {
             'peopleHere': [],
+            'space': {},
             'punch': {
                 'gtid': null,
                 'door': null,
@@ -138,6 +138,16 @@ export default {
         }
     },
     computed: {
+        currentSpaceName() {
+            return (typeof this.space !== 'undefined') ?
+                this.space.name :
+                null
+        },
+        maxPeople() {
+            return (typeof this.space !== 'undefined') ?
+                this.space.max_occupancy :
+                -1
+        }
     },
     watch: {
         peopleHere: function () {
@@ -173,12 +183,43 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('api_token');
         },
         postMountedLoad() {
-            // Load current data on page load so that we don't have to wait for a punch
             this.loadVisits();
-            // Load websocket
+            this.loadSpace();
             this.loadWebSocket();
-            // Start keyboard listener
             this.startKeyboardListening();
+        },
+        loadSpace() {
+            self.axios
+                .get(this.spacesBaseUrl + '/' + this.spaceId)
+                .then(response => {
+                    let rawSpace = response.data;
+                    if (rawSpace.length < 1) {
+                        this.$swal.fire('Bueller...Bueller...', 'No spaces found.', 'warning');
+                    } else {
+                        this.space = rawSpace;
+                    }
+                })
+                .catch(error => {
+                    if (error.response.status === 403) {
+                        this.$swal.fire({
+                            title: 'Whoops!',
+                            text: "You don't have permission to perform that action.",
+                            icon: 'error',
+                        });
+                    } else if (error.response.status === 401) {
+                        this.$swal.fire({
+                            title: 'Whoops!',
+                            text: "Invalid API token or authentication error",
+                            icon: 'error',
+                        });
+                    } else {
+                        this.$swal.fire({
+                            title: 'Error',
+                            text: 'Unable to process data. Check your internet connection or try refreshing the page.',
+                            icon: 'error',
+                        });
+                    }
+                });
         },
         loadVisits() {
             // Fetch active visits from the API to populate list of people
@@ -291,7 +332,8 @@ export default {
                 this.$swal.fire({
                     title: 'Hmm...',
                     text: 'There was an error reading your card. Please tap again.',
-                    showCancelButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
                     showConfirmButton: false,
                     type: 'warning',
                     onClose: () => {
@@ -305,9 +347,10 @@ export default {
                 this.$swal.fire({
                     title: 'Hmm...',
                     html: 'Card format not recognized.<br/>Contact developers@robojackets.org for assistance.',
-                    showConfirmButton: true,
                     type: 'error',
                     timer: 3000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
                     onClose: () => {
                         self.clearFields();
                     }
@@ -358,7 +401,18 @@ export default {
                         this.$swal.fire({
                             title: 'Action Required',
                             text: msg,
-                            icon: 'warning',
+                            icon: 'info',
+                            timer: 10000,
+                            timerProgressBar: true,
+                            showConfirmButton: false,
+                        });
+                    } else if (error.response.status === 422 && error.response.data.error.includes('occupancy') ) {
+                        let msg = '<b>' + error.response.data.error + '</b>'
+                        msg += "<br/>View space occupancy at " + window.location.hostname
+                        this.$swal.fire({
+                            title: 'STOP! Punch Rejected',
+                            html: msg,
+                            icon: 'error',
                             timer: 10000,
                             timerProgressBar: true,
                             showConfirmButton: false,
