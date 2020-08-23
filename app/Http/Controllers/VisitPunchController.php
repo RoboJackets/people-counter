@@ -38,6 +38,10 @@ class VisitPunchController extends Controller
             } catch (\Exception $e) {
                 Log::error('Error querying BuzzAPI to create new user for punch by ' . $gtid,
                     [$e->getMessage()]);
+                return response()->json([
+                    'status' => 'error',
+                    'error' => 'Unable to create new user due to BuzzAPI failure'
+                ], 500);
             }
         }
 
