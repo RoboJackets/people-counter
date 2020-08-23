@@ -29,7 +29,28 @@ class ImportUsers extends Command
     public function handle()
     {
         $this->output->title('Starting import');
-        (new UsersImport($this->argument('space')))->withOutput($this->output)->import($this->argument('file'));
-        $this->output->success('Import successful');
+        $import = new UsersImport($this->argument('space'));
+        $import->withOutput($this->output)->import($this->argument('file'));
+        $success = true;
+
+        if (count($import->failures()) > 0) {
+            $success = false;
+            foreach ($import->failures() as $failure) {
+                $row = $failure->row();
+                $errors = $failure->errors();
+                $this->output->error("Row $row: " . implode(", ", $errors));
+            }
+        }
+
+        if (count($import->errors()) > 0) {
+            $success = false;
+            foreach ($import->errors() as $error) {
+                dd($error);
+            }
+        }
+
+        if ($success) {
+            $this->output->success('Import successful');
+        }
     }
 }

@@ -7,6 +7,9 @@ use App\Traits\CreateOrUpdateUserFromBuzzAPI;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\OnEachRow;
+use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithProgressBar;
@@ -14,9 +17,9 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Row;
 use Maatwebsite\Excel\Validators\Failure;
 
-class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, SkipsOnFailure, OnEachRow
+class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, OnEachRow, SkipsOnFailure, SkipsOnError
 {
-    use Importable, CreateOrUpdateUserFromBuzzAPI;
+    use Importable, CreateOrUpdateUserFromBuzzAPI, SkipsFailures, SkipsErrors;
 
     /**
      * @var string $space
@@ -46,9 +49,15 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, Sk
         if ($identifier === null) {
             return null;
         } else {
-            $identifier = strtolower($identifier);
+            $identifier = trim(strtolower($identifier));
         }
-        $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
+        try {
+            $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
+        } catch (\Throwable $e) {
+            Log::error('Exception when importing ' . $identifier, [$e->getMessage()]);
+            return null;
+        }
+
         if ($user instanceof \App\User) {
             // Attach space to user as their default
             $space = Space::where('name', $this->space)->first();
@@ -67,17 +76,9 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, Sk
     public function rules(): array
     {
         return [
-            'username' => 'string|not_regex:/@/',
+            'username' => 'string|not_regex:/@/|alpha_num',
             'gtid' => 'digits:9',
             'email' => 'email'
         ];
-    }
-
-    /**
-     * @param Failure[] $failures
-     */
-    public function onFailure(Failure ...$failures)
-    {
-//        var_dump($failures);
     }
 }
