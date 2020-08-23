@@ -19,7 +19,7 @@ class Punch implements ShouldBroadcast
     /**
      * List of people currently in the space
      *
-     * @var string $direction
+     * @var array<string> $people
      */
     public $people;
 
@@ -31,7 +31,7 @@ class Punch implements ShouldBroadcast
     public function __construct()
     {
         // Get all users with an active visit
-        $users = User::whereHas('visits', function (Builder $query) {
+        $users = User::whereHas('visits', static function (Builder $query): void {
             $query->active();
         })->orderBy('first_name')->get();
 

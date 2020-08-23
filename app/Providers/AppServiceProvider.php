@@ -33,8 +33,6 @@ class AppServiceProvider extends ServiceProvider
             }
 
             abort(403, 'Forbidden');
-
-            return false;
         });
     }
 
