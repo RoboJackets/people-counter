@@ -92,6 +92,22 @@ class VisitPunchController extends Controller
             return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
         }
 
+        // Enforce max occupancy
+        $overageSpaces = [];
+        foreach ($userSpaces as $space) {
+            if ($space->active_visit_count + 1 > $space->max_occupancy) {
+                $overageSpaces[] = $space->name;
+            } elseif ($space->parent_id !== null &&
+                $space->parent->active_child_visit_count + 1 > $space->parent->max_occupancy) {
+                $overageSpaces[] = $space->parent->name;
+            }
+        }
+        if (count($overageSpaces) > 0) {
+            $msg = 'Maximum occupancy reached: ' . implode(', ', $overageSpaces);
+            Log::info("Rejected punch in by $gtid at $door because $msg");
+            return response()->json(['status' => 'error', 'error' => $msg], 422);
+        }
+
         // Create new visit and punch in
         $visit = new Visit();
         $visit->in_time = Carbon::now();
