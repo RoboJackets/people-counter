@@ -55,7 +55,7 @@ class SpaceController extends Controller
      */
     public function show(Space $space)
     {
-        //
+        return response()->json(new SpaceResource($space));
     }
 
     /**
