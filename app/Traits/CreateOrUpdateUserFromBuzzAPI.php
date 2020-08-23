@@ -36,12 +36,10 @@ trait CreateOrUpdateUserFromBuzzAPI
         if (is_numeric($identifier)) {
             $db_identifier = 'gtid';
             $buzzapi_identifier = 'gtid';
-            $gted_identifier = 'gtGTID';
             $search_value = $identifier;
         } else {
             $db_identifier = 'username';
             $buzzapi_identifier = 'uid';
-            $gted_identifier = 'uid';
             $search_value = $identifier;
         }
 
