@@ -62,7 +62,7 @@
                         <div class="card-body">
                             <template v-for="space in spaces">
                                 <h5 class="space-name">{{ space.name }}</h5>
-                                <b> {{ space.active_visit_count }}</b> here, {{ space.max_occupancy }} maximum
+                                <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
                                 <br/>
                             </template>
                         </div>
@@ -232,6 +232,7 @@
 
                         // Refresh user
                         this.loadUser()
+                        this.loadSpaces()
 
                         this.$swal.fire({
                             title: "You're " + direction + "!",
