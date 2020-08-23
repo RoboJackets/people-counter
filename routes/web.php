@@ -26,6 +26,10 @@ Route::get('kiosk', static function (): View {
     return view('kiosk');
 });
 
+Route::get('privacy', static function(): RedirectResponse {
+   return redirect('https://www.gatech.edu/privacy');
+});
+
 Route::get('nova/logout', static function (): RedirectResponse {
     return redirect('logout');
 })->name('nova.logout');
