@@ -19,13 +19,18 @@ class Visit extends JsonResource
      */
     public function toArray($request)
     {
-        $parent = parent::toArray($request);
-        return array_merge(
-            $parent,
-            [
-                'user' => new UserResource($this->whenLoaded('user')),
-                'spaces' => new SpaceResource($this->whenLoaded('spaces')),
-            ]
-        );
+        return [
+            'id' => $this->id,
+            'gtid' => $this->gtid,
+            'in_door' => $this->in_door,
+            'in_time' => $this->in_time,
+            'out_door' => $this->out_door,
+            'out_time' => $this->out_time,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
+            'user' => new UserResource($this->whenLoaded('user')),
+            'spaces' => new SpaceResource($this->whenLoaded('spaces')),
+        ];
     }
 }
