@@ -3,14 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Space extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasRelationships;
 
     /**
      * Attributes that are not mass assignable
@@ -48,7 +50,7 @@ class Space extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo('App\Space', 'parent_id');
     }
@@ -58,13 +60,14 @@ class Space extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany('App\Space', 'parent_id');
     }
 
     /**
      * Define the relationship between Space and User
+     * This is for default attachment of spaces visits, not for users with a visit in a space
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -76,10 +79,95 @@ class Space extends Model
     /**
      * Define the relationship between Space and Visit
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function visits(): BelongsToMany
     {
         return $this->belongsToMany('App\Visit');
+    }
+
+    /**
+     * Define the relationship between Space and (active) Visit
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function activeVisits(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Visit')
+            ->whereNotNull('in_time')->whereNull('out_time');
+    }
+
+    /**
+     * Voodoo magic to get all users who have ever visited a given space
+     *
+     * @return HasManyDeep
+     */
+    public function visitsUsers(): HasManyDeep
+    {
+        return $this->hasManyDeep(
+            'App\User',
+            ['space_visit', 'App\Visit'],
+            ['space_id', 'id', 'gtid'],
+            ['id', 'visit_id', 'gtid']
+        );
+    }
+
+    /**
+     * Voodoo magic to get users of active visits
+     * Must manually specify the constraints here because of a feature/bug/whatever in the voodoo package
+     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36
+     *
+     * @return HasManyDeep
+     */
+    public function activeVisitsUsers(): HasManyDeep
+    {
+        return $this->hasManyDeepFromRelations($this->visits(), (new Visit)->user())
+            ->whereNotNull('visits.in_time')->whereNull('visits.out_time');
+    }
+
+    /**
+     * Voodoo magic to get visits of child spaces
+     *
+     * @return HasManyDeep
+     */
+    public function childVisits(): HasManyDeep
+    {
+        return $this->hasManyDeepFromRelations($this->children(), (new Space)->visits());
+    }
+
+    /**
+     * Voodoo magic to get active visits of child spaces
+     * Must manually specify the constraints here because of a feature/bug/whatever in the voodoo package
+     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36
+     *
+     * @return HasManyDeep
+     */
+    public function activeChildVisits(): HasManyDeep
+    {
+        return $this->hasManyDeepFromRelations($this->children(), (new Space)->visits())
+            ->whereNotNull('in_time')->whereNull('out_time');
+    }
+
+    /**
+     * Voodoo magic to get users of visits of child spaces
+     *
+     * @return HasManyDeep
+     */
+    public function childVisitsUsers(): HasManyDeep
+    {
+        return $this->hasManyDeepFromRelations($this->childVisits(), (new Visit)->user());
+    }
+
+    /**
+     * Voodoo magic to get users of active visits of child spaces
+     * Must manually specify the constraints here because of a feature/bug/whatever in the voodoo package
+     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36
+     *
+     * @return HasManyDeep
+     */
+    public function activeChildVisitsUsers(): HasManyDeep
+    {
+        return $this->hasManyDeepFromRelations($this->activeChildVisits(), (new Visit)->user())
+            ->whereNotNull('visits.in_time')->whereNull('visits.out_time');
     }
 }

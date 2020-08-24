@@ -28,6 +28,7 @@
         "robojackets/network-check": "^1.0",
         "spatie/laravel-permission": "^3.13",
         "spatie/laravel-query-builder": "^2.8",
+        "staudenmeir/eloquent-has-many-deep": "^1.7",
         "subfission/cas": "^3.1",
         "vyuldashev/nova-permission": "^2.9"
     },
