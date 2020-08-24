@@ -6,11 +6,9 @@
                 <h2>people are in the {{ currentSpaceName }} space</h2>
             </div>
             <div class="col-lg-4 col-sm-12">
-                <h1>Here:</h1>
-                <ul>
-                    <li v-for="person in peopleHere">{{ person }}</li>
-                </ul>
                 <h2>{{ maxPeople - peopleHere.length }} spots open</h2>
+                <h3>Here:</h3>
+                {{ this.peopleHere.join(", ")}}
             </div>
         </div>
         <div class="row pt-3">
