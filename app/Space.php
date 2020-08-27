@@ -26,6 +26,15 @@ class Space extends Model
     ];
 
     /**
+     * Allowed relationships to be dynamically included via request parameter
+     *
+     * @var string[]
+     */
+    public static $allowedIncludes = [
+        'parent', 'children', 'users', 'visits', 'activeVisitsUsers', 'activeChildVisitsUsers'
+    ];
+
+    /**
      * Get the count of active visits in this space
      *
      * @return int

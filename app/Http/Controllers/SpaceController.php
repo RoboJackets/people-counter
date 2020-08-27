@@ -29,7 +29,7 @@ class SpaceController extends Controller
                 ]
             )
             ->allowedSorts('name')
-            ->allowedIncludes(['parent', 'children', 'users', 'visits'])
+            ->allowedIncludes(Space::$allowedIncludes)
             ->allowedAppends(['active_visit_count', 'active_child_visit_count'])
             ->get();
 
@@ -55,6 +55,11 @@ class SpaceController extends Controller
      */
     public function show(Space $space)
     {
+        $space = QueryBuilder::for(Space::class)
+            ->where('id', $space->id)
+            ->allowedIncludes(Space::$allowedIncludes)
+            ->allowedAppends(['active_visit_count', 'active_child_visit_count'])
+            ->first();
         return response()->json(new SpaceResource($space));
     }
 

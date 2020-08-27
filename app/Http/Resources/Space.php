@@ -27,6 +27,8 @@ class Space extends JsonResource
             'children' => $this->whenLoaded('children'),
             'users' => $this->whenLoaded('users'),
             'visits' => $this->whenLoaded('visits'),
+            'active_visits_users' => $this->whenLoaded('activeVisitsUsers'),
+            'active_child_visits_users' => $this->whenLoaded('activeChildVisitsUsers')
         ];
     }
 }
