@@ -181,20 +181,20 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('api_token');
         },
         postMountedLoad() {
-            this.loadVisits();
             this.loadSpace();
             this.loadWebSocket();
             this.startKeyboardListening();
         },
         loadSpace() {
             self.axios
-                .get(this.spacesBaseUrl + '/' + this.spaceId)
+                .get(this.spacesBaseUrl + '/' + this.spaceId + '?include=activeVisitsUsers,activeChildVisitsUsers')
                 .then(response => {
                     let rawSpace = response.data;
                     if (rawSpace.length < 1) {
                         this.$swal.fire('Bueller...Bueller...', 'No spaces found.', 'warning');
                     } else {
-                        this.space = rawSpace;
+                        this.space = rawSpace
+                        this.peopleHere = this.parseVisitsUsers(rawSpace)
                     }
                 })
                 .catch(error => {
@@ -219,50 +219,18 @@ export default {
                     }
                 });
         },
-        loadVisits() {
-            // Fetch active visits from the API to populate list of people
-            self.axios
-                .get(this.visitsBaseUrl + '?filter[active]=1&include=user')
-                .then(response => {
-                    let rawVisits = response.data;
-                    if (rawVisits.length < 1) {
-                        this.$swal.fire('Bueller...Bueller...', 'No people found.', 'warning');
-                    } else {
-                        let tempPeopleHere = []
-                        rawVisits.forEach(function (visit) {
-                            if (visit.user) {
-                                tempPeopleHere.push(visit.user.full_name);
-                            } else {
-                                tempPeopleHere.push('Unknown Person');
-                            }
-                        });
-                        // Set global peopleHere to alphabetized tempPeopleHere
-                        this.peopleHere = tempPeopleHere.sort(function (a, b) {
-                            return a > b ? 1 : b > a ? -1 : 0;
-                        });
-                    }
-                })
-                .catch(error => {
-                    if (error.response.status === 403) {
-                        this.$swal.fire({
-                            title: 'Whoops!',
-                            text: "You don't have permission to perform that action.",
-                            icon: 'error',
-                        });
-                    } else if (error.response.status === 401) {
-                        this.$swal.fire({
-                            title: 'Whoops!',
-                            text: "Invalid API token or authentication error",
-                            icon: 'error',
-                        });
-                    } else {
-                        this.$swal.fire({
-                            title: 'Error',
-                            text: 'Unable to process data. Check your internet connection or try refreshing the page.',
-                            icon: 'error',
-                        });
-                    }
-                });
+        parseVisitsUsers(space) {
+            let tempPeopleHere = []
+            if (space.hasOwnProperty('active_visits_users') && space.active_visits_users.length > 0) {
+                tempPeopleHere.push(space.active_visits_users.map(a => a.full_name))
+            }
+            if (space.hasOwnProperty('active_child_visits_users')
+                && space.active_child_visits_users.length > 0) {
+                tempPeopleHere.push(space.active_child_visits_users.map(a => a.full_name))
+            }
+            return tempPeopleHere.sort(function (a, b) {
+                return a > b ? 1 : b > a ? -1 : 0;
+            });
         },
         loadWebSocket() {
             let self = this;
@@ -290,14 +258,7 @@ export default {
                         // If you want to figure out why and fix it, be my guest
                         return element.id == self.spaceId;
                     });
-                    self.peopleHere = []
-                    if (found.hasOwnProperty('active_visits_users') && found.active_visits_users.length > 0) {
-                        self.peopleHere.push(found.active_visits_users.map(a => a.full_name))
-                    }
-                    if (found.hasOwnProperty('active_child_visits_users')
-                        && found.active_child_visits_users.length > 0) {
-                        self.peopleHere.push(found.active_child_visits_users.map(a => a.full_name))
-                    }
+                    this.peopleHere = this.parseVisitsUsers(found)
                 });
         },
         startKeyboardListening() {
