@@ -265,6 +265,7 @@ export default {
                 });
         },
         loadWebSocket() {
+            let self = this;
             let pusher = require('pusher-js');
             pusher.logToConsole = true;
 
@@ -283,7 +284,20 @@ export default {
 
             echo.channel('punches')
                 .listen('Punch', (e) => {
-                    this.peopleHere = e.people;
+                    let response = e.spaces
+                    let found = response.find(function (element) {
+                        // This is deliberately not === because it doesn't work if it is
+                        // If you want to figure out why and fix it, be my guest
+                        return element.id == self.spaceId;
+                    });
+                    self.peopleHere = []
+                    if (found.hasOwnProperty('active_visits_users') && found.active_visits_users.length > 0) {
+                        self.peopleHere.push(found.active_visits_users.map(a => a.full_name))
+                    }
+                    if (found.hasOwnProperty('active_child_visits_users')
+                        && found.active_child_visits_users.length > 0) {
+                        self.peopleHere.push(found.active_child_visits_users.map(a => a.full_name))
+                    }
                 });
         },
         startKeyboardListening() {
@@ -333,7 +347,7 @@ export default {
                     timer: 3000,
                     timerProgressBar: true,
                     showConfirmButton: false,
-                    type: 'warning',
+                    icon: 'warning',
                     onClose: () => {
                         self.clearFields();
                     }
@@ -345,7 +359,7 @@ export default {
                 this.$swal.fire({
                     title: 'Hmm...',
                     html: 'Card format not recognized.<br/>Contact developers@robojackets.org for assistance.',
-                    type: 'error',
+                    icon: 'error',
                     timer: 3000,
                     timerProgressBar: true,
                     showConfirmButton: false,
@@ -371,7 +385,7 @@ export default {
                         text: swalText,
                         timer: 3000,
                         showConfirmButton: false,
-                        type: 'success',
+                        icon: 'success',
                         timerProgressBar: true,
                         customClass: {
                             title: 'swal-swipe-title',
