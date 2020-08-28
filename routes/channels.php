@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.User.{id}', static function ($user, $id): bool {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('App.User.{id}', static function (\App\User $user, int $id): bool {
+    return $user->id === $id;
 });
 
 Broadcast::channel('punches', static function (): bool {

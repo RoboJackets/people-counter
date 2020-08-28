@@ -16,25 +16,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /**
+         * @phan-suppress PhanPossiblyUndeclaredMethod
+         * @phan-suppress PhanPluginAlwaysReturnFunction
+         */
         Horizon::auth(static function (): bool {
             if (
-                // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
                 auth()->guard('web')->user() instanceof User
-                // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
                 && auth()->guard('web')->user()->can('access-horizon')
             ) {
                 return true;
             }
 
-            // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
             if (null === auth()->guard('web')->user()) {
                 // Theoretically, this should never happen since we're calling the CAS middleware before this.
                 abort(401, 'Authentication Required');
             }
 
             abort(403, 'Forbidden');
-
-            return false;
         });
     }
 
@@ -45,7 +44,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
         $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
         JsonResource::withoutWrapping();
     }

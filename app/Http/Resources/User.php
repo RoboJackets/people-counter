@@ -44,6 +44,7 @@ class User extends JsonResource
      */
     private function shouldIncludeGTID(Request $request): bool
     {
+        // @phan-suppress-next-line PhanPossiblyUndeclaredMethod
         return (auth()->user()->id == $this->id || $request->user()->can('read-users-gtid'));
     }
 }

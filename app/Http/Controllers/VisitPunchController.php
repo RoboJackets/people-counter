@@ -33,7 +33,7 @@ class VisitPunchController extends Controller
         $user = User::where('gtid', $gtid)->first();
 
         // Fetch from BuzzAPI if they've not been seen before
-        if (!$user) {
+        if (null !== $user) {
             try {
                 $user = $this->createOrUpdateUserFromBuzzAPI($gtid);
             } catch (\Exception $e) {

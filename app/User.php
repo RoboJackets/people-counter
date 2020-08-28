@@ -12,7 +12,13 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Represents a single User
  *
- * @property int $id Database identifier for this model
+ * @property int $id
+ * @property string $full_name
+ * @property int $gtid
+ * @property string $email
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $username
  */
 class User extends Authenticatable
 {
@@ -34,7 +40,7 @@ class User extends Authenticatable
     /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<string>
      */
     protected $appends = ['full_name'];
 
