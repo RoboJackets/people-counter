@@ -39,6 +39,7 @@ class StoreVisitPunch extends FormRequest
         return [
             'gtid' => 'required|starts_with:9|digits:9',
             'door' => 'required|string',
+            'space_id' => 'integer|exists:spaces,id'
         ];
     }
 }

@@ -30,6 +30,7 @@ export default {
                 'gtid': null,
                 'door': null,
                 'include': 'user',
+                'space_id': null,
             },
             submitting: false,
             spaceId: null,
@@ -170,6 +171,7 @@ export default {
         setSpaceId(id) {
             localStorage.setItem('spaceId', id);
             this.spaceId = id;
+            this.punch.space_id = id;
         },
         setPunchDoor(doorString) {
             let cleanDoor = doorString.toLowerCase().replace(/ /g,"_");
@@ -222,11 +224,11 @@ export default {
         parseVisitsUsers(space) {
             let tempPeopleHere = []
             if (space.hasOwnProperty('active_visits_users') && space.active_visits_users.length > 0) {
-                tempPeopleHere.push(space.active_visits_users.map(a => a.full_name))
+                tempPeopleHere = tempPeopleHere.concat(space.active_visits_users.map(a => a.full_name))
             }
             if (space.hasOwnProperty('active_child_visits_users')
                 && space.active_child_visits_users.length > 0) {
-                tempPeopleHere.push(space.active_child_visits_users.map(a => a.full_name))
+                tempPeopleHere = tempPeopleHere.concat(space.active_child_visits_users.map(a => a.full_name))
             }
             return tempPeopleHere.sort(function (a, b) {
                 return a > b ? 1 : b > a ? -1 : 0;

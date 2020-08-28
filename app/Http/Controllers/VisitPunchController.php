@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\Punch;
 use App\Http\Requests\StoreVisitPunch;
+use App\Space;
 use App\Traits\CreateOrUpdateUserFromBuzzAPI;
 use App\User;
 use App\Visit;
@@ -51,15 +52,11 @@ class VisitPunchController extends Controller
 
         // Check for default space for user
         $userSpaces = $user->spaces;
-        $userSpaceIds = [];
         if (!$userSpaces || count($userSpaces) == 0) {
             return response()->json([
                 'status' => 'error',
                 'error' => 'No default space(s) set for user.'
             ], 422);
-        }
-        foreach ($userSpaces as $space) {
-            $userSpaceIds[] = $space->id;
         }
 
         // Find active visit for GTID (if any)
@@ -92,9 +89,36 @@ class VisitPunchController extends Controller
             return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
         }
 
+        // Determine which space to punch in at
+        $punchSpaces = [];
+        if (!$request->has('space_id')) {
+            Log::debug('request does not have space_id');
+            $punchSpaces = $userSpaces;
+        } else {
+            Log::debug('request has space_id: ' . $request->input('space_id'));
+            $requestedSpace = Space::find($request->input('space_id'));
+
+            foreach ($userSpaces as $userSpace) {
+                // User default space is a child of kiosk-assigned space, or is the kiosk-assigned space
+                // ASSUMPTION: Kiosk will never be assigned to a space with a parent, always the parent itself
+                if ($requestedSpace->children->contains($userSpace) || $requestedSpace->id == $userSpace->id) {
+                    $punchSpaces[] = $userSpace;
+                    Log::debug("userspace " . $userSpace->id . " is child of or requested space");
+                } else {
+                    Log::debug("userspace " . $userSpace->id . " is NOT child of or requested space");
+                }
+            }
+            // User has different default top-level space than the kiosk-assigned one
+            // Punch into the kiosk-assigned space as a fallback
+            if (count($punchSpaces) == 0) {
+                Log::debug('no punch spaces');
+                $punchSpaces[] = $requestedSpace;
+            }
+        }
+
         // Enforce max occupancy
         $overageSpaces = [];
-        foreach ($userSpaces as $space) {
+        foreach ($punchSpaces as $space) {
             if ($space->active_visit_count + 1 > $space->max_occupancy) {
                 $overageSpaces[] = $space->name;
             } elseif ($space->parent_id !== null &&
@@ -108,15 +132,17 @@ class VisitPunchController extends Controller
             return response()->json(['status' => 'error', 'error' => $msg], 422);
         }
 
+
         // Create new visit and punch in
+        $spaceIds = array_map(function($punchSpaces) { return $punchSpaces->id ;}, $punchSpaces );
         $visit = new Visit();
         $visit->in_time = Carbon::now();
         $visit->in_door = $door;
         $visit->gtid = $gtid;
         $visit->save();
-        $visit->spaces()->attach($userSpaceIds);
+        $visit->spaces()->attach($spaceIds);
 
-        $implodedSpaceIds = implode(",", $userSpaceIds);
+        $implodedSpaceIds = implode(",", $spaceIds);
         Log::info('Punch in by ' . $gtid . ' at ' . $door . ' for space(s) ' . $implodedSpaceIds);
 
         //Notify all kiosks via websockets
