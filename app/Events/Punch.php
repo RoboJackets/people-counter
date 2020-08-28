@@ -44,6 +44,7 @@ class Punch implements ShouldBroadcast
         )->get();
 
         if (count($spaces) > 0) {
+            /** @suppress PhanPossiblyNonClassMethodCall */
             $this->spaces = $spaces->toArray();
         } else {
             Log::error('Punch event fired, but no spaces found with active visits');
