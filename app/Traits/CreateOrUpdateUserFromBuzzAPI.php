@@ -38,7 +38,7 @@ trait CreateOrUpdateUserFromBuzzAPI
         if (is_numeric($identifier)) {
             $db_identifier = 'gtid';
             $buzzapi_identifier = 'gtid';
-        } elseif (strpos($identifier, '@')) {
+        } elseif (strpos($identifier, '@') !== false) {
             $db_identifier = 'email';
             $buzzapi_identifier = 'email';
         } else {

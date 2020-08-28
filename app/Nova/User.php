@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Hidden;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphToMany;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 
 class User extends Resource

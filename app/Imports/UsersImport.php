@@ -15,7 +15,6 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithProgressBar;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Row;
-use Maatwebsite\Excel\Validators\Failure;
 
 class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, OnEachRow, SkipsOnFailure, SkipsOnError
 {
@@ -29,7 +28,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     /**
      * UsersImport constructor.
      *
-     * @param string $team
+     * @param string $space
      */
     public function __construct(string $space) {
         $this->space = $space;

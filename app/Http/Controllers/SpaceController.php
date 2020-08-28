@@ -44,7 +44,7 @@ class SpaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json(['status' => 'error', 'error' => 'Not implemented'], 501);
     }
 
     /**
@@ -72,7 +72,7 @@ class SpaceController extends Controller
      */
     public function update(Request $request, Space $space)
     {
-        //
+        return response()->json(['status' => 'error', 'error' => 'Not implemented'], 501);
     }
 
     /**
@@ -83,6 +83,6 @@ class SpaceController extends Controller
      */
     public function destroy(Space $space)
     {
-        //
+        return response()->json(['status' => 'error', 'error' => 'Not implemented'], 501);
     }
 }

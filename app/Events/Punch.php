@@ -3,13 +3,12 @@
 namespace App\Events;
 
 use App\Space;
-use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class Punch implements ShouldBroadcast
 {
@@ -20,7 +19,7 @@ class Punch implements ShouldBroadcast
     /**
      * List of spaces and those occupying them
      *
-     * @var string $spaces
+     * @var array $spaces
      */
     public $spaces;
 
@@ -44,7 +43,12 @@ class Punch implements ShouldBroadcast
             ]
         )->get();
 
-        $this->spaces = $spaces->toArray();
+        if (count($spaces) > 0) {
+            $this->spaces = $spaces->toArray();
+        } else {
+            Log::error('Punch event fired, but no spaces found with active visits');
+        }
+
     }
 
     /**
