@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Jeffbeltran\SanctumTokens\SanctumTokens;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Hidden;
@@ -95,6 +96,8 @@ class User extends Resource
                 ->canSee(static function (Request $request): bool {
                     return $request->user()->hasRole('super-admin');
                 }),
+
+            SanctumTokens::make(),
         ];
     }
 

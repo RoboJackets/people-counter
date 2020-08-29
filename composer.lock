@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b27ecca596141ffc60f0ce631b3664f8",
+    "content-hash": "2c7f94e78a1696d886184a08eed6ba74",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -1742,6 +1742,47 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "jeffbeltran/sanctum-tokens",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JeffBeltran/sanctum-tokens.git",
+                "reference": "be852df91ee46bdb8d1a0886b6506dec8bbb770e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/be852df91ee46bdb8d1a0886b6506dec8bbb770e",
+                "reference": "be852df91ee46bdb8d1a0886b6506dec8bbb770e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jeffbeltran\\SanctumTokens\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jeffbeltran\\SanctumTokens\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova resource tool for sanctum tokens.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2020-08-23T20:45:54+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v7.26.1",
             "source": {
@@ -3107,9 +3148,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/dist/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-f8214e9146b5cc3730e60b29023173e86e2b1aa5-zip-2da4f8.zip",
+                "url": "https://packages.robojackets.org/dist/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-0.1.1-2da4f8.zip",
                 "reference": "f8214e9146b5cc3730e60b29023173e86e2b1aa5",
-                "shasum": "394fe598f35bde6afa4c4a3aad3cd60527b8af02"
+                "shasum": "b8e9c560a75e328a7bc00a351c03fa4e6b53a2fb"
             },
             "require": {
                 "ext-json": "*",
@@ -3148,10 +3189,6 @@
                 }
             ],
             "description": "BuzzAPI Client Library",
-            "support": {
-                "source": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient/tree/0.1.1",
-                "issues": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient/issues"
-            },
             "time": "2020-03-19T17:46:03+00:00"
         },
         {
@@ -4975,9 +5012,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/dist/robojackets/error-pages/robojackets-error-pages-22e01ddd8df96f297407095be5cd74480aa10469-zip-4a4769.zip",
+                "url": "https://packages.robojackets.org/dist/robojackets/error-pages/robojackets-error-pages-2.1.1-4a4769.zip",
                 "reference": "22e01ddd8df96f297407095be5cd74480aa10469",
-                "shasum": "97b2305f7efc483e07cf9872fae61153d8a2b93e"
+                "shasum": "4aebe73d88f7fa2ce93e3d5c3947def42a487a97"
             },
             "require": {
                 "twig/twig": "^2.0"
@@ -5008,10 +5045,6 @@
             ],
             "description": "Error pages shared across authentication plugins",
             "homepage": "https://github.gatech.edu/RoboJackets/error-pages",
-            "support": {
-                "source": "https://github.gatech.edu/RoboJackets/error-pages/tree/2.1.1",
-                "issues": "https://github.gatech.edu/RoboJackets/error-pages/issues"
-            },
             "time": "2020-03-08T18:30:38+00:00"
         },
         {
@@ -5024,9 +5057,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/dist/robojackets/network-check/robojackets-network-check-2fed18379f699e0e215b999b8c59c8dda5d7d00c-zip-2a429c.zip",
+                "url": "https://packages.robojackets.org/dist/robojackets/network-check/robojackets-network-check-v1.0.1-2a429c.zip",
                 "reference": "2fed18379f699e0e215b999b8c59c8dda5d7d00c",
-                "shasum": "f8b5c72982cd70baa130812f071272a512dddd46"
+                "shasum": "8cce208a5e00877ba3b6be080815925b9a4742c3"
             },
             "type": "library",
             "autoload": {
@@ -5046,11 +5079,48 @@
             ],
             "description": "Determines what GT network a client is connected to",
             "homepage": "https://github.gatech.edu/RoboJackets/network-check",
-            "support": {
-                "source": "https://github.gatech.edu/RoboJackets/network-check/tree/v1.0.1",
-                "issues": "https://github.gatech.edu/RoboJackets/network-check/issues"
-            },
             "time": "2019-09-18T23:54:27+00:00"
+        },
+        {
+            "name": "saumini/count",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nsaumini/nova-field-count.git",
+                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nsaumini/nova-field-count/zipball/55db5d804cf5489ccb077b0cef3e2d4202b1acda",
+                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Saumini\\Count\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Saumini\\Count\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-11-16T16:28:19+00:00"
         },
         {
             "name": "spatie/laravel-permission",
