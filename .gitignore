@@ -8,6 +8,12 @@
 /public/js/app.js
 /public/storage
 /public/vendor/
+!/resources/views/vendor/nova/partials
+!/resources/views/vendor/nova/partials/user.blade.php
+!/resources/views/vendor/nova/partials/footer.blade.php
+/public/vendor/nova/
+/public/nova-assets
+/public/vendor/horizon/
 /resources/lang/vendor/
 /resources/views/vendor/
 /storage/*.key

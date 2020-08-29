@@ -8,6 +8,8 @@ namespace App\Providers;
 // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 
 use App\Nova\Cards\MakeAWish;
+use App\Nova\Metrics\VisitsBySpace;
+use App\Nova\Metrics\VisitsPerDay;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
@@ -65,6 +67,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
+            new VisitsPerDay(),
+            new VisitsBySpace(),
             new MakeAWish(),
         ];
     }
