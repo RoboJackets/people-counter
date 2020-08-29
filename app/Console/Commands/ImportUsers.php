@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\Imports\UsersImport;
@@ -38,7 +40,7 @@ class ImportUsers extends Command
             foreach ($import->failures() as $failure) {
                 $row = $failure->row();
                 $errors = $failure->errors();
-                $this->output->error("Row $row: " . implode(", ", $errors));
+                $this->output->error('Row '.$row.': ' . implode(', ', $errors));
             }
         }
 
@@ -49,8 +51,10 @@ class ImportUsers extends Command
             }
         }
 
-        if ($success) {
-            $this->output->success('Import successful');
+        if (!$success) {
+            return;
         }
+
+        $this->output->success('Import successful');
     }
 }

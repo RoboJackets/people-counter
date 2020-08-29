@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
@@ -41,6 +43,7 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
      * @param StoreUser $request
      *
      * @return \App\Http\Resources\User
@@ -55,6 +58,7 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \App\Http\Resources\User
      */
     public function showSelf(Request $request)
@@ -71,10 +75,10 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param \App\User $user
-     * @param \Illuminate\Http\Request $request
+     *
      * @return \App\Http\Resources\User
      */
-    public function show(User $user, Request $request)
+    public function show(User $user)
     {
         $q_user = QueryBuilder::for(User::class)
             ->where('id', $user->id)
@@ -86,6 +90,7 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
      * @param UpdateUser $request
      * @param User $user
      *
@@ -104,6 +109,7 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage
+     *
      * @param UpdateUserSpaces $request
      * @param User $user
      *

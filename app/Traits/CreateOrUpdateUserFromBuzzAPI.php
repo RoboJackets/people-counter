@@ -38,7 +38,7 @@ trait CreateOrUpdateUserFromBuzzAPI
         if (is_numeric($identifier)) {
             $db_identifier = 'gtid';
             $buzzapi_identifier = 'gtid';
-        } elseif (strpos($identifier, '@') !== false) {
+        } elseif (false !== strpos($identifier, '@')) {
             $db_identifier = 'email';
             $buzzapi_identifier = 'email';
         } else {
@@ -70,9 +70,9 @@ trait CreateOrUpdateUserFromBuzzAPI
                 if ($is_frontend) {
                     SystemError::render(0b1001);
                     exit;
-                } else {
-                    return null;
                 }
+
+                return null;
             }
             $numResults = count($accountsResponse->json->api_result_data);
             if (0 === $numResults) {
@@ -80,14 +80,15 @@ trait CreateOrUpdateUserFromBuzzAPI
                 if ($is_frontend) {
                     SystemError::render(0b1010);
                     exit;
-                } else {
-                    return null;
                 }
+
+                return null;
             }
 
             // If there's multiple results, find the one for their primary GT account or of the User we're searching for
             // If there's only one (we're searching by the uid of that account), just use that one.
-            $searchUid = ($db_identifier === 'username') ?
+            // phpcs:disable Squiz.WhiteSpace.OperatorSpacing.SpacingAfter
+            $searchUid = 'username' === $db_identifier ?
                 $search_value : $accountsResponse->first()->gtPrimaryGTAccountUsername;
             $account = collect($accountsResponse->json->api_result_data)->firstWhere('uid', $searchUid);
 
@@ -96,9 +97,9 @@ trait CreateOrUpdateUserFromBuzzAPI
                 if ($is_frontend) {
                     Unauthorized::render(0b1011);
                     exit;
-                } else {
-                    return null;
                 }
+
+                return null;
             }
 
             $user->username = $account->uid;

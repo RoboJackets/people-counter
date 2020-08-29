@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Space as SpaceResource;
 use App\Space;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -39,10 +39,9 @@ class SpaceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store()
     {
         return response()->json(['status' => 'error', 'error' => 'Not implemented'], 501);
     }
@@ -50,7 +49,8 @@ class SpaceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Space  $space
+     * @param \App\Space  $space
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Space $space)
@@ -63,14 +63,17 @@ class SpaceController extends Controller
         return response()->json(new SpaceResource($space));
     }
 
+    // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+    // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Space  $space
+     * @param \App\Space  $space
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Space $space)
+    public function update(Space $space)
     {
         return response()->json(['status' => 'error', 'error' => 'Not implemented'], 501);
     }
@@ -78,7 +81,8 @@ class SpaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Space  $space
+     * @param \App\Space  $space
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Space $space)

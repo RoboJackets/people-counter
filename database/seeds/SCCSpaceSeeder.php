@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Space;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +16,7 @@ class SCCSpaceSeeder extends Seeder
     {
         $parentSpaces = [
             'SCC - Main' => ['max' => 84],
-            'RoboJackets' => ['max' => 11]
+            'RoboJackets' => ['max' => 11],
         ];
 
         $sccChildSpaces = [

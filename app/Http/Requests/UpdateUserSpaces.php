@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use App\User;
@@ -32,13 +34,13 @@ class UpdateUserSpaces extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string,string>
      */
     public function rules()
     {
         return [
             'spaces' => 'required|array',
-            'spaces.*' => 'exists:spaces,id'
+            'spaces.*' => 'exists:spaces,id',
         ];
     }
 }

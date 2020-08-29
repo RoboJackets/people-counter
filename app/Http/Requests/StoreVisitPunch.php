@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use App\User;
@@ -39,7 +41,7 @@ class StoreVisitPunch extends FormRequest
         return [
             'gtid' => 'required|starts_with:9|digits:9',
             'door' => 'required|string',
-            'space_id' => 'integer|exists:spaces,id'
+            'space_id' => 'integer|exists:spaces,id',
         ];
     }
 }

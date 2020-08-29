@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\User;
@@ -17,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         /**
+         * Set up Horizon authentication
+         *
          * @phan-suppress PhanPossiblyUndeclaredMethod
          * @phan-suppress PhanPluginAlwaysReturnFunction
          */

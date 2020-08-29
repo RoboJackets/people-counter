@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVisit;
@@ -26,7 +28,7 @@ class VisitController extends Controller
                     AllowedFilter::exact('gtid'),
                     AllowedFilter::exact('id'),
                     AllowedFilter::scope('active'),
-                    AllowedFilter::scope('active_for_user')
+                    AllowedFilter::scope('active_for_user'),
                 ]
             )
             ->allowedSorts('in_time', 'out_time', 'in_door', 'out_door')

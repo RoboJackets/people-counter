@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +15,7 @@ class CreateSpacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('spaces', function (Blueprint $table) {
+        Schema::create('spaces', static function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->integer('max_occupancy');
@@ -22,8 +24,7 @@ class CreateSpacesTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::table('spaces', function (Blueprint $table)
-        {
+        Schema::table('spaces', static function (Blueprint $table): void {
             $table->foreign('parent_id')->references('id')->on('spaces');
         });
     }

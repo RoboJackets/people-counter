@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -9,8 +11,9 @@ class Space extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @param \Illuminate\Http\Request  $request
+     *
+     * @return array<string,int|string>
      */
     public function toArray($request)
     {
@@ -28,7 +31,7 @@ class Space extends JsonResource
             'users' => $this->whenLoaded('users'),
             'visits' => $this->whenLoaded('visits'),
             'active_visits_users' => $this->whenLoaded('activeVisitsUsers'),
-            'active_child_visits_users' => $this->whenLoaded('activeChildVisitsUsers')
+            'active_child_visits_users' => $this->whenLoaded('activeChildVisitsUsers'),
         ];
     }
 }

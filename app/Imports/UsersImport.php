@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Imports;
 
 use App\Space;
@@ -18,23 +20,31 @@ use Maatwebsite\Excel\Row;
 
 class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, OnEachRow, SkipsOnFailure, SkipsOnError
 {
-    use Importable, CreateOrUpdateUserFromBuzzAPI, SkipsFailures, SkipsErrors;
+    use Importable;
+    use CreateOrUpdateUserFromBuzzAPI;
+    use SkipsFailures;
+    use SkipsErrors;
 
     /**
+     * The space to attach
+     *
      * @var string $space
      */
-    var $space;
+    private $space;
 
     /**
      * UsersImport constructor.
      *
      * @param string $space
      */
-    public function __construct(string $space) {
+    public function __construct(string $space)
+    {
         $this->space = $space;
     }
 
     /**
+     * Converts a row to a user
+     *
      * @param Row $row
      *
      * @return \App\User|null
@@ -45,7 +55,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     {
         $row = $row->toArray();
         $identifier = $row['username'] ?? $row['gtid'] ?? $row['email'] ?? null;
-        if ($identifier === null) {
+        if (null === $identifier) {
             return null;
         } else {
             $identifier = trim(strtolower($identifier));
@@ -62,22 +72,22 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             $space = Space::where('name', $this->space)->first();
             $user->spaces()->syncWithoutDetaching($space);
             return $user;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
      * Define rules used to validate the import
      *
-     * @return array
+     * @return array<string,string>
      */
     public function rules(): array
     {
         return [
             'username' => 'string|not_regex:/@/|alpha_num',
             'gtid' => 'digits:9',
-            'email' => 'email'
+            'email' => 'email',
         ];
     }
 }

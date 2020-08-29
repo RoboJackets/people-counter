@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Events;
 
 use App\Space;
@@ -19,7 +21,7 @@ class Punch implements ShouldBroadcast
     /**
      * List of spaces and those occupying them
      *
-     * @var array $spaces
+     * @var array<\App\Space> $spaces
      */
     public $spaces;
 
@@ -32,24 +34,20 @@ class Punch implements ShouldBroadcast
     {
         $spaces = Space::with(
             [
-                'activeChildVisitsUsers' =>
-                    function ($query) {
+                'activeChildVisitsUsers' => static function ($query): void {
                         $query->select('first_name', 'last_name');
-                    },
-                'activeVisitsUsers' =>
-                    function ($query) {
+                },
+                'activeVisitsUsers' => static function ($query): void {
                         $query->select('first_name', 'last_name');
-                    }
+                },
             ]
         )->get();
 
         if (count($spaces) > 0) {
-            /** @phan-suppress-next-line PhanPossiblyNonClassMethodCall */
             $this->spaces = $spaces->toArray();
         } else {
             Log::error('Punch event fired, but no spaces found with active visits');
         }
-
     }
 
     /**

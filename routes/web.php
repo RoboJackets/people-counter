@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -26,8 +28,8 @@ Route::get('kiosk', static function (): View {
     return view('kiosk');
 });
 
-Route::get('privacy', static function(): RedirectResponse {
-   return redirect('https://www.gatech.edu/privacy');
+Route::get('privacy', static function (): RedirectResponse {
+    return redirect('https://www.gatech.edu/privacy');
 });
 
 Route::get('nova/logout', static function (): RedirectResponse {

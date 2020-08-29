@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(static function (): void {
-
     Route::get('user', 'UserController@showSelf')->name('user');
     Route::put('users/{user}/spaces', 'UserController@updateSpaces')->name('users.spaces');
     Route::apiResource('users', 'UserController');

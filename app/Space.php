@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +14,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Space extends Model
 {
-    use SoftDeletes, HasRelationships;
+    use SoftDeletes;
+    use HasRelationships;
 
     /**
      * Attributes that are not mass assignable
@@ -28,11 +31,11 @@ class Space extends Model
     /**
      * Allowed relationships to be dynamically included via request parameter
      *
-     * @var string[]
+     * @var      array<string>
      * @suppress PhanReadOnlyPublicProperty
      */
     public static $allowedIncludes = [
-        'parent', 'children', 'users', 'visits', 'activeVisitsUsers', 'activeChildVisitsUsers'
+        'parent', 'children', 'users', 'visits', 'activeVisitsUsers', 'activeChildVisitsUsers',
     ];
 
     /**
@@ -131,7 +134,7 @@ class Space extends Model
      */
     public function activeVisitsUsers(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->visits(), (new Visit)->user())
+        return $this->hasManyDeepFromRelations($this->visits(), (new Visit())->user())
             ->whereNotNull('visits.in_time')->whereNull('visits.out_time');
     }
 
@@ -142,7 +145,7 @@ class Space extends Model
      */
     public function childVisits(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->children(), (new Space)->visits());
+        return $this->hasManyDeepFromRelations($this->children(), (new Space())->visits());
     }
 
     /**
@@ -154,7 +157,7 @@ class Space extends Model
      */
     public function activeChildVisits(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->children(), (new Space)->visits())
+        return $this->hasManyDeepFromRelations($this->children(), (new Space())->visits())
             ->whereNotNull('in_time')->whereNull('out_time');
     }
 
@@ -165,7 +168,7 @@ class Space extends Model
      */
     public function childVisitsUsers(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->childVisits(), (new Visit)->user());
+        return $this->hasManyDeepFromRelations($this->childVisits(), (new Visit())->user());
     }
 
     /**
@@ -177,7 +180,7 @@ class Space extends Model
      */
     public function activeChildVisitsUsers(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->activeChildVisits(), (new Visit)->user())
+        return $this->hasManyDeepFromRelations($this->activeChildVisits(), (new Visit())->user())
             ->whereNotNull('visits.in_time')->whereNull('visits.out_time');
     }
 }

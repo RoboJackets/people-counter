@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +15,7 @@ class CreateSpaceUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('space_user', function (Blueprint $table) {
+        Schema::create('space_user', static function (Blueprint $table): void {
             $table->unsignedBigInteger('space_id');
             $table->unsignedBigInteger('user_id');
 

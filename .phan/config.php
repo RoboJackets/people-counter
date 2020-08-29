@@ -31,6 +31,7 @@ return [
         'PhanPluginMixedKeyNoKey',
         'PhanPluginNonBoolInLogicalArith',
         'PhanPossiblyFalseTypeArgumentInternal',
+        'PhanPossiblyNonClassMethodCall',
         'PhanPossiblyNullTypeArgument',
         'PhanReadOnlyPHPDocProperty',
         'PhanReadOnlyProtectedProperty',
