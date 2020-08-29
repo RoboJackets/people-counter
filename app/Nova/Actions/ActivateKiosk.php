@@ -11,10 +11,6 @@ use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Text;
 
-/**
- * Class ActivateKiosk
- * @property int $visits_count
- */
 class ActivateKiosk extends Action
 {
     /**
