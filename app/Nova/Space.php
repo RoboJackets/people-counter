@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Saumini\Count\RelationshipCount;
 
 class Space extends Resource
 {
@@ -60,7 +61,11 @@ class Space extends Resource
 
             BelongsToMany::make('Users'),
 
+            RelationshipCount::make('User Count', 'users')->sortable(),
+
             BelongsToMany::make('Visits'),
+
+            RelationshipCount::make('Visit Count', 'visits')->sortable(),
 
             BelongsTo::make('Parent Space', 'parent', 'App\Nova\Space')
                 ->nullable()
