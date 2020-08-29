@@ -44,7 +44,7 @@ class User extends Resource
      *
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             Text::make('Username')
