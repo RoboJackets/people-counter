@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.User.{id}', static function (\App\User $user, int $id): bool {
+Broadcast::channel('App.User.{id}', static function (App\User $user, int $id): bool {
     return $user->id === $id;
 });
 

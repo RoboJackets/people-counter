@@ -22,16 +22,27 @@ class UpdateVisit extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string>
+     * @return array<string,array<string>>
      */
     public function rules()
     {
         return [
-            'gtid' => 'starts_with:9|digits:9',
-            'in_door' => 'string',
-            'out_door' => 'string',
-            'in_time' => 'date',
-            'out_time' => 'date',
+            'gtid' => [
+                'starts_with:9',
+                'digits:9',
+            ],
+            'in_door' => [
+                'string',
+            ],
+            'out_door' => [
+                'string',
+            ],
+            'in_time' => [
+                'date',
+            ],
+            'out_time' => [
+                'date',
+            ],
         ];
     }
 }

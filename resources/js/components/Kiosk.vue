@@ -292,6 +292,10 @@ export default {
 
             let pattError = new RegExp('[%;+][eE]\\?');
 
+            if (cardData.startsWith('NFC-')) {
+                cardData = cardData.substring(4);
+            }
+
             // We're only accepting contactless card reads for this particular application
             // No mag stripe here, folks! You should really get a new BuzzCard...
             if (this.isNumeric(cardData) && cardData.length === 9 && cardData[0] === '9') {

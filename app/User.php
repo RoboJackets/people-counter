@@ -51,7 +51,7 @@ class User extends Authenticatable
      */
     public function visits(): HasMany
     {
-        return $this->hasMany('App\Visit', 'gtid', 'gtid');
+        return $this->hasMany(\App\Visit::class, 'gtid', 'gtid');
     }
 
     /**
@@ -61,7 +61,7 @@ class User extends Authenticatable
      */
     public function spaces(): BelongsToMany
     {
-        return $this->belongsToMany('App\Space');
+        return $this->belongsToMany(\App\Space::class);
     }
 
     /**

@@ -34,14 +34,24 @@ class StoreVisitPunch extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string>
+     * @return array<string,array<string>>
      */
     public function rules()
     {
         return [
-            'gtid' => 'required|starts_with:9|digits:9',
-            'door' => 'required|string',
-            'space_id' => 'integer|exists:spaces,id',
+            'gtid' => [
+                'required',
+                'starts_with:9',
+                'digits:9',
+            ],
+            'door' => [
+                'required',
+                'string',
+            ],
+            'space_id' => [
+                'integer',
+                'exists:spaces,id',
+            ],
         ];
     }
 }

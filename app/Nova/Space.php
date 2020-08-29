@@ -68,11 +68,11 @@ class Space extends Resource
 
             RelationshipCount::make('Visit Count', 'visits')->sortable(),
 
-            BelongsTo::make('Parent Space', 'parent', 'App\Nova\Space')
+            BelongsTo::make('Parent Space', 'parent', self::class)
                 ->nullable()
                 ->showCreateRelationButton(),
 
-            HasMany::make('Child Spaces', 'children', 'App\Nova\Space')->nullable(),
+            HasMany::make('Child Spaces', 'children', self::class)->nullable(),
         ];
     }
 

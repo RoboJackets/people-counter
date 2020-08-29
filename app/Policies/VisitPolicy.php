@@ -17,7 +17,7 @@ class VisitPolicy
      *
      * @return bool|null
      */
-    public function before(?\App\User $user)
+    public function before(?User $user)
     {
         if ($user instanceof User) {
             return $user->isSuperAdmin() ? true : null;
