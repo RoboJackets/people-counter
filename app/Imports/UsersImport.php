@@ -58,8 +58,8 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
         if (null === $identifier) {
             return null;
         } else {
-            Log::info('Importing ' . $identifier);
-            $identifier = (is_numeric($identifier)) ? $identifier : trim(strtolower($identifier));
+            Log::info('Importing '.$identifier);
+            $identifier = is_numeric($identifier) ? $identifier : trim(strtolower($identifier));
         }
         try {
             $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
@@ -69,15 +69,19 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             return null;
         }
 
-        if ($user == null && $row['email']) {
+        if (null === $user && null !== $row['email']) {
             // Probably a non-primary email, search again with stripped username
-            $identifier = strtok($row['email'], "@");
-            Log::info('Importing (retry) ' . $identifier);
-            try {
-                $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
-            } catch (\Throwable $e) {
-                Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
-                return null;
+            $identifier = strtok($row['email'], '@');
+            if (false === $identifier) {
+                Log::notice('Attempted to retry import for '.$row['email'].' but username extract failed');
+            } else {
+                Log::info('Importing (retry) '.$identifier);
+                try {
+                    $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
+                } catch (\Throwable $e) {
+                    Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
+                    return null;
+                }
             }
         }
 
