@@ -40,7 +40,7 @@ class Visit extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo('App\User', 'gtid', 'gtid');
+        return $this->belongsTo(\App\User::class, 'gtid', 'gtid');
     }
 
     /**
@@ -50,7 +50,7 @@ class Visit extends Model
      */
     public function spaces(): BelongsToMany
     {
-        return $this->belongsToMany('App\Space');
+        return $this->belongsToMany(\App\Space::class);
     }
 
     /**

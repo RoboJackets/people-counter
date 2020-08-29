@@ -65,7 +65,7 @@ class Space extends Model
      */
     public function parent(): BelongsTo
     {
-        return $this->belongsTo('App\Space', 'parent_id');
+        return $this->belongsTo(\App\Space::class, 'parent_id');
     }
 
     /**
@@ -75,7 +75,7 @@ class Space extends Model
      */
     public function children(): HasMany
     {
-        return $this->hasMany('App\Space', 'parent_id');
+        return $this->hasMany(\App\Space::class, 'parent_id');
     }
 
     /**
@@ -86,7 +86,7 @@ class Space extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(\App\User::class);
     }
 
     /**
@@ -96,7 +96,7 @@ class Space extends Model
      */
     public function visits(): BelongsToMany
     {
-        return $this->belongsToMany('App\Visit');
+        return $this->belongsToMany(\App\Visit::class);
     }
 
     /**
@@ -106,7 +106,7 @@ class Space extends Model
      */
     public function activeVisits(): BelongsToMany
     {
-        return $this->belongsToMany('App\Visit')
+        return $this->belongsToMany(\App\Visit::class)
             ->whereNotNull('in_time')->whereNull('out_time');
     }
 
@@ -118,8 +118,8 @@ class Space extends Model
     public function visitsUsers(): HasManyDeep
     {
         return $this->hasManyDeep(
-            'App\User',
-            ['space_visit', 'App\Visit'],
+            \App\User::class,
+            ['space_visit', \App\Visit::class],
             ['space_id', 'id', 'gtid'],
             ['id', 'visit_id', 'gtid']
         );

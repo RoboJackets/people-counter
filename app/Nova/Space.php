@@ -62,11 +62,11 @@ class Space extends Resource
 
             BelongsToMany::make('Visits'),
 
-            BelongsTo::make('Parent Space', 'parent', 'App\Nova\Space')
+            BelongsTo::make('Parent Space', 'parent', \App\Nova\Space::class)
                 ->nullable()
                 ->showCreateRelationButton(),
 
-            HasMany::make('Child Spaces', 'children', 'App\Nova\Space')->nullable(),
+            HasMany::make('Child Spaces', 'children', \App\Nova\Space::class)->nullable(),
         ];
     }
 
