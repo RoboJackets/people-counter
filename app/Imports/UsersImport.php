@@ -58,7 +58,8 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
         if (null === $identifier) {
             return null;
         } else {
-            $identifier = (is_numeric($identifier)) ? trim($identifier) : trim(strtolower($identifier));
+            Log::info('Importing ' . $identifier);
+            $identifier = (is_numeric($identifier)) ? $identifier : trim(strtolower($identifier));
         }
         try {
             $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
@@ -66,6 +67,18 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
 
             return null;
+        }
+
+        if ($user == null && $row['email']) {
+            // Probably a non-primary email, search again with stripped username
+            $identifier = strtok($row['email'], "@");
+            Log::info('Importing (retry) ' . $identifier);
+            try {
+                $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
+            } catch (\Throwable $e) {
+                Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
+                return null;
+            }
         }
 
         if ($user instanceof \App\User) {

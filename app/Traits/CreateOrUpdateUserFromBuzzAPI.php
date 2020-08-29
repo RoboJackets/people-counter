@@ -20,14 +20,14 @@ trait CreateOrUpdateUserFromBuzzAPI
     /**
      * Execute the job.
      *
-     * @param string $identifier
+     * @param string|int $identifier
      * @param bool $is_frontend
      *
      * @return User|null
      *
      * @SuppressWarnings(PHPMD.ExitExpression)
      */
-    public function createOrUpdateUserFromBuzzAPI(string $identifier, bool $is_frontend = true)
+    public function createOrUpdateUserFromBuzzAPI($identifier, bool $is_frontend = true)
     {
         if (null === config('buzzapi.app_password')) {
             throw new Exception('BuzzAPI Not Configured');
