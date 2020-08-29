@@ -27,6 +27,7 @@ class VisitsBySpace extends Partition
         foreach ($spaces as $space) {
             $result = array_merge($result, [$space->name => $space->visits_count]);
         }
+
         return $this->result($result);
     }
 

@@ -24,11 +24,12 @@ class ActivateKiosk extends Action
     {
         $params = [
             'door' => $fields->door,
-            'space' => $models->first()->id
+            'space' => $models->first()->id,
         ];
 
         $url = route('kiosk');
         $query = http_build_query($params);
+
         return Action::redirect($url.'?'.$query);
     }
 
