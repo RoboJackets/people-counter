@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
+use App\Nova\Fields\Hidden;
 use Illuminate\Http\Request;
+use Jeffbeltran\SanctumTokens\SanctumTokens;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
 
@@ -33,7 +34,7 @@ class User extends Resource
      * @var array<string>
      */
     public static $search = [
-        'username', 'first_name', 'last_name', 'email',
+        'username', 'first_name', 'last_name', 'email', 'gtid',
     ];
 
     /**
@@ -41,9 +42,9 @@ class User extends Resource
      *
      * @param \Illuminate\Http\Request  $request
      *
-     * @return array<\Laravel\Nova\Fields\Field>
+     * @return array
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             Text::make('Username')
@@ -95,6 +96,8 @@ class User extends Resource
                 ->canSee(static function (Request $request): bool {
                     return $request->user()->hasRole('super-admin');
                 }),
+
+            SanctumTokens::make(),
         ];
     }
 

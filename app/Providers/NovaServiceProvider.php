@@ -7,9 +7,11 @@ namespace App\Providers;
 // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
 // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 
+use App\Nova\Cards\MakeAWish;
+use App\Nova\Metrics\VisitsBySpace;
+use App\Nova\Metrics\VisitsPerDay;
 use App\User;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
@@ -64,7 +66,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help(),
+            new VisitsPerDay(),
+            new VisitsBySpace(),
+            new MakeAWish(),
         ];
     }
 

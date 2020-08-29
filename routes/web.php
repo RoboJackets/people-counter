@@ -20,7 +20,7 @@ Route::middleware('auth.cas.force')->group(static function (): void {
     Route::view('/', 'main');
 });
 
-Route::view('kiosk', 'kiosk');
+Route::view('kiosk', 'kiosk')->name('kiosk');
 
 Route::redirect('privacy', 'https://www.gatech.edu/privacy');
 Route::redirect('nova/logout', 'logout');

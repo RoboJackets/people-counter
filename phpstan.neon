@@ -9,6 +9,7 @@ parameters:
   ignoreErrors:
     - '#(?:Dynamic call to static method|Call to an undefined method) Illuminate\\Database\\Eloquent\\(?:Builder|Relations\\[a-zA-Z]+)?(?:<mixed>|<App\\[a-zA-Z]+>)?::(?:distinct|doesntHave|first|groupBy|has|havingRaw|join|leftJoin|orderBy|orderByRaw|orWhereNull|select|selectRaw|selectSub|where|whereBetween|whereDate|whereIn|whereNotNull|count|whereIn|whereBetween|sum|distinct|paid|active|accessActive|inactive|role|pending|pendingSwag|accessInactive|visible|whereNull|current|start|end|availableForPurchase)\(\)\.#'
     - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
+    - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\[a-zA-Z]+\|null\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\[a-zA-Z_]+\|Illuminate\\Database\\Eloquent\\Collection<App\\Space>\|null\.#'
     - '#Cannot call method save\(\) on App\\[a-zA-Z]+\|null\.#'
@@ -18,6 +19,8 @@ parameters:
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNull\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Query\\Builder::(whereNotNull|whereNull)\(\)\.#'
     - '#Dynamic call to static method PHPUnit\\Framework\\Assert::assertTrue\(\)\.#'
+    - '#Method App\\Nova\\[a-zA-Z]+::fields\(\) return type has no value type specified in iterable type array\.#'
+    - '#Method App\\Nova\\Actions\\[a-zA-Z]+::handle\(\) return type has no value type specified in iterable type array\.#'
     - '#Parameter \#1 \$filePath of method App\\Imports\\UsersImport::import\(\) expects string\|Symfony\\Component\\HttpFoundation\\File\\UploadedFile\|null, array\|string\|null given\.#'
     - '#Parameter \#1 \$ids of method Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany<App\\Space>::syncWithoutDetaching\(\) expects array\|Illuminate\\Database\\Eloquent\\Model\|Illuminate\\Support\\Collection, App\\Space\|null given\.#'
     - '#Parameter \#1 \$space of class App\\Imports\\UsersImport constructor expects string, array\|string\|null given\.#'

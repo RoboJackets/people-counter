@@ -12,6 +12,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+/**
+ * Class Space.
+ *
+ * @property int $visits_count
+ */
 class Space extends Model
 {
     use SoftDeletes;
