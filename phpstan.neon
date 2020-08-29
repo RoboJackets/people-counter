@@ -20,7 +20,7 @@ parameters:
     - '#Dynamic call to static method Illuminate\\Database\\Query\\Builder::(whereNotNull|whereNull)\(\)\.#'
     - '#Dynamic call to static method PHPUnit\\Framework\\Assert::assertTrue\(\)\.#'
     - '#Method App\\Nova\\[a-zA-Z]+::fields\(\) return type has no value type specified in iterable type array\.#'
-    - '#Method App\\Nova\\[a-zA-Z]+::handle\(\) return type has no value type specified in iterable type array\.#'
+    - '#Method App\\Nova\\Actions\\[a-zA-Z]+::handle\(\) return type has no value type specified in iterable type array\.#'
     - '#Parameter \#1 \$filePath of method App\\Imports\\UsersImport::import\(\) expects string\|Symfony\\Component\\HttpFoundation\\File\\UploadedFile\|null, array\|string\|null given\.#'
     - '#Parameter \#1 \$ids of method Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany<App\\Space>::syncWithoutDetaching\(\) expects array\|Illuminate\\Database\\Eloquent\\Model\|Illuminate\\Support\\Collection, App\\Space\|null given\.#'
     - '#Parameter \#1 \$space of class App\\Imports\\UsersImport constructor expects string, array\|string\|null given\.#'
