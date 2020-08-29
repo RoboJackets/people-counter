@@ -26,9 +26,9 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     use SkipsErrors;
 
     /**
-     * The space to attach
+     * The space to attach.
      *
-     * @var string $space
+     * @var string
      */
     private $space;
 
@@ -43,7 +43,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     }
 
     /**
-     * Converts a row to a user
+     * Converts a row to a user.
      *
      * @param Row $row
      *
@@ -63,7 +63,8 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
         try {
             $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
         } catch (\Throwable $e) {
-            Log::error('Exception when importing ' . $identifier, [$e->getMessage()]);
+            Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
+
             return null;
         }
 
@@ -71,6 +72,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             // Attach space to user as their default
             $space = Space::where('name', $this->space)->first();
             $user->spaces()->syncWithoutDetaching($space);
+
             return $user;
         }
 
@@ -78,7 +80,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     }
 
     /**
-     * Define rules used to validate the import
+     * Define rules used to validate the import.
      *
      * @return array<string,string>
      */

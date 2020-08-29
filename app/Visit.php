@@ -15,7 +15,7 @@ class Visit extends Model
     use SoftDeletes;
 
     /**
-     * Attributes that are not mass assignable
+     * Attributes that are not mass assignable.
      *
      * @var array<string>
      */
@@ -44,7 +44,7 @@ class Visit extends Model
     }
 
     /**
-     * Define the relationship between Visit and Space
+     * Define the relationship between Visit and Space.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -54,7 +54,7 @@ class Visit extends Model
     }
 
     /**
-     * Active Visits (In, but no Out)
+     * Active Visits (In, but no Out).
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
@@ -66,7 +66,7 @@ class Visit extends Model
     }
 
     /**
-     * Active Visits for a given user via GTID
+     * Active Visits for a given user via GTID.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param int $gtid

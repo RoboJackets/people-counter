@@ -40,7 +40,7 @@ class ImportUsers extends Command
             foreach ($import->failures() as $failure) {
                 $row = $failure->row();
                 $errors = $failure->errors();
-                $this->output->error('Row '.$row.': ' . implode(', ', $errors));
+                $this->output->error('Row '.$row.': '.implode(', ', $errors));
             }
         }
 
@@ -51,7 +51,7 @@ class ImportUsers extends Command
             }
         }
 
-        if (!$success) {
+        if (! $success) {
             return;
         }
 

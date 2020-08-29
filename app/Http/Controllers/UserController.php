@@ -51,6 +51,7 @@ class UserController extends Controller
     public function store(StoreUser $request)
     {
         $user = User::create($request->all());
+
         return new UserResource($user);
     }
 
@@ -101,6 +102,7 @@ class UserController extends Controller
         try {
             $user->update($request->all());
             $updatedUser = new UserResource($user);
+
             return response()->json($updatedUser);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
@@ -108,7 +110,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage
+     * Update the specified resource in storage.
      *
      * @param UpdateUserSpaces $request
      * @param User $user
@@ -124,6 +126,7 @@ class UserController extends Controller
         }
 
         $dbUser = User::find($user->id)->with('spaces', 'visits')->first();
+
         return response()->json(['status' => 'success', 'user' => $dbUser]);
     }
 
@@ -136,6 +139,7 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+
             return response()->json('success');
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);

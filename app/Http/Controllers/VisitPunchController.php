@@ -21,7 +21,7 @@ class VisitPunchController extends Controller
     use CreateOrUpdateUserFromBuzzAPI;
 
     /**
-     * Record a new in/out punch for a Visit
+     * Record a new in/out punch for a Visit.
      *
      * @param StoreVisitPunch $request
      *
@@ -41,9 +41,10 @@ class VisitPunchController extends Controller
                 $user = $this->createOrUpdateUserFromBuzzAPI($gtid);
             } catch (\Throwable $e) {
                 Log::error(
-                    'Error querying BuzzAPI to create new user for punch by ' . $gtid,
+                    'Error querying BuzzAPI to create new user for punch by '.$gtid,
                     [$e->getMessage()]
                 );
+
                 return response()->json([
                     'status' => 'error',
                     'error' => 'Unable to create new user due to BuzzAPI failure',
@@ -69,7 +70,8 @@ class VisitPunchController extends Controller
 
         if (count($active_visits) > 1) {
             // Eek! User has multiple active visits. This shouldn't happen!
-            Log::error('Multiple active visits found for ' . $gtid);
+            Log::error('Multiple active visits found for '.$gtid);
+
             return response()->json(
                 [
                     'status' => 'error',
@@ -86,7 +88,7 @@ class VisitPunchController extends Controller
             $visit->out_door = $door;
             $visit->save();
 
-            Log::info('Punch out by ' . $gtid . ' at ' . $door);
+            Log::info('Punch out by '.$gtid.' at '.$door);
 
             //Notify all kiosks via websockets
             event(new Punch());
@@ -96,11 +98,11 @@ class VisitPunchController extends Controller
 
         // Determine which space to punch in at
         $punchSpaces = [];
-        if (!$request->has('space_id')) {
+        if (! $request->has('space_id')) {
             Log::debug('request does not have space_id');
             $punchSpaces = $userSpaces->toArray();
         } else {
-            Log::debug('request has space_id: ' . $request->input('space_id'));
+            Log::debug('request has space_id: '.$request->input('space_id'));
             $requestedSpace = Space::find($request->input('space_id'));
 
             foreach ($userSpaces as $userSpace) {
@@ -108,9 +110,9 @@ class VisitPunchController extends Controller
                 // ASSUMPTION: Kiosk will never be assigned to a space with a parent, always the parent itself
                 if ($requestedSpace->children->contains($userSpace) || $requestedSpace->id === $userSpace->id) {
                     $punchSpaces[] = $userSpace;
-                    Log::debug('userspace ' . $userSpace->id . ' is child of or requested space');
+                    Log::debug('userspace '.$userSpace->id.' is child of or requested space');
                 } else {
-                    Log::debug('userspace ' . $userSpace->id . ' is NOT child of or requested space');
+                    Log::debug('userspace '.$userSpace->id.' is NOT child of or requested space');
                 }
             }
             // User has different default top-level space than the kiosk-assigned one
@@ -132,11 +134,11 @@ class VisitPunchController extends Controller
             }
         }
         if (count($overageSpaces) > 0) {
-            $msg = 'Maximum occupancy reached: ' . implode(', ', $overageSpaces);
-            Log::info('Rejected punch in by ' + $gtid + ' at ' . $door . ' because ' . $msg);
+            $msg = 'Maximum occupancy reached: '.implode(', ', $overageSpaces);
+            Log::info('Rejected punch in by ' + $gtid + ' at '.$door.' because '.$msg);
+
             return response()->json(['status' => 'error', 'error' => $msg], 422);
         }
-
 
         // Create new visit and punch in
         $spaceIds = array_map(static function (Space $punchSpaces): int {
@@ -150,7 +152,7 @@ class VisitPunchController extends Controller
         $visit->spaces()->attach($spaceIds);
 
         $implodedSpaceIds = implode(',', $spaceIds);
-        Log::info('Punch in by ' . $gtid . ' at ' . $door . ' for space(s) ' . $implodedSpaceIds);
+        Log::info('Punch in by '.$gtid.' at '.$door.' for space(s) '.$implodedSpaceIds);
 
         //Notify all kiosks via websockets
         event(new Punch());

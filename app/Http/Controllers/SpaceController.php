@@ -60,6 +60,7 @@ class SpaceController extends Controller
             ->allowedIncludes(Space::$allowedIncludes)
             ->allowedAppends(['active_visit_count', 'active_child_visit_count'])
             ->first();
+
         return response()->json(new SpaceResource($space));
     }
 

@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         /**
-         * Set up Horizon authentication
+         * Set up Horizon authentication.
          *
          * @phan-suppress PhanPossiblyUndeclaredMethod
          * @phan-suppress PhanPluginAlwaysReturnFunction

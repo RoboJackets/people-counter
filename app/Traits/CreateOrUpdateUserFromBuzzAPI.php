@@ -64,7 +64,7 @@ trait CreateOrUpdateUserFromBuzzAPI
 
             if (! $accountsResponse->isSuccessful()) {
                 Log::error(
-                    'GTED accounts search for ' . $search_value . ' failed',
+                    'GTED accounts search for '.$search_value.' failed',
                     [$accountsResponse->errorInfo()->message]
                 );
                 if ($is_frontend) {
@@ -76,7 +76,7 @@ trait CreateOrUpdateUserFromBuzzAPI
             }
             $numResults = count($accountsResponse->json->api_result_data);
             if (0 === $numResults) {
-                Log::notice('GTED accounts search was successful but gave no results for ' . $search_value);
+                Log::notice('GTED accounts search was successful but gave no results for '.$search_value);
                 if ($is_frontend) {
                     SystemError::render(0b1010);
                     exit;
@@ -92,8 +92,8 @@ trait CreateOrUpdateUserFromBuzzAPI
                 $search_value : $accountsResponse->first()->gtPrimaryGTAccountUsername;
             $account = collect($accountsResponse->json->api_result_data)->firstWhere('uid', $searchUid);
 
-            if (!isset($account->gtGTID)) {
-                Log::notice('No GTID returned from BuzzAPI for ' . $search_value);
+            if (! isset($account->gtGTID)) {
+                Log::notice('No GTID returned from BuzzAPI for '.$search_value);
                 if ($is_frontend) {
                     Unauthorized::render(0b1011);
                     exit;
@@ -109,7 +109,7 @@ trait CreateOrUpdateUserFromBuzzAPI
             $user->last_name = $account->sn;
             $user->save();
 
-            $msg = 'Created ' . $user->first_name . ' ' . $user->last_name . ' (' . $user->username . ') via BuzzAPI';
+            $msg = 'Created '.$user->first_name.' '.$user->last_name.' ('.$user->username.') via BuzzAPI';
             Log::info($msg);
         }
 

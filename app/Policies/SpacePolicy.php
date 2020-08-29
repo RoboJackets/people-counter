@@ -13,7 +13,7 @@ class SpacePolicy
     use HandlesAuthorization;
 
     /**
-     * Override for Super Admin to authorize all actions automatically
+     * Override for Super Admin to authorize all actions automatically.
      *
      * @return bool|null
      */

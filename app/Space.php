@@ -18,7 +18,7 @@ class Space extends Model
     use HasRelationships;
 
     /**
-     * Attributes that are not mass assignable
+     * Attributes that are not mass assignable.
      *
      * @var array<string>
      */
@@ -29,7 +29,7 @@ class Space extends Model
     ];
 
     /**
-     * Allowed relationships to be dynamically included via request parameter
+     * Allowed relationships to be dynamically included via request parameter.
      *
      * @var      array<string>
      * @suppress PhanReadOnlyPublicProperty
@@ -39,7 +39,7 @@ class Space extends Model
     ];
 
     /**
-     * Get the count of active visits in this space
+     * Get the count of active visits in this space.
      *
      * @return int
      */
@@ -49,7 +49,7 @@ class Space extends Model
     }
 
     /**
-     * Get the count of active visits of child spaces of this space
+     * Get the count of active visits of child spaces of this space.
      *
      * @return int
      */
@@ -59,7 +59,7 @@ class Space extends Model
     }
 
     /**
-     * Define relationship between Space and its parent
+     * Define relationship between Space and its parent.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -69,7 +69,7 @@ class Space extends Model
     }
 
     /**
-     * Define relationship between Space and its children
+     * Define relationship between Space and its children.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -80,7 +80,7 @@ class Space extends Model
 
     /**
      * Define the relationship between Space and User
-     * This is for default attachment of spaces visits, not for users with a visit in a space
+     * This is for default attachment of spaces visits, not for users with a visit in a space.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -90,7 +90,7 @@ class Space extends Model
     }
 
     /**
-     * Define the relationship between Space and Visit
+     * Define the relationship between Space and Visit.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -100,7 +100,7 @@ class Space extends Model
     }
 
     /**
-     * Define the relationship between Space and (active) Visit
+     * Define the relationship between Space and (active) Visit.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -111,7 +111,7 @@ class Space extends Model
     }
 
     /**
-     * Voodoo magic to get all users who have ever visited a given space
+     * Voodoo magic to get all users who have ever visited a given space.
      *
      * @return HasManyDeep
      */
@@ -128,7 +128,7 @@ class Space extends Model
     /**
      * Voodoo magic to get users of active visits
      * Must manually specify the constraints here because of a feature/bug/whatever in the voodoo package
-     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36
+     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36.
      *
      * @return HasManyDeep
      */
@@ -139,7 +139,7 @@ class Space extends Model
     }
 
     /**
-     * Voodoo magic to get visits of child spaces
+     * Voodoo magic to get visits of child spaces.
      *
      * @return HasManyDeep
      */
@@ -151,7 +151,7 @@ class Space extends Model
     /**
      * Voodoo magic to get active visits of child spaces
      * Must manually specify the constraints here because of a feature/bug/whatever in the voodoo package
-     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36
+     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36.
      *
      * @return HasManyDeep
      */
@@ -162,7 +162,7 @@ class Space extends Model
     }
 
     /**
-     * Voodoo magic to get users of visits of child spaces
+     * Voodoo magic to get users of visits of child spaces.
      *
      * @return HasManyDeep
      */
@@ -174,7 +174,7 @@ class Space extends Model
     /**
      * Voodoo magic to get users of active visits of child spaces
      * Must manually specify the constraints here because of a feature/bug/whatever in the voodoo package
-     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36
+     * https://github.com/staudenmeir/eloquent-has-many-deep/issues/36.
      *
      * @return HasManyDeep
      */

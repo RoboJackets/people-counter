@@ -19,9 +19,9 @@ class Punch implements ShouldBroadcast
     use SerializesModels;
 
     /**
-     * List of spaces and those occupying them
+     * List of spaces and those occupying them.
      *
-     * @var array<\App\Space> $spaces
+     * @var array<\App\Space>
      */
     public $spaces;
 
@@ -35,10 +35,10 @@ class Punch implements ShouldBroadcast
         $spaces = Space::with(
             [
                 'activeChildVisitsUsers' => static function ($query): void {
-                        $query->select('first_name', 'last_name');
+                    $query->select('first_name', 'last_name');
                 },
                 'activeVisitsUsers' => static function ($query): void {
-                        $query->select('first_name', 'last_name');
+                    $query->select('first_name', 'last_name');
                 },
             ]
         )->get();

@@ -17,7 +17,6 @@ use Illuminate\View\View;
 |
 */
 
-
 Route::middleware('auth.cas.force')->group(static function (): void {
     Route::get('/', static function (): View {
         return view('main');

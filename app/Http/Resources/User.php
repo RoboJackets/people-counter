@@ -39,7 +39,7 @@ class User extends JsonResource
     }
 
     /**
-     * Determine if GTID should be returned in the request
+     * Determine if GTID should be returned in the request.
      *
      * @param \Illuminate\Http\Request $request
      *
