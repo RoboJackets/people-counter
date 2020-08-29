@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+// phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+// phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
