@@ -65,7 +65,7 @@ class Space extends Model
      */
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(\App\Space::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     /**
@@ -75,7 +75,7 @@ class Space extends Model
      */
     public function children(): HasMany
     {
-        return $this->hasMany(\App\Space::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     /**
