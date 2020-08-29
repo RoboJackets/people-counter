@@ -9,6 +9,7 @@ parameters:
   ignoreErrors:
     - '#(?:Dynamic call to static method|Call to an undefined method) Illuminate\\Database\\Eloquent\\(?:Builder|Relations\\[a-zA-Z]+)?(?:<mixed>|<App\\[a-zA-Z]+>)?::(?:distinct|doesntHave|first|groupBy|has|havingRaw|join|leftJoin|orderBy|orderByRaw|orWhereNull|select|selectRaw|selectSub|where|whereBetween|whereDate|whereIn|whereNotNull|count|whereIn|whereBetween|sum|distinct|paid|active|accessActive|inactive|role|pending|pendingSwag|accessInactive|visible|whereNull|current|start|end|availableForPurchase)\(\)\.#'
     - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
+    - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\[a-zA-Z]+\|null\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\[a-zA-Z_]+\|Illuminate\\Database\\Eloquent\\Collection<App\\Space>\|null\.#'
     - '#Cannot call method save\(\) on App\\[a-zA-Z]+\|null\.#'

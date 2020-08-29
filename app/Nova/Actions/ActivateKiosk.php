@@ -7,18 +7,23 @@ namespace App\Nova\Actions;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Text;
 
+/**
+ * Class ActivateKiosk
+ * @property int $visits_count
+ */
 class ActivateKiosk extends Action
 {
     /**
      * Perform the action on the given models.
      *
-     * @param  \Laravel\Nova\Fields\ActionFields  $fields
-     * @param  \Illuminate\Support\Collection  $models
+     * @param \Laravel\Nova\Fields\ActionFields  $fields
+     * @param \Illuminate\Support\Collection  $models
      *
-     * @return mixed
+     * @return array|string[]
      */
     public function handle(ActionFields $fields, Collection $models)
     {
@@ -36,7 +41,7 @@ class ActivateKiosk extends Action
     /**
      * Get the fields available on the action.
      *
-     * @return array
+     * @return array<Field>
      */
     public function fields()
     {

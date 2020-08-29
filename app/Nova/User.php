@@ -41,8 +41,6 @@ class User extends Resource
      * Get the fields displayed by the resource.
      *
      * @param \Illuminate\Http\Request  $request
-     *
-     * @return array<\Laravel\Nova\Fields\Field>
      */
     public function fields(Request $request)
     {
