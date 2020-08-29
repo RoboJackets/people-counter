@@ -59,7 +59,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             return null;
         } else {
             Log::info('Importing '.$identifier);
-            $identifier = is_numeric($identifier) ? $identifier : trim(strtolower($identifier));
+            $identifier = is_integer($identifier) ? $identifier : trim(strtolower($identifier));
         }
         try {
             $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
@@ -80,6 +80,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
                     $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
                 } catch (\Throwable $e) {
                     Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
+
                     return null;
                 }
             }
