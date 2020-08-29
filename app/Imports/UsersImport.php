@@ -87,7 +87,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     public function rules(): array
     {
         return [
-            'username' => 'string|not_regex:/@/|alpha_num',
+            'username' => 'string|not_regex:/@/',
             'gtid' => 'digits:9',
             'email' => 'email',
         ];
