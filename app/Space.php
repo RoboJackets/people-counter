@@ -13,7 +13,7 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
- * Class Space
+ * Class Space.
  *
  * @property int $visits_count
  */

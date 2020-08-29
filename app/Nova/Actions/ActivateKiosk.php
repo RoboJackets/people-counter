@@ -7,7 +7,6 @@ namespace App\Nova\Actions;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Text;
 
@@ -19,7 +18,7 @@ class ActivateKiosk extends Action
      * @param \Laravel\Nova\Fields\ActionFields $fields
      * @param \Illuminate\Support\Collection $models
      *
-     * @return array|string[]
+     * @return array|string
      */
     public function handle(ActionFields $fields, Collection $models)
     {
@@ -37,7 +36,7 @@ class ActivateKiosk extends Action
     /**
      * Get the fields available on the action.
      *
-     * @return array<Field>
+     * @return array<\Laravel\Nova\Fields\Field>
      */
     public function fields()
     {
