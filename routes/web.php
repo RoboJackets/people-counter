@@ -25,7 +25,7 @@ Route::middleware('auth.cas.force')->group(static function (): void {
 
 Route::get('kiosk', static function (): View {
     return view('kiosk');
-});
+})->name('kiosk');
 
 Route::get('privacy', static function (): RedirectResponse {
     return redirect('https://www.gatech.edu/privacy');

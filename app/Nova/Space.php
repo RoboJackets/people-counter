@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
+use App\Nova\Actions\ActivateKiosk;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -120,6 +121,11 @@ class Space extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new ActivateKiosk())
+                ->confirmText('Are you sure you want to activate this browser as a kiosk?')
+                ->confirmButtonText('Activate')
+                ->cancelButtonText("Don't activate")
+        ];
     }
 }
