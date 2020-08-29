@@ -21,7 +21,7 @@ class StoreSpace extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string,string>
+     * @return array<string,array<string>>
      */
     public function rules()
     {
