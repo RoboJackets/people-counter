@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
+use App\Nova\Fields\Hidden;
 use Illuminate\Http\Request;
 use Jeffbeltran\SanctumTokens\SanctumTokens;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
 
@@ -34,7 +34,7 @@ class User extends Resource
      * @var array<string>
      */
     public static $search = [
-        'username', 'first_name', 'last_name', 'email',
+        'username', 'first_name', 'last_name', 'email', 'gtid',
     ];
 
     /**
