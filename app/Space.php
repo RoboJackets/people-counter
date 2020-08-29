@@ -145,7 +145,7 @@ class Space extends Model
      */
     public function childVisits(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->children(), (new Space())->visits());
+        return $this->hasManyDeepFromRelations($this->children(), (new self())->visits());
     }
 
     /**
@@ -157,7 +157,7 @@ class Space extends Model
      */
     public function activeChildVisits(): HasManyDeep
     {
-        return $this->hasManyDeepFromRelations($this->children(), (new Space())->visits())
+        return $this->hasManyDeepFromRelations($this->children(), (new self())->visits())
             ->whereNotNull('in_time')->whereNull('out_time');
     }
 
