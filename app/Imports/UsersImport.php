@@ -58,7 +58,8 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
         if (null === $identifier) {
             return null;
         } else {
-            $identifier = trim(strtolower($identifier));
+            Log::info('Importing '.$identifier);
+            $identifier = is_integer($identifier) ? $identifier : trim(strtolower($identifier));
         }
         try {
             $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
@@ -66,6 +67,23 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
 
             return null;
+        }
+
+        if (null === $user && null !== $row['email']) {
+            // Probably a non-primary email, search again with stripped username
+            $identifier = strtok($row['email'], '@');
+            if (false === $identifier) {
+                Log::notice('Attempted to retry import for '.$row['email'].' but username extract failed');
+            } else {
+                Log::info('Importing (retry) '.$identifier);
+                try {
+                    $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
+                } catch (\Throwable $e) {
+                    Log::error('Exception when importing '.$identifier, [$e->getMessage()]);
+
+                    return null;
+                }
+            }
         }
 
         if ($user instanceof \App\User) {
@@ -87,7 +105,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     public function rules(): array
     {
         return [
-            'username' => 'string|not_regex:/@/|alpha_num',
+            'username' => 'string|not_regex:/@/',
             'gtid' => 'digits:9',
             'email' => 'email',
         ];
