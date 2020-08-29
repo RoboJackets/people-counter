@@ -125,7 +125,7 @@ class Space extends Resource
             (new ActivateKiosk())
                 ->confirmText('Are you sure you want to activate this browser as a kiosk?')
                 ->confirmButtonText('Activate')
-                ->cancelButtonText("Don't activate")
+                ->cancelButtonText("Don't activate"),
         ];
     }
 }

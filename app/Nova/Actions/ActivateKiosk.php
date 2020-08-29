@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Nova\Actions;
 
 use Illuminate\Support\Collection;
@@ -15,6 +17,7 @@ class ActivateKiosk extends Action
      *
      * @param  \Laravel\Nova\Fields\ActionFields  $fields
      * @param  \Illuminate\Support\Collection  $models
+     *
      * @return mixed
      */
     public function handle(ActionFields $fields, Collection $models)
@@ -39,7 +42,7 @@ class ActivateKiosk extends Action
         return [
             Heading::make('At what door is this kiosk located?'),
             Text::make('Door'),
-            Heading::make('Upon activation, you will be redirected to the kiosk.')
+            Heading::make('Upon activation, you will be redirected to the kiosk.'),
         ];
     }
 }

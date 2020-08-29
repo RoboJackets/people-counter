@@ -12,7 +12,6 @@ use App\Nova\Metrics\VisitsBySpace;
 use App\Nova\Metrics\VisitsPerDay;
 use App\User;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
