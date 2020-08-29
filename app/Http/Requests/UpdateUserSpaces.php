@@ -39,8 +39,13 @@ class UpdateUserSpaces extends FormRequest
     public function rules()
     {
         return [
-            'spaces' => 'required|array',
-            'spaces.*' => 'exists:spaces,id',
+            'spaces' => [
+                'required',
+                'array',
+            ],
+            'spaces.*' => [
+                'exists:spaces,id',
+            ],
         ];
     }
 }

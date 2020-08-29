@@ -27,11 +27,29 @@ class UpdateUser extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'unique:App\User|nullable',
-            'email' => 'unique:App\User|email|nullable',
-            'first_name' => 'string|nullable',
-            'last_name' => 'string|nullable',
-            'gtid' => 'starts_with:9|digits:9|unique:App\User|nullable',
+            'username' => [
+                'unique:App\User',
+                'nullable',
+            ],
+            'email' => [
+                'unique:App\User',
+                'email',
+                'nullable',
+            ],
+            'first_name' => [
+                'string',
+                'nullable',
+            ],
+            'last_name' => [
+                'string',
+                'nullable',
+            ],
+            'gtid' => [
+                'starts_with:9',
+                'digits:9',
+                'unique:App\User',
+                'nullable',
+            ],
         ];
     }
 }

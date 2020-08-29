@@ -27,11 +27,22 @@ class UpdateVisit extends FormRequest
     public function rules()
     {
         return [
-            'gtid' => 'starts_with:9|digits:9',
-            'in_door' => 'string',
-            'out_door' => 'string',
-            'in_time' => 'date',
-            'out_time' => 'date',
+            'gtid' => [
+                'starts_with:9',
+                'digits:9',
+            ],
+            'in_door' => [
+                'string',
+            ],
+            'out_door' => [
+                'string',
+            ],
+            'in_time' => [
+                'date',
+            ],
+            'out_time' => [
+                'date',
+            ],
         ];
     }
 }
