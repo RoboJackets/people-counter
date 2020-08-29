@@ -58,7 +58,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
         if (null === $identifier) {
             return null;
         } else {
-            $identifier = trim(strtolower($identifier));
+            $identifier = (is_numeric($identifier)) ? trim($identifier) : trim(strtolower($identifier));
         }
         try {
             $user = $this->createOrUpdateUserFromBuzzAPI($identifier, false);
