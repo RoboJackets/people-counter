@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Events;
 
-use App\User;
+use App\Space;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class Punch implements ShouldBroadcast
 {
@@ -17,11 +19,11 @@ class Punch implements ShouldBroadcast
     use SerializesModels;
 
     /**
-     * List of people currently in the space
+     * List of spaces and those occupying them.
      *
-     * @var array<string> $people
+     * @var array<\App\Space>
      */
-    public $people;
+    public $spaces;
 
     /**
      * Create a new event instance.
@@ -30,15 +32,22 @@ class Punch implements ShouldBroadcast
      */
     public function __construct()
     {
-        // Get all users with an active visit
-        $users = User::whereHas('visits', static function (Builder $query): void {
-            $query->active();
-        })->orderBy('first_name')->get();
+        $spaces = Space::with(
+            [
+                'activeChildVisitsUsers' => static function ($query): void {
+                    $query->select('first_name', 'last_name');
+                },
+                'activeVisitsUsers' => static function ($query): void {
+                    $query->select('first_name', 'last_name');
+                },
+            ]
+        )->get();
 
-        // We want just the names for this
-        $names = $users->pluck('full_name');
-
-        $this->people = $names->toArray();
+        if (count($spaces) > 0) {
+            $this->spaces = $spaces->toArray();
+        } else {
+            Log::error('Punch event fired, but no spaces found with active visits');
+        }
     }
 
     /**

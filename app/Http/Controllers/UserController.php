@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
+use App\Http\Requests\UpdateUserSpaces;
 use App\Http\Resources\User as UserResource;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
@@ -19,17 +23,35 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::all());
+        $users = QueryBuilder::for(User::class)
+            ->allowedFilters(
+                [
+                    AllowedFilter::exact('id'),
+                    'username',
+                    'first_name',
+                    'last_name',
+                    'email',
+                    AllowedFilter::exact('gtid'),
+                ]
+            )
+            ->allowedSorts('username', 'first_name', 'last_name', 'gtid')
+            ->allowedIncludes(['visits', 'spaces'])
+            ->get();
+
+        return UserResource::collection($users);
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param StoreUser $request
      *
      * @return \App\Http\Resources\User
      */
     public function store(StoreUser $request)
     {
         $user = User::create($request->all());
+
         return new UserResource($user);
     }
 
@@ -37,13 +59,14 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \App\Http\Resources\User
      */
     public function showSelf(Request $request)
     {
         $q_user = QueryBuilder::for(User::class)
             ->where('id', $request->user()->id)
-            ->allowedIncludes(['visits'])
+            ->allowedIncludes(['visits', 'spaces'])
             ->first();
 
         return new UserResource($q_user);
@@ -53,14 +76,14 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param \App\User $user
-     * @param \Illuminate\Http\Request $request
+     *
      * @return \App\Http\Resources\User
      */
-    public function show(User $user, Request $request)
+    public function show(User $user)
     {
         $q_user = QueryBuilder::for(User::class)
             ->where('id', $user->id)
-            ->allowedIncludes(['visits'])
+            ->allowedIncludes(['visits', 'spaces'])
             ->first();
 
         return new UserResource($q_user);
@@ -69,16 +92,42 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @return \App\Http\Resources\User|\Illuminate\Http\JsonResponse
+     * @param UpdateUser $request
+     * @param User $user
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateUser $request, User $user)
     {
         try {
             $user->update($request->all());
-            return new UserResource($user);
+            $updatedUser = new UserResource($user);
+
+            return response()->json($updatedUser);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateUserSpaces $request
+     * @param User $user
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateSpaces(UpdateUserSpaces $request, User $user)
+    {
+        try {
+            $user->spaces()->sync($request->input('spaces'));
+        } catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+        $dbUser = User::find($user->id)->with('spaces', 'visits')->first();
+
+        return response()->json(['status' => 'success', 'user' => $dbUser]);
     }
 
     /**
@@ -90,6 +139,7 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+
             return response()->json('success');
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);

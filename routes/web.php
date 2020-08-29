@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -15,7 +17,6 @@ use Illuminate\View\View;
 |
 */
 
-
 Route::middleware('auth.cas.force')->group(static function (): void {
     Route::get('/', static function (): View {
         return view('main');
@@ -24,6 +25,10 @@ Route::middleware('auth.cas.force')->group(static function (): void {
 
 Route::get('kiosk', static function (): View {
     return view('kiosk');
+});
+
+Route::get('privacy', static function (): RedirectResponse {
+    return redirect('https://www.gatech.edu/privacy');
 });
 
 Route::get('nova/logout', static function (): RedirectResponse {

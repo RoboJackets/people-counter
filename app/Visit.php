@@ -1,15 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Visit extends Model
 {
+    use SoftDeletes;
+
     /**
-     * Attributes that are not mass assignable
+     * Attributes that are not mass assignable.
      *
      * @var array<string>
      */
@@ -38,7 +44,17 @@ class Visit extends Model
     }
 
     /**
-     * Active Visits (In, but no Out)
+     * Define the relationship between Visit and Space.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function spaces(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Space');
+    }
+
+    /**
+     * Active Visits (In, but no Out).
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
@@ -50,7 +66,7 @@ class Visit extends Model
     }
 
     /**
-     * Active Visits for a given user via GTID
+     * Active Visits for a given user via GTID.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param int $gtid

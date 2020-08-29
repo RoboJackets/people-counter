@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
 use App\User;
@@ -11,7 +13,7 @@ class VisitPolicy
     use HandlesAuthorization;
 
     /**
-     * Override for Super Admin to authorize all actions automatically
+     * Override for Super Admin to authorize all actions automatically.
      *
      * @return bool|null
      */

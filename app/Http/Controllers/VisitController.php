@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVisit;
@@ -26,7 +28,7 @@ class VisitController extends Controller
                     AllowedFilter::exact('gtid'),
                     AllowedFilter::exact('id'),
                     AllowedFilter::scope('active'),
-                    AllowedFilter::scope('active_for_user')
+                    AllowedFilter::scope('active_for_user'),
                 ]
             )
             ->allowedSorts('in_time', 'out_time', 'in_door', 'out_door')
@@ -44,6 +46,7 @@ class VisitController extends Controller
     public function store(StoreVisit $request)
     {
         $visit = Visit::create($request->all());
+
         return new VisitResource($visit);
     }
 
@@ -58,6 +61,7 @@ class VisitController extends Controller
             ->where('id', $visit->id)
             ->allowedIncludes(['user'])
             ->first();
+
         return new VisitResource($visit);
     }
 
@@ -70,6 +74,7 @@ class VisitController extends Controller
     {
         try {
             $visit->update($request->all());
+
             return new VisitResource($visit);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
@@ -85,23 +90,10 @@ class VisitController extends Controller
     {
         try {
             $visit->delete();
+
             return response()->json('success');
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
-    }
-
-    /**
-     * Return useful counters for visits
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function count()
-    {
-        $hereCount = Visit::active()->count();
-        return response()->json([
-            'here' => $hereCount,
-            'max' => env('MAX_PEOPLE'),
-        ]);
     }
 }

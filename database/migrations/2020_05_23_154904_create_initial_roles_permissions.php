@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -7,9 +9,9 @@ use Spatie\Permission\Models\Role;
 class CreateInitialRolesPermissions extends Migration
 {
     /**
-     * Permissions to be used elsewhere
+     * Permissions to be used elsewhere.
      *
-     * @var array<string> $allPermissions
+     * @var array<string>
      */
     public $allPermissions = [
         'manage-users',

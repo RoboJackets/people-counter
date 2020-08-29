@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -9,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Represents a single User
+ * Represents a single User.
  *
  * @property int $id
  * @property string $full_name
@@ -26,7 +29,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * Attributes that are not mass assignable
+     * Attributes that are not mass assignable.
      *
      * @var array<string>
      */
@@ -52,7 +55,17 @@ class User extends Authenticatable
     }
 
     /**
-     * Returns if the User a super admin
+     * Define the relationship between User and Space.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function spaces(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Space');
+    }
+
+    /**
+     * Returns if the User a super admin.
      *
      * @return bool
      */
@@ -62,12 +75,12 @@ class User extends Authenticatable
     }
 
     /**
-     * Get full name of User
+     * Get full name of User.
      *
      * @return string
      */
     public function getFullNameAttribute(): string
     {
-        return $this->first_name . " " . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 }

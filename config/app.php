@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -67,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/New_York',
 
     /*
     |--------------------------------------------------------------------------
@@ -231,6 +233,4 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
-    'maxpeople' => env('MAX_PEOPLE'),
 ];

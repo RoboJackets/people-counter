@@ -1,7 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
 use Laravel\Nova\Actions\ActionResource;
-use Laravel\Nova\Http\Middleware\Authenticate;
 use Laravel\Nova\Http\Middleware\Authorize;
 use Laravel\Nova\Http\Middleware\BootTools;
 use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
@@ -99,10 +100,11 @@ return [
 
     'middleware' => [
         'web',
-        Authenticate::class,
+        \App\Http\Middleware\CASAuthenticate::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
         Authorize::class,
+        \Vyuldashev\NovaPermission\ForgetCachedPermissions::class,
     ],
 
     /*
