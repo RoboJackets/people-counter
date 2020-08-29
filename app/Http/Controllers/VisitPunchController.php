@@ -135,7 +135,7 @@ class VisitPunchController extends Controller
         }
         if (count($overageSpaces) > 0) {
             $msg = 'Maximum occupancy reached: '.implode(', ', $overageSpaces);
-            Log::info('Rejected punch in by ' + $gtid + ' at '.$door.' because '.$msg);
+            Log::info('Rejected punch in by '.$gtid.' at '.$door.' because '.$msg);
 
             return response()->json(['status' => 'error', 'error' => $msg], 422);
         }
