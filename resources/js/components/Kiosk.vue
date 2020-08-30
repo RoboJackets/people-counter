@@ -1,18 +1,18 @@
 <template>
     <div>
-        <div class="row pt-4" :style="dynamicColor">
-            <div class="col-lg-8 col-sm-12 text-center">
+        <div class="row">
+            <div class="col-12 text-center" style="margin-top: -100px;">
                 <span><span class="people-count">{{ peopleHere.length }}</span></span>
-                <h1>people are in the {{ currentSpaceName }} space</h1>
+                <h1 style="margin-top: -75px;">
+                    {{ pluralPeople }} in the {{ currentSpaceName }} space
+                </h1>
+                <template v-if="showSpaceStatus === 'hide'">
+                    <b>Maximum Occupancy: {{ maxPeople }}</b>
+                </template>
                 <h2>Tap your BuzzCard to sign in or out</h2>
             </div>
-            <div class="col-lg-4 col-sm-12">
-                <h1>{{ maxPeople - peopleHere.length }} spots open</h1>
-                <h2>Who's Here:</h2>
-                {{ this.peopleHere.join(", ")}}
-            </div>
         </div>
-        <div class="row pt-4" :style="dynamicColor">
+        <div class="row pt-4" v-if="showSpaceStatus === 'show'">
             <div class="col-12">
                 <div class="card">
                     <h5 class="card-header">Space Status</h5>
@@ -26,12 +26,24 @@
                             <div class="col-12" style="column-count: 4">
                                 <template v-for="space in spaces">
                                     <h5 class="space-name">{{ space.name }}</h5>
-                                    <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
+                                    <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} max
                                     <p/>
                                 </template>
                             </div>
                         </div>
                     </template>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header">Who's Here</h5>
+                    <div class="card-body">
+                        <p style="font-size: large;">
+                            {{ this.peopleHere.join(", ")}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,6 +81,7 @@ export default {
             loading: {
                 'spaces': false,
             },
+            showSpaceStatus: true,
             submitting: false,
             spaceId: null,
             visitsBaseUrl: '/api/visits',
@@ -85,6 +98,15 @@ export default {
 
         // Get URL params
         const urlParams = new URLSearchParams(window.location.search);
+
+        // Handle hiding space status
+        if (urlParams.has('spaceStatus')) {
+            console.log('Found spaceStatus in URL: ' + urlParams.get('spaceStatus'));
+            this.setShowSpaceStatus(urlParams.get('spaceStatus'));
+        } else if (localStorage.getItem('spaceStatus')) {
+            console.log('Found spaceStatus in local storage');
+            this.setShowSpaceStatus(urlParams.get('spaceStatus'));
+        }
 
         // Handle Space
         if (urlParams.has('space')) {
@@ -183,6 +205,9 @@ export default {
             return (typeof this.space !== 'undefined') ?
                 this.space.max_occupancy :
                 -1
+        },
+        pluralPeople() {
+            return (1 === this.peopleHere.length) ? 'person is' : 'people are';
         }
     },
     watch: {
@@ -206,6 +231,10 @@ export default {
         }
     },
     methods: {
+        setShowSpaceStatus(value) {
+            localStorage.setItem('showSpaceStatus', value);
+            this.showSpaceStatus = value;
+        },
         setSpaceId(id) {
             localStorage.setItem('spaceId', id);
             this.spaceId = id;
