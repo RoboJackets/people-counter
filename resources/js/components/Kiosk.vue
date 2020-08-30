@@ -1,24 +1,57 @@
 <template>
-    <div :style="dynamicColor">
-        <div class="row">
+    <div>
+        <div class="row pt-4" :style="dynamicColor">
             <div class="col-lg-8 col-sm-12 text-center">
                 <span><span class="people-count">{{ peopleHere.length }}</span></span>
-                <h2>people are in the {{ currentSpaceName }} space</h2>
+                <h1>people are in the {{ currentSpaceName }} space</h1>
+                <h2>Tap your BuzzCard to sign in or out</h2>
             </div>
             <div class="col-lg-4 col-sm-12">
-                <h2>{{ maxPeople - peopleHere.length }} spots open</h2>
-                <h3>Here:</h3>
+                <h1>{{ maxPeople - peopleHere.length }} spots open</h1>
+                <h2>Who's Here:</h2>
                 {{ this.peopleHere.join(", ")}}
             </div>
         </div>
-        <div class="row pt-3">
-            <div class="col-12 text-center">
-                <h4>Tap your BuzzCard to sign in or out</h4>
+        <div class="row pt-4" :style="dynamicColor">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header">Space Status</h5>
+                    <template v-if="loading.spaces">
+                        <div class="spinner-grow" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="card-body">
+                            <div class="col-12" style="column-count: 4">
+                                <template v-for="space in spaces">
+                                    <h5 class="space-name">{{ space.name }}</h5>
+                                    <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
+                                    <p/>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
             </div>
         </div>
     </div>
 </template>
-
+<style scoped>
+    .people-count {
+        font-size: 300px !important;
+        font-weight: bolder;
+    }
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-weight: bolder;
+    }
+    h1 {
+        font-size: 3.25rem;
+    }
+    h5.space-name, h5.card-header, b, p, div {
+        font-size: xx-large;
+    }
+</style>
 <script>
 import Echo from 'laravel-echo';
 export default {
@@ -26,11 +59,15 @@ export default {
         return {
             'peopleHere': [],
             'space': {},
+            'spaces': {},
             'punch': {
                 'gtid': null,
                 'door': null,
                 'include': 'user',
                 'space_id': null,
+            },
+            loading: {
+                'spaces': false,
             },
             submitting: false,
             spaceId: null,
@@ -165,6 +202,7 @@ export default {
                 // 100% -> red
                 this.dynamicColor.backgroundColor = '#ff3232';
             }
+            document.body.style.backgroundColor = this.dynamicColor.backgroundColor;
         }
     },
     methods: {
@@ -184,6 +222,7 @@ export default {
         },
         postMountedLoad() {
             this.loadSpace();
+            this.loadSpaces();
             this.loadWebSocket();
             this.startKeyboardListening();
         },
@@ -218,6 +257,36 @@ export default {
                             text: 'Unable to process data. Check your internet connection or try refreshing the page.',
                             icon: 'error',
                         });
+                    }
+                });
+        },
+        async loadSpaces() {
+            this.loading.spaces = true;
+            await self.axios
+                .get(this.spacesBaseUrl + '?append=active_visit_count,active_child_visit_count&sort=+name')
+                .then(response => {
+                    this.spaces = response.data;
+                    this.loading.spaces = false;
+                })
+                .catch(error => {
+                    if (error.response.status === 403) {
+                        this.$swal.fire({
+                            title: 'Whoops!',
+                            text: "You don't have permission to perform that action.",
+                            type: 'error',
+                        });
+                    } else if (error.response.status === 401) {
+                        this.$swal.fire({
+                            title: 'Whoops!',
+                            text: "You are not authenticated. Please try again.",
+                            type: 'error',
+                        });
+                    } else {
+                        this.$swal.fire(
+                            'Error',
+                            'Unable to process data. Check your internet connection or try refreshing the page.',
+                            'error'
+                        );
                     }
                 });
         },
