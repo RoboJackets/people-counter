@@ -359,6 +359,7 @@ export default {
                         return element.id == self.spaceId;
                     });
                     this.peopleHere = this.parseVisitsUsers(found)
+                    this.spaces = e.spaces;
                 });
         },
         startKeyboardListening() {
