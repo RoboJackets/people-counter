@@ -1,5 +1,5 @@
 <footer class="footer">
-  <div class="container fixed-bottom">
+  <div class="container pt-4">
     <div class="d-flex justify-content-between">
       <div>
         <p class="text-muted text-right"><a class="text-muted" href="https://github.com/RoboJackets/people-counter">Made with ♥ by RoboJackets</a> • <a class="text-muted" href="/privacy">Privacy Policy</a></p>
