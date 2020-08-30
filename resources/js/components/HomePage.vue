@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row pt-4">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-4 col-sm-12">
                 <div class="card">
                     <h5 class="card-header">My Status</h5>
                     <template v-if="loading.user">
@@ -50,7 +50,7 @@
                     </template>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-8 col-sm-12">
                 <div class="card">
                     <h5 class="card-header">Space Status</h5>
                     <template v-if="loading.spaces">
@@ -60,11 +60,13 @@
                     </template>
                     <template v-else>
                         <div class="card-body">
-                            <template v-for="space in spaces">
-                                <h5 class="space-name">{{ space.name }}</h5>
-                                <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
-                                <br/>
-                            </template>
+                            <div class="col-12" style="column-count: 2">
+                                <template v-for="space in spaces">
+                                    <h5 class="space-name">{{ space.name }}</h5>
+                                    <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
+                                    <br/>
+                                </template>
+                            </div>
                         </div>
                     </template>
                 </div>
