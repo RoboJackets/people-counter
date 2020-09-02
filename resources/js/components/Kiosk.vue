@@ -1,24 +1,69 @@
 <template>
-    <div :style="dynamicColor">
+    <div>
         <div class="row">
-            <div class="col-lg-8 col-sm-12 text-center">
+            <div class="col-12 text-center" style="margin-top: -100px;">
                 <span><span class="people-count">{{ peopleHere.length }}</span></span>
-                <h2>people are in the {{ currentSpaceName }} space</h2>
-            </div>
-            <div class="col-lg-4 col-sm-12">
-                <h2>{{ maxPeople - peopleHere.length }} spots open</h2>
-                <h3>Here:</h3>
-                {{ this.peopleHere.join(", ")}}
+                <h1 style="margin-top: -75px;">
+                    {{ pluralPeople }} in the {{ currentSpaceName }} space
+                </h1>
+                <template v-if="showSpaceStatus === 'hide'">
+                    <b>Maximum Occupancy: {{ maxPeople }}</b>
+                </template>
+                <h2>Tap your BuzzCard to sign in or out</h2>
             </div>
         </div>
-        <div class="row pt-3">
-            <div class="col-12 text-center">
-                <h4>Tap your BuzzCard to sign in or out</h4>
+        <div class="row pt-4" v-if="showSpaceStatus === 'show'">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header">Space Status</h5>
+                    <template v-if="loading.spaces">
+                        <div class="spinner-grow" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="card-body">
+                            <div class="col-12" style="column-count: 4">
+                                <template v-for="space in spaces">
+                                    <h5 class="space-name">{{ space.name }}</h5>
+                                    <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} max
+                                    <p/>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header">Who's Here</h5>
+                    <div class="card-body">
+                        <p style="font-size: large;">
+                            {{ this.peopleHere.join(", ")}}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
-
+<style scoped>
+    .people-count {
+        font-size: 300px !important;
+        font-weight: bolder;
+    }
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-weight: bolder;
+    }
+    h1 {
+        font-size: 3.25rem;
+    }
+    h5.space-name, h5.card-header, b, p, div {
+        font-size: xx-large;
+    }
+</style>
 <script>
 import Echo from 'laravel-echo';
 export default {
@@ -26,12 +71,17 @@ export default {
         return {
             'peopleHere': [],
             'space': {},
+            'spaces': {},
             'punch': {
                 'gtid': null,
                 'door': null,
                 'include': 'user',
                 'space_id': null,
             },
+            loading: {
+                'spaces': false,
+            },
+            showSpaceStatus: true,
             submitting: false,
             spaceId: null,
             visitsBaseUrl: '/api/visits',
@@ -48,6 +98,15 @@ export default {
 
         // Get URL params
         const urlParams = new URLSearchParams(window.location.search);
+
+        // Handle hiding space status
+        if (urlParams.has('spaceStatus')) {
+            console.log('Found spaceStatus in URL: ' + urlParams.get('spaceStatus'));
+            this.setShowSpaceStatus(urlParams.get('spaceStatus'));
+        } else if (localStorage.getItem('spaceStatus')) {
+            console.log('Found spaceStatus in local storage');
+            this.setShowSpaceStatus(urlParams.get('spaceStatus'));
+        }
 
         // Handle Space
         if (urlParams.has('space')) {
@@ -146,6 +205,9 @@ export default {
             return (typeof this.space !== 'undefined') ?
                 this.space.max_occupancy :
                 -1
+        },
+        pluralPeople() {
+            return (1 === this.peopleHere.length) ? 'person is' : 'people are';
         }
     },
     watch: {
@@ -165,9 +227,14 @@ export default {
                 // 100% -> red
                 this.dynamicColor.backgroundColor = '#ff3232';
             }
+            document.body.style.backgroundColor = this.dynamicColor.backgroundColor;
         }
     },
     methods: {
+        setShowSpaceStatus(value) {
+            localStorage.setItem('showSpaceStatus', value);
+            this.showSpaceStatus = value;
+        },
         setSpaceId(id) {
             localStorage.setItem('spaceId', id);
             this.spaceId = id;
@@ -184,6 +251,7 @@ export default {
         },
         postMountedLoad() {
             this.loadSpace();
+            this.loadSpaces();
             this.loadWebSocket();
             this.startKeyboardListening();
         },
@@ -218,6 +286,36 @@ export default {
                             text: 'Unable to process data. Check your internet connection or try refreshing the page.',
                             icon: 'error',
                         });
+                    }
+                });
+        },
+        async loadSpaces() {
+            this.loading.spaces = true;
+            await self.axios
+                .get(this.spacesBaseUrl + '?append=active_visit_count,active_child_visit_count&sort=+name')
+                .then(response => {
+                    this.spaces = response.data;
+                    this.loading.spaces = false;
+                })
+                .catch(error => {
+                    if (error.response.status === 403) {
+                        this.$swal.fire({
+                            title: 'Whoops!',
+                            text: "You don't have permission to perform that action.",
+                            type: 'error',
+                        });
+                    } else if (error.response.status === 401) {
+                        this.$swal.fire({
+                            title: 'Whoops!',
+                            text: "You are not authenticated. Please try again.",
+                            type: 'error',
+                        });
+                    } else {
+                        this.$swal.fire(
+                            'Error',
+                            'Unable to process data. Check your internet connection or try refreshing the page.',
+                            'error'
+                        );
                     }
                 });
         },
@@ -261,6 +359,7 @@ export default {
                         return element.id == self.spaceId;
                     });
                     this.peopleHere = this.parseVisitsUsers(found)
+                    this.spaces = e.spaces;
                 });
         },
         startKeyboardListening() {
