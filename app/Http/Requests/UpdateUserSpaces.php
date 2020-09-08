@@ -6,7 +6,6 @@ namespace App\Http\Requests;
 
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 
 class UpdateUserSpaces extends FormRequest
 {
@@ -29,7 +28,8 @@ class UpdateUserSpaces extends FormRequest
         }
 
         // Service accounts with permission, or anyone updating their own spaces
-        return $requestingUser->can('manage-users') || $requestingUser->id == $targetUser->id;
+        // @phpstan-ignore-next-line
+        return $requestingUser->can('manage-users') || $requestingUser->id === $targetUser->id;
     }
 
     /**
