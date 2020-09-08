@@ -41,7 +41,7 @@ class Punch implements ShouldBroadcast
                     $query->select('first_name', 'last_name');
                 },
             ]
-        )->get();
+        )->orderBy('name')->get()->map->append('active_visit_count')->append('active_child_visit_count');
 
         if (count($spaces) > 0) {
             $this->spaces = $spaces->toArray();

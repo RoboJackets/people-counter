@@ -1,14 +1,11 @@
-@extends('layouts/app')
+@extends('layouts.app-alt')
 
 @section('title')
-    {{ config('app.name') }}
+    Kiosk :: {{ config('app.name') }}
 @endsection
 
 @section('content')
 
-    @component('layouts/title')
-    @endcomponent
-
-    <kiosk max-people="{{config('app.maxpeople')}}">
+    <kiosk />
 
 @endsection
