@@ -15,20 +15,21 @@ class UpdateUserSpaces extends FormRequest
      *
      * @return bool
      */
-    public function authorize(Request $request)
+    public function authorize()
     {
-        $user = $request->user();
-        if (! $user instanceof User) {
+        $requestingUser = $this->user();
+        $targetUser = $this->route('user');
+        if (! $requestingUser instanceof User) {
             // Deny to unauthenticated (which shouldn't get this far anyhow)
             return false;
         }
 
-        if ($user->isSuperAdmin()) {
+        if ($requestingUser->isSuperAdmin()) {
             return true;
         }
 
         // Service accounts with permission, or anyone updating their own spaces
-        return $user->can('manage-users') || $user->id == $request->input('id');
+        return $requestingUser->can('manage-users') || $requestingUser->id == $targetUser->id;
     }
 
     /**
