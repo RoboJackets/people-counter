@@ -125,9 +125,10 @@ class UserController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
-        $dbUser = User::find($user->id)->with('spaces', 'visits')->first();
+        $dbUser = User::where('id', $user->id)->with('spaces', 'visits')->first();
+        $dbUserResource = new UserResource($dbUser);
 
-        return response()->json(['status' => 'success', 'user' => $dbUser]);
+        return response()->json(['status' => 'success', 'user' => $dbUserResource]);
     }
 
     /**

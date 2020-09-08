@@ -218,7 +218,27 @@
                         this.$swal.hideLoading();
                         this.$swal.close();
                         this.closeModal('defaultSpaceChangeModal')
-                })
+                    }).catch(error => {
+                        console.log(error);
+                        this.$swal.hideLoading();
+                        if (error.response.status === 403) {
+                            this.$swal.fire({
+                                title: 'Whoops!',
+                                text: "You don't have permission to perform that action.",
+                                type: 'error',
+                            });
+                        } else {
+                            this.$swal.fire(
+                                'Error',
+                                'Unable to process data. Check your internet connection or try refreshing the page.',
+                                'error'
+                            );
+                        }
+                    })
+                    .finally(() => {
+                        this.submitting = false;
+                        this.$swal.hideLoading();
+                    });
             },
             submit() {
                 // Submit attendance data
