@@ -29,6 +29,6 @@ Route::get('login', static function (): RedirectResponse {
 })->name('login')->middleware('auth.cas.force');
 
 Route::get('logout', static function (): void {
-    \Illuminate\Support\Facades\Session::flush();
+    session()->regenerate();
     cas()->logout(config('app.url'));
 })->name('logout');
