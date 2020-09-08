@@ -14,7 +14,6 @@ parameters:
     - '#Cannot access property \$[a-zA-Z_]+ on App\\[a-zA-Z]+\|null\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\[a-zA-Z_]+\|Illuminate\\Database\\Eloquent\\Collection<App\\Space>\|null\.#'
     - '#Cannot call method save\(\) on App\\[a-zA-Z]+\|null\.#'
-    - '#Cannot call method with\(\) on App\\User\|null\.#'
     - '#Dynamic call to static method Illuminate\\Contracts\\Auth\\Guard::user\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNotNull\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNull\(\)\.#'
