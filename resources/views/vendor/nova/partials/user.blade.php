@@ -7,7 +7,7 @@
 <dropdown-menu slot="menu" width="100" direction="rtl">
     <ul class="list-reset">
         <li>
-            <a href="{{ route('nova.logout') }}" class="block no-underline text-90 hover:bg-30 p-3">
+            <a href="{{ route('logout') }}" class="block no-underline text-90 hover:bg-30 p-3">
                 {{ __('Logout') }}
             </a>
         </li>
