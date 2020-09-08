@@ -28,7 +28,7 @@ class UpdateUserSpaces extends FormRequest
         }
 
         // Service accounts with permission, or anyone updating their own spaces
-        return $user->can('manage-users') || $user->id === $request->input('id');
+        return $user->can('manage-users') || $user->id == $request->input('id');
     }
 
     /**
