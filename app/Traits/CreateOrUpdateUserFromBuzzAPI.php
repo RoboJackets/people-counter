@@ -51,7 +51,7 @@ trait CreateOrUpdateUserFromBuzzAPI
 
         // Create a new user (first login only) if they don't already exist
         if (null === $user) {
-            Log::debug("Creating new user from BuzzAPI for $buzzapi_identifier $identifier");
+            Log::debug('Creating new user from BuzzAPI for '.$buzzapi_identifier." ".$identifier);
             $user = new User();
 
             $accountsResponse = BuzzAPI::select(
