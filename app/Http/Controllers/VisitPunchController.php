@@ -32,11 +32,14 @@ class VisitPunchController extends Controller
         $gtid = $request->input('gtid');
         $door = $request->input('door');
 
+        Log::debug('Punch by '.$gtid.' at '.$door);
+
         // Fetch user to include name in response if we've seen them before
         $user = User::where('gtid', $gtid)->first();
 
         // Fetch from BuzzAPI if they've not been seen before
-        if (null !== $user) {
+        if (null === $user) {
+            Log::debug('Did not find existing user for punch by '.$gtid.', creating via BuzzAPI');
             try {
                 $user = $this->createOrUpdateUserFromBuzzAPI($gtid);
             } catch (\Throwable $e) {
