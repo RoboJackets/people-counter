@@ -92,16 +92,19 @@ class CreatePermissionTables extends Migration
             }
         );
 
-        Schema::create($tableNames['role_has_permissions'], static function (Blueprint $table) use ($tableNames): void {
-            $table->unsignedBigInteger('permission_id');
-            $table->unsignedBigInteger('role_id');
+        Schema::create(
+            $tableNames['role_has_permissions'],
+            static function (Blueprint $table) use ($tableNames): void {
+                $table->unsignedBigInteger('permission_id');
+                $table->unsignedBigInteger('role_id');
 
-            $table->foreign('permission_id')->references('id')->on($tableNames['permissions'])->onDelete('cascade');
+                $table->foreign('permission_id')->references('id')->on($tableNames['permissions'])->onDelete('cascade');
 
-            $table->foreign('role_id')->references('id')->on($tableNames['roles'])->onDelete('cascade');
+                $table->foreign('role_id')->references('id')->on($tableNames['roles'])->onDelete('cascade');
 
-            $table->primary(['permission_id', 'role_id'], 'role_has_permissions_permission_id_role_id_primary');
-        });
+                $table->primary(['permission_id', 'role_id'], 'role_has_permissions_permission_id_role_id_primary');
+            }
+        );
 
         app('cache')->store(
             'default' !== config('permission.cache.store') ? config('permission.cache.store') : null
