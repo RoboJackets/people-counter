@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de8b9a4c5d9ef3b7b01773285255db33",
+    "content-hash": "7b4425d05a6e0f2b59a2a7678a08441c",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -3709,16 +3709,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.1.3",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/predis/predis.git",
-                "reference": "2ce537d75e610550f5337e41b2a971417999b028"
+                "reference": "8ca99f91e45d49f214abc234ce69149591406bbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/predis/predis/zipball/2ce537d75e610550f5337e41b2a971417999b028",
-                "reference": "2ce537d75e610550f5337e41b2a971417999b028",
+                "url": "https://api.github.com/repos/predis/predis/zipball/8ca99f91e45d49f214abc234ce69149591406bbd",
+                "reference": "8ca99f91e45d49f214abc234ce69149591406bbd",
                 "shasum": ""
             },
             "require": {
@@ -3780,7 +3780,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-18T21:00:59+00:00"
+            "time": "2020-09-10T13:35:23+00:00"
         },
         {
             "name": "psr/container",
