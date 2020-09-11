@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b4425d05a6e0f2b59a2a7678a08441c",
+    "content-hash": "1e011d86e66485514106f4525bb0ea2e",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -5210,28 +5210,30 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "2.8.2",
+            "version": "2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "2737b2298e8bfeb632a80013646943307bf31775"
+                "reference": "2258ce2d1accb5a286c9fef2bcf58398f1889dde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/2737b2298e8bfeb632a80013646943307bf31775",
-                "reference": "2737b2298e8bfeb632a80013646943307bf31775",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/2258ce2d1accb5a286c9fef2bcf58398f1889dde",
+                "reference": "2258ce2d1accb5a286c9fef2bcf58398f1889dde",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
-                "php": "^7.1"
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.3"
             },
             "require-dev": {
                 "ext-json": "*",
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0",
-                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "laravel/legacy-factories": "^1.0.4",
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -5270,7 +5272,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-05-25T09:36:37+00:00"
+            "time": "2020-09-08T22:38:15+00:00"
         },
         {
             "name": "spatie/once",
