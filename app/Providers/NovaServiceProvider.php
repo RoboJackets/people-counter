@@ -54,7 +54,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 
         Gate::define('viewNova', static function (User $user): bool {
-            return $user->hasRole('super-admin');
+            return $user->hasRole('super-admin') || $user->can('access-nova');
         });
     }
 
