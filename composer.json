@@ -19,7 +19,7 @@
         "laravel/framework": "7.28.1",
         "laravel/horizon": "4.3.5",
         "laravel/nova": "3.9.2",
-        "laravel/sanctum": "2.5.0",
+        "laravel/sanctum": "2.6.0",
         "laravel/tinker": "2.4.2",
         "maatwebsite/excel": "3.1.21",
         "oitnetworkservices/buzzapiclient": "0.1.1",
