@@ -69,7 +69,7 @@ trait CreateOrUpdateUserFromBuzzAPI
                     [$accountsResponse->errorInfo()->message]
                 );
                 if ($is_frontend) {
-                    SystemError::render(0b1001);
+                    SystemError::render(1 << 17);
                     exit;
                 }
 
@@ -79,7 +79,7 @@ trait CreateOrUpdateUserFromBuzzAPI
             if (0 === $numResults) {
                 Log::notice('GTED accounts search was successful but gave no results for '.$search_value);
                 if ($is_frontend) {
-                    SystemError::render(0b1010);
+                    SystemError::render(1 << 18);
                     exit;
                 }
 
@@ -96,7 +96,7 @@ trait CreateOrUpdateUserFromBuzzAPI
             if (! isset($account->gtGTID)) {
                 Log::notice('No GTID returned from BuzzAPI for '.$search_value);
                 if ($is_frontend) {
-                    Unauthorized::render(0b1011);
+                    Unauthorized::render(1 << 19);
                     exit;
                 }
 
