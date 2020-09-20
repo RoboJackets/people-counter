@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa175d9930b38c99d08283751b137e94",
+    "content-hash": "1aca68d0a2f2e8a274654659eecf83b9",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -115,16 +115,16 @@
         },
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
-                "reference": "805fd5e02c33db4cce79c8b81dbdbee30adbc467"
+                "reference": "c85ec38452f8dfdad4310dc22af19108f89fa9fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/805fd5e02c33db4cce79c8b81dbdbee30adbc467",
-                "reference": "805fd5e02c33db4cce79c8b81dbdbee30adbc467",
+                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/c85ec38452f8dfdad4310dc22af19108f89fa9fe",
+                "reference": "c85ec38452f8dfdad4310dc22af19108f89fa9fe",
                 "shasum": ""
             },
             "require": {
@@ -189,7 +189,7 @@
                 "beyondcode",
                 "laravel-websockets"
             ],
-            "time": "2020-09-16T08:01:08+00:00"
+            "time": "2020-09-19T08:50:04+00:00"
         },
         {
             "name": "brick/math",
@@ -3089,16 +3089,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.9.1",
+            "version": "v4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "88e519766fc58bd46b8265561fb79b54e2e00b28"
+                "reference": "1c13d05035deff45f1230ca68bd7d74d621762d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/88e519766fc58bd46b8265561fb79b54e2e00b28",
-                "reference": "88e519766fc58bd46b8265561fb79b54e2e00b28",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1c13d05035deff45f1230ca68bd7d74d621762d9",
+                "reference": "1c13d05035deff45f1230ca68bd7d74d621762d9",
                 "shasum": ""
             },
             "require": {
@@ -3137,7 +3137,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-08-30T16:15:20+00:00"
+            "time": "2020-09-19T14:52:48+00:00"
         },
         {
             "name": "oitnetworkservices/buzzapiclient",
@@ -9977,16 +9977,16 @@
         },
         {
             "name": "phan/phan",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phan/phan.git",
-                "reference": "22f2083e2b0c10d6861d7d0e2ddd423660488609"
+                "reference": "d4a9e9be6cc04a0fd4b404b1e417868d16efbb0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phan/phan/zipball/22f2083e2b0c10d6861d7d0e2ddd423660488609",
-                "reference": "22f2083e2b0c10d6861d7d0e2ddd423660488609",
+                "url": "https://api.github.com/repos/phan/phan/zipball/d4a9e9be6cc04a0fd4b404b1e417868d16efbb0b",
+                "reference": "d4a9e9be6cc04a0fd4b404b1e417868d16efbb0b",
                 "shasum": ""
             },
             "require": {
@@ -9998,7 +9998,7 @@
                 "felixfbecker/advanced-json-rpc": "^3.0.4",
                 "microsoft/tolerant-php-parser": "0.0.23",
                 "netresearch/jsonmapper": ">=1.6.0",
-                "php": "^7.2.0",
+                "php": "^7.2.0|^8.0.0",
                 "sabre/event": "^5.0",
                 "symfony/console": "^2.3|^3.0|^4.0|^5.0",
                 "symfony/polyfill-mbstring": "^1.11.0"
@@ -10045,7 +10045,7 @@
                 "php",
                 "static"
             ],
-            "time": "2020-09-13T18:23:38+00:00"
+            "time": "2020-09-19T18:34:34+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -10454,16 +10454,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.42",
+            "version": "0.12.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "7c43b7c2d5ca6554f6231e82e342a710163ac5f4"
+                "reference": "54221b44766cb4bdfe40d1828d5bba5dd79c38c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7c43b7c2d5ca6554f6231e82e342a710163ac5f4",
-                "reference": "7c43b7c2d5ca6554f6231e82e342a710163ac5f4",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/54221b44766cb4bdfe40d1828d5bba5dd79c38c6",
+                "reference": "54221b44766cb4bdfe40d1828d5bba5dd79c38c6",
                 "shasum": ""
             },
             "require": {
@@ -10506,7 +10506,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-02T13:14:53+00:00"
+            "time": "2020-09-19T21:19:38+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -11065,24 +11065,25 @@
         },
         {
             "name": "sabre/event",
-            "version": "5.1.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabre-io/event.git",
-                "reference": "d00a17507af0e7544cfe17096372f5d733e3b276"
+                "reference": "a37c73e535ddab02bd892f4bdab4867f9778cbea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/event/zipball/d00a17507af0e7544cfe17096372f5d733e3b276",
-                "reference": "d00a17507af0e7544cfe17096372f5d733e3b276",
+                "url": "https://api.github.com/repos/sabre-io/event/zipball/a37c73e535ddab02bd892f4bdab4867f9778cbea",
+                "reference": "a37c73e535ddab02bd892f4bdab4867f9778cbea",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.1|^8.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.16.1",
-                "phpunit/phpunit": "^7 || ^8"
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.0"
             },
             "type": "library",
             "autoload": {
@@ -11121,7 +11122,7 @@
                 "reactor",
                 "signal"
             ],
-            "time": "2020-01-31T18:52:29+00:00"
+            "time": "2020-09-19T20:29:54+00:00"
         },
         {
             "name": "scrivo/highlight.php",
