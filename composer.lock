@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aca68d0a2f2e8a274654659eecf83b9",
+    "content-hash": "692f16a735a92fba15af2d4bcb5c1fb1",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -1744,16 +1744,16 @@
         },
         {
             "name": "jeffbeltran/sanctum-tokens",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JeffBeltran/sanctum-tokens.git",
-                "reference": "0144d0b03edafb0cbc443a2b5c9220107159d0ad"
+                "reference": "1a6206cf20ee66b83bffba618c0044ea0b6461c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/0144d0b03edafb0cbc443a2b5c9220107159d0ad",
-                "reference": "0144d0b03edafb0cbc443a2b5c9220107159d0ad",
+                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/1a6206cf20ee66b83bffba618c0044ea0b6461c0",
+                "reference": "1a6206cf20ee66b83bffba618c0044ea0b6461c0",
                 "shasum": ""
             },
             "require": {
@@ -1781,7 +1781,7 @@
                 "laravel",
                 "nova"
             ],
-            "time": "2020-09-01T04:18:02+00:00"
+            "time": "2020-09-19T12:29:38+00:00"
         },
         {
             "name": "laravel/framework",
