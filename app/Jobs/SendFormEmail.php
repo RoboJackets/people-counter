@@ -39,7 +39,7 @@ class SendFormEmail implements ShouldQueue
     private \App\Visit $visit;
 
     /**
-     * Create a new job instance
+     * Create a new job instance.
      *
      * @param App\User $user The user
      * @param App\Visit $visit The visit that triggered this notification
@@ -73,8 +73,8 @@ class SendFormEmail implements ShouldQueue
             [
                 'base_uri' => config('apiary.server'),
                 'headers' => [
-                    'User-Agent' => 'People Counter on ' . config('app.url'),
-                    'Authorization' => 'Bearer ' . config('apiary.token'),
+                    'User-Agent' => 'People Counter on '.config('app.url'),
+                    'Authorization' => 'Bearer '.config('apiary.token'),
                     'Accept' => 'application/json',
                 ],
                 'allow_redirects' => false,
@@ -96,7 +96,7 @@ class SendFormEmail implements ShouldQueue
 
         if (200 !== $response->getStatusCode()) {
             throw new Exception(
-                'Apiary returned an unexpected HTTP response code ' . $response->getStatusCode() . ', expected 200'
+                'Apiary returned an unexpected HTTP response code '.$response->getStatusCode().', expected 200'
             );
         }
 
@@ -106,11 +106,11 @@ class SendFormEmail implements ShouldQueue
 
         if ('success' !== $json->status) {
             throw new Exception(
-                'Apiary returned an unexpected response ' . $responseBody . ', expected status: success'
+                'Apiary returned an unexpected response '.$responseBody.', expected status: success'
             );
         }
 
-        Log::info(self::class . ': Successfully queued for ' . $this->uid);
+        Log::info(self::class.': Successfully queued for '.$this->uid);
     }
 
     /**
@@ -120,6 +120,6 @@ class SendFormEmail implements ShouldQueue
      */
     public function tags(): array
     {
-        return ['user:' . $this->uid];
+        return ['user:'.$this->uid];
     }
 }
