@@ -60,7 +60,7 @@ class SendFormEmail implements ShouldQueue
     public function handle(): void
     {
         // Any more recent visits? If there are, don't do anything and let the last of the day trigger the email.
-        $visits = $user->visits()->where('created_at', '>', $this->visit->created_at)->count();
+        $visits = $user->visits()->where('in_time', '>', $this->visit->out_time)->count();
 
         if (0 !== $visits) {
             Log::info('Not sending an email to '.$user->username.' for visit '.$this->visit->id.' as there is a more '.
