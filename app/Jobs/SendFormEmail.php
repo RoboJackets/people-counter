@@ -26,16 +26,22 @@ class SendFormEmail implements ShouldQueue
 
     /**
      * The number of attempts for this job.
+     *
+     * @var int
      */
-    public int $tries = 1;
+    public $tries = 1;
 
     /**
      * The user that will be sent the email.
+     *
+     * @var \App\User
      */
     private $user;
 
     /**
      * The visit that will be sent the email.
+     *
+     * @var \App\Visit
      */
     private $visit;
 
@@ -45,7 +51,8 @@ class SendFormEmail implements ShouldQueue
      * @param \App\User $user The user
      * @param \App\Visit $visit The visit that triggered this notification
      */
-    protected function __construct(User $user, Visit $visit) {
+    protected function __construct(User $user, Visit $visit)
+    {
         $this->user = $user;
         $this->visit = $visit;
     }
@@ -61,7 +68,10 @@ class SendFormEmail implements ShouldQueue
         $visits = $this->user->visits()->where('in_time', '>', $this->visit->out_time)->count();
 
         if (0 !== $visits) {
-            Log::info('Not sending an email to '.$this->user->username.' for visit '.$this->visit->id.' as there is a more recent visit.');
+            Log::info(
+                'Not sending an email to '.$this->user->username.' for visit '.$this->visit->id.' as there is a more '.
+                .'recent visit.'
+            );
 
             return;
         }
