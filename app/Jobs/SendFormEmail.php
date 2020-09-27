@@ -70,7 +70,7 @@ class SendFormEmail implements ShouldQueue
         if (0 !== $visits) {
             Log::info(
                 'Not sending an email to '.$this->user->username.' for visit '.$this->visit->id.' as there is a more '.
-                .'recent visit.'
+                'recent visit.'
             );
 
             return;
