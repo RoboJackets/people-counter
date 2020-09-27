@@ -17,7 +17,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class SendFormEmail implements ShouldQueue
+class SendSignOutReminderEmail implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
