@@ -48,7 +48,10 @@
         "optimize-autoloader": true,
         "classmap-authoritative": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.2.5"
+        }
     },
     "extra": {
         "laravel": {
@@ -82,14 +85,14 @@
             "@php artisan key:generate --ansi"
         ]
     },
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "https://composer.robojackets.org"
-		},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.robojackets.org"
+        },
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
         }
-	]
+    ]
 }
