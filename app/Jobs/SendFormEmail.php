@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-// phpcs:disable Squiz.WhiteSpace.OperatorSpacing.SpacingBefore
+// phpcs:disable Squiz.WhiteSpace.OperatorSpacing.SpacingBefore,Generic.Strings.UnnecessaryStringConcat.Found
 
 namespace App\Jobs;
 
