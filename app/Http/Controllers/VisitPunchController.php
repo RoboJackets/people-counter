@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Events\Punch;
 use App\Http\Requests\StoreVisitPunch;
 use App\Jobs\SendFormEmail;
+use App\Jobs\SendSignOutReminderEmail;
 use App\Space;
 use App\Traits\CreateOrUpdateUserFromBuzzAPI;
 use App\User;
@@ -162,6 +163,8 @@ class VisitPunchController extends Controller
 
         //Notify all kiosks via websockets
         event(new Punch());
+
+        SendSignOutReminderEmail::dispatch($user, $visit)->delay(now()->addHours(8));
 
         return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name], 201);
     }
