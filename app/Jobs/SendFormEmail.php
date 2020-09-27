@@ -9,6 +9,7 @@ namespace App\Jobs;
 use App\User;
 use App\Visit;
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -31,23 +32,20 @@ class SendFormEmail implements ShouldQueue
     /**
      * The user that will be sent the email.
      */
-    private \App\User $user;
+    private $user;
 
     /**
      * The visit that will be sent the email.
      */
-    private \App\Visit $visit;
+    private $visit;
 
     /**
      * Create a new job instance.
      *
-     * @param App\User $user The user
-     * @param App\Visit $visit The visit that triggered this notification
+     * @param \App\User $user The user
+     * @param \App\Visit $visit The visit that triggered this notification
      */
-    protected function __construct(
-        User $user,
-        Visit $visit
-    ) {
+    protected function __construct(User $user, Visit $visit) {
         $this->user = $user;
         $this->visit = $visit;
     }
@@ -60,11 +58,10 @@ class SendFormEmail implements ShouldQueue
     public function handle(): void
     {
         // Any more recent visits? If there are, don't do anything and let the last of the day trigger the email.
-        $visits = $user->visits()->where('in_time', '>', $this->visit->out_time)->count();
+        $visits = $this->user->visits()->where('in_time', '>', $this->visit->out_time)->count();
 
         if (0 !== $visits) {
-            Log::info('Not sending an email to '.$user->username.' for visit '.$this->visit->id.' as there is a more '.
-                'recent visit.');
+            Log::info('Not sending an email to '.$this->user->username.' for visit '.$this->visit->id.' as there is a more recent visit.');
 
             return;
         }
@@ -81,7 +78,7 @@ class SendFormEmail implements ShouldQueue
             ]
         );
 
-        $response = Apiary::client()->post(
+        $response = $client->post(
             '/api/v1/notification/manual',
             [
                 'json' => [
@@ -110,7 +107,7 @@ class SendFormEmail implements ShouldQueue
             );
         }
 
-        Log::info(self::class.': Successfully queued for '.$this->uid);
+        Log::info(self::class.': Successfully queued PPE form email for '.$this->user->username);
     }
 
     /**
@@ -120,6 +117,6 @@ class SendFormEmail implements ShouldQueue
      */
     public function tags(): array
     {
-        return ['user:'.$this->uid];
+        return ['user:'.$this->user->username];
     }
 }
