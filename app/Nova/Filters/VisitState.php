@@ -21,7 +21,7 @@ class VisitState extends BooleanFilter
      *
      * @param \Illuminate\Http\Request  $request
      * @param \Illuminate\Database\Eloquent\Builder  $query
-     * @param mixed $value
+     * @param array $value
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

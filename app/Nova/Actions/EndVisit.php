@@ -25,13 +25,13 @@ class EndVisit extends DestructiveAction
      * @param \Laravel\Nova\Fields\ActionFields  $fields
      * @param \Illuminate\Support\Collection  $models
      *
-     * @return array|string[]
+     * @return array<string>
      */
     public function handle(ActionFields $fields, Collection $models)
     {
         $failures = [];
         foreach ($models as $model) {
-            if ($model->out_time === null) {
+            if (null === $model->out_time) {
                 $model->out_time = Carbon::now();
                 $model->out_door = 'admin';
                 $model->save();
