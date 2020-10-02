@@ -57,7 +57,7 @@ class EndVisit extends DestructiveAction
     /**
      * Get the fields available on the action.
      *
-     * @return array
+     * @return array<\Laravel\Nova\Fields\Field>
      */
     public function fields()
     {
