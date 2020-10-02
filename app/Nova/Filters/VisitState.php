@@ -20,10 +20,11 @@ class VisitState extends BooleanFilter
     /**
      * Apply the filter to the given query.
      *
-     * @param Request  $request
-     * @param Builder  $query
-     * @param mixed  $value
-     * @return Builder
+     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Database\Eloquent\Builder  $query
+     * @param mixed $value
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function apply(Request $request, $query, $value)
     {
@@ -33,7 +34,8 @@ class VisitState extends BooleanFilter
     /**
      * Get the filter's available options.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array<string,string>
      */
     public function options(Request $request): array
