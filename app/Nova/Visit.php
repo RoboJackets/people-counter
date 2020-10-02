@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-use App\Nova\Filters\VisitState;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -102,6 +101,8 @@ class Visit extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new Actions\EndVisit(),
+        ];
     }
 }
