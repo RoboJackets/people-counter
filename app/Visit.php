@@ -66,6 +66,18 @@ class Visit extends Model
     }
 
     /**
+     * Inactive Visits (In and Out).
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeInactive(Builder $query): Builder
+    {
+        return $query->whereNotNull('in_time')->whereNotNull('out_time');
+    }
+
+    /**
      * Active Visits for a given user via GTID.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
