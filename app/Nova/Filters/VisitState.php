@@ -21,13 +21,13 @@ class VisitState extends BooleanFilter
      *
      * @param \Illuminate\Http\Request  $request
      * @param \Illuminate\Database\Eloquent\Builder  $query
-     * @param $value
+     * @param array<bool> $value
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function apply(Request $request, $query, $value)
     {
-        return true == $value['active'] ? $query->active() : $query->inactive();
+        return true === $value['active'] ? $query->active() : $query->inactive();
     }
 
     /**
