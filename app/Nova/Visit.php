@@ -75,7 +75,9 @@ class Visit extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Filters\VisitState(),
+        ];
     }
 
     /**
@@ -99,6 +101,8 @@ class Visit extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new Actions\EndVisit(),
+        ];
     }
 }
