@@ -29,7 +29,7 @@ class EndVisit extends DestructiveAction
         foreach ($models as $model) {
             if ($model->out_time === null) {
                 $model->out_time = Carbon::now();
-                $model->out_door = "admin";
+                $model->out_door = 'admin';
                 $model->save();
             } else {
                 $this->markAsFailed($model, 'Already ended');
