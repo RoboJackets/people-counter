@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5fcfc2b8e1bde77e1e72933cb5d016d",
+    "content-hash": "e922321feb959d789f008c585791f462",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -9182,16 +9182,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.7",
+            "version": "2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "b364db8860a63c1fb58b72b9718863c21df08762"
+                "reference": "e8fed9c382cd1d02b5606688576a35619afdf82c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/b364db8860a63c1fb58b72b9718863c21df08762",
-                "reference": "b364db8860a63c1fb58b72b9718863c21df08762",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/e8fed9c382cd1d02b5606688576a35619afdf82c",
+                "reference": "e8fed9c382cd1d02b5606688576a35619afdf82c",
                 "shasum": ""
             },
             "require": {
@@ -9250,7 +9250,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-09-06T19:26:27+00:00"
+            "time": "2020-10-01T23:01:14+00:00"
         },
         {
             "name": "felixfbecker/advanced-json-rpc",
@@ -10531,16 +10531,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.47",
+            "version": "0.12.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "74325a6ae15378db0df71b969ded245378d2e058"
+                "reference": "d364cfbac9ffd869570cdfea7eaa6541c3dac666"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/74325a6ae15378db0df71b969ded245378d2e058",
-                "reference": "74325a6ae15378db0df71b969ded245378d2e058",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d364cfbac9ffd869570cdfea7eaa6541c3dac666",
+                "reference": "d364cfbac9ffd869570cdfea7eaa6541c3dac666",
                 "shasum": ""
             },
             "require": {
@@ -10583,7 +10583,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-29T13:35:39+00:00"
+            "time": "2020-10-01T13:20:16+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
