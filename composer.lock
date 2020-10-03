@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e922321feb959d789f008c585791f462",
+    "content-hash": "8f28379f1444c66cb29f71c3bd009b39",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -5275,27 +5275,27 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "2.8.2",
+            "version": "2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "2737b2298e8bfeb632a80013646943307bf31775"
+                "reference": "377cdd397a0d424146c39b92a36a851f95587842"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/2737b2298e8bfeb632a80013646943307bf31775",
-                "reference": "2737b2298e8bfeb632a80013646943307bf31775",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/377cdd397a0d424146c39b92a36a851f95587842",
+                "reference": "377cdd397a0d424146c39b92a36a851f95587842",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
                 "php": "^7.1"
             },
             "require-dev": {
                 "ext-json": "*",
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0",
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0|^6.0",
                 "phpunit/phpunit": "^7.0|^8.0|^9.0"
             },
             "type": "library",
@@ -5335,7 +5335,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-05-25T09:36:37+00:00"
+            "time": "2020-09-08T22:41:35+00:00"
         },
         {
             "name": "spatie/once",
