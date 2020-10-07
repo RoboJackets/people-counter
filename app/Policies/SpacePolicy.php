@@ -43,7 +43,7 @@ class SpacePolicy
      */
     public function view(User $user, Space $space)
     {
-        return $user->can('manage-spaces');
+        return $user->can('manage-spaces') || $user->can('read-spaces');
     }
 
     /**

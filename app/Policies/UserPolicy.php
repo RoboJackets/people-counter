@@ -32,7 +32,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('manage-users');
+        return $user->can('manage-users') || $user->can('read-users');
     }
 
     /**
@@ -42,7 +42,7 @@ class UserPolicy
      */
     public function view(User $requesting_user, User $target_user)
     {
-        if ($requesting_user->can('manage-users')) {
+        if ($requesting_user->can('manage-users') || $requesting_user->can('read-users')) {
             return true;
         }
 
