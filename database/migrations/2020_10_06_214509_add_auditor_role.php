@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -15,7 +17,7 @@ class AddAuditorRole extends Migration
         'read-spaces',
         'read-users',
         'read-visits',
-        'access-nova'
+        'access-nova',
     ];
 
     /**

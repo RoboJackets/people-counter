@@ -14,7 +14,7 @@ class AddReadOnlyPermissions extends Migration
      */
     public $allPermissions = [
         'read-spaces',
-        'read-users'
+        'read-users',
     ];
 
     /**
