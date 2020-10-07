@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84567fda0c8afae6457e9e9fabbedbec",
+    "content-hash": "2c5158025d22e8966d09edab0a7ad77c",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -2017,17 +2017,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "v3.11.1",
+            "version": "v3.12.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "57c67c5da3bfc9e499a81b288ab47919bfb14b4c"
+                "reference": "196b229cf6c07f889d344db9fb255496ea61c738"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-57c67c5da3bfc9e499a81b288ab47919bfb14b4c-zip-a2ec0b.zip",
-                "reference": "57c67c5da3bfc9e499a81b288ab47919bfb14b4c",
-                "shasum": "105f97de110ea795d9ec643252cd27fbc893c93e"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-196b229cf6c07f889d344db9fb255496ea61c738-zip-924cae.zip",
+                "reference": "196b229cf6c07f889d344db9fb255496ea61c738",
+                "shasum": "73fedbd73c064089eb8a8a84a492b014a5bf9aed"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2088,7 +2088,7 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2020-09-29T20:34:45+00:00"
+            "time": "2020-10-06T17:10:54+00:00"
         },
         {
             "name": "laravel/sanctum",
