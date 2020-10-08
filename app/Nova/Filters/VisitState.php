@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+// phpcs:disable Squiz.WhiteSpace.OperatorSpacing.SpacingAfter
+
 namespace App\Nova\Filters;
 
 use Illuminate\Http\Request;
@@ -24,6 +26,8 @@ class VisitState extends BooleanFilter
      * @param array<bool> $value
      *
      * @return \Illuminate\Database\Eloquent\Builder
+     *
+     * @suppress PhanTypePossiblyInvalidDimOffset
      */
     public function apply(Request $request, $query, $value)
     {
