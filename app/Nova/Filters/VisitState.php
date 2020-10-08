@@ -27,7 +27,7 @@ class VisitState extends BooleanFilter
      */
     public function apply(Request $request, $query, $value)
     {
-        return true === $value['active'] ? $query->active() : $query->inactive();
+        return true === $value['active'] ? $query->active() : true === $value['inactive'] ? $query->inactive() : $query;
     }
 
     /**
