@@ -102,7 +102,9 @@ class Visit extends Resource
     public function actions(Request $request)
     {
         return [
-            new Actions\EndVisit(),
+            (new Actions\EndVisit())->canRun(static function (Request $request): bool {
+                return $request->user()->hasRole('super-admin');
+            }),
         ];
     }
 }
