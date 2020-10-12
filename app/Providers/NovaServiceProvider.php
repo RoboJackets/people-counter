@@ -11,10 +11,12 @@ use App\Nova\Cards\MakeAWish;
 use App\Nova\Metrics\VisitsBySpace;
 use App\Nova\Metrics\VisitsPerDay;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Vyuldashev\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -90,7 +92,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            (new NovaPermissionTool())->canSee(static function (Request $request): bool {
+                return $request->user()->hasRole('super-admin');
+            }),
         ];
     }
 }
