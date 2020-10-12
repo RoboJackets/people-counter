@@ -126,7 +126,13 @@ class Space extends Resource
                 ->confirmText('Are you sure you want to activate this browser as a kiosk?')
                 ->confirmButtonText('Activate')
                 ->cancelButtonText("Don't activate")
-                ->onlyOnDetail(),
+                ->onlyOnDetail()
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->hasRole('super-admin');
+                })
+                ->canRun(static function (Request $request): bool {
+                    return $request->user()->hasRole('super-admin');
+                }),
         ];
     }
 }
