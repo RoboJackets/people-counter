@@ -97,7 +97,9 @@ class User extends Resource
                     return $request->user()->hasRole('super-admin');
                 }),
 
-            SanctumTokens::make(),
+            SanctumTokens::make()->canSee(static function (Request $request): bool {
+                return $request->user()->hasRole('super-admin');
+            }),
         ];
     }
 
