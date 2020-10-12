@@ -107,8 +107,8 @@ class Visit extends Resource
                     return $request->user()->hasRole('super-admin');
                 })
                 ->canRun(static function (Request $request): bool {
-                return $request->user()->hasRole('super-admin');
-            }),
+                    return $request->user()->hasRole('super-admin');
+                }),
         ];
     }
 }

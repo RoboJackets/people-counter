@@ -6,9 +6,7 @@ namespace App\Policies;
 
 use App\Space;
 use App\User;
-use App\Visit;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Log;
 
 class SpacePolicy
 {
