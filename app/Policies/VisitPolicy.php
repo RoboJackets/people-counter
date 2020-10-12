@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Space;
 use App\User;
 use App\Visit;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Log;
 
 class VisitPolicy
 {
@@ -86,5 +88,53 @@ class VisitPolicy
         }
 
         return $user->can('delete-visits-own') && $user->id === $visit->user->id;
+    }
+
+    /**
+     * Determine whether the user can detach a space to a visit.
+     * @param \App\User $user
+     * @param \App\Visit $visit
+     *
+     * @return bool
+     */
+    public function attachAnySpace(User $user, Visit $visit)
+    {
+        return $user->can('update-visits');
+    }
+
+    /**
+     * Determine whether the user can detach a space to a visit.
+     * @param \App\User $user
+     * @param \App\Visit $visit
+     *
+     * @return bool
+     */
+    public function detachAnySpace(User $user, Visit $visit)
+    {
+        return $user->can('update-visits');
+    }
+
+    /**
+     * Determine whether the user can detach a user to a visit.
+     * @param \App\User $user
+     * @param \App\Visit $visit
+     *
+     * @return bool
+     */
+    public function attachAntUser(User $user, Visit $visit)
+    {
+        return $user->can('update-visits');
+    }
+
+    /**
+     * Determine whether the user can detach a user to a visit.
+     * @param \App\User $user
+     * @param \App\Visit $visit
+     *
+     * @return bool
+     */
+    public function detachAnyUser(User $user, Visit $visit)
+    {
+        return $user->can('update-visits');
     }
 }

@@ -6,7 +6,9 @@ namespace App\Policies;
 
 use App\Space;
 use App\User;
+use App\Visit;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Log;
 
 class SpacePolicy
 {
@@ -72,6 +74,54 @@ class SpacePolicy
      * @return bool
      */
     public function delete(User $user)
+    {
+        return $user->can('manage-spaces');
+    }
+
+    /**
+     * Determine whether the user can detach a visit to a space.
+     * @param \App\User $user
+     * @param \App\Space $space
+     *
+     * @return bool
+     */
+    public function attachAnyVisit(User $user, Space $space)
+    {
+        return $user->can('update-visits');
+    }
+
+    /**
+     * Determine whether the user can detach a visit to a space.
+     * @param \App\User $user
+     * @param \App\Space $space
+     *
+     * @return bool
+     */
+    public function detachAnyVisit(User $user, Space $space)
+    {
+        return $user->can('update-visits');
+    }
+
+    /**
+     * Determine whether the user can detach a user to a space.
+     * @param \App\User $user
+     * @param \App\Space $space
+     *
+     * @return bool
+     */
+    public function attachAnyUser(User $user, Space $space)
+    {
+        return $user->can('manage-spaces');
+    }
+
+    /**
+     * Determine whether the user can detach a user to a space.
+     * @param \App\User $user
+     * @param \App\Space $space
+     *
+     * @return bool
+     */
+    public function detachAnyUser(User $user, Space $space)
     {
         return $user->can('manage-spaces');
     }

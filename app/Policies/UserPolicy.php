@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Space;
 use App\User;
+use App\Visit;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Log;
 
 class UserPolicy
 {
@@ -66,11 +69,7 @@ class UserPolicy
      */
     public function update(User $requesting_user, User $target_user)
     {
-        if ($requesting_user->can('manage-users')) {
-            return true;
-        }
-
-        return $requesting_user->id === $target_user->id;
+        return $requesting_user->can('manage-users');
     }
 
     /**
@@ -81,5 +80,29 @@ class UserPolicy
     public function delete(User $requesting_user)
     {
         return $requesting_user->can('manage-users');
+    }
+
+    /**
+     * Determine whether the user can detach a space to a user.
+     * @param \App\User $requestingUser
+     * @param \App\User $targetUser
+     *
+     * @return bool
+     */
+    public function attachAnySpace(User $requestingUser, User $targetUser)
+    {
+        return $requestingUser->can('update-visits');
+    }
+
+    /**
+     * Determine whether the user can detach a space to a user.
+     * @param \App\User $requestingUser
+     * @param \App\User $targetUser
+     *
+     * @return bool
+     */
+    public function detachAnySpace(User $requestingUser, User $targetUser)
+    {
+        return $requestingUser->can('update-visits');
     }
 }
