@@ -81,6 +81,7 @@ class UserPolicy
 
     /**
      * Determine whether the user can detach a space to a user.
+     *
      * @param \App\User $requestingUser
      * @param \App\User $targetUser
      *
@@ -93,6 +94,7 @@ class UserPolicy
 
     /**
      * Determine whether the user can detach a space to a user.
+     *
      * @param \App\User $requestingUser
      * @param \App\User $targetUser
      *

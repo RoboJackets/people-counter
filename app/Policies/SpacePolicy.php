@@ -78,6 +78,7 @@ class SpacePolicy
 
     /**
      * Determine whether the user can detach a visit to a space.
+     *
      * @param \App\User $user
      * @param \App\Space $space
      *
@@ -90,6 +91,7 @@ class SpacePolicy
 
     /**
      * Determine whether the user can detach a visit to a space.
+     *
      * @param \App\User $user
      * @param \App\Space $space
      *
@@ -102,6 +104,7 @@ class SpacePolicy
 
     /**
      * Determine whether the user can detach a user to a space.
+     *
      * @param \App\User $user
      * @param \App\Space $space
      *
@@ -114,6 +117,7 @@ class SpacePolicy
 
     /**
      * Determine whether the user can detach a user to a space.
+     *
      * @param \App\User $user
      * @param \App\Space $space
      *
