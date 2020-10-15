@@ -119,7 +119,7 @@ class VisitPolicy
      *
      * @return bool
      */
-    public function attachAntUser(User $user, Visit $visit)
+    public function attachAnyUser(User $user, Visit $visit)
     {
         return $user->can('update-visits');
     }
