@@ -90,6 +90,7 @@ class VisitPolicy
 
     /**
      * Determine whether the user can detach a space to a visit.
+     *
      * @param \App\User $user
      * @param \App\Visit $visit
      *
@@ -102,6 +103,7 @@ class VisitPolicy
 
     /**
      * Determine whether the user can detach a space to a visit.
+     *
      * @param \App\User $user
      * @param \App\Visit $visit
      *
@@ -114,6 +116,7 @@ class VisitPolicy
 
     /**
      * Determine whether the user can detach a user to a visit.
+     *
      * @param \App\User $user
      * @param \App\Visit $visit
      *
@@ -126,6 +129,7 @@ class VisitPolicy
 
     /**
      * Determine whether the user can detach a user to a visit.
+     *
      * @param \App\User $user
      * @param \App\Visit $visit
      *
