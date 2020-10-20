@@ -11,7 +11,7 @@
         "php": "^7.2.5",
         "beyondcode/laravel-websockets": "1.9.0",
         "bugsnag/bugsnag-laravel": "2.20.1",
-        "doctrine/dbal": "2.10.3",
+        "doctrine/dbal": "2.11.2",
         "fideloper/proxy": "4.4.0",
         "fruitcake/laravel-cors": "1.0.6",
         "guzzlehttp/guzzle": "6.5.5",
