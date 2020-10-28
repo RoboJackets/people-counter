@@ -18,7 +18,7 @@
         "jeffbeltran/sanctum-tokens": "1.3.1",
         "laravel/framework": "7.28.4",
         "laravel/horizon": "4.3.5",
-        "laravel/nova": "3.13.0",
+        "laravel/nova": "3.14.0",
         "laravel/sanctum": "2.7.0",
         "laravel/tinker": "2.4.2",
         "maatwebsite/excel": "3.1.23",
@@ -90,11 +90,13 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://composer.robojackets.org"
+            "url": "https://nova.laravel.com",
+            "only": ["laravel/nova"]
         },
         {
             "type": "composer",
-            "url": "https://nova.laravel.com"
+            "url": "https://composer.robojackets.org",
+            "only": ["robojackets/*", "oitnetworkservices/*"]
         }
     ]
 }
