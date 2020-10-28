@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8da069e66c8536e673c5f27cfdf5a16f",
+    "content-hash": "d82e6d04b55861cc2d4d5b364fbbd818",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -3272,17 +3272,17 @@
         },
         {
             "name": "oitnetworkservices/buzzapiclient",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient.git",
-                "reference": "f8214e9146b5cc3730e60b29023173e86e2b1aa5"
+                "reference": "fbe7a97c8f7ce2eb11ebc4c7c4e130ad9fbd031d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/dist/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-f8214e9146b5cc3730e60b29023173e86e2b1aa5-zip-2da4f8.zip",
-                "reference": "f8214e9146b5cc3730e60b29023173e86e2b1aa5",
-                "shasum": "321e03f41017a3778b9c50f37e11921f4eba9c2b"
+                "url": "https://composer.robojackets.org/dist/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-fbe7a97c8f7ce2eb11ebc4c7c4e130ad9fbd031d-zip-43a8aa.zip",
+                "reference": "fbe7a97c8f7ce2eb11ebc4c7c4e130ad9fbd031d",
+                "shasum": "b00e836141327eb4668f670fe3d386dfac77b534"
             },
             "require": {
                 "ext-json": "*",
@@ -3294,7 +3294,11 @@
                 "phpstan/phpstan": "^0.11.12",
                 "psy/psysh": "@stable",
                 "slevomat/coding-standard": "^5.0",
-                "squizlabs/php_codesniffer": "^3.4"
+                "squizlabs/php_codesniffer": "^3.4",
+                "ukfast/laravel-health-check": "^1.7"
+            },
+            "suggest": {
+                "ukfast/laravel-health-check": "For monitoring connectivity to BuzzAPI"
             },
             "type": "library",
             "extra": {
@@ -3322,10 +3326,10 @@
             ],
             "description": "BuzzAPI Client Library",
             "support": {
-                "source": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient/tree/0.1.1",
+                "source": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient/tree/0.1.2",
                 "issues": "https://github.gatech.edu/OIT-NetworkServices/BuzzAPIClient/issues"
             },
-            "time": "2020-03-19T17:46:03+00:00"
+            "time": "2020-10-28T16:22:23+00:00"
         },
         {
             "name": "opis/closure",
@@ -5381,7 +5385,7 @@
                 "type": "zip",
                 "url": "https://composer.robojackets.org/dist/robojackets/error-pages/robojackets-error-pages-22e01ddd8df96f297407095be5cd74480aa10469-zip-4a4769.zip",
                 "reference": "22e01ddd8df96f297407095be5cd74480aa10469",
-                "shasum": "c81824cd2db1fa30226d1bb913d617df51a58572"
+                "shasum": "b0e7ab6bc2627f36d3293cdf9e384de418d3958e"
             },
             "require": {
                 "twig/twig": "^2.0"
@@ -5430,7 +5434,7 @@
                 "type": "zip",
                 "url": "https://composer.robojackets.org/dist/robojackets/network-check/robojackets-network-check-2fed18379f699e0e215b999b8c59c8dda5d7d00c-zip-2a429c.zip",
                 "reference": "2fed18379f699e0e215b999b8c59c8dda5d7d00c",
-                "shasum": "10b48d02de38a6282ddb57065e7b305b6b9d0851"
+                "shasum": "2cf40d926408d8fda4281702f10224d75a1c8ba9"
             },
             "type": "library",
             "autoload": {
@@ -9141,16 +9145,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "74e8c71026edba786290047199619ac6b6490094"
+                "reference": "f7eebdd092873f5d63929f21183e69ec9f5e83cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/74e8c71026edba786290047199619ac6b6490094",
-                "reference": "74e8c71026edba786290047199619ac6b6490094",
+                "url": "https://api.github.com/repos/composer/composer/zipball/f7eebdd092873f5d63929f21183e69ec9f5e83cd",
+                "reference": "f7eebdd092873f5d63929f21183e69ec9f5e83cd",
                 "shasum": ""
             },
             "require": {
@@ -9218,7 +9222,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.0.2"
+                "source": "https://github.com/composer/composer/tree/2.0.3"
             },
             "funding": [
                 {
@@ -9234,7 +9238,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-25T22:03:59+00:00"
+            "time": "2020-10-28T14:50:56+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -11811,7 +11815,7 @@
                 "type": "zip",
                 "url": "https://composer.robojackets.org/dist/robojackets/static-analysis/robojackets-static-analysis-c2bb4f016bab81c4a59b008f876e066b74facb9d-zip-5370fe.zip",
                 "reference": "c2bb4f016bab81c4a59b008f876e066b74facb9d",
-                "shasum": "50d16c13ccad493ac5cd81c6f1204ae5c0ab9228"
+                "shasum": "7cb0493564d5379fb6d6aa858ffec27eab92d369"
             },
             "require": {
                 "phan/phan": "*",
