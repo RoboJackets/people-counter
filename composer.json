@@ -90,11 +90,13 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://composer.robojackets.org"
+            "url": "https://nova.laravel.com",
+            "only": ["laravel/nova"]
         },
         {
             "type": "composer",
-            "url": "https://nova.laravel.com"
+            "url": "https://composer.robojackets.org",
+            "only": ["robojackets/*", "oitnetworkservices/*"]
         }
     ]
 }
