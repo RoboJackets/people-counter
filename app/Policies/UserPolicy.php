@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Space;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -11,12 +12,7 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Override for Super Admin to authorize all actions automatically.
-     *
-     * @return bool|null
-     */
-    public function before(?User $user)
+    public function before(?User $user): ?bool
     {
         if ($user instanceof User) {
             return $user->isSuperAdmin() ? true : null;
@@ -25,22 +21,12 @@ class UserPolicy
         return null;
     }
 
-    /**
-     * Determine whether the user can view any users.
-     *
-     * @return bool
-     */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('manage-users') || $user->can('read-users');
     }
 
-    /**
-     * Determine whether the user can view the user.
-     *
-     * @return bool
-     */
-    public function view(User $requesting_user, User $target_user)
+    public function view(User $requesting_user, User $target_user): bool
     {
         if ($requesting_user->can('manage-users') || $requesting_user->can('read-users')) {
             return true;
@@ -49,59 +35,33 @@ class UserPolicy
         return $requesting_user->id === $target_user->id;
     }
 
-    /**
-     * Determine whether the user can create users.
-     *
-     * @return bool
-     */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('manage-users');
     }
 
-    /**
-     * Determine whether the user can update the user.
-     *
-     * @return bool
-     */
-    public function update(User $requesting_user, User $target_user)
+    public function update(User $requesting_user, User $target_user): bool
     {
         return $requesting_user->can('manage-users');
     }
 
-    /**
-     * Determine whether the user can delete the user.
-     *
-     * @return bool
-     */
-    public function delete(User $requesting_user)
+    public function delete(User $requesting_user): bool
     {
         return $requesting_user->can('manage-users');
     }
 
-    /**
-     * Determine whether the user can detach a space to a user.
-     *
-     * @param \App\User $requestingUser
-     * @param \App\User $targetUser
-     *
-     * @return bool
-     */
-    public function attachAnySpace(User $requestingUser, User $targetUser)
+    public function attachAnySpace(User $requestingUser, User $targetUser): bool
     {
-        return $requestingUser->can('update-visits');
+        return $requestingUser->can('manage-spaces');
     }
 
-    /**
-     * Determine whether the user can detach a space to a user.
-     *
-     * @param \App\User $requestingUser
-     * @param \App\User $targetUser
-     *
-     * @return bool
-     */
-    public function detachAnySpace(User $requestingUser, User $targetUser)
+    public function detachAnySpace(User $requestingUser, User $targetUser): bool
     {
-        return $requestingUser->can('update-visits');
+        return $requestingUser->can('manage-spaces');
+    }
+
+    public function detachSpace(User $requestingUser, User $targetUser, Space $space): bool
+    {
+        return $this->detachAnySpace($requestingUser, $targetUser);
     }
 }

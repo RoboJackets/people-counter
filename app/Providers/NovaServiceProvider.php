@@ -27,7 +27,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
         Nova::serving(static function (ServingNova $event): void {
-            Nova::script('people-counter-custom', __DIR__.'/../../public/js/nova.js');
+            Nova::script('people-counter-custom', asset('js/nova.js'));
         });
     }
 
@@ -36,7 +36,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      *
      * @return void
      */
-    protected function routes()
+    protected function routes(): void
     {
         Nova::routes()->withAuthenticationRoutes()->withPasswordResetRoutes()->register();
     }
@@ -47,14 +47,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      * This gate determines who can access Nova in non-local environments.
      *
      * @return void
-     *
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    protected function gate()
+    protected function gate(): void
     {
-        // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
-        // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
-
         Gate::define('viewNova', static function (User $user): bool {
             return $user->hasRole('super-admin') || $user->can('access-nova');
         });
@@ -65,7 +60,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      *
      * @return array<\Laravel\Nova\Card>
      */
-    protected function cards()
+    protected function cards(): array
     {
         return [
             new VisitsPerDay(),
@@ -79,7 +74,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      *
      * @return array<\Laravel\Nova\Dashboard>
      */
-    protected function dashboards()
+    protected function dashboards(): array
     {
         return [];
     }
@@ -89,7 +84,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      *
      * @return array<\Laravel\Nova\Tool>
      */
-    public function tools()
+    public function tools(): array
     {
         return [
             (new NovaPermissionTool())->canSee(static function (Request $request): bool {

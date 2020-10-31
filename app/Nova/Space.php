@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Saumini\Count\RelationshipCount;
 
 class Space extends Resource
@@ -45,7 +46,7 @@ class Space extends Resource
      *
      * @return array<\Laravel\Nova\Fields\Field>
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             Text::make('Name')
@@ -83,7 +84,7 @@ class Space extends Resource
      *
      * @return array<\Laravel\Nova\Card>
      */
-    public function cards(Request $request)
+    public function cards(Request $request): array
     {
         return [];
     }
@@ -95,7 +96,7 @@ class Space extends Resource
      *
      * @return array<\Laravel\Nova\Filters\Filter>
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [];
     }
@@ -107,7 +108,7 @@ class Space extends Resource
      *
      * @return array<\Laravel\Nova\Lenses\Lens>
      */
-    public function lenses(Request $request)
+    public function lenses(Request $request): array
     {
         return [];
     }
@@ -119,7 +120,7 @@ class Space extends Resource
      *
      * @return array<\Laravel\Nova\Actions\Action>
      */
-    public function actions(Request $request)
+    public function actions(Request $request): array
     {
         return [
             (new ActivateKiosk())
@@ -134,5 +135,10 @@ class Space extends Resource
                     return $request->user()->hasRole('super-admin');
                 }),
         ];
+    }
+
+    public function authorizedToUpdateForSerialization(NovaRequest $request): bool
+    {
+        return $request->user()->can('manage-spaces');
     }
 }

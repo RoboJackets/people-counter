@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -110,7 +111,7 @@ class User extends Resource
      *
      * @return array<\Laravel\Nova\Card>
      */
-    public function cards(Request $request)
+    public function cards(Request $request): array
     {
         return [];
     }
@@ -122,7 +123,7 @@ class User extends Resource
      *
      * @return array<\Laravel\Nova\Filters\Filter>
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [];
     }
@@ -134,7 +135,7 @@ class User extends Resource
      *
      * @return array<\Laravel\Nova\Lenses\Lens>
      */
-    public function lenses(Request $request)
+    public function lenses(Request $request): array
     {
         return [];
     }
@@ -146,8 +147,13 @@ class User extends Resource
      *
      * @return array<\Laravel\Nova\Actions\Action>
      */
-    public function actions(Request $request)
+    public function actions(Request $request): array
     {
         return [];
+    }
+
+    public function authorizedToUpdateForSerialization(NovaRequest $request): bool
+    {
+        return $request->user()->can('manage-users');
     }
 }
