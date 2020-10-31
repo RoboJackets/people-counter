@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Space;
 use App\User;
 use App\Visit;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -12,12 +13,7 @@ class VisitPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Override for Super Admin to authorize all actions automatically.
-     *
-     * @return bool|null
-     */
-    public function before(?User $user)
+    public function before(?User $user): ?bool
     {
         if ($user instanceof User) {
             return $user->isSuperAdmin() ? true : null;
@@ -26,22 +22,12 @@ class VisitPolicy
         return null;
     }
 
-    /**
-     * Determine whether the user can view any visits.
-     *
-     * @return bool
-     */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('read-visits');
     }
 
-    /**
-     * Determine whether the user can view the visit.
-     *
-     * @return bool
-     */
-    public function view(User $user, Visit $visit)
+    public function view(User $user, Visit $visit): bool
     {
         if ($user->can('read-visits')) {
             return true;
@@ -50,22 +36,12 @@ class VisitPolicy
         return $user->can('read-visits-own') && $user->id === $visit->user->id;
     }
 
-    /**
-     * Determine whether the user can create visits.
-     *
-     * @return bool
-     */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create-visits');
     }
 
-    /**
-     * Determine whether the user can update the visit.
-     *
-     * @return bool
-     */
-    public function update(User $user, Visit $visit)
+    public function update(User $user, Visit $visit): bool
     {
         if ($user->can('update-visits')) {
             return true;
@@ -74,17 +50,37 @@ class VisitPolicy
         return $user->can('update-visits-own') && $user->id === $visit->user->id;
     }
 
-    /**
-     * Determine whether the user can delete the visit.
-     *
-     * @return bool
-     */
-    public function delete(User $user, Visit $visit)
+    public function delete(User $user, Visit $visit): bool
     {
         if ($user->can('delete-visits')) {
             return true;
         }
 
         return $user->can('delete-visits-own') && $user->id === $visit->user->id;
+    }
+
+    public function attachAnySpace(User $user, Visit $visit): bool
+    {
+        return $user->can('update-visits');
+    }
+
+    public function detachAnySpace(User $user, Visit $visit): bool
+    {
+        return $user->can('update-visits');
+    }
+
+    public function attachAnyUser(User $user, Visit $visit): bool
+    {
+        return $user->can('update-visits');
+    }
+
+    public function detachAnyUser(User $user, Visit $visit): bool
+    {
+        return $user->can('update-visits');
+    }
+
+    public function detachSpace(User $user, Visit $visit, Space $space): bool
+    {
+        return $this->detachAnySpace($user, $visit);
     }
 }

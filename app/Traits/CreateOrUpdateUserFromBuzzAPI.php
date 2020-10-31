@@ -24,8 +24,6 @@ trait CreateOrUpdateUserFromBuzzAPI
      * @param bool $is_frontend
      *
      * @return User|null
-     *
-     * @SuppressWarnings(PHPMD.ExitExpression)
      */
     public function createOrUpdateUserFromBuzzAPI($identifier, bool $is_frontend = true)
     {

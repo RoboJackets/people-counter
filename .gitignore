@@ -3,17 +3,11 @@
 .phpunit.result.cache
 /error-pages-cache/
 /node_modules
-/public/css/app.css
+/public/css/
 /public/hot
-/public/js/app.js
-/public/storage
+/public/js/
+/public/storage/
 /public/vendor/
-!/resources/views/vendor/nova/partials
-!/resources/views/vendor/nova/partials/user.blade.php
-!/resources/views/vendor/nova/partials/footer.blade.php
-/public/vendor/nova/
-/public/nova-assets
-/public/vendor/horizon/
 /resources/lang/vendor/
 /resources/views/vendor/
 /storage/*.key
@@ -23,3 +17,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+!/resources/views/vendor/nova/partials
+!/resources/views/vendor/nova/partials/footer.blade.php
+!/resources/views/vendor/nova/partials/user.blade.php
