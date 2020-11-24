@@ -44,8 +44,8 @@ class SendSpaceManagerMorningReport implements ShouldQueue
     {
         // Send to space managers whose spaces have active visits at the time of the mail being sent
         $managers = User::whereHas('managedSpaces', function($q) {
-                $q->whereHas('activeVisits');
-            })
+            $q->whereHas('activeVisits');
+        })
             ->with('managedSpaces')
             ->with('managedSpaces.activeVisits')
             ->with('managedSpaces.activeVisits.user')

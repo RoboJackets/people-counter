@@ -65,7 +65,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Defines a space manager relationship via the space_user pivot table
+     * Defines a space manager relationship via the space_user pivot table.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

@@ -13,7 +13,7 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * The space to report on
+     * The space to report on.
      *
      * @var \App\Space
      */
@@ -53,7 +53,7 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
         return (new MailMessage())
             ->from('noreply@my.robojackets.org', 'SCC Governing Board')
             ->replyTo('developers@robojackets.org')
-            ->subject('Morning Report for ' . $this->space->name)
+            ->subject('Morning Report for '.$this->space->name)
             ->markdown('emails.spacemanagermorningreport', ['space' => $this->space]);
     }
 
