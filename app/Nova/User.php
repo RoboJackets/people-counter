@@ -86,7 +86,7 @@ class User extends Resource
                 ->updateRules('unique:users,gtid,{{resourceId}}'),
 
             BelongsToMany::make('Spaces')
-                ->fields(function () {
+                ->fields(static function (): array {
                     return [
                         Boolean::make('Manager'),
                     ];

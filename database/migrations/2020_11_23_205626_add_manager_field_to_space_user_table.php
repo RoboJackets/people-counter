@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +15,7 @@ class AddManagerFieldToSpaceUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('space_user', function (Blueprint $table) {
+        Schema::table('space_user', static function (Blueprint $table): void {
             $table->boolean('manager')->default(false);
         });
     }
@@ -25,7 +27,7 @@ class AddManagerFieldToSpaceUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('space_user', function (Blueprint $table) {
+        Schema::table('space_user', static function (Blueprint $table): void {
             $table->dropColumn('manager');
         });
     }

@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command(CacheSchedulerRunning::class)->everyMinute();
-        $schedule->job(new SendSpaceManagerMorningReport)->dailyAt('08:00');
+        $schedule->job(new SendSpaceManagerMorningReport())->dailyAt('08:00');
     }
 
     /**

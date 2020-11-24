@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 
 class SignOutReminder extends Notification implements ShouldQueue
@@ -18,16 +21,17 @@ class SignOutReminder extends Notification implements ShouldQueue
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
-     * @return array
+     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     *
+     * @return array<string>
      */
-    public function via($notifiable)
+    public function via(Notifiable $notifiable)
     {
         return ['mail'];
     }
@@ -35,27 +39,15 @@ class SignOutReminder extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail(Notifiable $notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->from('noreply@my.robojackets.org', 'SCC Governing Board')
             ->subject('SCC Sign Out Reminder')
             ->markdown('emails.signoutreminder');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
     }
 }

@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
 use App\Space;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 
 class SpaceManagerMorningReport extends Notification implements ShouldQueue
@@ -34,10 +37,11 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
-     * @return array
+     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     *
+     * @return array<string>
      */
-    public function via($notifiable)
+    public function via(Notifiable $notifiable)
     {
         return ['mail'];
     }
@@ -45,26 +49,16 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     /**
      * Get the emails representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail(Notifiable $notifiable)
     {
         return (new MailMessage())
             ->from('noreply@my.robojackets.org', 'SCC Governing Board')
             ->replyTo('developers@robojackets.org')
             ->subject('Morning Report for '.$this->space->name)
             ->markdown('emails.spacemanagermorningreport', ['space' => $this->space]);
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [];
     }
 }

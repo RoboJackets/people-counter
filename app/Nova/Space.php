@@ -63,7 +63,7 @@ class Space extends Resource
                 ->max(100),
 
             BelongsToMany::make('Users')
-                ->fields(function () {
+                ->fields(static function (): array {
                     return [
                         Boolean::make('Manager'),
                     ];

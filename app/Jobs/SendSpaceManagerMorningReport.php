@@ -32,7 +32,7 @@ class SendSpaceManagerMorningReport implements ShouldQueue
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -43,7 +43,7 @@ class SendSpaceManagerMorningReport implements ShouldQueue
     public function handle()
     {
         // Send to space managers whose spaces have active visits at the time of the mail being sent
-        $managers = User::whereHas('managedSpaces', function($q) {
+        $managers = User::whereHas('managedSpaces', static function ($q): void {
             $q->whereHas('activeVisits');
         })
             ->with('managedSpaces')
@@ -61,7 +61,8 @@ class SendSpaceManagerMorningReport implements ShouldQueue
                 $manager->notify(new SpaceManagerMorningReport($space));
                 $username = $manager->username;
                 $spacename = $space->name;
-                Log::info(self::class.": Successfully queued morning report email for $username / $spacename");
+                Log::info(self::class.': Successfully queued morning report email for '
+                    .$username.' / '.$spacename);
             }
         }
     }
