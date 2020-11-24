@@ -37,7 +37,7 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     * @param \Illuminate\Notifications\Notifiable $notifiable
      *
      * @return array<string>
      */
@@ -49,7 +49,7 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     /**
      * Get the emails representation of the notification.
      *
-     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     * @param \Illuminate\Notifications\Notifiable $notifiable
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */

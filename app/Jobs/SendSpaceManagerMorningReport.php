@@ -28,14 +28,6 @@ class SendSpaceManagerMorningReport implements ShouldQueue
     public $tries = 1;
 
     /**
-     * Create a new job instance.
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Execute the job.
      *
      * @return void

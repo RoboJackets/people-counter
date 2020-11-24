@@ -15,19 +15,9 @@ class SignOutReminder extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Get the notification's delivery channels.
      *
-     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     * @param \Illuminate\Notifications\Notifiable $notifiable
      *
      * @return array<string>
      */
@@ -39,7 +29,7 @@ class SignOutReminder extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  \Illuminate\Notifications\Notifiable $notifiable
+     * @param \Illuminate\Notifications\Notifiable $notifiable
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
