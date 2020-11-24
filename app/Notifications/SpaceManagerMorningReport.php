@@ -50,7 +50,11 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage())->markdown('emails.spacemanagermorningreport', ['space' => $this->space]);
+        return (new MailMessage())
+            ->from('noreply@my.robojackets.org', 'SCC Governing Board')
+            ->replyTo('developers@robojackets.org')
+            ->subject('Morning Report for ' . $this->space->name)
+            ->markdown('emails.spacemanagermorningreport', ['space' => $this->space]);
     }
 
     /**
