@@ -95,6 +95,16 @@ class Space extends Model
     }
 
     /**
+     * Defines a space manager relationship via the space_user pivot table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function managers(): BelongsToMany
+    {
+        return $this->belongsToMany(\App\User::class)->wherePivot('manager', 1);
+    }
+
+    /**
      * Define the relationship between Space and Visit.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

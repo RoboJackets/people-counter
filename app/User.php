@@ -65,6 +65,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Defines a space manager relationship via the space_user pivot table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function managedSpaces(): BelongsToMany
+    {
+        return $this->belongsToMany(\App\Space::class)->wherePivot('manager', 1);
+    }
+
+    /**
      * Returns if the User a super admin.
      *
      * @return bool
