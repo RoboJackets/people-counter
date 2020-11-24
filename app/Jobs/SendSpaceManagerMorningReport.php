@@ -52,13 +52,16 @@ class SendSpaceManagerMorningReport implements ShouldQueue
             ->get();
 
         if (count($managers) < 1) {
-            Log::info('Not sending morning report - either no space managers defined or no active visits');
+            Log::info(self::class.':Not sending morning report - either no space managers defined or no active visits');
             exit;
         }
 
         foreach ($managers as $manager) {
             foreach ($manager->managedSpaces as $space) {
                 $manager->notify(new SpaceManagerMorningReport($space));
+                $username = $manager->username;
+                $spacename = $space->name;
+                Log::info(self::class.": Successfully queued morning report email for $username / $spacename");
             }
         }
     }
