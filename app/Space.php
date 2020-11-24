@@ -91,7 +91,7 @@ class Space extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(\App\User::class);
+        return $this->belongsToMany(\App\User::class)->withPivot('manager');
     }
 
     /**

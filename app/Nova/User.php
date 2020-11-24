@@ -8,6 +8,7 @@ use App\Nova\Fields\Hidden;
 use Illuminate\Http\Request;
 use Jeffbeltran\SanctumTokens\SanctumTokens;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
@@ -84,7 +85,12 @@ class User extends Resource
                 ->creationRules('unique:users,gtid')
                 ->updateRules('unique:users,gtid,{{resourceId}}'),
 
-            BelongsToMany::make('Spaces'),
+            BelongsToMany::make('Spaces')
+                ->fields(function () {
+                    return [
+                        Boolean::make('Manager'),
+                    ];
+                }),
 
             HasMany::make('Visits'),
 

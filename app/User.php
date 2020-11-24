@@ -61,7 +61,7 @@ class User extends Authenticatable
      */
     public function spaces(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Space::class);
+        return $this->belongsToMany(\App\Space::class)->withPivot('manager');
     }
 
     /**
