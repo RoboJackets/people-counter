@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Jobs\SendSpaceManagerMorningReport;
 use Bugsnag\BugsnagLaravel\Commands\DeployCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command(CacheSchedulerRunning::class)->everyMinute();
+        $schedule->job(new SendSpaceManagerMorningReport)->dailyAt('08:00');
     }
 
     /**
