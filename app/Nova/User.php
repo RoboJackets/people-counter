@@ -160,6 +160,6 @@ class User extends Resource
 
     public function authorizedToUpdateForSerialization(NovaRequest $request): bool
     {
-        return $request->user()->can('manage-users');
+        return $request->user()->can('manage-users') || $request->user()->isSuperAdmin();
     }
 }

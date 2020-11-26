@@ -115,6 +115,6 @@ class Visit extends Resource
 
     public function authorizedToUpdateForSerialization(NovaRequest $request): bool
     {
-        return $request->user()->can('update-visits');
+        return $request->user()->can('update-visits') || $request->user()->isSuperAdmin();
     }
 }

@@ -145,6 +145,6 @@ class Space extends Resource
 
     public function authorizedToUpdateForSerialization(NovaRequest $request): bool
     {
-        return $request->user()->can('manage-spaces');
+        return $request->user()->can('manage-spaces') || $request->user()->isSuperAdmin();
     }
 }
