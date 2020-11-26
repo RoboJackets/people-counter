@@ -16,7 +16,7 @@ There @choice('is|are', count($space->activeVisits)) currently {{ count($space->
 
 Please remind your members to be diligent about signing in and out of spaces using the kiosks for each visit.
 
-Self-service remote sign-out is available at {{ url('/') }}.
+Your members can sign themselves out at {{ url('/') }}.
 
 Thanks,
 SCC Governing Board
