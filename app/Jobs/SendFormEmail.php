@@ -6,10 +6,9 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
+use App\Notifications\PPEForm;
 use App\User;
 use App\Visit;
-use Exception;
-use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -51,7 +50,7 @@ class SendFormEmail implements ShouldQueue
      * @param \App\User $user The user
      * @param \App\Visit $visit The visit that triggered this notification
      */
-    protected function __construct(User $user, Visit $visit)
+    public function __construct(User $user, Visit $visit)
     {
         $this->user = $user;
         $this->visit = $visit;
@@ -69,53 +68,14 @@ class SendFormEmail implements ShouldQueue
 
         if (0 !== $visits) {
             Log::info(
-                'Not sending an email to '.$this->user->username.' for visit '.$this->visit->id.' as there is a more '.
-                'recent visit.'
+                self::class.': Not sending an email to '.$this->user->username.' for visit '.$this->visit->id.
+                 'as there is a more recent visit.'
             );
 
             return;
         }
 
-        $client = new Client(
-            [
-                'base_uri' => config('apiary.server'),
-                'headers' => [
-                    'User-Agent' => 'People Counter on '.config('app.url'),
-                    'Authorization' => 'Bearer '.config('apiary.token'),
-                    'Accept' => 'application/json',
-                ],
-                'allow_redirects' => false,
-            ]
-        );
-
-        $response = $client->post(
-            '/api/v1/notification/manual',
-            [
-                'json' => [
-                    'template_type' => 'database',
-                    'template_id' => config('apiary.ppe_form_email_template_id'),
-                    'emails' => [
-                        $this->user->email,
-                    ],
-                ],
-            ]
-        );
-
-        if (200 !== $response->getStatusCode()) {
-            throw new Exception(
-                'Apiary returned an unexpected HTTP response code '.$response->getStatusCode().', expected 200'
-            );
-        }
-
-        $responseBody = $response->getBody()->getContents();
-
-        $json = json_decode($responseBody);
-
-        if ('success' !== $json->status) {
-            throw new Exception(
-                'Apiary returned an unexpected response '.$responseBody.', expected status: success'
-            );
-        }
+        $this->user->notify(new PPEForm());
 
         Log::info(self::class.': Successfully queued PPE form email for '.$this->user->username);
     }

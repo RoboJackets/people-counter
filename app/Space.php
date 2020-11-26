@@ -16,6 +16,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * Class Space.
  *
  * @property int $visits_count
+ * @property string $name
  */
 class Space extends Model
 {
@@ -91,7 +92,17 @@ class Space extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(\App\User::class);
+        return $this->belongsToMany(\App\User::class)->withPivot('manager');
+    }
+
+    /**
+     * Defines a space manager relationship via the space_user pivot table.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function managers(): BelongsToMany
+    {
+        return $this->belongsToMany(\App\User::class)->wherePivot('manager', 1);
     }
 
     /**

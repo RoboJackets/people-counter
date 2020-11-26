@@ -8,6 +8,7 @@ use App\Nova\Actions\ActivateKiosk;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -61,7 +62,12 @@ class Space extends Resource
                 ->min(1)
                 ->max(100),
 
-            BelongsToMany::make('Users'),
+            BelongsToMany::make('Users')
+                ->fields(static function (): array {
+                    return [
+                        Boolean::make('Manager'),
+                    ];
+                }),
 
             RelationshipCount::make('User Count', 'users')->sortable(),
 

@@ -51,7 +51,7 @@ class User extends Authenticatable
      */
     public function visits(): HasMany
     {
-        return $this->hasMany(\App\Visit::class, 'gtid', 'gtid');
+        return $this->hasMany(Visit::class, 'gtid', 'gtid');
     }
 
     /**
@@ -61,7 +61,17 @@ class User extends Authenticatable
      */
     public function spaces(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Space::class);
+        return $this->belongsToMany(Space::class)->withPivot('manager');
+    }
+
+    /**
+     * Defines a space manager relationship via the space_user pivot table.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function managedSpaces(): BelongsToMany
+    {
+        return $this->belongsToMany(Space::class)->wherePivot('manager', 1);
     }
 
     /**
