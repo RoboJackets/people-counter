@@ -168,17 +168,27 @@ return [
 
     'environments' => [
         'production' => [
-            'supervisor-1' => [
+            'supervisor' => [
                 'connection' => 'redis',
                 'queue' => ['default'],
                 'balance' => 'simple',
-                'processes' => 10,
+                'processes' => 1,
+                'tries' => 1,
+            ],
+        ],
+
+        'test' => [
+            'supervisor' => [
+                'connection' => 'redis',
+                'queue' => ['default'],
+                'balance' => 'simple',
+                'processes' => 1,
                 'tries' => 1,
             ],
         ],
 
         'local' => [
-            'supervisor-1' => [
+            'supervisor' => [
                 'connection' => 'redis',
                 'queue' => ['default'],
                 'balance' => 'simple',
