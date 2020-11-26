@@ -19,7 +19,7 @@ class PPEForm extends Notification implements ShouldQueue
      *
      * @return array<string>
      */
-    public function via(Notifiable $notifiable)
+    public function via($notifiable)
     {
         return ['mail'];
     }
