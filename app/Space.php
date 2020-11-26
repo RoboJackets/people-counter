@@ -16,6 +16,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * Class Space.
  *
  * @property int $visits_count
+ * @property string $name
  */
 class Space extends Model
 {

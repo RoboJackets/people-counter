@@ -17,11 +17,9 @@ class SignOutReminder extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param \Illuminate\Notifications\Notifiable $notifiable
-     *
      * @return array<string>
      */
-    public function via(Notifiable $notifiable)
+    public function via($notifiable)
     {
         return ['mail'];
     }
@@ -29,11 +27,9 @@ class SignOutReminder extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param \Illuminate\Notifications\Notifiable $notifiable
-     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail(Notifiable $notifiable)
+    public function toMail($notifiable)
     {
         return (new MailMessage())
             ->from('noreply@my.robojackets.org', 'SCC Governing Board')

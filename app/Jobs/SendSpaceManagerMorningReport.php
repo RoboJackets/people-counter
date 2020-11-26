@@ -8,6 +8,7 @@ use App\Notifications\SpaceManagerMorningReport;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -35,7 +36,7 @@ class SendSpaceManagerMorningReport implements ShouldQueue
     public function handle()
     {
         // Send to space managers whose spaces have active visits at the time of the mail being sent
-        $managers = User::whereHas('managedSpaces', static function ($q): void {
+        $managers = User::whereHas('managedSpaces', static function (Builder $q): void {
             $q->whereHas('activeVisits');
         })
             ->with('managedSpaces')
