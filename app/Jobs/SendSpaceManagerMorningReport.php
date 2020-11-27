@@ -46,6 +46,7 @@ class SendSpaceManagerMorningReport implements ShouldQueue
 
         if (count($managers) < 1) {
             Log::info(self::class.':Not sending morning report - either no space managers defined or no active visits');
+
             return;
         }
 
