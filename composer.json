@@ -44,7 +44,7 @@
         "phpstan/extension-installer": "1.1.0",
         "phpunit/phpunit": "8.5.13",
         "psalm/plugin-laravel": "1.4.0",
-        "robojackets/static-analysis": "1.1.0"
+        "robojackets/static-analysis": "1.2"
     },
     "config": {
         "optimize-autoloader": true,
