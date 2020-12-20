@@ -11,11 +11,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use RoboJackets\ErrorPages\BadNetwork;
-use RoboJackets\ErrorPages\EduroamISSDisabled;
-use RoboJackets\ErrorPages\EduroamNonGatech;
-use RoboJackets\ErrorPages\UsernameContainsDomain;
-use RoboJackets\NetworkCheck;
+use RoboJackets\AuthStickler;
 
 class CASAuthenticate
 {
@@ -55,36 +51,7 @@ class CASAuthenticate
         if (! Auth::guard('api')->check()) {
             // Run the user update only if they don't have an active session
             if ($this->cas->isAuthenticated() && null === $request->user()) {
-                $username = strtolower($this->cas->user());
-
-                if (false !== strpos($username, '@')) {
-                    foreach (array_keys($_COOKIE) as $key) {
-                        setcookie($key, '', time() - 3600);
-                    }
-                    UsernameContainsDomain::render($username);
-                    exit;
-                }
-
-                $network = NetworkCheck::detect();
-                if (NetworkCheck::EDUROAM_ISS_DISABLED === $network) {
-                    EduroamISSDisabled::render();
-                    exit;
-                }
-                if (NetworkCheck::GTOTHER === $network) {
-                    BadNetwork::render('GTother', $username, '');
-                    exit;
-                }
-                if (NetworkCheck::GTVISITOR === $network) {
-                    BadNetwork::render('GTvisitor', $username, '');
-                    exit;
-                }
-                if (
-                    NetworkCheck::EDUROAM_NON_GATECH_V4 === $network
-                    || NetworkCheck::EDUROAM_NON_GATECH_V6 === $network
-                ) {
-                    EduroamNonGatech::render($username, '');
-                    exit;
-                }
+                $username = AuthStickler::check($this->cas);
 
                 $user = $this->createOrUpdateUserFromBuzzAPI($username);
                 Auth::login($user);
