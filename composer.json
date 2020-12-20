@@ -30,7 +30,7 @@
         "sensiolabs/security-checker": "6.0.3",
         "spatie/laravel-permission": "3.18.0",
         "spatie/laravel-query-builder": "^3.3",
-        "staudenmeir/eloquent-has-many-deep": "1.12",
+        "staudenmeir/eloquent-has-many-deep": "*",
         "subfission/cas": "4.0.0",
         "ukfast/laravel-health-check": "1.8.0",
         "vyuldashev/nova-permission": "2.10.0"
@@ -41,7 +41,7 @@
         "nunomaduro/larastan": "0.6.11",
         "phpstan/extension-installer": "1.1.0",
         "phpunit/phpunit": "^9.3.3",
-        "psalm/plugin-laravel": "1.4.0",
+        "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.2",
         "fakerphp/faker": "1.9.2",
         "nunomaduro/collision": "^5.0"
@@ -52,7 +52,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "platform": {
-            "php": "7.2.5"
+            "php": "7.4.13"
         }
     },
     "extra": {
