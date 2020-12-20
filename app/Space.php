@@ -18,6 +18,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int $id
  * @property int $visits_count
  * @property string $name
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection $children
  */
 class Space extends Model
