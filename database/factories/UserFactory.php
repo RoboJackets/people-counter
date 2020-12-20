@@ -2,28 +2,11 @@
 
 declare(strict_types=1);
 
-/**
- * The factory.
- *
- * @var \Illuminate\Database\Eloquent\Factory $factory
- */
-
 namespace Database\Factories;
 
 use App\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
 
 class UserFactory extends Factory
 {
@@ -37,7 +20,7 @@ class UserFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string,string|\DateTime>
      */
     public function definition()
     {

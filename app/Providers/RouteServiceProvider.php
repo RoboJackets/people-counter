@@ -21,7 +21,6 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to the "home" route for your application.
      */
-    // @phan-suppress-next-line PhanUnreferencedPublicClassConstant
     public const HOME = '/';
 
     /**

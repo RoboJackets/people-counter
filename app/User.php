@@ -22,11 +22,12 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $first_name
  * @property string $last_name
  * @property string $username
+ * @property-read \Illuminate\Database\Eloquent\Collection $spaces
  */
 class User extends Authenticatable
 {
-    use HasFactory;
     use HasApiTokens;
+    use HasFactory;
     use HasRoles;
     use Notifiable;
 

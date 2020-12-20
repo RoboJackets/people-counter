@@ -14,7 +14,7 @@ class AddGtidToUsers extends Migration
     public function up(): void
     {
         Schema::table('users', static function (Blueprint $table): void {
-            $table->integer('gtid')->after('last_name');
+            $table->integer('gtid')->after('last_name')->nullable(true);
         });
     }
 
