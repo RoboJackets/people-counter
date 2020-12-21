@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Space;
+use App\Models\Space;
 use Illuminate\Database\Seeder;
 
 class SCCSpaceSeeder extends Seeder

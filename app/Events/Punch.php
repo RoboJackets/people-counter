@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Events;
 
-use App\Space;
+use App\Models\Space;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -21,7 +21,7 @@ class Punch implements ShouldBroadcast
     /**
      * List of spaces and those occupying them.
      *
-     * @var array<\App\Space>
+     * @var array<\App\Models\Space>
      */
     public $spaces;
 

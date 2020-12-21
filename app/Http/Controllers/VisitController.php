@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVisit;
 use App\Http\Requests\UpdateVisit;
 use App\Http\Resources\Visit as VisitResource;
-use App\Visit;
+use App\Models\Visit;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;

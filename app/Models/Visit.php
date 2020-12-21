@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -40,7 +40,7 @@ class Visit extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(\App\User::class, 'gtid', 'gtid');
+        return $this->belongsTo(\App\Models\User::class, 'gtid', 'gtid');
     }
 
     /**
@@ -50,7 +50,7 @@ class Visit extends Model
      */
     public function spaces(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Space::class);
+        return $this->belongsToMany(\App\Models\Space::class);
     }
 
     /**

@@ -10,7 +10,7 @@ namespace App\Providers;
 use App\Nova\Cards\MakeAWish;
 use App\Nova\Metrics\VisitsBySpace;
 use App\Nova\Metrics\VisitsPerDay;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Events\ServingNova;

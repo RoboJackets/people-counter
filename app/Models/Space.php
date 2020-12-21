@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -95,7 +95,7 @@ class Space extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(\App\User::class)->withPivot('manager');
+        return $this->belongsToMany(\App\Models\User::class)->withPivot('manager');
     }
 
     /**
@@ -105,7 +105,7 @@ class Space extends Model
      */
     public function managers(): BelongsToMany
     {
-        return $this->belongsToMany(\App\User::class)->wherePivot('manager', 1);
+        return $this->belongsToMany(\App\Models\User::class)->wherePivot('manager', 1);
     }
 
     /**
@@ -115,7 +115,7 @@ class Space extends Model
      */
     public function visits(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Visit::class);
+        return $this->belongsToMany(\App\Models\Visit::class);
     }
 
     /**
@@ -125,7 +125,7 @@ class Space extends Model
      */
     public function activeVisits(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Visit::class)
+        return $this->belongsToMany(\App\Models\Visit::class)
             ->whereNotNull('in_time')->whereNull('out_time');
     }
 
@@ -137,8 +137,8 @@ class Space extends Model
     public function visitsUsers(): HasManyDeep
     {
         return $this->hasManyDeep(
-            \App\User::class,
-            ['space_visit', \App\Visit::class],
+            \App\Models\User::class,
+            ['space_visit', \App\Models\Visit::class],
             ['space_id', 'id', 'gtid'],
             ['id', 'visit_id', 'gtid']
         );

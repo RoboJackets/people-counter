@@ -8,7 +8,7 @@ use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
 use App\Http\Requests\UpdateUserSpaces;
 use App\Http\Resources\User as UserResource;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -75,7 +75,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      *
      * @return \App\Http\Resources\User
      */
