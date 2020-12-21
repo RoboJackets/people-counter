@@ -77,10 +77,5 @@
                 <file name="app/Providers/BroadcastServiceProvider.php" />
             </errorLevel>
         </UnresolvableInclude>
-        <UndefinedGlobalVariable>
-            <errorLevel type="suppress">
-                <file name="database/factories/UserFactory.php" />
-            </errorLevel>
-        </UndefinedGlobalVariable>
     </issueHandlers>
 </psalm>
