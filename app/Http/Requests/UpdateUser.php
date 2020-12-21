@@ -28,11 +28,11 @@ class UpdateUser extends FormRequest
     {
         return [
             'username' => [
-                'unique:App\User',
+                'unique:App\Models\User',
                 'nullable',
             ],
             'email' => [
-                'unique:App\User',
+                'unique:App\Models\User',
                 'email',
                 'nullable',
             ],
@@ -47,7 +47,7 @@ class UpdateUser extends FormRequest
             'gtid' => [
                 'starts_with:9',
                 'digits:9',
-                'unique:App\User',
+                'unique:App\Models\User',
                 'nullable',
             ],
         ];

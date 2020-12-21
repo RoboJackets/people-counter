@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Notifications;
 
-use App\Space;
+use App\Models\Space;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -17,14 +17,14 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     /**
      * The space to report on.
      *
-     * @var \App\Space
+     * @var \App\Models\Space
      */
     private $space;
 
     /**
      * Create a new notification instance.
      *
-     * @param \App\Space $space The space to report on
+     * @param \App\Models\Space $space The space to report on
      *
      * @return void
      */

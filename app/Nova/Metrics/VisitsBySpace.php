@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Nova\Metrics;
 
-use App\Space;
+use App\Models\Space;
 use Laravel\Nova\Metrics\Partition;
 use Laravel\Nova\Metrics\PartitionResult;
 

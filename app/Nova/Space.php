@@ -22,7 +22,7 @@ class Space extends Resource
      *
      * @var string
      */
-    public static $model = \App\Space::class;
+    public static $model = \App\Models\Space::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

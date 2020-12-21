@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Imports;
 
-use App\Space;
+use App\Models\Space;
+use App\Models\User;
 use App\Traits\CreateOrUpdateUserFromBuzzAPI;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -47,7 +48,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
      *
      * @param Row $row
      *
-     * @return \App\User|null
+     * @return \App\Models\User|null
      *
      * @throws \Exception
      */
@@ -86,7 +87,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
             }
         }
 
-        if ($user instanceof \App\User) {
+        if ($user instanceof User) {
             // Attach space to user as their default
             $space = Space::where('name', $this->space)->first();
             $user->spaces()->syncWithoutDetaching($space);

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Space as SpaceResource;
-use App\Space;
+use App\Models\Space;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -49,7 +49,7 @@ class SpaceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Space  $space
+     * @param \App\Models\Space  $space
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -70,7 +70,7 @@ class SpaceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Space  $space
+     * @param \App\Models\Space  $space
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -82,7 +82,7 @@ class SpaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Space  $space
+     * @param \App\Models\Space  $space
      *
      * @return \Illuminate\Http\JsonResponse
      */

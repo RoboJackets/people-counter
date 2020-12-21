@@ -6,9 +6,9 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
+use App\Models\User;
+use App\Models\Visit;
 use App\Notifications\PPEForm;
-use App\User;
-use App\Visit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -33,22 +33,22 @@ class SendFormEmail implements ShouldQueue
     /**
      * The user that will be sent the email.
      *
-     * @var \App\User
+     * @var \App\Models\User
      */
     private $user;
 
     /**
      * The visit that will be sent the email.
      *
-     * @var \App\Visit
+     * @var \App\Models\Visit
      */
     private $visit;
 
     /**
      * Create a new job instance.
      *
-     * @param \App\User $user The user
-     * @param \App\Visit $visit The visit that triggered this notification
+     * @param \App\Models\User $user The user
+     * @param \App\Models\Visit $visit The visit that triggered this notification
      */
     public function __construct(User $user, Visit $visit)
     {

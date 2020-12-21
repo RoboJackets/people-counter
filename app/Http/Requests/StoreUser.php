@@ -29,11 +29,11 @@ class StoreUser extends FormRequest
         return [
             'username' => [
                 'required',
-                'unique:App\User',
+                'unique:App\Models\User',
             ],
             'email' => [
                 'required',
-                'unique:App\User',
+                'unique:App\Models\User',
                 'email',
             ],
             'first_name' => [
@@ -48,7 +48,7 @@ class StoreUser extends FormRequest
                 'required',
                 'starts_with:9',
                 'digits:9',
-                'unique:App\User',
+                'unique:App\Models\User',
             ],
         ];
     }

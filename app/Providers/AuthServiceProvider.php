@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Space;
+use App\Models\User;
+use App\Models\Visit;
 use App\Policies\SpacePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\VisitPolicy;
-use App\Space;
-use App\User;
-use App\Visit;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
