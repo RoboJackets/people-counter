@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\SpaceController;
+use App\Http\Controllers\VisitController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisitPunchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(static function (): void {
-    Route::get('user', 'UserController@showSelf')->name('user');
-    Route::put('users/{user}/spaces', 'UserController@updateSpaces')->name('users.spaces');
-    Route::apiResource('users', 'UserController');
+    Route::get('user', [UserController::class, 'showSelf'])->name('user');
+    Route::put('users/{user}/spaces', [UserController::class, 'updateSpaces'])->name('users.spaces');
+    Route::apiResource('users', UserController::class);
 
-    Route::post('visits/punch', 'VisitPunchController@store')->name('visits.punch');
-    Route::apiResource('visits', 'VisitController');
+    Route::post('visits/punch', [VisitPunchController::class, 'store'])->name('visits.punch');
+    Route::apiResource('visits', VisitController::class);
 
-    Route::apiResource('spaces', 'SpaceController');
+    Route::apiResource('spaces', SpaceController::class);
 });
