@@ -43,7 +43,7 @@
         "phpunit/phpunit": "9.5.0",
         "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.2",
-        "fakerphp/faker": "1.9.2",
+        "fakerphp/faker": "1.13.0",
         "nunomaduro/collision": "5.1.0"
     },
     "config": {
