@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+// @phan-file-suppress PhanStaticCallToNonStatic
+
 use App\Http\Controllers\SpaceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisitController;

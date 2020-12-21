@@ -22,8 +22,6 @@ Route::middleware('auth.cas.force')->group(static function (): void {
 
 Route::view('kiosk', 'kiosk')->name('kiosk');
 
-Route::redirect('privacy', 'https://www.gatech.edu/privacy');
-Route::redirect('nova/logout', 'logout');
 Route::get('login', static function (): RedirectResponse {
     return redirect()->intended();
 })->name('login')->middleware('auth.cas.force');
