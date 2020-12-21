@@ -6,9 +6,9 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
-use App\Notifications\PPEForm;
 use App\Models\User;
 use App\Models\Visit;
+use App\Notifications\PPEForm;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

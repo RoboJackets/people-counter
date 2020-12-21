@@ -7,10 +7,10 @@ namespace App\Providers;
 // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
 // phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 
+use App\Models\User;
 use App\Nova\Cards\MakeAWish;
 use App\Nova\Metrics\VisitsBySpace;
 use App\Nova\Metrics\VisitsPerDay;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Events\ServingNova;
