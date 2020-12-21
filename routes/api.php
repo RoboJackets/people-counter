@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\SpaceController;
-use App\Http\Controllers\VisitController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisitController;
 use App\Http\Controllers\VisitPunchController;
 use Illuminate\Support\Facades\Route;
 
