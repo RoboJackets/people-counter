@@ -30,9 +30,9 @@ class Visit extends Model
      *
      * @var array<string>
      */
-    protected $dates = [
-        'in_time',
-        'out_time',
+    protected $casts = [
+        'in_time' => 'datetime',
+        'out_time' => 'datetime',
     ];
 
     /**

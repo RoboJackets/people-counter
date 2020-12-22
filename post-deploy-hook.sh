@@ -5,8 +5,8 @@ cd "${0%/*}"
 composer install --no-interaction --no-progress --no-suggest --no-dev --optimize-autoloader --classmap-authoritative
 php artisan migrate --no-interaction --force
 php artisan config:cache --no-interaction
-php artisan view:clear --no-interaction
-php artisan route:clear --no-interaction
+php artisan view:cache --no-interaction
+php artisan route:cache --no-interaction
 php artisan nova:publish --no-interaction
 php artisan horizon:publish --no-interaction
 php artisan cache:clear --no-interaction
