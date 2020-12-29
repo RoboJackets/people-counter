@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "676dc2c84c5ec9c0c4662778341fa0ba",
+    "content-hash": "3437a56e5ad86e5b6d86ff44d49b6102",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -9997,16 +9997,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "703460094d4e2cad5552249b50f10ef2f6efbc96"
+                "reference": "2b6fd8b7b630e5c6a04440f7ed358e8753229509"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/703460094d4e2cad5552249b50f10ef2f6efbc96",
-                "reference": "703460094d4e2cad5552249b50f10ef2f6efbc96",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/2b6fd8b7b630e5c6a04440f7ed358e8753229509",
+                "reference": "2b6fd8b7b630e5c6a04440f7ed358e8753229509",
                 "shasum": ""
             },
             "require": {
@@ -10070,7 +10070,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2020-12-28T23:16:59+00:00"
+            "time": "2020-12-28T23:56:45+00:00"
         },
         {
             "name": "fakerphp/faker",
