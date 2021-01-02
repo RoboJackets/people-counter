@@ -66,6 +66,7 @@
 </style>
 <script>
 import Echo from 'laravel-echo';
+import Bugsnag from "@bugsnag/js";
 export default {
     data() {
         return {
@@ -78,6 +79,7 @@ export default {
                 'include': 'user',
                 'space_id': null,
             },
+            'user': {},
             loading: {
                 'spaces': false,
             },
@@ -87,6 +89,7 @@ export default {
             visitsBaseUrl: '/api/visits',
             punchBaseUrl: '/api/visits/punch',
             spacesBaseUrl: '/api/spaces',
+            userBaseUrl: '/api/user',
             dynamicColor: {
                 backgroundColor: ''
             }
@@ -250,10 +253,26 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('api_token');
         },
         postMountedLoad() {
+            this.loadUser();
             this.loadSpace();
             this.loadSpaces();
             this.loadWebSocket();
             this.startKeyboardListening();
+        },
+        loadUser() {
+            self.axios
+                .get(this.userBaseUrl)
+                .then(response => {
+                    let rawUser = response.data;
+                    if (rawUser.hasOwnProperty('id')) {
+                        this.user = rawUser;
+                        Bugsnag.setUser(this.user.id, this.user.email, this.user.full_name)
+                    }
+                })
+                .catch(error => {
+                    this.axiosErrorToBugsnag(error)
+                    this.handleAxiosError(error)
+                });
         },
         loadSpace() {
             self.axios
@@ -268,25 +287,8 @@ export default {
                     }
                 })
                 .catch(error => {
-                    if (error.response.status === 403) {
-                        this.$swal.fire({
-                            title: 'Whoops!',
-                            text: "You don't have permission to perform that action.",
-                            icon: 'error',
-                        });
-                    } else if (error.response.status === 401) {
-                        this.$swal.fire({
-                            title: 'Whoops!',
-                            text: "Invalid API token or authentication error",
-                            icon: 'error',
-                        });
-                    } else {
-                        this.$swal.fire({
-                            title: 'Error',
-                            text: 'Unable to process data. Check your internet connection or try refreshing the page.',
-                            icon: 'error',
-                        });
-                    }
+                    this.axiosErrorToBugsnag(error)
+                    this.handleAxiosError(error)
                 });
         },
         async loadSpaces() {
@@ -298,25 +300,8 @@ export default {
                     this.loading.spaces = false;
                 })
                 .catch(error => {
-                    if (error.response.status === 403) {
-                        this.$swal.fire({
-                            title: 'Whoops!',
-                            text: "You don't have permission to perform that action.",
-                            type: 'error',
-                        });
-                    } else if (error.response.status === 401) {
-                        this.$swal.fire({
-                            title: 'Whoops!',
-                            text: "You are not authenticated. Please try again.",
-                            type: 'error',
-                        });
-                    } else {
-                        this.$swal.fire(
-                            'Error',
-                            'Unable to process data. Check your internet connection or try refreshing the page.',
-                            'error'
-                        );
-                    }
+                    this.axiosErrorToBugsnag(error)
+                    this.handleAxiosError(error)
                 });
         },
         parseVisitsUsers(space) {
@@ -348,6 +333,12 @@ export default {
                 encrypted: true,
                 forceTLS: true,
                 enabledTransports: ['ws', 'wss']
+            });
+
+            echo.connector.pusher.connection.bind('state_change', function(states) {
+                Bugsnag.notify(new Error('WebSocket Connection Error'), function (event) {
+                    event.severity = 'warning'
+                });
             });
 
             echo.channel('punches')
@@ -421,6 +412,10 @@ export default {
             } else {
                 this.$swal.close();
                 console.log('unknown cardData: ' + cardData);
+                Bugsnag.notify(new Error('Card format not recognized'), function (event) {
+                    event.severity = 'info'
+                    event.addMetadata('Card Data', cardData)
+                });
                 cardData = null;
                 this.$swal.fire({
                     title: 'Hmm...',
@@ -465,6 +460,7 @@ export default {
                     this.feedback = '';
                     this.clearFields();
                     if (error.response.status === 403) {
+                        this.axiosErrorToBugsnag(error)
                         this.$swal.fire({
                             title: 'Whoops!',
                             text: "You don't have permission to perform that action.",
@@ -496,6 +492,7 @@ export default {
                             showConfirmButton: false,
                         });
                     } else {
+                        this.axiosErrorToBugsnag(error)
                         this.$swal.fire({
                             title: 'Error',
                             text: 'Unable to process data. Check your internet connection or try refreshing the page.',
@@ -520,6 +517,40 @@ export default {
         isNumeric(n) {
             return !isNaN(parseFloat(n)) && isFinite(n);
         },
+        handleAxiosError(error) {
+            if (error.hasOwnProperty('response') && error.response.status === 403) {
+                this.$swal.fire({
+                    title: 'Whoops!',
+                    text: "You don't have permission to perform that action.",
+                    type: 'error',
+                });
+            } else if (error.hasOwnProperty('response') && error.response.status === 401) {
+                this.$swal.fire({
+                    title: 'Whoops!',
+                    text: "You are not authenticated. Please try again.",
+                    type: 'error',
+                });
+            } else {
+                this.$swal.fire(
+                    'Error',
+                    'Unable to process data. Check your internet connection or try refreshing the page.',
+                    'error'
+                );
+            }
+        },
+        axiosErrorToBugsnag(error) {
+            Bugsnag.notify(error, function (event) {
+                if (error.response) {
+                    event.addMetadata('axios-response', error.response)
+                    event.request.url = error.response.config.url
+                    event.request.headers = error.response.config.headers
+                    event.request.httpMethod = error.response.config.method
+                    event.request.body = error.response.config.data
+                } else if (error.request) {
+                    event.addMetadata('axios-request', error.request)
+                }
+            });
+        }
     }
 };
 </script>
