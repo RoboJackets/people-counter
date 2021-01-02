@@ -271,7 +271,7 @@ export default {
                 })
                 .catch(error => {
                     this.axiosErrorToBugsnag(error)
-
+                    this.handleAxiosError(error)
                 });
         },
         loadSpace() {
