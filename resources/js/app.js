@@ -10,7 +10,7 @@ Vue.component('home-page', require('./components/HomePage.vue').default);
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 
-if (process.env['MIX_BUGSNAG_API_KEY'] !== undefined) {
+if (process.env.MIX_BUGSNAG_API_KEY !== undefined) {
     Bugsnag.start({
         apiKey: process.env.MIX_BUGSNAG_API_KEY,
         plugins: [new BugsnagPluginVue()],
