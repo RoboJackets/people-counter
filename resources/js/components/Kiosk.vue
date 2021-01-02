@@ -288,7 +288,7 @@ export default {
                 })
                 .catch(error => {
                     this.axiosErrorToBugsnag(error)
-                    this.axiosErrorToBugsnag(error)
+                    this.handleAxiosError()
                 });
         },
         async loadSpaces() {
