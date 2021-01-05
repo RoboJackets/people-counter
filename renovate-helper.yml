@@ -114,7 +114,6 @@ jobs:
         - update
         - --no-interaction
         - --no-progress
-        - --no-suggest
         - --optimize-autoloader
         - --classmap-authoritative
 
