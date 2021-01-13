@@ -44,7 +44,7 @@
         "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.2",
         "fakerphp/faker": "1.13.0",
-        "nunomaduro/collision": "5.1.0"
+        "nunomaduro/collision": "5.2.0"
     },
     "config": {
         "optimize-autoloader": true,
