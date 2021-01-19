@@ -23,7 +23,7 @@
     "dependencies": {
         "@bugsnag/js": "7.6.0",
         "@bugsnag/plugin-vue": "7.6.0",
-        "bootstrap": "4.5.3",
+        "bootstrap": "4.6.0",
         "jquery": "3.5.1",
         "laravel-echo": "1.10.0",
         "popper.js": "1.16.1",
