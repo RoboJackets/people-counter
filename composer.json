@@ -33,7 +33,7 @@
         "staudenmeir/eloquent-has-many-deep": "*",
         "subfission/cas": "4.0.0",
         "ukfast/laravel-health-check": "1.8.0",
-        "vyuldashev/nova-permission": "2.10.0"
+        "vyuldashev/nova-permission": "2.11.0"
     },
     "require-dev": {
         "facade/ignition": "2.5.9",
