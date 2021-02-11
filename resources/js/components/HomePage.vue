@@ -60,11 +60,13 @@
                     </template>
                     <template v-else>
                         <div class="card-body">
-                            <div class="col-12" style="column-count: 2">
+                            <div class="row">
                                 <template v-for="space in spaces">
-                                    <h5 class="space-name">{{ space.name }}</h5>
-                                    <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
-                                    <br/>
+                                    <div class="col-md-6 col-sm-12">
+                                        <h5 class="space-name">{{ space.name }}</h5>
+                                        <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} maximum
+                                        <br/>
+                                    </div>
                                 </template>
                             </div>
                         </div>
@@ -74,7 +76,7 @@
         </div>
         <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
         <div class="modal fade" tabindex="-1" id="defaultSpaceChangeModal">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Change Default Space(s)</h5>
