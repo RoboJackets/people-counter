@@ -74,7 +74,7 @@
         </div>
         <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
         <div class="modal fade" tabindex="-1" id="defaultSpaceChangeModal">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Change Default Space(s)</h5>
