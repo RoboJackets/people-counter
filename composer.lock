@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d49ee187ad3cd0129e2be645159508d4",
+    "content-hash": "c65ba451449cf464a80570249bf3be97",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -1937,16 +1937,16 @@
         },
         {
             "name": "jeffbeltran/sanctum-tokens",
-            "version": "v1.3.5",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JeffBeltran/sanctum-tokens.git",
-                "reference": "b4c68432fa899be8a56d2cfbeae6c8bac74da961"
+                "reference": "04d0fb34bf0da6606b682d221443689468d2c1ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/b4c68432fa899be8a56d2cfbeae6c8bac74da961",
-                "reference": "b4c68432fa899be8a56d2cfbeae6c8bac74da961",
+                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/04d0fb34bf0da6606b682d221443689468d2c1ed",
+                "reference": "04d0fb34bf0da6606b682d221443689468d2c1ed",
                 "shasum": ""
             },
             "require": {
@@ -1976,9 +1976,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JeffBeltran/sanctum-tokens/issues",
-                "source": "https://github.com/JeffBeltran/sanctum-tokens/tree/v1.3.5"
+                "source": "https://github.com/JeffBeltran/sanctum-tokens/tree/v1.5.0"
             },
-            "time": "2020-12-15T16:16:59+00:00"
+            "time": "2021-02-08T15:38:05+00:00"
         },
         {
             "name": "laravel/framework",
