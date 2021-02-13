@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "089eb3d358816921920c8c50ff792293",
+    "content-hash": "e63442da212a46a0146049886b247268",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -3453,9 +3453,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1610988621/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-7caf590d32760a304772419303a109261406763a-zip-03ac5e.zip",
+                "url": "https://composer.robojackets.org/1613228593/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-7caf590d32760a304772419303a109261406763a-zip-03ac5e.zip",
                 "reference": "7caf590d32760a304772419303a109261406763a",
-                "shasum": "c96fe7d4d5be8ca0f53f7c4f7e882072ed204022"
+                "shasum": "7cf9a64a838e09aa8592ca327a7c9d49b75cef54"
             },
             "require": {
                 "ext-json": "*",
@@ -5622,17 +5622,17 @@
         },
         {
             "name": "robojackets/auth-stickler",
-            "version": "v0.2",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "git@github.gatech.edu:RoboJackets/auth-stickler.git",
-                "reference": "7c81356ab8ab87d7731188c23d3c251b3b3ce385"
+                "reference": "014d2261078db6c985dae8628907c49488773a46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1610988621/robojackets/auth-stickler/robojackets-auth-stickler-7c81356ab8ab87d7731188c23d3c251b3b3ce385-zip-762dd0.zip",
-                "reference": "7c81356ab8ab87d7731188c23d3c251b3b3ce385",
-                "shasum": "a4dac1c3540773734b396121793417f3385a6124"
+                "url": "https://composer.robojackets.org/1613228593/robojackets/auth-stickler/robojackets-auth-stickler-014d2261078db6c985dae8628907c49488773a46-zip-fc802a.zip",
+                "reference": "014d2261078db6c985dae8628907c49488773a46",
+                "shasum": "78a3d77b921a5645956862149afd2a9175bfa533"
             },
             "require": {
                 "apereo/phpcas": "^1.3",
@@ -5663,10 +5663,10 @@
             "description": "phpCAS wrapper with entirely too many opinions",
             "homepage": "https://github.gatech.edu/RoboJackets/auth-stickler",
             "support": {
-                "source": "https://github.gatech.edu/RoboJackets/auth-stickler/tree/v0.2",
+                "source": "https://github.gatech.edu/RoboJackets/auth-stickler/tree/v0.3",
                 "issues": "https://github.gatech.edu/RoboJackets/auth-stickler/issues"
             },
-            "time": "2021-01-18T16:37:40+00:00"
+            "time": "2021-02-13T14:55:55+00:00"
         },
         {
             "name": "robojackets/error-pages",
@@ -5678,9 +5678,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1610988621/robojackets/error-pages/robojackets-error-pages-ce83cc96d3f3ba637b76480a71d6d7adba1fa134-zip-30c6c2.zip",
+                "url": "https://composer.robojackets.org/1613228593/robojackets/error-pages/robojackets-error-pages-ce83cc96d3f3ba637b76480a71d6d7adba1fa134-zip-30c6c2.zip",
                 "reference": "ce83cc96d3f3ba637b76480a71d6d7adba1fa134",
-                "shasum": "07ab52be57c7fd224fb29f8e4c7a8ad6c0180d29"
+                "shasum": "15b8edfaf8902318f91f9c2b53afb8d4fa584c0b"
             },
             "require": {
                 "twig/twig": "^2.0"
@@ -5723,9 +5723,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1610988621/robojackets/network-check/robojackets-network-check-9afdebbc97394d6dbff68d697271a64e8314ebe7-zip-bd4da1.zip",
+                "url": "https://composer.robojackets.org/1613228593/robojackets/network-check/robojackets-network-check-9afdebbc97394d6dbff68d697271a64e8314ebe7-zip-bd4da1.zip",
                 "reference": "9afdebbc97394d6dbff68d697271a64e8314ebe7",
-                "shasum": "05b6ea64a3e5091d7774249667455a7a725ecbff"
+                "shasum": "00704acaac227e27b1575c8889173e4186a49b8e"
             },
             "require-dev": {
                 "phpstan/extension-installer": "^1.0",
@@ -11028,22 +11028,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v6.12.0",
+            "version": "v6.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "3c52215b9c23b36dc91ac803976f62a2931a3fc4"
+                "reference": "717c09aab753f8d56d442227cb2c5b14a883c4ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/3c52215b9c23b36dc91ac803976f62a2931a3fc4",
-                "reference": "3c52215b9c23b36dc91ac803976f62a2931a3fc4",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/717c09aab753f8d56d442227cb2c5b14a883c4ff",
+                "reference": "717c09aab753f8d56d442227cb2c5b14a883c4ff",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.25",
                 "mockery/mockery": "^1.4.2",
-                "orchestra/testbench-core": "^6.15.1",
+                "orchestra/testbench-core": "^6.15.2",
                 "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": "^8.4 || ^9.3",
                 "spatie/laravel-ray": "^1.9.3"
@@ -11077,7 +11077,7 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v6.12.0"
+                "source": "https://github.com/orchestral/testbench/tree/v6.12.1"
             },
             "funding": [
                 {
@@ -11089,20 +11089,20 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-02-09T13:57:42+00:00"
+            "time": "2021-02-13T10:12:10+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.15.1",
+            "version": "v6.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "3126b3f6ff4338f588c02ea5bd30398444dcb817"
+                "reference": "9bece6191cd6b48c3d6f3e42a687209102e57cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/3126b3f6ff4338f588c02ea5bd30398444dcb817",
-                "reference": "3126b3f6ff4338f588c02ea5bd30398444dcb817",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/9bece6191cd6b48c3d6f3e42a687209102e57cb4",
+                "reference": "9bece6191cd6b48c3d6f3e42a687209102e57cb4",
                 "shasum": ""
             },
             "require": {
@@ -11179,7 +11179,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-02-09T13:59:12+00:00"
+            "time": "2021-02-13T09:33:45+00:00"
         },
         {
             "name": "phan/phan",
@@ -11694,16 +11694,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.75",
+            "version": "0.12.76",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "2e4738cd67e0163861a065180eff7eb5c8417d6e"
+                "reference": "7aaaf9a759a29795e8f46d48041af1c1f1b23d38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2e4738cd67e0163861a065180eff7eb5c8417d6e",
-                "reference": "2e4738cd67e0163861a065180eff7eb5c8417d6e",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7aaaf9a759a29795e8f46d48041af1c1f1b23d38",
+                "reference": "7aaaf9a759a29795e8f46d48041af1c1f1b23d38",
                 "shasum": ""
             },
             "require": {
@@ -11734,7 +11734,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.75"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.76"
             },
             "funding": [
                 {
@@ -11750,7 +11750,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-11T13:58:47+00:00"
+            "time": "2021-02-13T11:47:44+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -12350,9 +12350,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1610988621/robojackets/static-analysis/robojackets-static-analysis-1a1c4fff67e3727f20cd33814f29a0724405f211-zip-ab0a59.zip",
+                "url": "https://composer.robojackets.org/1613228593/robojackets/static-analysis/robojackets-static-analysis-1a1c4fff67e3727f20cd33814f29a0724405f211-zip-ab0a59.zip",
                 "reference": "1a1c4fff67e3727f20cd33814f29a0724405f211",
-                "shasum": "5de83141eed37c36e021dfcc4946cd54e9e6a64d"
+                "shasum": "b86e3007d16a0e368326b00faeacf018f1e09d0b"
             },
             "require": {
                 "phan/phan": "*",
