@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e179528463d5120c10181362f0ae3ef",
+    "content-hash": "891e48d32342a3bab8ac5a4d6bc1db25",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -8905,16 +8905,16 @@
         },
         {
             "name": "ukfast/laravel-health-check",
-            "version": "v1.9.0",
+            "version": "v1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ukfast/laravel-health-check.git",
-                "reference": "9a5b3712022dedd7dc9ccf2369056bf2c168e6d7"
+                "reference": "5f0f0426abc71879a712aa56e7e07dedd8c38a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ukfast/laravel-health-check/zipball/9a5b3712022dedd7dc9ccf2369056bf2c168e6d7",
-                "reference": "9a5b3712022dedd7dc9ccf2369056bf2c168e6d7",
+                "url": "https://api.github.com/repos/ukfast/laravel-health-check/zipball/5f0f0426abc71879a712aa56e7e07dedd8c38a06",
+                "reference": "5f0f0426abc71879a712aa56e7e07dedd8c38a06",
                 "shasum": ""
             },
             "require": {
@@ -8984,7 +8984,7 @@
                 "issues": "https://github.com/ukfast/laravel-health-check/issues",
                 "source": "https://github.com/ukfast/laravel-health-check/tree/master"
             },
-            "time": "2021-02-12T21:33:36+00:00"
+            "time": "2021-02-15T15:35:00+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
