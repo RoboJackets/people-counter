@@ -21,7 +21,7 @@
         "webpack-bugsnag-plugins": "1.6.0"
     },
     "dependencies": {
-        "@bugsnag/js": "7.7.0",
+        "@bugsnag/js": "7.8.0",
         "@bugsnag/plugin-vue": "7.7.0",
         "bootstrap": "4.6.0",
         "jquery": "3.5.1",
