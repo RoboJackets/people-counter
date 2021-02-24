@@ -39,7 +39,7 @@
     },
     "require-dev": {
         "facade/ignition": "2.5.13",
-        "mockery/mockery": "1.4.2",
+        "mockery/mockery": "1.4.3",
         "nunomaduro/larastan": "0.7.0",
         "phpstan/extension-installer": "1.1.0",
         "phpunit/phpunit": "9.5.2",
