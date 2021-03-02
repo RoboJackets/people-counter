@@ -4,21 +4,23 @@ declare(strict_types=1);
 
 namespace App\Nova\Actions;
 
+use App\Models\Visit;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class ExportVisits extends DownloadExcel implements WithMapping
 {
     /**
-     * Name of action
+     * Name of action.
+     *
      * @var string
      */
     public $name = 'Export to CSV';
 
     /**
-     * Prepare values of each Visit to be exported
+     * Prepare values of each Visit to be exported.
      *
-     * @param \App\Models\Visit $row
+     * @param Visit $row
      *
      * @return array<string, string>
      */
