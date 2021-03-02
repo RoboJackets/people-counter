@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Nova\Actions;
 
-use App\Models\Visit;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
@@ -20,7 +19,7 @@ class ExportVisits extends DownloadExcel implements WithMapping
     /**
      * Prepare values of each Visit to be exported.
      *
-     * @param Visit $row
+     * @param \App\Models\Visit $row
      *
      * @return array<string, string>
      */
