@@ -103,6 +103,15 @@ class Visit extends Resource
     public function actions(Request $request)
     {
         return [
+            (new Actions\ExportVisits())
+                ->withWriterType(\Maatwebsite\Excel\Excel::CSV)
+                ->withHeadings()
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->can('read-visits');
+                })
+                ->canRun(static function (Request $request): bool {
+                    return $request->user()->can('read-visits');
+                }),
             (new Actions\EndVisit())
                 ->canSee(static function (Request $request): bool {
                     return $request->user()->hasRole('super-admin');
