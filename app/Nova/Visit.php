@@ -78,6 +78,7 @@ class Visit extends Resource
     {
         return [
             new Filters\VisitState(),
+            new Filters\VisitDate(),
         ];
     }
 
