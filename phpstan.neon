@@ -17,6 +17,7 @@ parameters:
     - '#Cannot access property \$[a-zA-Z_]+ on App\\Models\\[a-zA-Z_]+\|Illuminate\\Database\\Eloquent\\Collection<App\\Models\\Space>\|null\.#'
     - '#Cannot call method save\(\) on App\\Models\\[a-zA-Z]+\|null\.#'
     - '#Dynamic call to static method Illuminate\\Contracts\\Auth\\Guard::user\(\)\.#'
+    - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereBetween\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNotNull\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNull\(\)\.#'
     - '#Dynamic call to static method PHPUnit\\Framework\\Assert::assertTrue\(\)\.#'

@@ -1,33 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Nova\Actions;
 
-use App\Models\Visit;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class ExportVisits extends DownloadExcel implements WithMapping
 {
     /**
-     * @var string $name
+     * Name of action
+     * @var string
      */
     public $name = 'Export to CSV';
 
     /**
-     * @param Visit $visit
+     * Prepare values of each Visit to be exported
      *
-     * @return array
+     * @param \App\Models\Visit $row
+     *
+     * @return array<string, string>
      */
-    public function map($visit): array
+    public function map($row): array
     {
         return [
-            'First Name' => $visit->user->first_name,
-            'Last Name' => $visit->user->last_name,
-            'Email' => $visit->user->email,
-            'In Time' => $visit->in_time,
-            'In Door' => $visit->in_door,
-            'Out Time' => $visit->out_time,
-            'Out Door' => $visit->out_door
+            'First Name' => $row->user->first_name,
+            'Last Name' => $row->user->last_name,
+            'Email' => $row->user->email,
+            'In Time' => $row->in_time,
+            'In Door' => $row->in_door,
+            'Out Time' => $row->out_time,
+            'Out Door' => $row->out_door,
         ];
     }
 }
