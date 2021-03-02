@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ef9621e566e2ea1e5bdc908f6a31534",
+    "content-hash": "1902be9553a8cfb736d0a80c640104a3",
     "packages": [
         {
             "name": "apereo/phpcas",
@@ -123,16 +123,16 @@
         },
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
-                "reference": "b793f7b98a42effa390a6eb4e562acd9eedac31c"
+                "reference": "583022a11d217caf5fbf5b8f1ae8837f473c41f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/b793f7b98a42effa390a6eb4e562acd9eedac31c",
-                "reference": "b793f7b98a42effa390a6eb4e562acd9eedac31c",
+                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/583022a11d217caf5fbf5b8f1ae8837f473c41f9",
+                "reference": "583022a11d217caf5fbf5b8f1ae8837f473c41f9",
                 "shasum": ""
             },
             "require": {
@@ -199,9 +199,9 @@
             ],
             "support": {
                 "issues": "https://github.com/beyondcode/laravel-websockets/issues",
-                "source": "https://github.com/beyondcode/laravel-websockets/tree/1.11.0"
+                "source": "https://github.com/beyondcode/laravel-websockets/tree/1.11.1"
             },
-            "time": "2021-02-25T19:02:37+00:00"
+            "time": "2021-03-02T18:04:58+00:00"
         },
         {
             "name": "brick/math",
