@@ -440,13 +440,23 @@ export default {
                     this.hasError = false;
                     let name = (response.data.name ? response.data.name : "Unknown User");
                     let direction = response.data.punch;
-                    let swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                    let swalText, swalIcon;
+
+                    if (response.data.message != null) {
+                        swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                        swalText += '<br/><br/><b>' + response.data.message + '</b>';
+                        swalIcon = 'info';
+                    } else {
+                        swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                        swalIcon = 'success';
+                    }
+
                     this.$swal.fire({
                         title: "You're " + direction + "!",
-                        text: swalText,
+                        html: swalText,
                         timer: 3000,
                         showConfirmButton: false,
-                        icon: 'success',
+                        icon: swalIcon,
                         timerProgressBar: true,
                         customClass: {
                             title: 'swal-swipe-title',
