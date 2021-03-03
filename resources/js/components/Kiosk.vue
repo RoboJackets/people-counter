@@ -443,16 +443,16 @@ export default {
                     let swalText, swalIcon;
 
                     if (response.data.message != null) {
-                        swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
-                        swalText += '<br/><br/><b>' + response.data.message + '</b>';
+                        swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
+                        swalText += `<br/><br/><b>${response.data.message}</b>`;
                         swalIcon = 'info';
                     } else {
-                        swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                        swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
                         swalIcon = 'success';
                     }
 
                     this.$swal.fire({
-                        title: "You're " + direction + "!",
+                        title: `You're ${direction}!`,
                         html: swalText,
                         timer: 3000,
                         showConfirmButton: false,
@@ -481,7 +481,7 @@ export default {
                         });
                     } else if (error.response.status === 422 && error.response.data.error.includes('space') ) {
                         let msg = error.response.data.error
-                        msg += "<b> You must set your default space at " + window.location.hostname + " before punching in.</b>"
+                        msg += `<b>You must set your default space at ${window.location.hostname} before punching in.</b>`
                         this.$swal.fire({
                             title: 'STOP! Action Required',
                             html: msg,
@@ -491,8 +491,8 @@ export default {
                             showConfirmButton: false,
                         });
                     } else if (error.response.status === 422 && error.response.data.error.includes('occupancy') ) {
-                        let msg = '<b>' + error.response.data.error + '</b>'
-                        msg += "<br/>View space occupancy at " + window.location.hostname
+                        let msg = `<b>${error.response.data.error}</b>`
+                        msg += `<br/>View space occupancy at ${window.location.hostname}`
                         this.$swal.fire({
                             title: 'STOP! Punch Rejected',
                             html: msg,
