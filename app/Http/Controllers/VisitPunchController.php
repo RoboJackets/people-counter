@@ -72,7 +72,7 @@ class VisitPunchController extends Controller
         }
 
         // Find active visit for GTID (if any)
-        $active_visits = Visit::activeForUser($gtid)->get();
+        $active_visits = Visit::activeForUser($gtid)->with('spaces')->get();
 
         if (count($active_visits) > 1) {
             // Eek! User has multiple active visits. This shouldn't happen!
@@ -87,6 +87,7 @@ class VisitPunchController extends Controller
             );
         }
 
+        $transition = null;
         if (1 === count($active_visits)) {
             // Update existing visit to punch out
             $visit = $active_visits->first();
@@ -99,9 +100,20 @@ class VisitPunchController extends Controller
             //Notify all kiosks via websockets
             event(new Punch());
 
-            SendFormEmail::dispatch($user, $visit)->delay(now()->addMinutes(20));
+            // Check if kiosk/door where punched is part of a different space
+            $punch_space_id = $request->input('space_id');
+            $active_visit_space_ids = $active_visits->first()->spaces->pluck('id')->toArray();
+            if (in_array($punch_space_id, $active_visit_space_ids)) {
+                // Same space, no new punch in needed.
+                SendFormEmail::dispatch($user, $visit)->delay(now()->addMinutes(20));
+                return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
+            } else {
+                // Different space, fall through to normal punch in handler
+                $active_visit_space_names = Space::findMany($active_visit_space_ids)->pluck('name')->toArray();
+                $transition['from'] = $active_visit_space_names;
+                Log::info('Space transition for '.$gtid.' at '.$door);
+            }
 
-            return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
         }
 
         // Determine which space to punch in at
@@ -152,6 +164,18 @@ class VisitPunchController extends Controller
         $spaceIds = array_map(static function (Space $punchSpaces): int {
             return $punchSpaces->id;
         }, $punchSpaces);
+        // Populate space names in message to return to frontend if transitioning between spaces
+        if (is_array($transition)) {
+            $transition['to'] = array_map(static function (Space $punchSpaces): string {
+                return $punchSpaces->name;
+            }, $punchSpaces);
+            $from_list = implode(", ", $transition['from']);
+            $to_list = implode(", ", $transition['to']);
+            $msg = 'Remember to punch out when you leave a space!';
+            $msg .= ' Visit transitioned from '.$from_list.' to '.$to_list.'.';
+        } else {
+            $msg = null;
+        }
         $visit = new Visit();
         $visit->in_time = Carbon::now();
         $visit->in_door = $door;
@@ -167,6 +191,11 @@ class VisitPunchController extends Controller
 
         SendSignOutReminderEmail::dispatch($user, $visit)->delay(now()->addHours(8));
 
-        return response()->json(['status' => 'success', 'punch' => 'in', 'name' => $name], 201);
+        return response()->json([
+            'status' => 'success',
+            'punch' => 'in',
+            'name' => $name,
+            'message' => $msg
+        ], 201);
     }
 }
