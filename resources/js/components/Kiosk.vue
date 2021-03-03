@@ -40,7 +40,7 @@
                 <div class="card">
                     <h5 class="card-header">Who's Here</h5>
                     <div class="card-body">
-                        <p style="font-size: large;">
+                        <p style="font-size: x-large;">
                             {{ this.peopleHere.join(", ")}}
                         </p>
                     </div>
