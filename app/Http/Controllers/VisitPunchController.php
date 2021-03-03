@@ -64,6 +64,7 @@ class VisitPunchController extends Controller
         // Check for default space for user
         $userSpaces = $user->spaces;
         if (0 === count($userSpaces)) {
+            Log::info('Punch rejected - No default space(s) set for '.$gtid);
             return response()->json([
                 'status' => 'error',
                 'error' => 'No default space(s) set for user.',
