@@ -165,7 +165,7 @@ class VisitPunchController extends Controller
             return $punchSpaces->id;
         }, $punchSpaces);
         // Populate space names in message to return to frontend if transitioning between spaces
-        if (is_array($transition) && 0 < count($transition)) {
+        if (array_key_exists('from', $transition)) {
             $transition['to'] = array_map(static function (Space $punchSpaces): string {
                 return $punchSpaces->name;
             }, $punchSpaces);
