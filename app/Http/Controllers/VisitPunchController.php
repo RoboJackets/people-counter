@@ -88,7 +88,7 @@ class VisitPunchController extends Controller
             );
         }
 
-        $transition = null;
+        $transition = [];
         if (1 === count($active_visits)) {
             // Update existing visit to punch out
             $visit = $active_visits->first();
@@ -104,7 +104,7 @@ class VisitPunchController extends Controller
             // Check if kiosk/door where punched is part of a different space
             $punch_space_id = $request->input('space_id');
             $active_visit_space_ids = $active_visits->first()->spaces->pluck('id')->toArray();
-            if (in_array($punch_space_id, $active_visit_space_ids, false)) {
+            if (in_array($punch_space_id, $active_visit_space_ids, true)) {
                 // Same space, no new punch in needed.
                 SendFormEmail::dispatch($user, $visit)->delay(now()->addMinutes(20));
 
@@ -165,7 +165,7 @@ class VisitPunchController extends Controller
             return $punchSpaces->id;
         }, $punchSpaces);
         // Populate space names in message to return to frontend if transitioning between spaces
-        if (is_array($transition)) {
+        if (!empty($transition)) {
             $transition['to'] = array_map(static function (Space $punchSpaces): string {
                 return $punchSpaces->name;
             }, $punchSpaces);
