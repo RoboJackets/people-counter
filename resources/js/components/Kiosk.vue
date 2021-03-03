@@ -481,11 +481,11 @@ export default {
                         });
                     } else if (error.response.status === 422 && error.response.data.error.includes('space') ) {
                         let msg = error.response.data.error
-                        msg += " You must set your default space at " + window.location.hostname
+                        msg += "<b> You must set your default space at " + window.location.hostname + " before punching in.</b>"
                         this.$swal.fire({
-                            title: 'Action Required',
-                            text: msg,
-                            icon: 'info',
+                            title: 'STOP! Action Required',
+                            html: msg,
+                            icon: 'error',
                             timer: 10000,
                             timerProgressBar: true,
                             showConfirmButton: false,
@@ -505,9 +505,9 @@ export default {
                         this.axiosErrorToBugsnag(error)
                         this.$swal.fire({
                             title: 'Error',
-                            text: 'Unable to process data. Check your internet connection or try refreshing the page.',
+                            text: 'An unexpected error occurred. If this continues, post in Slack or contact developers@robojackets.org.',
                             icon: 'error',
-                            timer: 3000,
+                            timer: 5000,
                             timerProgressBar: true,
                             showConfirmButton: false,
                         });
@@ -543,7 +543,7 @@ export default {
             } else {
                 this.$swal.fire(
                     'Error',
-                    'Unable to process data. Check your internet connection or try refreshing the page.',
+                    'An unexpected error occurred. If this continues, post in Slack or contact developers@robojackets.org.',
                     'error'
                 );
             }
