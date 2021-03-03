@@ -65,6 +65,7 @@ class VisitPunchController extends Controller
         $userSpaces = $user->spaces;
         if (0 === count($userSpaces)) {
             Log::info('Punch rejected - No default space(s) set for '.$gtid);
+
             return response()->json([
                 'status' => 'error',
                 'error' => 'No default space(s) set for user.',
@@ -103,17 +104,16 @@ class VisitPunchController extends Controller
             // Check if kiosk/door where punched is part of a different space
             $punch_space_id = $request->input('space_id');
             $active_visit_space_ids = $active_visits->first()->spaces->pluck('id')->toArray();
-            if (in_array($punch_space_id, $active_visit_space_ids)) {
+            if (in_array($punch_space_id, $active_visit_space_ids, false)) {
                 // Same space, no new punch in needed.
                 SendFormEmail::dispatch($user, $visit)->delay(now()->addMinutes(20));
-                return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
-            } else {
-                // Different space, fall through to normal punch in handler
-                $active_visit_space_names = Space::findMany($active_visit_space_ids)->pluck('name')->toArray();
-                $transition['from'] = $active_visit_space_names;
-                Log::info('Space transition for '.$gtid.' at '.$door);
-            }
 
+                return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
+            }
+            // Different space, fall through to normal punch in handler
+            $active_visit_space_names = Space::findMany($active_visit_space_ids)->pluck('name')->toArray();
+            $transition['from'] = $active_visit_space_names;
+            Log::info('Space transition for '.$gtid.' at '.$door);
         }
 
         // Determine which space to punch in at
@@ -169,8 +169,8 @@ class VisitPunchController extends Controller
             $transition['to'] = array_map(static function (Space $punchSpaces): string {
                 return $punchSpaces->name;
             }, $punchSpaces);
-            $from_list = implode(", ", $transition['from']);
-            $to_list = implode(", ", $transition['to']);
+            $from_list = implode(', ', $transition['from']);
+            $to_list = implode(', ', $transition['to']);
             $msg = 'Remember to punch out when you leave a space!';
             $msg .= ' Visit transitioned from '.$from_list.' to '.$to_list.'.';
         } else {
@@ -195,7 +195,7 @@ class VisitPunchController extends Controller
             'status' => 'success',
             'punch' => 'in',
             'name' => $name,
-            'message' => $msg
+            'message' => $msg,
         ], 201);
     }
 }
