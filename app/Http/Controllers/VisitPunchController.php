@@ -164,15 +164,16 @@ class VisitPunchController extends Controller
         $spaceIds = array_map(static function (Space $punchSpaces): int {
             return $punchSpaces->id;
         }, $punchSpaces);
-        // Populate space names in message to return to frontend if transitioning between spaces
+        // Populate space names in log message for debugging purposes
         if (array_key_exists('from', $transition)) {
             $transition['to'] = array_map(static function (Space $punchSpaces): string {
                 return $punchSpaces->name;
             }, $punchSpaces);
             $from_list = implode(', ', $transition['from']);
             $to_list = implode(', ', $transition['to']);
+            Log::debug('Visit transitioned from '.$from_list.' to '.$to_list.' for '.$gtid);
+            // Push a reminder to the frontend
             $msg = 'Remember to punch out when you leave a space!';
-            $msg .= ' Visit transitioned from '.$from_list.' to '.$to_list.'.';
         } else {
             $msg = null;
         }

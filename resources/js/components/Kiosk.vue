@@ -442,7 +442,7 @@ export default {
                     let direction = response.data.punch;
                     let swalText, swalIcon;
 
-                    if (response.data.message != null) {
+                    if (response.data.message) {
                         swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
                         swalText += `<br/><br/><b>${response.data.message}</b>`;
                         swalIcon = 'info';
@@ -505,7 +505,7 @@ export default {
                         this.axiosErrorToBugsnag(error)
                         this.$swal.fire({
                             title: 'Error',
-                            text: 'An unexpected error occurred. If this continues, post in SCC/RJ Slack #people-counter or contact developers@robojackets.org.',
+                            text: 'An unexpected error occurred. If this continues, post in Slack #people-counter.',
                             icon: 'error',
                             timer: 5000,
                             timerProgressBar: true,
@@ -543,7 +543,7 @@ export default {
             } else {
                 this.$swal.fire(
                     'Error',
-                    'An unexpected error occurred. If this continues, post in SCC/RJ Slack #people-counter or contact developers@robojackets.org.',
+                    'An unexpected error occurred. If this continues, post in Slack #people-counter.',
                     'error'
                 );
             }
