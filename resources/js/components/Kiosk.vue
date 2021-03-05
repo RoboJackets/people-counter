@@ -440,14 +440,13 @@ export default {
                     this.hasError = false;
                     let name = (response.data.name ? response.data.name : "Unknown User");
                     let direction = response.data.punch;
-                    let swalText, swalIcon;
+                    let swalIcon;
+                    let swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
 
                     if (response.data.message) {
-                        swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
                         swalText += `<br/><br/><b>${response.data.message}</b>`;
                         swalIcon = 'info';
                     } else {
-                        swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
                         swalIcon = 'success';
                     }
 
