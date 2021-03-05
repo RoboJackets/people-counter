@@ -92,6 +92,12 @@ export default {
             userBaseUrl: '/api/user',
             dynamicColor: {
                 backgroundColor: ''
+            },
+            sounds: {
+                in: '/sounds/kiosk_in_short.mp3',
+                out: '/sounds/kiosk_out_short.mp3',
+                notice: '/sounds/kiosk_notice2.mp3',
+                error: '/sounds/kiosk_error_xp.mp3'
             }
         };
     },
@@ -396,6 +402,7 @@ export default {
                 this.submit();
             } else if (pattError.test(cardData)) {
                 // Error message sent from card reader
+                new Audio(this.sounds.error).play()
                 console.log('error cardData: ' + pattError.exec(cardData));
                 cardData = null;
                 this.$swal.fire({
@@ -410,6 +417,7 @@ export default {
                     }
                 })
             } else {
+                new Audio(this.sounds.error).play()
                 this.$swal.close();
                 console.log('unknown cardData: ' + cardData);
                 Bugsnag.notify(new Error('Card format not recognized'), function (event) {
@@ -441,6 +449,8 @@ export default {
                     let name = (response.data.name ? response.data.name : "Unknown User");
                     let direction = response.data.punch;
                     let swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                    new Audio((direction === 'in') ? this.sounds.in : this.sounds.out).play();
+
                     this.$swal.fire({
                         title: "You're " + direction + "!",
                         text: swalText,
@@ -459,6 +469,7 @@ export default {
                     this.hasError = true;
                     this.feedback = '';
                     this.clearFields();
+                    new Audio(this.sounds.error).play()
                     if (error.response.status === 403) {
                         this.axiosErrorToBugsnag(error)
                         this.$swal.fire({
@@ -518,6 +529,7 @@ export default {
             return !isNaN(parseFloat(n)) && isFinite(n);
         },
         handleAxiosError(error) {
+            new Audio(this.sounds.error).play()
             if (error.hasOwnProperty('response') && error.response.status === 403) {
                 this.$swal.fire({
                     title: 'Whoops!',
