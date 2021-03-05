@@ -40,7 +40,7 @@
                 <div class="card">
                     <h5 class="card-header">Who's Here</h5>
                     <div class="card-body">
-                        <p style="font-size: large;">
+                        <p style="font-size: x-large;">
                             {{ this.peopleHere.join(", ")}}
                         </p>
                     </div>
@@ -440,13 +440,22 @@ export default {
                     this.hasError = false;
                     let name = (response.data.name ? response.data.name : "Unknown User");
                     let direction = response.data.punch;
-                    let swalText = (direction === 'in') ? 'Nice to see you, ' + name + '.' : 'Have a great day, ' + name + '!';
+                    let swalIcon;
+                    let swalText = (direction === 'in') ? `Nice to see you, ${name}.` : `Have a great day, ${name}!`;
+
+                    if (response.data.message) {
+                        swalText += `<br/><br/><b>${response.data.message}</b>`;
+                        swalIcon = 'info';
+                    } else {
+                        swalIcon = 'success';
+                    }
+
                     this.$swal.fire({
-                        title: "You're " + direction + "!",
-                        text: swalText,
+                        title: `You're ${direction}!`,
+                        html: swalText,
                         timer: 3000,
                         showConfirmButton: false,
-                        icon: 'success',
+                        icon: swalIcon,
                         timerProgressBar: true,
                         customClass: {
                             title: 'swal-swipe-title',
@@ -471,18 +480,18 @@ export default {
                         });
                     } else if (error.response.status === 422 && error.response.data.error.includes('space') ) {
                         let msg = error.response.data.error
-                        msg += " You must set your default space at " + window.location.hostname
+                        msg += `<b>You must set your default space at ${window.location.hostname} before punching in.</b>`
                         this.$swal.fire({
-                            title: 'Action Required',
-                            text: msg,
-                            icon: 'info',
+                            title: 'STOP! Action Required',
+                            html: msg,
+                            icon: 'error',
                             timer: 10000,
                             timerProgressBar: true,
                             showConfirmButton: false,
                         });
                     } else if (error.response.status === 422 && error.response.data.error.includes('occupancy') ) {
-                        let msg = '<b>' + error.response.data.error + '</b>'
-                        msg += "<br/>View space occupancy at " + window.location.hostname
+                        let msg = `<b>${error.response.data.error}</b>`
+                        msg += `<br/>View space occupancy at ${window.location.hostname}`
                         this.$swal.fire({
                             title: 'STOP! Punch Rejected',
                             html: msg,
@@ -495,9 +504,9 @@ export default {
                         this.axiosErrorToBugsnag(error)
                         this.$swal.fire({
                             title: 'Error',
-                            text: 'Unable to process data. Check your internet connection or try refreshing the page.',
+                            text: 'An unexpected error occurred. If this continues, post in Slack #people-counter.',
                             icon: 'error',
-                            timer: 3000,
+                            timer: 5000,
                             timerProgressBar: true,
                             showConfirmButton: false,
                         });
@@ -533,7 +542,7 @@ export default {
             } else {
                 this.$swal.fire(
                     'Error',
-                    'Unable to process data. Check your internet connection or try refreshing the page.',
+                    'An unexpected error occurred. If this continues, post in Slack #people-counter.',
                     'error'
                 );
             }
