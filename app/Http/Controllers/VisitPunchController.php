@@ -102,7 +102,7 @@ class VisitPunchController extends Controller
             event(new Punch());
 
             // Check if kiosk/door where punched is part of a different space
-            $punch_space_id = $request->input('space_id');
+            $punch_space_id = (int) $request->input('space_id');
             $active_visit_space_ids = $active_visits->first()->spaces->pluck('id')->toArray();
             if (in_array($punch_space_id, $active_visit_space_ids, true)) {
                 // Same space, no new punch in needed.
