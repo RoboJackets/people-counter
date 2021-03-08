@@ -120,7 +120,7 @@ class VisitPunchController extends Controller
             foreach ($active_visit_space_ids as $active_visit_space_id) {
                 if ($punch_space->children->contains($active_visit_space_id)) {
                     $punch_space_is_parent = true;
-                    continue;
+                    break;
                 }
             }
             if (in_array($punch_space_id, $active_visit_space_ids, true) || $punch_space_is_parent) {
