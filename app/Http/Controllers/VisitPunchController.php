@@ -12,6 +12,7 @@ use App\Models\Space;
 use App\Models\User;
 use App\Models\Visit;
 use App\Traits\CreateOrUpdateUserFromBuzzAPI;
+use App\Traits\UpdateUserSpacesFromSUMS;
 use Carbon\Carbon;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller;
@@ -21,6 +22,7 @@ class VisitPunchController extends Controller
 {
     use DispatchesJobs;
     use CreateOrUpdateUserFromBuzzAPI;
+    use UpdateUserSpacesFromSUMS;
 
     /**
      * Record a new in/out punch for a Visit.
@@ -64,12 +66,19 @@ class VisitPunchController extends Controller
         // Check for default space for user
         $userSpaces = $user->spaces;
         if (0 === count($userSpaces)) {
-            Log::info('Punch rejected - No default space(s) set for '.$gtid);
+            // Query SUMS
+            $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
+            if (null !== $updatedSpaces) {
+                $userSpaces = $updatedSpaces;
+            } else {
+                // Not a member of any SCC Billing Groups in SUMS
+                Log::info('Punch rejected - No default space(s) set for '.$gtid);
 
-            return response()->json([
-                'status' => 'error',
-                'error' => 'No default space(s) set for user.',
-            ], 422);
+                return response()->json([
+                    'status' => 'error',
+                    'error' => 'No default space(s) set for user.',
+                ], 422);
+            }
         }
 
         // Find active visit for GTID (if any)
