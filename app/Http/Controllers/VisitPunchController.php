@@ -112,8 +112,16 @@ class VisitPunchController extends Controller
 
             // Check if kiosk/door where punched is part of a different space
             $punch_space_id = (int) $request->input('space_id');
+            $punch_space = Space::find($punch_space_id);
             $active_visit_space_ids = $active_visits->first()->spaces->pluck('id')->toArray();
-            if (in_array($punch_space_id, $active_visit_space_ids, true)) {
+            $punch_space_is_parent = false;
+            foreach ($active_visit_space_ids as $active_visit_space_id) {
+                if ($punch_space->children->contains($active_visit_space_id)) {
+                    $punch_space_is_parent = true;
+                    continue;
+                }
+            }
+            if (in_array($punch_space_id, $active_visit_space_ids, true) || $punch_space_is_parent) {
                 // Same space, no new punch in needed.
                 SendFormEmail::dispatch($user, $visit)->delay(now()->addMinutes(20));
 
