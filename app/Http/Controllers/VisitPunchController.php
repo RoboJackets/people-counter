@@ -12,6 +12,7 @@ use App\Models\Space;
 use App\Models\User;
 use App\Models\Visit;
 use App\Traits\CreateOrUpdateUserFromBuzzAPI;
+use App\Traits\UpdateUserSpacesFromSUMS;
 use Carbon\Carbon;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller;
@@ -21,6 +22,7 @@ class VisitPunchController extends Controller
 {
     use DispatchesJobs;
     use CreateOrUpdateUserFromBuzzAPI;
+    use UpdateUserSpacesFromSUMS;
 
     /**
      * Record a new in/out punch for a Visit.
@@ -64,12 +66,21 @@ class VisitPunchController extends Controller
         // Check for default space for user
         $userSpaces = $user->spaces;
         if (0 === count($userSpaces)) {
-            Log::info('Punch rejected - No default space(s) set for '.$gtid);
+            // Query SUMS if we have a valid user
+            $updatedSpaces = null;
+            if (null !== $user) {
+                $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
+            }
+            if (null === $updatedSpaces) {
+                // Not a member of any SCC Billing Groups in SUMS
+                Log::info('Punch rejected - No default space(s) set for '.$gtid);
 
-            return response()->json([
-                'status' => 'error',
-                'error' => 'No default space(s) set for user.',
-            ], 422);
+                return response()->json([
+                    'status' => 'error',
+                    'error' => 'No default space(s) set for user.',
+                ], 422);
+            }
+            $userSpaces = $updatedSpaces;
         }
 
         // Find active visit for GTID (if any)
@@ -103,8 +114,16 @@ class VisitPunchController extends Controller
 
             // Check if kiosk/door where punched is part of a different space
             $punch_space_id = (int) $request->input('space_id');
+            $punch_space = Space::find($punch_space_id);
             $active_visit_space_ids = $active_visits->first()->spaces->pluck('id')->toArray();
-            if (in_array($punch_space_id, $active_visit_space_ids, true)) {
+            $punch_space_is_parent = false;
+            foreach ($active_visit_space_ids as $active_visit_space_id) {
+                if ($punch_space->children->contains($active_visit_space_id)) {
+                    $punch_space_is_parent = true;
+                    break;
+                }
+            }
+            if (in_array($punch_space_id, $active_visit_space_ids, true) || $punch_space_is_parent) {
                 // Same space, no new punch in needed.
                 SendFormEmail::dispatch($user, $visit)->delay(now()->addMinutes(20));
 

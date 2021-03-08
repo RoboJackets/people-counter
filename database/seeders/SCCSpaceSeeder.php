@@ -23,11 +23,11 @@ class SCCSpaceSeeder extends Seeder
 
         $sccChildSpaces = [
             'GT Motorsports' => ['max' => 12],
-            'GT Offroad' => ['max' => 6],
-            'HyTech' => ['max' => 6],
-            'EcoCar' => ['max' => 8],
-            'SolarRacing' => ['max' => 17],
-            'WreckRacing' => ['max' => 8],
+            'GT Off-Road' => ['max' => 6],
+            'HyTech Racing' => ['max' => 6],
+            'EcoCAR' => ['max' => 8],
+            'Solar Racing' => ['max' => 17],
+            'Wreck Racing' => ['max' => 8],
         ];
 
         foreach ($parentSpaces as $key => $value) {
