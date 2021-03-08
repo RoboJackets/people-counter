@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Log;
 trait UpdateUserSpacesFromSUMS
 {
     /**
+     * Update user space attachments via SUMS API
+     *
      * @param User $user
      *
      * @return Collection|null
@@ -23,28 +25,31 @@ trait UpdateUserSpacesFromSUMS
         $username = $user->username;
         $client = new Client([
             'base_uri' => 'https://'.config('sums.host'),
-            'timeout' => 5.0
+            'timeout' => 5.0,
         ]);
         try {
             $response = $client->request('GET', '/SUMSAPI/rest/SCC_BGMembership/GetMemberships', [
-                'query' =>  [
+                'query' => [
                     'Key' => config('sums.api_key'),
-                    'GTUsername' => $username
+                    'GTUsername' => $username,
                 ],
             ]);
         } catch (RequestException $e) {
             $msg = 'RequestException while querying SUMS for billing groups for '.$username.': '.$e->getMessage();
             Log::error($msg);
+
             return null;
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $msg = 'Exception while querying SUMS for billing groups for '.$username.': '.$e->getMessage();
             Log::error($msg);
+
             return null;
         }
 
         $contents = json_decode($response->getBody()->getContents());
-        if (0 == count((array) $contents)) {
+        if (0 === count( (array) $contents)) {
             Log::info($username.' is not associated with any SCC billing groups in SUMS');
+
             return null;
         }
 
@@ -56,22 +61,23 @@ trait UpdateUserSpacesFromSUMS
             'isGTSolarRacing' => 'Solar Racing',
             'isHyTechRacing' => 'HyTech Racing',
             'isRoboJackets' => 'RoboJackets',
-            'isWreckRacing' => 'Wreck Racing'
+            'isWreckRacing' => 'Wreck Racing',
         ];
         $updated = false;
         foreach ($contents as $billingGroup => $member) {
-            if ($member) {
-                $space = Space::where('name', $spaceMap[$billingGroup])->first();
-                $user->spaces()->syncWithoutDetaching([$space->id]);
-                Log::info("Attached $username to {$space->name} via SUMS");
-                $updated = true;
-            }
+            if (null === $member) { continue; }
+
+            $space = Space::where('name', $spaceMap[$billingGroup])->first();
+            $user->spaces()->syncWithoutDetaching([$space->id]);
+            Log::info('Attached '.$username.' to '.$space->name.' via SUMS');
+            $updated = true;
         }
         if ($updated) {
             $user->refresh();
+
             return $user->spaces;
-        } else {
-            return null;
         }
+
+        return null;
     }
 }

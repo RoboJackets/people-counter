@@ -66,11 +66,12 @@ class VisitPunchController extends Controller
         // Check for default space for user
         $userSpaces = $user->spaces;
         if (0 === count($userSpaces)) {
-            // Query SUMS
-            $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
-            if (null !== $updatedSpaces) {
-                $userSpaces = $updatedSpaces;
-            } else {
+            // Query SUMS if we have a valid user
+            $updatedSpaces = null;
+            if (null !== $user) {
+                $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
+            }
+            if (null === $updatedSpaces) {
                 // Not a member of any SCC Billing Groups in SUMS
                 Log::info('Punch rejected - No default space(s) set for '.$gtid);
 
@@ -79,6 +80,7 @@ class VisitPunchController extends Controller
                     'error' => 'No default space(s) set for user.',
                 ], 422);
             }
+            $userSpaces = $updatedSpaces;
         }
 
         // Find active visit for GTID (if any)
