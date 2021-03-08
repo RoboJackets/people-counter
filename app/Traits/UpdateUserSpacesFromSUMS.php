@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Log;
 trait UpdateUserSpacesFromSUMS
 {
     /**
-     * Update user space attachments via SUMS API
+     * Update user space attachments via SUMS API.
      *
      * @param User $user
      *
@@ -47,7 +47,8 @@ trait UpdateUserSpacesFromSUMS
         }
 
         $contents = json_decode($response->getBody()->getContents());
-        if (0 === count( (array) $contents)) {
+        // phpcs:disable Generic.Formatting.SpaceBeforeCast.NoSpace
+        if (0 === count((array) $contents)) {
             Log::info($username.' is not associated with any SCC billing groups in SUMS');
 
             return null;
@@ -65,7 +66,9 @@ trait UpdateUserSpacesFromSUMS
         ];
         $updated = false;
         foreach ($contents as $billingGroup => $member) {
-            if (null === $member) { continue; }
+            if (null === $member) {
+                continue;
+            }
 
             $space = Space::where('name', $spaceMap[$billingGroup])->first();
             $user->spaces()->syncWithoutDetaching([$space->id]);
