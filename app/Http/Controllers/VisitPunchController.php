@@ -72,7 +72,7 @@ class VisitPunchController extends Controller
                 $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
             }
             if (null === $updatedSpaces) {
-                $updatedSpaces = collect([Space::where('id', $request->input('space_id'))->sole()]);
+                $updatedSpaces = collect([Space:findOrFail($request->input('space_id'))]);
             }
             $userSpaces = $updatedSpaces;
         }
