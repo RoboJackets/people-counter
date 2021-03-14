@@ -10,15 +10,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
+use RoboJackets\ApiaryUser;
 
 trait UpdateUserSpacesFromSUMS
 {
     /**
      * Update user space attachments via SUMS API.
-     *
-     * @param User $user
-     *
-     * @return Collection|null
      */
     public function updateUserSpacesFromSUMS(User $user): ?Collection
     {
@@ -51,6 +48,18 @@ trait UpdateUserSpacesFromSUMS
         if (0 === count((array) $contents)) {
             Log::info($username.' is not associated with any SCC billing groups in SUMS');
 
+            ApiaryUser::configure(config('apiary.server'), config('apiary.token'));
+
+            if (ApiaryUser::fetchUser($username) && ApiaryUser::exists() && ApiaryUser::isAccessActive()) {
+                Log::info($username.' is a RoboJackets member according to Apiary');
+                $user->spaces()->syncWithoutDetaching([Space::where('name', 'RoboJackets')->sole()->id]);
+                $user->refresh();
+
+                return $user->spaces;
+            }
+
+            Log::info($username.' is not a RoboJackets member');
+
             return null;
         }
 
@@ -70,7 +79,7 @@ trait UpdateUserSpacesFromSUMS
                 continue;
             }
 
-            $space = Space::where('name', $spaceMap[$billingGroup])->first();
+            $space = Space::where('name', $spaceMap[$billingGroup])->sole();
             $user->spaces()->syncWithoutDetaching([$space->id]);
             Log::info('Attached '.$username.' to '.$space->name.' via SUMS');
             $updated = true;

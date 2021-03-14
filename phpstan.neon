@@ -8,6 +8,7 @@ parameters:
     - vendor/*
   ignoreErrors:
     - '#(?:Dynamic call to static method|Call to an undefined method) Illuminate\\Database\\Eloquent\\(?:Builder|Relations\\[a-zA-Z]+)?(?:<mixed>|<App\\Models\\[a-zA-Z]+>)?::(?:distinct|doesntHave|first|groupBy|has|havingRaw|join|leftJoin|orderBy|orderByRaw|orWhereNull|select|selectRaw|selectSub|where|whereBetween|whereDate|whereIn|whereNotNull|count|whereIn|whereBetween|sum|distinct|paid|active|accessActive|inactive|role|pending|pendingSwag|accessInactive|visible|whereNull|current|start|end|availableForPurchase)\(\)\.#'
+    - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$(name|id)\.#'
     - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
     - '#Call to an undefined method Illuminate\\Support\\HigherOrderCollectionProxy::[a-zA-Z_]+\(\)\.#'
@@ -25,10 +26,10 @@ parameters:
     - '#Method App\\Notifications\\[a-zA-Z]+::via\(\) has parameter \$notifiable with no typehint specified\.#'
     - '#Method App\\Nova\\[a-zA-Z]+::fields\(\) return type has no value type specified in iterable type array\.#'
     - '#Method App\\Nova\\Actions\\[a-zA-Z]+::handle\(\) return type has no value type specified in iterable type array\.#'
-    - '#Parameter \#1 \$row \(.+\) of method App\\Nova\\Actions\\[a-zA-Z]+::map\(\) should be contravariant with parameter \$row \(mixed\) of method Maatwebsite\\Excel\\Concerns\\WithMapping::map\(\)#'
-    - '#Parameter \#1 \$row \(.+\) of method App\\Nova\\Actions\\[a-zA-Z]+::map\(\) should be contravariant with parameter \$row \(mixed\) of method Maatwebsite\\LaravelNovaExcel\\Actions\\ExportToExcel::map\(\)#'
     - '#Parameter \#1 \$filePath of method App\\Imports\\UsersImport::import\(\) expects string\|Symfony\\Component\\HttpFoundation\\File\\UploadedFile\|null, array\|string\|null given\.#'
     - '#Parameter \#1 \$ids of method Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany<App\\Models\\Space>::syncWithoutDetaching\(\) expects array\|Illuminate\\Database\\Eloquent\\Model\|Illuminate\\Support\\Collection, App\\Models\\Space\|null given\.#'
+    - '#Parameter \#1 \$row \(.+\) of method App\\Nova\\Actions\\[a-zA-Z]+::map\(\) should be contravariant with parameter \$row \(mixed\) of method Maatwebsite\\Excel\\Concerns\\WithMapping::map\(\)#'
+    - '#Parameter \#1 \$row \(.+\) of method App\\Nova\\Actions\\[a-zA-Z]+::map\(\) should be contravariant with parameter \$row \(mixed\) of method Maatwebsite\\LaravelNovaExcel\\Actions\\ExportToExcel::map\(\)#'
     - '#Parameter \#1 \$space of class App\\Imports\\UsersImport constructor expects string, array\|string\|null given\.#'
     - '#Parameter \#1 \$user of static method Illuminate\\Auth\\SessionGuard::login\(\) expects Illuminate\\Contracts\\Auth\\Authenticatable, App\\Models\\User\|null given\.#'
     - '#Parameter \#2 \$str of function explode expects string, array\|string given\.#'
