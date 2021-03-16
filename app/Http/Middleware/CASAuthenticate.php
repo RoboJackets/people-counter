@@ -51,6 +51,17 @@ class CASAuthenticate
         if (! Auth::guard('api')->check()) {
             // Run the user update only if they don't have an active session
             if ($this->cas->isAuthenticated() && null === $request->user()) {
+                if ($this->cas->isMasquerading()) {
+                    $this->cas->setAttributes(
+                        [
+                            'gtAccountEntitlement' => [
+                                '/gt/central/services/iam/two-factor/duo-user',
+                            ],
+                            'authn_method' => 'duo-two-factor',
+                        ]
+                    );
+                }
+
                 $username = AuthStickler::check($this->cas);
 
                 $user = $this->createOrUpdateUserFromBuzzAPI($username);

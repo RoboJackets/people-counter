@@ -63,20 +63,6 @@ class VisitPunchController extends Controller
         // In case BuzzAPI had a problem, still process the punch but use a placeholder name
         $name = null === $user ? 'Unknown' : $user->full_name;
 
-        // Check for default space for user
-        $userSpaces = $user->spaces;
-        if (0 === count($userSpaces)) {
-            // Query SUMS if we have a valid user
-            $updatedSpaces = null;
-            if (null !== $user) {
-                $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
-            }
-            if (null === $updatedSpaces) {
-                $updatedSpaces = collect([Space::findOrFail($request->input('space_id'))]);
-            }
-            $userSpaces = $updatedSpaces;
-        }
-
         // Find active visit for GTID (if any)
         $active_visits = Visit::activeForUser($gtid)->with('spaces')->get();
 
@@ -106,6 +92,10 @@ class VisitPunchController extends Controller
             //Notify all kiosks via websockets
             event(new Punch());
 
+            if (! $request->has('space_id')) {
+                return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
+            }
+
             // Check if kiosk/door where punched is part of a different space
             $punch_space_id = (int) $request->input('space_id');
             $punch_space = Space::find($punch_space_id);
@@ -127,6 +117,25 @@ class VisitPunchController extends Controller
             $active_visit_space_names = Space::findMany($active_visit_space_ids)->pluck('name')->toArray();
             $transition['from'] = $active_visit_space_names;
             Log::info('Space transition for '.$gtid.' at '.$door);
+        }
+
+        // if the user has no active visits but still punches out on web somehow
+        if (! $request->has('space_id')) {
+            return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
+        }
+
+        // Check for default space for user
+        $userSpaces = $user->spaces;
+        if (0 === count($userSpaces)) {
+            // Query SUMS if we have a valid user
+            $updatedSpaces = collect();
+            if (null !== $user) {
+                $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
+            }
+            if (null === $updatedSpaces) {
+                $updatedSpaces = collect([Space::findOrFail($request->input('space_id'))]);
+            }
+            $userSpaces = $updatedSpaces;
         }
 
         // Determine which space to punch in at
