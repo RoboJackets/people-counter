@@ -63,22 +63,6 @@ class VisitPunchController extends Controller
         // In case BuzzAPI had a problem, still process the punch but use a placeholder name
         $name = null === $user ? 'Unknown' : $user->full_name;
 
-        // Check for default space for user
-        $userSpaces = $user->spaces;
-        if (0 === count($userSpaces)) {
-            // Query SUMS if we have a valid user
-            $updatedSpaces = null;
-            if (null !== $user) {
-                $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
-            }
-            if (null === $updatedSpaces && $request->has('space_id')) {
-                $updatedSpaces = collect([Space::findOrFail($request->input('space_id'))]);
-            } else {
-                $updatedSpaces = [];
-            }
-            $userSpaces = $updatedSpaces;
-        }
-
         // Find active visit for GTID (if any)
         $active_visits = Visit::activeForUser($gtid)->with('spaces')->get();
 
@@ -133,6 +117,20 @@ class VisitPunchController extends Controller
             $active_visit_space_names = Space::findMany($active_visit_space_ids)->pluck('name')->toArray();
             $transition['from'] = $active_visit_space_names;
             Log::info('Space transition for '.$gtid.' at '.$door);
+        }
+
+        // Check for default space for user
+        $userSpaces = $user->spaces;
+        if (0 === count($userSpaces)) {
+            // Query SUMS if we have a valid user
+            $updatedSpaces = collect();
+            if (null !== $user) {
+                $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
+            }
+            if (null === $updatedSpaces) {
+                $updatedSpaces = collect([Space::findOrFail($request->input('space_id'))]);
+            }
+            $userSpaces = $updatedSpaces;
         }
 
         // Determine which space to punch in at
