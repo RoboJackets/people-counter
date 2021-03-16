@@ -55,7 +55,7 @@ class CASAuthenticate
                     $this->cas->setAttributes(
                         [
                             'gtAccountEntitlement' => [
-                                '/gt/central/services/iam/two-factor/duo-user'
+                                '/gt/central/services/iam/two-factor/duo-user',
                             ],
                             'authn_method' => 'duo-two-factor',
                         ]
