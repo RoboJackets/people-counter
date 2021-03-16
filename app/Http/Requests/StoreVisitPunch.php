@@ -49,7 +49,6 @@ class StoreVisitPunch extends FormRequest
                 'string',
             ],
             'space_id' => [
-                'nullable',
                 'integer',
                 'exists:spaces,id',
             ],
