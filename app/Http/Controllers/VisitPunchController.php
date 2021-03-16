@@ -106,6 +106,10 @@ class VisitPunchController extends Controller
             //Notify all kiosks via websockets
             event(new Punch());
 
+            if (! $request->has('space_id')) {
+                return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
+            }
+
             // Check if kiosk/door where punched is part of a different space
             $punch_space_id = (int) $request->input('space_id');
             $punch_space = Space::find($punch_space_id);
