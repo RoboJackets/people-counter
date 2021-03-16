@@ -119,6 +119,11 @@ class VisitPunchController extends Controller
             Log::info('Space transition for '.$gtid.' at '.$door);
         }
 
+        // if the user has no active visits but still punches out on web somehow
+        if (! $request->has('space_id')) {
+            return response()->json(['status' => 'success', 'punch' => 'out', 'name' => $name]);
+        }
+
         // Check for default space for user
         $userSpaces = $user->spaces;
         if (0 === count($userSpaces)) {
