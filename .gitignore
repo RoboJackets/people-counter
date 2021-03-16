@@ -20,5 +20,4 @@ yarn-error.log
 !/resources/views/vendor/nova/partials
 !/resources/views/vendor/nova/partials/footer.blade.php
 !/resources/views/vendor/nova/partials/user.blade.php
-
 .envault.json
