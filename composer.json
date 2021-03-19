@@ -42,7 +42,7 @@
     "require-dev": {
         "facade/ignition": "2.5.14",
         "mockery/mockery": "1.4.3",
-        "nunomaduro/larastan": "0.7.0",
+        "nunomaduro/larastan": "0.7.1",
         "phpstan/extension-installer": "1.1.0",
         "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.2",
