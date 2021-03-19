@@ -31,7 +31,6 @@
         "robojackets/apiary-user": "1.0.3",
         "robojackets/auth-stickler": "0.3",
         "saumini/count": "1.0.1",
-        "sensiolabs/security-checker": "6.0.3",
         "spatie/laravel-permission": "3.18.0",
         "spatie/laravel-query-builder": "3.3.4",
         "spatie/once": "2.2.1",
@@ -70,8 +69,7 @@
         "symfony/polyfill-php74": "*",
         "symfony/polyfill-util": "*",
         "symfony/polyfill-uuid": "*",
-        "paragonie/random_compat": "*",
-        "sensiolabs/security-checker": "*"
+        "paragonie/random_compat": "*"
     },
     "config": {
         "optimize-autoloader": true,
