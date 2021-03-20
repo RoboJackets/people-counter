@@ -51,7 +51,7 @@ trait CreateOrUpdateUserFromBuzzAPI
         $participle = $update ? 'Updating' : 'Creating';
         $past_participle = $update ? 'Updated' : 'Created';
 
-        if (! $update && $user) {
+        if (! $update && $user !== null) {
             // Found a user in the DB and update from BuzzAPI was not requested, so bail
             return $user;
         }
