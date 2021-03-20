@@ -48,10 +48,10 @@ trait CreateOrUpdateUserFromBuzzAPI
         // Check if user already exists
         $user = User::where($db_identifier, $search_value)->first();
 
-        $participle = ($update) ? 'Updating' : 'Creating';
-        $past_participle = ($update) ? 'Updated' : 'Created';
+        $participle = $update ? 'Updating' : 'Creating';
+        $past_participle = $update ? 'Updated' : 'Created';
 
-        if ($user && !$update) {
+        if (! $update && $user) {
             // Found a user in the DB and update from BuzzAPI was not requested, so bail
             return $user;
         }
