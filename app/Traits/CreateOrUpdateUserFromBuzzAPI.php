@@ -52,14 +52,15 @@ trait CreateOrUpdateUserFromBuzzAPI
             Log::debug('Creating new user from BuzzAPI for '.$buzzapi_identifier.' '.$identifier);
             $user = new User();
 
-            $accountsResponse = BuzzAPI::select(
-                'gtGTID',
-                'mail',
-                'sn',
-                'givenName',
-                'gtPrimaryGTAccountUsername',
-                'uid'
-            )->from(Resources::GTED_ACCOUNTS)->where([$buzzapi_identifier => $search_value])->get();
+        $accountsResponse = BuzzAPI::select(
+            'gtGTID',
+            'mail',
+            'sn',
+            'givenName',
+            'gtPrimaryGTAccountUsername',
+            'uid',
+            'eduPersonPrimaryAffiliation'
+        )->from(Resources::GTED_ACCOUNTS)->where([$buzzapi_identifier => $search_value])->get();
 
             if (! $accountsResponse->isSuccessful()) {
                 Log::error(
@@ -101,12 +102,13 @@ trait CreateOrUpdateUserFromBuzzAPI
                 return null;
             }
 
-            $user->username = $account->uid;
-            $user->gtid = $account->gtGTID;
-            $user->email = $account->mail;
-            $user->first_name = $account->givenName;
-            $user->last_name = $account->sn;
-            $user->save();
+        $user->username = $account->uid;
+        $user->gtid = $account->gtGTID;
+        $user->email = $account->mail;
+        $user->first_name = $account->givenName;
+        $user->last_name = $account->sn;
+        $user->primary_affiliation = $account->eduPersonPrimaryAffiliation;
+        $user->save();
 
             $msg = 'Created '.$user->first_name.' '.$user->last_name.' ('.$user->username.') via BuzzAPI';
             Log::info($msg);

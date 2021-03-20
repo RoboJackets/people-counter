@@ -69,6 +69,13 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
+            Text::make('Primary Affiliation', 'primary_affiliation')
+                ->onlyOnDetail()
+                ->readonly()
+                ->resolveUsing(static function (?string $affiliation): ?string {
+                    return null === $affiliation || 'member' === $affiliation ? null : ucfirst($affiliation);
+                }),
+
             Hidden::make('GTID')
                 ->onlyOnDetail()
                 ->canSee(static function (Request $request): bool {
