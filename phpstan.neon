@@ -11,7 +11,7 @@ parameters:
     - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$(name|id)\.#'
     - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
-    - '#Call to an undefined method Illuminate\\Support\\HigherOrderCollectionProxy::[a-zA-Z_]+\(\)\.#'
+    - '#Call to an undefined method Illuminate\\Support\\Collection<int, Illuminate\\Support\\HigherOrderCollectionProxy<string, App\\Models\\Space>>::append\(\)\.#'
     - '#Call to an undefined method Illuminate\\Support\\HigherOrderTapProxy<mixed>::send\(\)\.#'
     - '#Call to private method whereNotNull\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough<Illuminate\\Database\\Eloquent\\Model>\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\Models\\[a-zA-Z]+\|null\.#'
