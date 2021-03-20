@@ -48,8 +48,8 @@ class VisitPunchController extends Controller
                 $user = $this->createOrUpdateUserFromBuzzAPI($gtid);
             } catch (\Throwable $e) {
                 Log::error(
-                    'Error querying BuzzAPI to create new user for punch by '.$gtid,
-                    [$e->getMessage()]
+                    'Error querying BuzzAPI to create new user for punch',
+                    [$gtid, $e->getMessage()]
                 );
 
                 return response()->json([
@@ -134,8 +134,8 @@ class VisitPunchController extends Controller
                     $user = $this->createOrUpdateUserFromBuzzAPI($gtid, false, true);
                 } catch (\Throwable $e) {
                     Log::error(
-                        'Error querying BuzzAPI to update user for punch by '.$gtid,
-                        [$e->getMessage()]
+                        'Error querying BuzzAPI to update user for punch',
+                        [$gtid, $e->getMessage()]
                     );
 
                     return response()->json([
@@ -144,7 +144,7 @@ class VisitPunchController extends Controller
                     ], 500);
                 }
             }
-            if ('student' === $user->primary_affiliation && null !== $user) {
+            if (null !== $user && 'student' === $user->primary_affiliation) {
                 // Query SUMS if we have a valid user who is also a student
                 $updatedSpaces = $this->updateUserSpacesFromSUMS($user);
             }
