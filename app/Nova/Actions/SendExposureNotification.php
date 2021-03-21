@@ -66,6 +66,7 @@ class SendExposureNotification extends Action
      */
     public function fields(): array
     {
+        // phpcs:disable Generic.Files.LineLength.TooLong
         $msg = 'A message will be sent to each user with a visit with an in or out time between 12:00am on start date and 11:59pm on end date.';
 
         return [
