@@ -14,14 +14,14 @@ class ExposureNotification extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * The date(s) for which notifications are being sent
+     * The date(s) for which notifications are being sent.
      *
      * @var string
      */
     private $date;
 
     /**
-     * The body of the notifications being sent
+     * The body of the notifications being sent.
      *
      * @var string
      */
@@ -61,7 +61,7 @@ class ExposureNotification extends Notification implements ShouldQueue
         $data = [
             'date' => $this->date,
             'body' => $this->body,
-            'first_name' => $notifiable->first_name
+            'first_name' => $notifiable->first_name,
         ];
         return (new MailMessage())
             ->from('sccgb@my.robojackets.org', 'SCC Governing Board')

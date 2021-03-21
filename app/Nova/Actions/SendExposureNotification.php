@@ -28,8 +28,8 @@ class SendExposureNotification extends Action
     /**
      * Perform the action on the given models.
      *
-     * @param  \Laravel\Nova\Fields\ActionFields  $fields
-     * @param  \Illuminate\Support\Collection  $models
+     * @param \Laravel\Nova\Fields\ActionFields  $fields
+     * @param \Illuminate\Support\Collection  $models
      *
      * @return array<string,string>
      */
@@ -40,14 +40,14 @@ class SendExposureNotification extends Action
         $end_date = Carbon::create($fields->end_date)->endOfDay();
         $end_date_string = $end_date->isoFormat('dddd MMMM Do, Y');
         $same_day = $start_date->isSameDay($end_date);
-        $date_string = ($same_day) ? 'on '.$start_date_string : 'between '.$start_date_string.' and '.$end_date_string;
+        $date_string = $same_day ? 'on '.$start_date_string : 'between '.$start_date_string.' and '.$end_date_string;
 
         // Fetch message recipients
-        $recipients = User::whereHas('visits', static function (Builder $query) use ($start_date, $end_date) {
+        $recipients = User::whereHas('visits', static function (Builder $query) use ($start_date, $end_date): void {
             $query->whereBetween('in_time', [$start_date, $end_date]);
             $query->orWhereBetween('out_time', [$start_date, $end_date]);
         })->get();
-        if (count($recipients) === 0) {
+        if (0 === count($recipients)) {
             return Action::danger('No visits found matching criteria.');
         }
 
@@ -61,11 +61,14 @@ class SendExposureNotification extends Action
 
     /**
      * Get the fields available on the action.
+     *
+     * @return array<\Laravel\Nova\Fields\Field>
      */
     public function fields(): array
     {
-        $msg = "A message will be sent to each user with a visit with an in or out time between 12:00am on start date".
-            " and 11:59pm on end date";
+        $msg = 'A message will be sent to each user with a visit with an in or out time';
+        $msg .= ' between 12:00am on start date and 11:59pm on end date';
+
         return [
             Heading::make($msg),
             Date::make('Start Date')->rules('required'),
