@@ -37,7 +37,7 @@ class SendExposureNotification extends Action
     {
         $start_date = Carbon::create($fields->start_date)->startOfDay();
         $end_date = Carbon::create($fields->end_date)->endOfDay();
-        if (! $start_date instanceof Carbon || ! $end_date instanceof Carbon) {
+        if ($start_date === false || $end_date === false) {
             return Action::danger('Invalid date specified.');
         }
         $start_date_string = $start_date->isoFormat('dddd MMMM Do, Y');
