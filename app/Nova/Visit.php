@@ -120,6 +120,15 @@ class Visit extends Resource
                 ->canRun(static function (Request $request): bool {
                     return $request->user()->hasRole('super-admin');
                 }),
+            (new Actions\SendExposureNotification())
+                ->standalone()
+                ->onlyOnIndex()
+                ->canSee(static function (Request $request): bool {
+                    return $request->user()->hasRole('super-admin');
+                })
+                ->canRun(static function (Request $request): bool {
+                    return $request->user()->hasRole('super-admin');
+                }),
         ];
     }
 
