@@ -17,6 +17,8 @@ parameters:
     - '#Cannot access property \$[a-zA-Z_]+ on App\\Models\\[a-zA-Z]+\|null\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\Models\\[a-zA-Z_]+\|Illuminate\\Database\\Eloquent\\Collection<App\\Models\\Space>\|null\.#'
     - '#Cannot call method save\(\) on App\\Models\\[a-zA-Z]+\|null\.#'
+    - '#Cannot call method startOfDay\(\) on Carbon\\Carbon|false.\#'
+    - '#Cannot call method endOfDay\(\) on Carbon\\Carbon|false.\#'
     - '#Dynamic call to static method Illuminate\\Contracts\\Auth\\Guard::user\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereBetween\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::orWhereBetween\(\)\.#'

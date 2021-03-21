@@ -37,9 +37,6 @@ class SendExposureNotification extends Action
     {
         $start_date = Carbon::create($fields->start_date)->startOfDay();
         $end_date = Carbon::create($fields->end_date)->endOfDay();
-        if (false == $start_date || false == $end_date) {
-            return Action::danger('Invalid date specified.');
-        }
         $start_date_string = $start_date->isoFormat('dddd MMMM Do, Y');
         $end_date_string = $end_date->isoFormat('dddd MMMM Do, Y');
         $same_day = $start_date->isSameDay($end_date);
@@ -69,13 +66,15 @@ class SendExposureNotification extends Action
      */
     public function fields(): array
     {
-        $msg = 'A message will be sent to each user with a visit with an in or out time';
-        $msg .= ' between 12:00am on start date and 11:59pm on end date';
+        $msg = 'A message will be sent to each user with a visit with an in or out time between 12:00am on start date and 11:59pm on end date.';
 
         return [
             Heading::make($msg),
+
             Date::make('Start Date')->rules('required'),
+
             Date::make('End Date')->rules('required'),
+
             Textarea::make('Message')->rules('required')
                 ->help(
                     'Message to be included in the email after the standard introduction'
