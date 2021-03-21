@@ -47,8 +47,8 @@ class SendExposureNotification extends Action
 
         // Fetch message recipients
         $recipients = User::whereHas('visits', static function (Builder $query) use ($start_date, $end_date): void {
-            $query->whereBetween('in_time', [$start_date, $end_date]);
-            $query->orWhereBetween('out_time', [$start_date, $end_date]);
+            $query->whereBetween('in_time', [$start_date, $end_date])
+                  ->orWhereBetween('out_time', [$start_date, $end_date]);
         })->get();
         if (0 === count($recipients)) {
             return Action::danger('No visits found matching criteria.');

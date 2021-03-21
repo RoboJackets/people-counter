@@ -66,7 +66,7 @@ class ExposureNotification extends Notification implements ShouldQueue
 
         return (new MailMessage())
             ->from('sccgb@my.robojackets.org', 'SCC Governing Board')
-            ->subject('COVID-19 Notification from SCC Governing Board')
+            ->subject('Possible COVID-19 Exposure Notification')
             ->markdown('emails.exposure', $data);
     }
 }
