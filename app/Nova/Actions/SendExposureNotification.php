@@ -36,8 +36,11 @@ class SendExposureNotification extends Action
     public function handle(ActionFields $fields, Collection $models): array
     {
         $start_date = Carbon::create($fields->start_date)->startOfDay();
-        $start_date_string = $start_date->isoFormat('dddd MMMM Do, Y');
         $end_date = Carbon::create($fields->end_date)->endOfDay();
+        if (! $start_date instanceof Carbon || ! $end_date instanceof Carbon) {
+            return Action::danger('Invalid date specified.');
+        }
+        $start_date_string = $start_date->isoFormat('dddd MMMM Do, Y');
         $end_date_string = $end_date->isoFormat('dddd MMMM Do, Y');
         $same_day = $start_date->isSameDay($end_date);
         $date_string = $same_day ? 'on '.$start_date_string : 'between '.$start_date_string.' and '.$end_date_string;
