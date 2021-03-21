@@ -37,8 +37,8 @@ class SendExposureNotification extends Action
     {
         $start_date = Carbon::create($fields->start_date)->startOfDay();
         $end_date = Carbon::create($fields->end_date)->endOfDay();
-        $start_date_string = $start_date->isoFormat('dddd MMMM Do, Y');
-        $end_date_string = $end_date->isoFormat('dddd MMMM Do, Y');
+        $start_date_string = $start_date->isoFormat('dddd, MMMM Do');
+        $end_date_string = $end_date->isoFormat('dddd, MMMM Do');
         $same_day = $start_date->isSameDay($end_date);
         $date_string = $same_day ? 'on '.$start_date_string : 'between '.$start_date_string.' and '.$end_date_string;
 
