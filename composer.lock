@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a48ea314f14b7231cb758620e21055bd",
+    "content-hash": "b9d323fd5368d146790f8a73daa39ffc",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2368,16 +2368,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.9.1",
+            "version": "v2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "d1e2354d94adad9685cf59b2ab0727b8d8f0a19c"
+                "reference": "504ee92651c187c58640d87f03a7941977ef0149"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/d1e2354d94adad9685cf59b2ab0727b8d8f0a19c",
-                "reference": "d1e2354d94adad9685cf59b2ab0727b8d8f0a19c",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/504ee92651c187c58640d87f03a7941977ef0149",
+                "reference": "504ee92651c187c58640d87f03a7941977ef0149",
                 "shasum": ""
             },
             "require": {
@@ -2428,7 +2428,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2021-03-09T19:17:50+00:00"
+            "time": "2021-03-23T17:31:19+00:00"
         },
         {
             "name": "laravel/tinker",
