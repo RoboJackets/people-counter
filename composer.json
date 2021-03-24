@@ -40,7 +40,7 @@
         "vyuldashev/nova-permission": "2.11.1"
     },
     "require-dev": {
-        "facade/ignition": "2.5.14",
+        "facade/ignition": "2.6.0",
         "mockery/mockery": "1.4.3",
         "nunomaduro/larastan": "0.7.1",
         "phpstan/extension-installer": "1.1.0",
