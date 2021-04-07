@@ -1,8 +1,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import Bugsnag from '@bugsnag/js'
-import BugsnagPluginVue from '@bugsnag/plugin-vue'
+import * as Sentry from "@sentry/vue";
+import { Integrations } from "@sentry/tracing";
 
 Vue.component('kiosk', require('./components/Kiosk.vue').default);
 Vue.component('home-page', require('./components/HomePage.vue').default);
@@ -10,16 +10,22 @@ Vue.component('home-page', require('./components/HomePage.vue').default);
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 
-if (process.env.MIX_BUGSNAG_API_KEY !== undefined) {
-    Bugsnag.start({
-        apiKey: process.env.MIX_BUGSNAG_API_KEY,
-        plugins: [new BugsnagPluginVue()],
-        releaseStage: process.env.MIX_APP_ENV
-    })
-    Bugsnag.getPlugin('vue')
-        .installVueErrorHandler(Vue)
+if (process.env.MIX_SENTRY_DSN !== undefined) {
+    Sentry.init({
+        Vue: Vue,
+        dsn: process.env.MIX_SENTRY_DSN,
+        environment: process.env.MIX_APP_ENV,
+        attachProps: true,
+        logErrors: true,
+        integrations: [new Integrations.BrowserTracing()],
+        tracesSampleRate: 1.0,
+        tracingOptions: {
+            trackComponents: true,
+        },
+    });
+    window.Sentry = Sentry;
 } else {
-    console.log('Bugsnag not loaded - API key not present')
+    console.log('Sentry not loaded - DSN not present')
 }
 
 var axios = require('axios');

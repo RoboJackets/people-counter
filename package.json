@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@sentry/webpack-plugin": "^1.14.2",
         "axios": "0.21.1",
         "cross-env": "7.0.3",
         "laravel-mix": "5.0.9",
@@ -17,12 +18,11 @@
         "resolve-url-loader": "3.1.2",
         "sass": "1.32.8",
         "sass-loader": "8.0.2",
-        "vue-template-compiler": "2.6.12",
-        "webpack-bugsnag-plugins": "1.6.0"
+        "vue-template-compiler": "2.6.12"
     },
     "dependencies": {
-        "@bugsnag/js": "7.9.0",
-        "@bugsnag/plugin-vue": "7.9.0",
+        "@sentry/tracing": "^6.2.5",
+        "@sentry/vue": "^6.2.5",
         "bootstrap": "4.6.0",
         "jquery": "3.6.0",
         "laravel-echo": "1.10.0",

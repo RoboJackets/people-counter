@@ -48,7 +48,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
         JsonResource::withoutWrapping();
     }
 }

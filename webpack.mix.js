@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
 
-const { BugsnagSourceMapUploaderPlugin } = require('webpack-bugsnag-plugins')
+const SentryWebpackPlugin = require("@sentry/webpack-plugin");
 
 /*
  |--------------------------------------------------------------------------
@@ -17,11 +17,16 @@ if (process.env.MIX_APP_ENV === 'production') {
     mix.webpackConfig({
         devtool: 'hidden-source-map',
         plugins: [
-            new BugsnagSourceMapUploaderPlugin({
-                apiKey: process.env.MIX_BUGSNAG_API_KEY,
-                publicPath: '*/',
-                overwrite: true
-            })
+            new SentryWebpackPlugin({
+                // sentry-cli configuration
+                authToken: process.env.MIX_SENTRY_AUTH_TOKEN,
+                org: process.env.MIX_SENTRY_ORG_NAME,
+                project: process.env.MIX_SENTRY_PROJECT_ID,
+
+                // webpack specific configuration
+                include: "public/js",
+                ignore: ["node_modules", "webpack.mix.js"],
+            }),
         ]
     }).sourceMaps(false, 'hidden-source-map')
 } else {

@@ -25,4 +25,21 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+
+    /**
+     * Report or log an exception.
+     *
+     * @param \Throwable $e
+     * @return void
+     *
+     * @throws \Throwable
+     */
+    public function report(\Throwable $e): void
+    {
+        if (app()->bound('sentry') && $this->shouldReport($e)) {
+            app('sentry')->captureException($e);
+        }
+
+        parent::report($e);
+    }
 }
