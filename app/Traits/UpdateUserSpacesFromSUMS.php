@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
+
 namespace App\Traits;
 
 use App\Models\Space;
@@ -12,7 +14,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use RoboJackets\ApiaryUser;
 
-// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
 trait UpdateUserSpacesFromSUMS
 {
     /**

@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
+// phpcs:disable Generic.NamingConventions.AbstractClassNamePrefix.Missing
+
 namespace App\Nova;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
 
-// phpcs:disable Generic.NamingConventions.AbstractClassNamePrefix.Missing
 abstract class Resource extends NovaResource
 {
     /**

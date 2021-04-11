@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 // phpcs:disable SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator
 // phpcs:disable SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
+// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
 
 namespace App\Traits;
 
@@ -15,7 +16,6 @@ use OITNetworkServices\BuzzAPI\Resources;
 use RoboJackets\ErrorPages\SystemError;
 use RoboJackets\ErrorPages\Unauthorized;
 
-// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
 trait CreateOrUpdateUserFromBuzzAPI
 {
     /**
