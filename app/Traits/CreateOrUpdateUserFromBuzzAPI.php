@@ -15,6 +15,7 @@ use OITNetworkServices\BuzzAPI\Resources;
 use RoboJackets\ErrorPages\SystemError;
 use RoboJackets\ErrorPages\Unauthorized;
 
+// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
 trait CreateOrUpdateUserFromBuzzAPI
 {
     /**

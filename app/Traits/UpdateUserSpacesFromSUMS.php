@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use RoboJackets\ApiaryUser;
 
+// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
 trait UpdateUserSpacesFromSUMS
 {
     /**
