@@ -23,7 +23,7 @@
                     </template>
                     <template v-else>
                         <div class="card-body">
-                            <div class="col-12" style="column-count: 4">
+                            <div class="col-12 space-status">
                                 <template v-for="space in spaces">
                                     <h5 class="space-name">{{ space.name }}</h5>
                                     <b> {{ space.active_visit_count + space.active_child_visit_count}}</b> here, {{ space.max_occupancy }} max
@@ -53,6 +53,19 @@
     .people-count {
         font-size: 300px !important;
         font-weight: bolder;
+    }
+    .space-status {
+        column-count: 3;
+    }
+    @media (min-width: 1200px) {
+        .space-status {
+            column-count: 4;
+        }
+    }
+    @media (max-width: 900px) {
+        .space-status {
+            column-count: 2;
+        }
     }
     h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-weight: bolder;
