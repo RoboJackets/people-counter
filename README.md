@@ -1,5 +1,7 @@
 # People Counter
 
+Demo PR please ignore
+
 A (somewhat simple) people counter for use in the Student Competition Center at Georgia Tech during the COVID-19 pandemic.
 
 ## Requirements
