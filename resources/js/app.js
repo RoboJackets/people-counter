@@ -9,6 +9,7 @@ Vue.component('home-page', require('./components/HomePage.vue').default);
 
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
+Vue.use(require('vue-moment'));
 
 if (process.env.MIX_BUGSNAG_API_KEY !== undefined) {
     Bugsnag.start({
