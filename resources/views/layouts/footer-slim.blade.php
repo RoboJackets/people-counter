@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer fixed-bottom" id="blade-footer">
     <div class="container-fluid pt-4">
         <div class="justify-content-between">
             <div>
