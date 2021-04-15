@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 // phpcs:disable SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator
 // phpcs:disable SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
-// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
 
 namespace App\Traits;
 

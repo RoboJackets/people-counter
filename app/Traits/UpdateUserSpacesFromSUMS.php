@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-// phpcs:disable Generic.NamingConventions.TraitNameSuffix.Missing
-
 namespace App\Traits;
 
 use App\Models\Space;
