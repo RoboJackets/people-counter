@@ -47,7 +47,8 @@
         "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.2",
         "fakerphp/faker": "1.13.0",
-        "nunomaduro/collision": "5.3.0"
+        "nunomaduro/collision": "5.3.0",
+        "slevomat/coding-standard": "6.*"
     },
     "replace": {
         "symfony/polyfill-apcu": "*",
