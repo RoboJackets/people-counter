@@ -447,6 +447,7 @@ export default {
                     self.wsConnectionOk = true;
                     self.offlineCardSwipes = 0;
                     self.wsConnectionFailedAt = null;
+
                     // Reload data that might have changed since coming back online
                     self.loadUser();
                     self.loadSpace();
