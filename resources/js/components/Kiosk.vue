@@ -63,7 +63,7 @@
             <div class="container-fluid pt-4">
                 <div class="justify-content-between text-center">
                     <div>
-                        <p class="last-connected-small">4 people did not read this notice and tapped their BuzzCard anyway</p>
+                        <p class="last-connected-small" v-if="offlineCardSwipes > 0">{{ offlineCardSwipes }} {{ offlineCardSwipes === 1 ? "person" : "people" }} did not read this notice and tapped their BuzzCard anyway</p>
                         <p><a style="color: black;" href="https://github.com/RoboJackets/people-counter">Made with ♥ by RoboJackets</a> | {{ pageHost }}</p>
                     </div>
                 </div>
@@ -152,6 +152,7 @@ export default {
             },
             wsConnectionOk: false,
             wsConnectionFailedAt: new Date().toISOString(),
+            offlineCardSwipes: 0,
             showSpaceStatus: true,
             submitting: false,
             spaceId: null,
@@ -166,7 +167,15 @@ export default {
                 in: '/sounds/kiosk_in_short.mp3',
                 out: '/sounds/kiosk_out_short.mp3',
                 notice: '/sounds/kiosk_notice2.mp3',
-                error: '/sounds/kiosk_error_xp.mp3'
+                error: '/sounds/kiosk_error_xp.mp3',
+                dohs: [
+                    '/sounds/kiosk_doh1.mp3',
+                    '/sounds/kiosk_doh2.mp3',
+                    '/sounds/kiosk_doh3.mp3',
+                    '/sounds/kiosk_doh4.mp3',
+                    '/sounds/kiosk_doh5.mp3',
+                    '/sounds/kiosk_doh6.mp3',
+                ]
             }
         };
     },
@@ -422,7 +431,7 @@ export default {
             });
 
             echo.connector.pusher.connection.bind('state_change', function(states) {
-                console.log("ws state changed from", states.previous, "to", states.current);
+                console.log("WebSocket state changed from", states.previous, "to", states.current);
 
                 if (states.current === "unavailable") {
                     self.wsConnectionOk = false;
@@ -436,6 +445,8 @@ export default {
 
                 if (states.current === "connected") {
                     self.wsConnectionOk = true;
+                    self.offlineCardSwipes = 0;
+                    self.wsConnectionFailedAt = null;
                 }
             });
 
@@ -473,6 +484,10 @@ export default {
                 }.bind(this)
             );
         },
+        randomIntFromInterval: function(min, max) { // min and max included
+            // from a kind StackOverflower: https://stackoverflow.com/a/7228322
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        },
         cardPresented: function (cardData) {
             // Card is presented, process the data
             let self = this;
@@ -486,7 +501,10 @@ export default {
 
             // We're only accepting contactless card reads for this particular application
             // No mag stripe here, folks! You should really get a new BuzzCard...
-            if (this.isNumeric(cardData) && cardData.length === 9 && cardData[0] === '9') {
+            if (!this.wsConnectionOk) {
+                new Audio(this.sounds.dohs[this.randomIntFromInterval(0, this.sounds.dohs.length - 1)]).play()
+                this.offlineCardSwipes += 1;
+            } else if (this.isNumeric(cardData) && cardData.length === 9 && cardData[0] === '9') {
                 // Numeric nine-digit number starting with a nine
                 this.punch.gtid = cardData;
                 console.log('numeric cardData: ' + cardData);
