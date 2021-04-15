@@ -449,9 +449,9 @@ export default {
                     self.wsConnectionFailedAt = null;
 
                     // Reload data that might have changed since coming back online
-                    this.loadUser();
-                    this.loadSpace();
-                    this.loadSpaces();
+                    self.loadUser();
+                    self.loadSpace();
+                    self.loadSpaces();
                 }
             });
 
