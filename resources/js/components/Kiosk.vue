@@ -1,6 +1,18 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row" v-if="!wsConnectionOk">
+            <div class="col-12 text-center kiosk-offline-container">
+                <i class="bi-exclamation-circle large-icon"></i>
+                <h1 id="kiosk-offline">Kiosk Offline</h1>
+                <div>
+                    <p class="last-connected-large">since <time-ago :refresh="1" :datetime="wsConnectionFailedAt" long/> ({{wsConnectionFailedAt | moment("MMM D [at] h:mm A")}})</p>
+                    <p class="last-connected-large">Please <strong>DO NOT</strong> tap your BuzzCard at this time</p>
+                    <p class="last-connected-large">Please <strong>DO</strong> be extra mindful of occupancy limits</p>
+                    <p class="last-connected-large">Check #people-counter in Slack for status updates</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" v-if="wsConnectionOk">
             <div class="col-12 text-center" style="margin-top: -100px;">
                 <span><span class="people-count">{{ peopleHere.length }}</span></span>
                 <h1 style="margin-top: -75px;">
@@ -12,7 +24,7 @@
                 <h2>Tap your BuzzCard to sign in or out</h2>
             </div>
         </div>
-        <div class="row pt-4" v-if="showSpaceStatus === 'show'">
+        <div class="row pt-4" v-if="wsConnectionOk && showSpaceStatus === 'show'">
             <div class="col-12">
                 <div class="card">
                     <h5 class="card-header">Space Status</h5>
@@ -35,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="row pt-4">
+        <div class="row pt-4" v-if="wsConnectionOk">
             <div class="col-12">
                 <div class="card">
                     <h5 class="card-header">Who's Here</h5>
@@ -47,9 +59,21 @@
                 </div>
             </div>
         </div>
+        <div class="footer fixed-bottom pb-8" v-if="!wsConnectionOk">
+            <div class="container-fluid pt-4">
+                <div class="justify-content-between text-center">
+                    <div>
+                        <p class="last-connected-small" v-if="offlineCardSwipes > 0">{{ offlineCardSwipes }} {{ offlineCardSwipes === 1 ? "person" : "people" }} did not read this notice and tapped their BuzzCard anyway</p>
+                        <p><a style="color: black;" href="https://github.com/RoboJackets/people-counter">Made with ♥ by RoboJackets</a> | {{ pageHost }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <style scoped>
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
+
     .people-count {
         font-size: 300px !important;
         font-weight: bolder;
@@ -76,10 +100,39 @@
     h5.space-name, h5.card-header, b, p, div {
         font-size: xx-large;
     }
+    .large-icon {
+        font-size: 300px;
+        margin-bottom: -100px;
+    }
+    #kiosk-offline {
+        font-size: 125px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: -50px;
+    }
+    .last-connected-large {
+        font-size: 50px;
+    }
+    .last-connected-small {
+        font-size: 30px
+    }
+    .kiosk-offline-container {
+        margin-top: -40px;
+    }
+</style>
+<style>
+/* this is intentionally not in the scoped styles because it's hiding the default footer added via Blade templates */
+#blade-footer {
+    display: none;
+}
 </style>
 <script>
 import Echo from 'laravel-echo';
+import { TimeAgo } from 'vue2-timeago'
 export default {
+    components: {
+      TimeAgo
+    },
     data() {
         return {
             'peopleHere': [],
@@ -92,9 +145,13 @@ export default {
                 'space_id': null,
             },
             'user': {},
+            pageHost: window.location.host,
             loading: {
                 'spaces': false,
             },
+            wsConnectionOk: false,
+            wsConnectionFailedAt: new Date().toISOString(),
+            offlineCardSwipes: 0,
             showSpaceStatus: true,
             submitting: false,
             spaceId: null,
@@ -109,7 +166,15 @@ export default {
                 in: '/sounds/kiosk_in_short.mp3',
                 out: '/sounds/kiosk_out_short.mp3',
                 notice: '/sounds/kiosk_notice2.mp3',
-                error: '/sounds/kiosk_error_xp.mp3'
+                error: '/sounds/kiosk_error_xp.mp3',
+                dohs: [
+                    '/sounds/kiosk_doh1.mp3',
+                    '/sounds/kiosk_doh2.mp3',
+                    '/sounds/kiosk_doh3.mp3',
+                    '/sounds/kiosk_doh4.mp3',
+                    '/sounds/kiosk_doh5.mp3',
+                    '/sounds/kiosk_doh6.mp3',
+                ]
             }
         };
     },
@@ -229,25 +294,18 @@ export default {
         },
         pluralPeople() {
             return (1 === this.peopleHere.length) ? 'person is' : 'people are';
+        },
+        pluralPeoplePastTense() {
+            return (1 === this.peopleHere.length) ? 'person was' : 'people were';
         }
     },
     watch: {
         peopleHere: function () {
-            let max = this.maxPeople;
-            let here = this.peopleHere.length;
-            if (here / max < 0.5) {
-                // < 50% -> Green
-                this.dynamicColor.backgroundColor = '#66b266'
-            } else if (here / max <= 0.75) {
-                // 50%-75% -> Yellow
-                this.dynamicColor.backgroundColor = '#ffff66'
-            } else if (here / max <= 0.99) {
-                // 75% -> 99% -> Orange
-                this.dynamicColor.backgroundColor = '#ffb732';
-            } else {
-                // 100% -> red
-                this.dynamicColor.backgroundColor = '#ff3232';
-            }
+            this.dynamicColor.backgroundColor = this.occupancyColor();
+            document.body.style.backgroundColor = this.dynamicColor.backgroundColor;
+        },
+        wsConnectionOk: function() {
+            this.dynamicColor.backgroundColor = this.occupancyColor();
             document.body.style.backgroundColor = this.dynamicColor.backgroundColor;
         }
     },
@@ -335,11 +393,29 @@ export default {
                 return a > b ? 1 : b > a ? -1 : 0;
             });
         },
+        occupancyColor() {
+            let max = this.maxPeople;
+            let here = this.peopleHere.length;
+            if (!this.wsConnectionOk) {
+                return '#ffb732';
+            } else if (here / max < 0.5) {
+                // < 50% -> Green
+                return '#66b266';
+            } else if (here / max <= 0.75) {
+                // 50%-75% -> Yellow
+                return '#ffff66';
+            } else if (here / max <= 0.99) {
+                // 75% -> 99% -> Orange
+                return '#ffb732';
+            } else {
+                // 100% -> red
+                return '#ff3232';
+            }
+        },
         loadWebSocket() {
             let self = this;
             let pusher = require('pusher-js');
             pusher.logToConsole = true;
-
             let echo = new Echo({
                 broadcaster: 'pusher',
                 key: process.env.MIX_PUSHER_APP_KEY,
@@ -355,6 +431,28 @@ export default {
 
             echo.connector.pusher.connection.bind('state_change', function(states) {
                 Sentry.captureMessage('WebSocket Connection Error', 'warning')
+                console.log("WebSocket state changed from", states.previous, "to", states.current);
+
+                if (states.current === "unavailable") {
+                    self.wsConnectionOk = false;
+                    if (!self.wsConnectionFailedAt) {
+                        self.wsConnectionFailedAt = new Date().toISOString();
+                    }
+                    Bugsnag.notify(new Error('WebSocket Connection Error'), function (event) {
+                        event.severity = 'warning'
+                    });
+                }
+
+                if (states.current === "connected") {
+                    self.wsConnectionOk = true;
+                    self.offlineCardSwipes = 0;
+                    self.wsConnectionFailedAt = null;
+
+                    // Reload data that might have changed since coming back online
+                    self.loadUser();
+                    self.loadSpace();
+                    self.loadSpaces();
+                }
             });
 
             echo.channel('punches')
@@ -391,6 +489,10 @@ export default {
                 }.bind(this)
             );
         },
+        randomIntFromInterval: function(min, max) { // min and max included
+            // from a kind StackOverflower: https://stackoverflow.com/a/7228322
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        },
         cardPresented: function (cardData) {
             // Card is presented, process the data
             let self = this;
@@ -404,7 +506,10 @@ export default {
 
             // We're only accepting contactless card reads for this particular application
             // No mag stripe here, folks! You should really get a new BuzzCard...
-            if (this.isNumeric(cardData) && cardData.length === 9 && cardData[0] === '9') {
+            if (!this.wsConnectionOk) {
+                new Audio(this.sounds.dohs[this.randomIntFromInterval(0, this.sounds.dohs.length - 1)]).play()
+                this.offlineCardSwipes += 1;
+            } else if (this.isNumeric(cardData) && cardData.length === 9 && cardData[0] === '9') {
                 // Numeric nine-digit number starting with a nine
                 this.punch.gtid = cardData;
                 console.log('numeric cardData: ' + cardData);
