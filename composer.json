@@ -36,7 +36,6 @@
         "spatie/once": "2.2.1",
         "staudenmeir/eloquent-has-many-deep": "*",
         "subfission/cas": "4.0.0",
-        "symfony/polyfill-uuid": "^1.22",
         "ukfast/laravel-health-check": "1.10.1",
         "vyuldashev/nova-permission": "2.11.1"
     },

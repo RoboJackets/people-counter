@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0c864df430dd9fb6ad962385c0380a6",
+    "content-hash": "f8252d5a85d56b2bf902cc5b4501eb6e",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
