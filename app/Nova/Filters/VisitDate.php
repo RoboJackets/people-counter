@@ -34,4 +34,14 @@ class VisitDate extends DateRangeFilter
 
         return $query->whereBetween('in_time', [$from, $to]);
     }
+
+    /**
+     * Options for the filter (not actually used AFAIK)
+     *
+     * @return array<string>
+     */
+    public function options(Request $request): array
+    {
+        return [];
+    }
 }
