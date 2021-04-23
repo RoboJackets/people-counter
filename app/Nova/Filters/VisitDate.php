@@ -36,7 +36,7 @@ class VisitDate extends DateRangeFilter
     }
 
     /**
-     * Options for the filter (not actually used AFAIK)
+     * Options for the filter (not actually used AFAIK).
      *
      * @return array<string>
      */
