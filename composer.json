@@ -16,7 +16,7 @@
         "fideloper/proxy": "4.4.1",
         "fruitcake/laravel-cors": "2.0.3",
         "guzzlehttp/guzzle": "7.3.0",
-        "jeffbeltran/sanctum-tokens": "1.5.2",
+        "jeffbeltran/sanctum-tokens": "1.5.3",
         "laravel/framework": "8.34.0",
         "laravel/horizon": "5.7.3",
         "laravel/nova": "3.22.0",
