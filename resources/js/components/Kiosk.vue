@@ -430,7 +430,6 @@ export default {
             });
 
             echo.connector.pusher.connection.bind('state_change', function(states) {
-                Sentry.captureMessage('WebSocket Connection Error', 'warning')
                 console.log("WebSocket state changed from", states.previous, "to", states.current);
 
                 if (states.current === "unavailable") {
@@ -438,9 +437,7 @@ export default {
                     if (!self.wsConnectionFailedAt) {
                         self.wsConnectionFailedAt = new Date().toISOString();
                     }
-                    Bugsnag.notify(new Error('WebSocket Connection Error'), function (event) {
-                        event.severity = 'warning'
-                    });
+                    Sentry.captureMessage('WebSocket Unavailable', 'warning')
                 }
 
                 if (states.current === "connected") {
