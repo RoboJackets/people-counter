@@ -20,7 +20,7 @@
         "laravel/framework": "8.38.0",
         "laravel/horizon": "5.7.5",
         "laravel/nova": "3.23.2",
-        "laravel/sanctum": "2.9.2",
+        "laravel/sanctum": "2.10.0",
         "laravel/tinker": "2.6.1",
         "maatwebsite/excel": "3.1.29",
         "maatwebsite/laravel-nova-excel": "1.2.3",
