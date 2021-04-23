@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68c22c123590baa8fae8321de001887d",
+    "content-hash": "655fce67401024904ca0401c1c98a61e",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -10358,22 +10358,22 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.6.0",
+            "version": "2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb"
+                "reference": "a8201d51aae83addceaef9344592a3b068b5d64d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/4be10a998815f77952b9eb983fb0b64c8a4defbb",
-                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/a8201d51aae83addceaef9344592a3b068b5d64d",
+                "reference": "a8201d51aae83addceaef9344592a3b068b5d64d",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "facade/flare-client-php": "^1.3.7",
+                "facade/flare-client-php": "^1.6",
                 "facade/ignition-contracts": "^1.0.2",
                 "filp/whoops": "^2.4",
                 "illuminate/support": "^7.0|^8.0",
@@ -10431,7 +10431,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-03-24T18:58:31+00:00"
+            "time": "2021-04-09T20:45:59+00:00"
         },
         {
             "name": "fakerphp/faker",
