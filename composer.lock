@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92a4eeea7fe11008f334a1f96a4ab7bc",
+    "content-hash": "7debbbcf55b4118902c05cf8fe7ebb09",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -169,16 +169,16 @@
         },
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "1.11.1",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
-                "reference": "583022a11d217caf5fbf5b8f1ae8837f473c41f9"
+                "reference": "0380f5e37310f2c9b93444b67e81d469800b6483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/583022a11d217caf5fbf5b8f1ae8837f473c41f9",
-                "reference": "583022a11d217caf5fbf5b8f1ae8837f473c41f9",
+                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/0380f5e37310f2c9b93444b67e81d469800b6483",
+                "reference": "0380f5e37310f2c9b93444b67e81d469800b6483",
                 "shasum": ""
             },
             "require": {
@@ -245,9 +245,9 @@
             ],
             "support": {
                 "issues": "https://github.com/beyondcode/laravel-websockets/issues",
-                "source": "https://github.com/beyondcode/laravel-websockets/tree/1.11.1"
+                "source": "https://github.com/beyondcode/laravel-websockets/tree/1.12.0"
             },
-            "time": "2021-03-02T18:04:58+00:00"
+            "time": "2021-04-06T14:21:57+00:00"
         },
         {
             "name": "brick/math",
