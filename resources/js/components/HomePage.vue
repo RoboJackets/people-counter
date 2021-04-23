@@ -36,7 +36,7 @@
                             </button>
                             <hr>
                             <b>Default Space:</b>
-                            <template v-if="user.spaces.length === 0">
+                            <template v-if="!user.hasOwnProperty('spaces') || user.spaces.length === 0">
                                 Not Set
                             </template>
                             <template v-else>
@@ -178,6 +178,13 @@
                         this.user = response.data;
                         this.punch.gtid = this.user.gtid;
                         this.loading.user = false;
+                        if (process.env.MIX_SENTRY_DSN !== undefined) {
+                            Sentry.setUser({
+                                id: this.user.id,
+                                username: this.user.username,
+                                email: this.user.email
+                            });
+                        }
                     })
             },
             async loadSpaces() {

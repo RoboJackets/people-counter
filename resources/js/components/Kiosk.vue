@@ -128,7 +128,6 @@
 </style>
 <script>
 import Echo from 'laravel-echo';
-import Bugsnag from "@bugsnag/js";
 import { TimeAgo } from 'vue2-timeago'
 export default {
     components: {
@@ -343,11 +342,11 @@ export default {
                     let rawUser = response.data;
                     if (rawUser.hasOwnProperty('id')) {
                         this.user = rawUser;
-                        Bugsnag.setUser(this.user.id, this.user.email, this.user.full_name)
+                        Sentry.setUser(this.user.id, this.user.email, this.user.full_name)
                     }
                 })
                 .catch(error => {
-                    this.axiosErrorToBugsnag(error)
+                    this.axiosErrorToSentry(error)
                     this.handleAxiosError(error)
                 });
         },
@@ -364,7 +363,7 @@ export default {
                     }
                 })
                 .catch(error => {
-                    this.axiosErrorToBugsnag(error)
+                    this.axiosErrorToSentry(error)
                     this.handleAxiosError(error)
                 });
         },
@@ -377,7 +376,7 @@ export default {
                     this.loading.spaces = false;
                 })
                 .catch(error => {
-                    this.axiosErrorToBugsnag(error)
+                    this.axiosErrorToSentry(error)
                     this.handleAxiosError(error)
                 });
         },
@@ -438,9 +437,7 @@ export default {
                     if (!self.wsConnectionFailedAt) {
                         self.wsConnectionFailedAt = new Date().toISOString();
                     }
-                    Bugsnag.notify(new Error('WebSocket Connection Error'), function (event) {
-                        event.severity = 'warning'
-                    });
+                    Sentry.captureMessage('WebSocket Unavailable', 'warning')
                 }
 
                 if (states.current === "connected") {
@@ -535,10 +532,8 @@ export default {
                 new Audio(this.sounds.error).play()
                 this.$swal.close();
                 console.log('unknown cardData: ' + cardData);
-                Bugsnag.notify(new Error('Card format not recognized'), function (event) {
-                    event.severity = 'info'
-                    event.addMetadata('Card Data', cardData)
-                });
+
+                Sentry.captureMessage('Card format not recognized', 'info')
                 cardData = null;
                 this.$swal.fire({
                     title: 'Hmm...',
@@ -595,7 +590,7 @@ export default {
                     this.clearFields();
                     new Audio(this.sounds.error).play()
                     if (error.response.status === 403) {
-                        this.axiosErrorToBugsnag(error)
+                        this.axiosErrorToSentry(error)
                         this.$swal.fire({
                             title: 'Whoops!',
                             text: "You don't have permission to perform that action.",
@@ -627,7 +622,7 @@ export default {
                             showConfirmButton: false,
                         });
                     } else {
-                        this.axiosErrorToBugsnag(error)
+                        this.axiosErrorToSentry(error)
                         this.$swal.fire({
                             title: 'Error',
                             text: 'An unexpected error occurred. If this continues, post in Slack #people-counter.',
@@ -674,18 +669,30 @@ export default {
                 );
             }
         },
-        axiosErrorToBugsnag(error) {
-            Bugsnag.notify(error, function (event) {
+        axiosErrorToSentry(error) {
+            if (process.env.MIX_SENTRY_DSN !== undefined) {
+                let axiosContext = null
                 if (error.response) {
-                    event.addMetadata('axios-response', error.response)
-                    event.request.url = error.response.config.url
-                    event.request.headers = error.response.config.headers
-                    event.request.httpMethod = error.response.config.method
-                    event.request.body = error.response.config.data
+                    axiosContext = {
+                        'Response Status': error.response.status,
+                        'Response Body': error.response.data,
+                        'Request URL': error.response.config.url,
+                        // Disabled sending headers until we can sanitize API credentials
+                        // 'request_headers': error.response.config.headers,
+                        'HTTP Method': error.response.config.method,
+                        'Request Body': error.response.config.data
+                    }
                 } else if (error.request) {
-                    event.addMetadata('axios-request', error.request)
+                    axiosContext = {
+                        'request': error.request
+                    }
                 }
-            });
+                Sentry.captureException(error, {
+                    contexts: {
+                        axios: axiosContext
+                    }
+                });
+            }
         }
     }
 };

@@ -29,4 +29,3 @@ fi
 
 php artisan up
 php artisan horizon:terminate
-php artisan bugsnag:deploy --repository "https://github.com/RoboJackets/people-counter" --revision $(git rev-parse HEAD) --builder "mehvre05"
