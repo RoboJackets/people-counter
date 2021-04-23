@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8252d5a85d56b2bf902cc5b4501eb6e",
+    "content-hash": "b3593d6c7dc4c1305e2242a8e7667685",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ampeco/nova-date-range-filter.git",
-                "reference": "ed55152f835d5d3540c958367b3dc2abb9a393aa"
+                "reference": "58d7ffbd82670d7a0908ae96356f34db928696df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ampeco/nova-date-range-filter/zipball/ed55152f835d5d3540c958367b3dc2abb9a393aa",
-                "reference": "ed55152f835d5d3540c958367b3dc2abb9a393aa",
+                "url": "https://api.github.com/repos/ampeco/nova-date-range-filter/zipball/58d7ffbd82670d7a0908ae96356f34db928696df",
+                "reference": "58d7ffbd82670d7a0908ae96356f34db928696df",
                 "shasum": ""
             },
             "require": {
@@ -48,9 +48,9 @@
                 "nova"
             ],
             "support": {
-                "source": "https://github.com/ampeco/nova-date-range-filter/tree/master"
+                "source": "https://github.com/ampeco/nova-date-range-filter/tree/0.1.2"
             },
-            "time": "2019-04-05T11:24:56+00:00"
+            "time": "2021-03-25T12:16:08+00:00"
         },
         {
             "name": "apereo/phpcas",
