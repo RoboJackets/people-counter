@@ -30,7 +30,7 @@
         "robojackets/apiary-user": "1.0.3",
         "robojackets/auth-stickler": "0.3",
         "saumini/count": "1.0.1",
-        "sentry/sentry-laravel": "^2.4",
+        "sentry/sentry-laravel": "2.4.2",
         "spatie/laravel-permission": "3.18.0",
         "spatie/laravel-query-builder": "3.3.4",
         "spatie/once": "2.2.1",
@@ -48,7 +48,7 @@
         "phpstan/extension-installer": "1.1.0",
         "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.2",
-        "slevomat/coding-standard": "^6.4"
+        "slevomat/coding-standard": "6.4.1"
     },
     "replace": {
         "symfony/polyfill-apcu": "*",
