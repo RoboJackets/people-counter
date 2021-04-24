@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "718a16d5b3ab6edf0092f53fea3fb0ae",
+    "content-hash": "8a3257250c36f48a2caa710f6e43dd4e",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -12557,17 +12557,17 @@
         },
         {
             "name": "robojackets/static-analysis",
-            "version": "v1.2",
+            "version": "v1.4",
             "source": {
                 "type": "git",
                 "url": "git@github.gatech.edu:RoboJackets/static-analysis.git",
-                "reference": "1a1c4fff67e3727f20cd33814f29a0724405f211"
+                "reference": "0906526a8b0546d43b1eaec8832f26e1ca6640b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1615665214/robojackets/static-analysis/robojackets-static-analysis-1a1c4fff67e3727f20cd33814f29a0724405f211-zip-ab0a59.zip",
-                "reference": "1a1c4fff67e3727f20cd33814f29a0724405f211",
-                "shasum": "5f4941a2e74266e43315a62cf1233dca77860e44"
+                "url": "https://composer.robojackets.org/1619289406/robojackets/static-analysis/robojackets-static-analysis-0906526a8b0546d43b1eaec8832f26e1ca6640b7-zip-2eb0ee.zip",
+                "reference": "0906526a8b0546d43b1eaec8832f26e1ca6640b7",
+                "shasum": "72095dc073c592a6d60427b2d13a01e043ead4bf"
             },
             "require": {
                 "phan/phan": "*",
@@ -12576,7 +12576,7 @@
                 "phpstan/phpstan-strict-rules": "*",
                 "slevomat/coding-standard": "*",
                 "squizlabs/php_codesniffer": "*",
-                "vimeo/psalm": "*"
+                "vimeo/psalm": "^4.7"
             },
             "suggest": {
                 "nunomaduro/larastan": "For analyzing Laravel projects",
@@ -12597,9 +12597,9 @@
             "description": "Standard static analyzers for PHP, with sensible defaults",
             "homepage": "https://github.gatech.edu/RoboJackets/static-analysis",
             "support": {
-                "source": "https://github.gatech.edu/RoboJackets/static-analysis/tree/v1.2"
+                "source": "https://github.gatech.edu/RoboJackets/static-analysis/tree/v1.4"
             },
-            "time": "2020-12-13T21:52:12+00:00"
+            "time": "2021-04-24T18:35:44+00:00"
         },
         {
             "name": "sabre/event",
