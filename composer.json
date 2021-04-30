@@ -30,7 +30,7 @@
         "robojackets/apiary-user": "1.0.3",
         "robojackets/auth-stickler": "0.3",
         "saumini/count": "1.0.1",
-        "sentry/sentry-laravel": "2.4.2",
+        "sentry/sentry-laravel": "2.5.1",
         "spatie/laravel-permission": "3.18.0",
         "spatie/laravel-query-builder": "3.3.4",
         "spatie/once": "2.2.1",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfd55177d16817f13298200c8828ad57",
+    "content-hash": "daf1b54c9e4adc17f4298a9239da39e0",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -1715,16 +1715,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "35ea11d335fd638b5882ff1725228b3d35496ab1"
+                "reference": "dc960a912984efb74d0a90222870c72c87f10c91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/35ea11d335fd638b5882ff1725228b3d35496ab1",
-                "reference": "35ea11d335fd638b5882ff1725228b3d35496ab1",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/dc960a912984efb74d0a90222870c72c87f10c91",
+                "reference": "dc960a912984efb74d0a90222870c72c87f10c91",
                 "shasum": ""
             },
             "require": {
@@ -1784,9 +1784,9 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/1.8.1"
+                "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
-            "time": "2021-03-21T16:25:00+00:00"
+            "time": "2021-04-26T09:17:50+00:00"
         },
         {
             "name": "http-interop/http-factory-guzzle",
@@ -6498,16 +6498,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "2.4.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "1bb0bcc240d25e72f3cf0321f3d6064f24dec504"
+                "reference": "2af8a531f202f0ac014f5fad532815ed34f730a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1bb0bcc240d25e72f3cf0321f3d6064f24dec504",
-                "reference": "1bb0bcc240d25e72f3cf0321f3d6064f24dec504",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/2af8a531f202f0ac014f5fad532815ed34f730a9",
+                "reference": "2af8a531f202f0ac014f5fad532815ed34f730a9",
                 "shasum": ""
             },
             "require": {
@@ -6570,7 +6570,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-laravel/issues",
-                "source": "https://github.com/getsentry/sentry-laravel/tree/2.4.2"
+                "source": "https://github.com/getsentry/sentry-laravel/tree/2.5.1"
             },
             "funding": [
                 {
@@ -6582,7 +6582,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-24T19:36:23+00:00"
+            "time": "2021-04-29T11:10:22+00:00"
         },
         {
             "name": "spatie/laravel-permission",
