@@ -19,7 +19,7 @@
         "jeffbeltran/sanctum-tokens": "1.5.4",
         "laravel/framework": "8.41.0",
         "laravel/horizon": "5.7.6",
-        "laravel/nova": "3.24.0",
+        "laravel/nova": "3.25.0",
         "laravel/sanctum": "2.11.0",
         "laravel/tinker": "2.6.1",
         "maatwebsite/excel": "3.1.30",
