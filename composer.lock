@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "999ed673ac7a859d0d93385e2fcbcbc8",
+    "content-hash": "7bd726ed687275138281acfd9dafcbeb",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -6667,16 +6667,16 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "3.3.4",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "2e131b0c8ae600b6e3aabb5a1501c721862a0b8f"
+                "reference": "1bd3682c3640b905de4868c413e7eda44ed21e9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/2e131b0c8ae600b6e3aabb5a1501c721862a0b8f",
-                "reference": "2e131b0c8ae600b6e3aabb5a1501c721862a0b8f",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/1bd3682c3640b905de4868c413e7eda44ed21e9b",
+                "reference": "1bd3682c3640b905de4868c413e7eda44ed21e9b",
                 "shasum": ""
             },
             "require": {
@@ -6733,7 +6733,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-11-26T14:51:30+00:00"
+            "time": "2021-05-20T09:15:38+00:00"
         },
         {
             "name": "spatie/once",
