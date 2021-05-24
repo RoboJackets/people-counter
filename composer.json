@@ -32,7 +32,7 @@
         "saumini/count": "1.0.1",
         "sentry/sentry-laravel": "2.5.3",
         "spatie/laravel-permission": "3.18.0",
-        "spatie/laravel-query-builder": "3.4.0",
+        "spatie/laravel-query-builder": "3.4.1",
         "spatie/once": "2.2.1",
         "staudenmeir/eloquent-has-many-deep": "*",
         "subfission/cas": "4.0.0",
