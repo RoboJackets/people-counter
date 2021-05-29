@@ -35,7 +35,7 @@
         "spatie/laravel-query-builder": "3.4.1",
         "spatie/once": "2.2.1",
         "staudenmeir/eloquent-has-many-deep": "*",
-        "subfission/cas": "4.0.0",
+        "subfission/cas": "4.1.0",
         "ukfast/laravel-health-check": "1.12.1",
         "vyuldashev/nova-permission": "2.11.1"
     },
