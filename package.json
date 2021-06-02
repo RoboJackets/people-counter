@@ -21,8 +21,8 @@
         "vue-template-compiler": "2.6.13"
     },
     "dependencies": {
-        "@sentry/tracing": "6.5.0",
-        "@sentry/vue": "6.5.0",
+        "@sentry/tracing": "6.5.1",
+        "@sentry/vue": "6.5.1",
         "bootstrap": "4.6.0",
         "jquery": "3.6.0",
         "laravel-echo": "1.10.0",
