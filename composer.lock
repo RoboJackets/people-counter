@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50cada4f4b9d1436e8847262ad4bd52f",
+    "content-hash": "c53ce4242315aad4bb34d8e63aa89e2d",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2200,17 +2200,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "3.26.0",
+            "version": "3.26.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "972a567fd2f5a96f21574c53f489511e28bb3a0a"
+                "reference": "ff97c586d46a33edc8dca05705aa80040ef87adc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-972a567fd2f5a96f21574c53f489511e28bb3a0a-zip-efe987.zip",
-                "reference": "972a567fd2f5a96f21574c53f489511e28bb3a0a",
-                "shasum": "5832169885e370ced7830afaf0561540a34dc48b"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-ff97c586d46a33edc8dca05705aa80040ef87adc-zip-7cbc3e.zip",
+                "reference": "ff97c586d46a33edc8dca05705aa80040ef87adc",
+                "shasum": "eac1ea168633fda597c04f4173f94311263d3bcd"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2289,9 +2289,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v3.26.0"
+                "source": "https://github.com/laravel/nova/tree/v3.26.1"
             },
-            "time": "2021-06-01T21:25:55+00:00"
+            "time": "2021-06-02T06:53:07+00:00"
         },
         {
             "name": "laravel/sanctum",
