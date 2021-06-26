@@ -17,7 +17,7 @@
         "fruitcake/laravel-cors": "2.0.4",
         "guzzlehttp/guzzle": "7.3.0",
         "jeffbeltran/sanctum-tokens": "1.5.4",
-        "laravel/framework": "8.48.1",
+        "laravel/framework": "8.48.2",
         "laravel/horizon": "5.7.9",
         "laravel/nova": "3.26.1",
         "laravel/sanctum": "2.11.2",
