@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Scout\Searchable;
 
 /**
  * Represents a single User.
@@ -32,6 +33,7 @@ class User extends Authenticatable
     use HasFactory;
     use HasRoles;
     use Notifiable;
+    use Searchable;
 
     /**
      * Attributes that are not mass assignable.
@@ -49,7 +51,31 @@ class User extends Authenticatable
      *
      * @var array<string>
      */
-    protected $appends = ['full_name'];
+    protected $appends = [
+        'full_name'
+    ];
+
+    /**
+     * The attributes that should be searchable in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $searchable_attributes = [
+       "first_name",
+        "last_name",
+        "username",
+        "gtid",
+        "email"
+    ];
+
+    /**
+     * The rules to use for ranking results in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $ranking_rules = [
+        'desc(visits_count)'
+    ];
 
     /**
      * Get the visits for the user.
@@ -97,5 +123,30 @@ class User extends Authenticatable
     public function getFullNameAttribute(): string
     {
         return $this->first_name.' '.$this->last_name;
+    }
+
+    /**
+     * Modify the query used to retrieve models when making all of the models searchable.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function makeAllSearchableUsing($query)
+    {
+        return $query->withCount('visits');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     */
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        if (!array_key_exists('visits_count', $array)) {
+            $array['visits_count'] = $this->visits()->count();
+        }
+
+        return $array;
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -25,6 +26,7 @@ class Space extends Model
 {
     use SoftDeletes;
     use HasRelationships;
+    use Searchable;
 
     /**
      * Attributes that are not mass assignable.
@@ -45,6 +47,24 @@ class Space extends Model
      */
     public static $allowedIncludes = [
         'parent', 'children', 'users', 'visits', 'activeVisitsUsers', 'activeChildVisitsUsers',
+    ];
+
+    /**
+     * The attributes that should be searchable in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $searchable_attributes = [
+       "name",
+    ];
+
+    /**
+     * The rules to use for ranking results in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $ranking_rules = [
+        'desc(visits_count)'
     ];
 
     /**
@@ -201,5 +221,30 @@ class Space extends Model
     {
         return $this->hasManyDeepFromRelations($this->activeChildVisits(), (new Visit())->user())
             ->whereNotNull('visits.in_time')->whereNull('visits.out_time');
+    }
+
+    /**
+     * Modify the query used to retrieve models when making all of the models searchable.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function makeAllSearchableUsing($query)
+    {
+        return $query->withCount('visits');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     */
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        if (!array_key_exists('visits_count', $array)) {
+            $array['visits_count'] = $this->visits()->count();
+        }
+
+        return $array;
     }
 }
