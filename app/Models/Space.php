@@ -55,7 +55,7 @@ class Space extends Model
      * @var array<string>
      */
     public $searchable_attributes = [
-       "name",
+        'name',
     ];
 
     /**
@@ -64,7 +64,7 @@ class Space extends Model
      * @var array<string>
      */
     public $ranking_rules = [
-        'desc(visits_count)'
+        'desc(visits_count)',
     ];
 
     /**
@@ -241,7 +241,7 @@ class Space extends Model
     {
         $array = $this->toArray();
 
-        if (!array_key_exists('visits_count', $array)) {
+        if (! array_key_exists('visits_count', $array)) {
             $array['visits_count'] = $this->visits()->count();
         }
 

@@ -61,11 +61,11 @@ class User extends Authenticatable
      * @var array<string>
      */
     public $searchable_attributes = [
-       "first_name",
-        "last_name",
-        "username",
-        "gtid",
-        "email"
+        'first_name',
+        'last_name',
+        'username',
+        'gtid',
+        'email',
     ];
 
     /**
@@ -74,7 +74,7 @@ class User extends Authenticatable
      * @var array<string>
      */
     public $ranking_rules = [
-        'desc(visits_count)'
+        'desc(visits_count)',
     ];
 
     /**
@@ -143,7 +143,7 @@ class User extends Authenticatable
     {
         $array = $this->toArray();
 
-        if (!array_key_exists('visits_count', $array)) {
+        if (! array_key_exists('visits_count', $array)) {
             $array['visits_count'] = $this->visits()->count();
         }
 
