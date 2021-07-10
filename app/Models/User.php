@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 use Laravel\Scout\Searchable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Represents a single User.
@@ -52,7 +52,7 @@ class User extends Authenticatable
      * @var array<string>
      */
     protected $appends = [
-        'full_name'
+        'full_name',
     ];
 
     /**
