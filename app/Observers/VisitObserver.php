@@ -13,6 +13,7 @@ class VisitObserver
      */
     public function saved(Visit $visit): void
     {
+        // @phpstan-ignore-next-line
         $visit->user()->searchable();
 
         foreach ($visit->spaces()->get() as $space) {

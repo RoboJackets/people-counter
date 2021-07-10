@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -127,17 +128,16 @@ class User extends Authenticatable
 
     /**
      * Modify the query used to retrieve models when making all of the models searchable.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function makeAllSearchableUsing($query)
+    protected function makeAllSearchableUsing(Builder $query): Builder
     {
         return $query->withCount('visits');
     }
 
     /**
      * Get the indexable data array for the model.
+     *
+     * @return array<string,int|string>
      */
     public function toSearchableArray(): array
     {
