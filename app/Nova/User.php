@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Nova;
 
 use App\Nova\Fields\Hidden;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use Jeffbeltran\SanctumTokens\SanctumTokens;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -37,6 +38,16 @@ class User extends Resource
      */
     public static $search = [
         'username', 'first_name', 'last_name', 'email', 'gtid',
+    ];
+
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array<string>
+     */
+    public static $with = [
+        'spaces',
+        'visits',
     ];
 
     /**
@@ -168,5 +179,65 @@ class User extends Resource
     public function authorizedToUpdateForSerialization(NovaRequest $request): bool
     {
         return $request->user()->can('manage-users') || $request->user()->isSuperAdmin();
+    }
+
+    private const SCC_MAIN = 'SCC - Main';
+    private const MANAGER = ' Manager';
+
+    /**
+     * Get the search result subtitle for the resource.
+     *
+     * @return string
+     */
+    public function subtitle()
+    {
+        if (in_array($this->primary_affiliation, ['faculty', 'staff', 'employee'], true)) {
+            return ucfirst($this->primary_affiliation);
+        }
+
+        if ($this->visits()->count() > 0) {
+            $visits_with_space_names = $this->visits()->selectRaw(
+                'spaces.name, spaces.id, count(visits.id) as count_of_visits'
+            )->leftJoin(
+                'space_visit',
+                'visits.id',
+                '=',
+                'space_visit.visit_id'
+            )->leftJoin(
+                'spaces',
+                static function (JoinClause $join): void {
+                    $join->on('spaces.id', '=', 'space_visit.space_id')
+                         ->where('spaces.name', '!=', self::SCC_MAIN);
+                }
+            )->groupBy(
+                'spaces.id'
+            )->orderByDesc(
+                'count_of_visits'
+            )->get()->toArray();
+
+            foreach ($visits_with_space_names as $visit_count) {
+                if (null === $visit_count['name']) {
+                    continue;
+                }
+
+                if (1 === $this->managedSpaces()->where('spaces.id', '=', $visit_count['id'])->count()) {
+                    return $visit_count['name'] . self::MANAGER;
+                }
+
+                return $visit_count['name'];
+            }
+        }
+
+        if (0 < $this->spaces()->where('spaces.name', '!=', self::SCC_MAIN)->count()) {
+            $space = $this->spaces()->where('spaces.name', '!=', SCC_MAIN)->first();
+
+            if (1 === $this->managedSpaces()->where('spaces.id', '=', $space->id)->count()) {
+                return $space->name . self::MANAGER;
+            }
+
+            return $space->name;
+        }
+
+        return null;
     }
 }
