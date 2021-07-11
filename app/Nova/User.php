@@ -221,7 +221,7 @@ class User extends Resource
                 }
 
                 if (1 === $this->managedSpaces()->where('spaces.id', '=', $visit_count['id'])->count()) {
-                    return $visit_count['name'] . self::MANAGER;
+                    return $visit_count['name'].self::MANAGER;
                 }
 
                 return $visit_count['name'];
@@ -232,7 +232,7 @@ class User extends Resource
             $space = $this->spaces()->where('spaces.name', '!=', SCC_MAIN)->first();
 
             if (1 === $this->managedSpaces()->where('spaces.id', '=', $space->id)->count()) {
-                return $space->name . self::MANAGER;
+                return $space->name.self::MANAGER;
             }
 
             return $space->name;
