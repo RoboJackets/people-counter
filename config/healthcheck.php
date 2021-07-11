@@ -68,6 +68,7 @@ return [
     'addresses' => [
         env('APP_URL').'/kiosk' => 200,
         env('APP_URL') => 200,
+        env('MEILISEARCH_HOST').'/health' => 200,
     ],
 
     /**
