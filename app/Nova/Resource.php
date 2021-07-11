@@ -21,7 +21,7 @@ abstract class Resource extends NovaResource
     public static function scoutQuery(NovaRequest $request, $query): Builder
     {
         if (null !== $request->viaResource) {
-            return $query->where($request->viaResource . '_id', $request->viaResourceId);
+            return $query->where($request->viaResource.'_id', $request->viaResourceId);
         }
 
         return $query;
