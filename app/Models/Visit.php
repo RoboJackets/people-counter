@@ -122,7 +122,7 @@ class Visit extends Model
             $array['user'] = $this->user()->first()->toSearchableArray();
         }
 
-        if (! array_key_exists('user', $array)) {
+        if (! array_key_exists('spaces', $array)) {
             $array['spaces'] = $this->spaces()->get();
         }
 
