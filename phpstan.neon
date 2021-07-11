@@ -7,7 +7,8 @@ parameters:
     - storage/*
     - vendor/*
   ignoreErrors:
-    - '#(?:Dynamic call to static method|Call to an undefined method) Illuminate\\Database\\Eloquent\\(?:Builder|Relations\\[a-zA-Z]+)?(?:<mixed>|<App\\Models\\[a-zA-Z]+>)?::(?:distinct|doesntHave|first|groupBy|has|havingRaw|join|leftJoin|orderBy|orderByRaw|orWhereNull|select|selectRaw|selectSub|where|whereBetween|whereDate|whereIn|whereNotNull|count|whereIn|whereBetween|sum|distinct|paid|active|accessActive|inactive|role|pending|pendingSwag|accessInactive|visible|whereNull|current|start|end|availableForPurchase)\(\)\.#'
+    - "#Called 'modelKeys' on Laravel collection, but could have been retrieved as a query\\.#"
+    - '#(?:Dynamic call to static method|Call to an undefined method) Illuminate\\Database\\Eloquent\\(?:Builder|Relations\\[a-zA-Z]+)?(?:<mixed>|<App\\Models\\[a-zA-Z]+>)?::(?:distinct|doesntHave|first|groupBy|has|havingRaw|join|leftJoin|orderBy|orderByRaw|orWhereNull|select|selectRaw|selectSub|where|whereBetween|whereDate|whereIn|whereNotNull|count|whereIn|whereBetween|sum|distinct|paid|active|accessActive|inactive|role|pending|pendingSwag|accessInactive|visible|whereNull|current|start|end|availableForPurchase|modelKeys)\(\)\.#'
     - '#Access to an undefined property App\\Nova\\[A-Za-z]+::\$[a-z_]+\.#'
     - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
@@ -19,14 +20,16 @@ parameters:
     - '#Cannot access property \$[a-zA-Z_]+ on App\\Models\\[a-zA-Z]+\|null\.#'
     - '#Cannot access property \$[a-zA-Z_]+ on App\\Models\\[a-zA-Z_]+\|Illuminate\\Database\\Eloquent\\Collection<App\\Models\\Space>\|null\.#'
     - '#Cannot access property \$id on mixed\.#'
-    - '#Cannot call method endOfDay\(\) on Carbon\\Carbon\|false\.#'
+    - '#Cannot call method [A-Za-z]+\(\) on Carbon\\Carbon\|false\.#'
+    - '#Cannot call method [A-Za-z]+\(\) on Carbon\\Carbon\|null\.#'
+    - '#Cannot call method [A-Za-z]+\(\) on mixed\.#'
     - '#Cannot call method save\(\) on App\\Models\\[a-zA-Z]+\|null\.#'
-    - '#Cannot call method startOfDay\(\) on Carbon\\Carbon\|false\.#'
     - '#Dynamic call to static method Illuminate\\Contracts\\Auth\\Guard::user\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::orWhereBetween\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereBetween\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNotNull\(\)\.#'
     - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model>::whereNull\(\)\.#'
+    - '#Dynamic call to static method Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User,App\\Models\\Visit>::first\(\)\.#'
     - '#Method App\\Notifications\\[a-zA-Z]+::toMail\(\) has parameter \$notifiable with no typehint specified\.#'
     - '#Method App\\Notifications\\[a-zA-Z]+::via\(\) has parameter \$notifiable with no typehint specified\.#'
     - '#Method App\\Nova\\[a-zA-Z]+::fields\(\) return type has no value type specified in iterable type array\.#'

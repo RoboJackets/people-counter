@@ -29,3 +29,5 @@ fi
 
 php artisan up
 php artisan horizon:terminate
+php artisan websockets:restart
+php artisan meilisearch:update-index-settings --only-return-id

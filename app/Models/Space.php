@@ -245,6 +245,10 @@ class Space extends Model
             $array['visits_count'] = $this->visits()->count();
         }
 
+        $array['users_id'] = $this->users()->get()->modelKeys();
+
+        $array['spaces_id'] = $this->parent_id;
+
         return $array;
     }
 }

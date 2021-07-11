@@ -128,54 +128,6 @@ class User extends Resource
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return array<\Laravel\Nova\Card>
-     */
-    public function cards(Request $request): array
-    {
-        return [];
-    }
-
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return array<\Laravel\Nova\Filters\Filter>
-     */
-    public function filters(Request $request): array
-    {
-        return [];
-    }
-
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return array<\Laravel\Nova\Lenses\Lens>
-     */
-    public function lenses(Request $request): array
-    {
-        return [];
-    }
-
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return array<\Laravel\Nova\Actions\Action>
-     */
-    public function actions(Request $request): array
-    {
-        return [];
-    }
-
     public function authorizedToUpdateForSerialization(NovaRequest $request): bool
     {
         return $request->user()->can('manage-users') || $request->user()->isSuperAdmin();

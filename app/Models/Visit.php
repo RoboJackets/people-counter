@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Visit extends Model
 {
     use SoftDeletes;
+    use Searchable;
 
     /**
      * Attributes that are not mass assignable.
@@ -33,6 +35,15 @@ class Visit extends Model
     protected $casts = [
         'in_time' => 'datetime',
         'out_time' => 'datetime',
+    ];
+
+    /**
+     * The rules to use for ranking results in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $ranking_rules = [
+        'desc(updated_at_unix)',
     ];
 
     /**
@@ -88,5 +99,39 @@ class Visit extends Model
     public function scopeActiveForUser(Builder $query, int $gtid): Builder
     {
         return $query->whereNotNull('in_time')->whereNull('out_time')->where('gtid', $gtid);
+    }
+
+    /**
+     * Modify the query used to retrieve models when making all of the models searchable.
+     */
+    protected function makeAllSearchableUsing(Builder $query): Builder
+    {
+        return $query->with('user')->with('spaces');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array<string,int|string>
+     */
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        if (! array_key_exists('user', $array)) {
+            $array['user'] = $this->user()->first()->toSearchableArray();
+        }
+
+        if (! array_key_exists('user', $array)) {
+            $array['spaces'] = $this->spaces()->get();
+        }
+
+        $array['users_id'] = $this->user()->first()->id;
+
+        $array['spaces_id'] = $this->spaces()->get()->modelKeys();
+
+        $array['updated_at_unix'] = $this->updated_at->getTimestamp();
+
+        return $array;
     }
 }

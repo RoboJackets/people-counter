@@ -67,6 +67,7 @@ class User extends Authenticatable
         'username',
         'gtid',
         'email',
+        'primary_affiliation',
     ];
 
     /**
@@ -146,6 +147,8 @@ class User extends Authenticatable
         if (! array_key_exists('visits_count', $array)) {
             $array['visits_count'] = $this->visits()->count();
         }
+
+        $array['spaces_id'] = $this->spaces()->get()->modelKeys();
 
         return $array;
     }

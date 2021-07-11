@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e266552d4232cfeb59a8a92553661edc",
+    "content-hash": "2835fa9368211fcb50e9041796c6d246",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -1795,6 +1795,51 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
+        },
+        {
+            "name": "haydenpierce/class-finder",
+            "version": "0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/hpierce1102/ClassFinder.git",
+                "reference": "d6c68f386c764674c59ee336d1dfca35aada5f90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/hpierce1102%2FClassFinder/repository/archive.zip?sha=d6c68f386c764674c59ee336d1dfca35aada5f90",
+                "reference": "d6c68f386c764674c59ee336d1dfca35aada5f90",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HaydenPierce\\ClassFinder\\": "src/",
+                    "HaydenPierce\\ClassFinder\\UnitTest\\": "test/unit"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hayden Pierce",
+                    "email": "hayden@haydenpierce.com"
+                }
+            ],
+            "description": "A library that can provide of a list of classes in a given namespace",
+            "support": {
+                "issues": "https://gitlab.com/api/v4/projects/7670051/issues"
+            },
+            "time": "2021-01-05T20:50:49+00:00"
         },
         {
             "name": "http-interop/http-factory-guzzle",
@@ -6393,6 +6438,74 @@
                 "issues": "https://github.gatech.edu/RoboJackets/error-pages/issues"
             },
             "time": "2021-01-18T16:47:52+00:00"
+        },
+        {
+            "name": "robojackets/meilisearch-index-settings-helper",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.gatech.edu:RoboJackets/meilisearch-index-settings-helper.git",
+                "reference": "187fb83697fd4146e7107881c8bb7d3d814852e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://composer.robojackets.org/1626009069/robojackets/meilisearch-index-settings-helper/robojackets-meilisearch-index-settings-helper-187fb83697fd4146e7107881c8bb7d3d814852e6-zip-44fda3.zip",
+                "reference": "187fb83697fd4146e7107881c8bb7d3d814852e6",
+                "shasum": "df2d162560d96403445395a637ee34c15062c6b8"
+            },
+            "require": {
+                "haydenpierce/class-finder": "^0.4.3",
+                "http-interop/http-factory-guzzle": "^1.0",
+                "laravel/scout": "^9.2",
+                "meilisearch/meilisearch-php": "^0.18.3"
+            },
+            "require-dev": {
+                "laravel/framework": "*",
+                "phpstan/extension-installer": "^1.0",
+                "robojackets/static-analysis": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RoboJackets\\MeilisearchIndexSettingsHelper\\MeilisearchIndexSettingsHelperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RoboJackets\\MeilisearchIndexSettingsHelper\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "files": [
+                    "vendor/laravel/framework/src/Illuminate/Foundation/helpers.php"
+                ]
+            },
+            "scripts": {
+                "ci": [
+                    "vendor/bin/phpcs --standard=vendor/robojackets/static-analysis/defaults/phpcs.xml .",
+                    "vendor/bin/phpstan analyse --level=max .",
+                    "vendor/bin/phan",
+                    "vendor/bin/psalm"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kristaps Berzinch",
+                    "email": "kristapsberzinch@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Manage Meilisearch indexing settings in Eloquent models",
+            "homepage": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper",
+            "support": {
+                "source": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper/tree/v0.1"
+            },
+            "time": "2021-07-11T12:53:59+00:00"
         },
         {
             "name": "robojackets/network-check",
