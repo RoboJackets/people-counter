@@ -8,8 +8,10 @@ parameters:
     - vendor/*
   ignoreErrors:
     - '#(?:Dynamic call to static method|Call to an undefined method) Illuminate\\Database\\Eloquent\\(?:Builder|Relations\\[a-zA-Z]+)?(?:<mixed>|<App\\Models\\[a-zA-Z]+>)?::(?:distinct|doesntHave|first|groupBy|has|havingRaw|join|leftJoin|orderBy|orderByRaw|orWhereNull|select|selectRaw|selectSub|where|whereBetween|whereDate|whereIn|whereNotNull|count|whereIn|whereBetween|sum|distinct|paid|active|accessActive|inactive|role|pending|pendingSwag|accessInactive|visible|whereNull|current|start|end|availableForPurchase)\(\)\.#'
+    - '#Access to an undefined property App\\Nova\\[A-Za-z]+::\$[a-z_]+\.#'
     - '#Access to an undefined property Laravel\\Nova\\Fields\\ActionFields::\$[a-zA-Z_]+\.#'
     - '#Access to an undefined property object::\$[a-zA-Z]+\.#'
+    - '#Call to an undefined method App\\Nova\\[A-Za-z]+::[a-zA-Z]+\(\)\.#'
     - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::allowedIncludes\(\)\.#'
     - '#Call to an undefined method Illuminate\\Support\\Collection<int, App\\Models\\Space>::append\(\)\.#'
     - '#Call to an undefined method Illuminate\\Support\\HigherOrderTapProxy<mixed>::send\(\)\.#'

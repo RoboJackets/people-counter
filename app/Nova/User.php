@@ -186,10 +186,8 @@ class User extends Resource
 
     /**
      * Get the search result subtitle for the resource.
-     *
-     * @return string
      */
-    public function subtitle()
+    public function subtitle(): ?string
     {
         if (in_array($this->primary_affiliation, ['faculty', 'staff', 'employee'], true)) {
             return ucfirst($this->primary_affiliation);
@@ -229,7 +227,7 @@ class User extends Resource
         }
 
         if (0 < $this->spaces()->where('spaces.name', '!=', self::SCC_MAIN)->count()) {
-            $space = $this->spaces()->where('spaces.name', '!=', SCC_MAIN)->first();
+            $space = $this->spaces()->where('spaces.name', '!=', self::SCC_MAIN)->first();
 
             if (1 === $this->managedSpaces()->where('spaces.id', '=', $space->id)->count()) {
                 return $space->name.self::MANAGER;
