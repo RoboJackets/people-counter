@@ -37,6 +37,13 @@ class Visit extends Resource
     ];
 
     /**
+     * Indicates if the resource should be globally searchable.
+     *
+     * @var bool
+     */
+    public static $globallySearchable = false;
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param \Illuminate\Http\Request  $request

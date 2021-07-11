@@ -6,19 +6,24 @@ namespace App\Nova;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
+use Laravel\Scout\Builder;
 
 abstract class Resource extends NovaResource
 {
     /**
-     * Build an "index" query for the given resource.
+     * Build a Scout search query for the given resource.
      *
      * @param \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Laravel\Scout\Builder  $query
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Laravel\Scout\Builder
      */
-    public static function indexQuery(NovaRequest $request, $query)
+    public static function scoutQuery(NovaRequest $request, $query): Builder
     {
+        if (null !== $request->viaResource) {
+            return $query->where($request->viaResource.'_id', $request->viaResourceId);
+        }
+
         return $query;
     }
 }

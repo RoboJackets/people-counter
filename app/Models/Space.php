@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -17,6 +19,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  *
  * @property int $id
  * @property int $visits_count
+ * @property int $parent_id
  * @property string $name
  *
  * @property-read \Illuminate\Database\Eloquent\Collection $children
@@ -25,6 +28,7 @@ class Space extends Model
 {
     use SoftDeletes;
     use HasRelationships;
+    use Searchable;
 
     /**
      * Attributes that are not mass assignable.
@@ -45,6 +49,24 @@ class Space extends Model
      */
     public static $allowedIncludes = [
         'parent', 'children', 'users', 'visits', 'activeVisitsUsers', 'activeChildVisitsUsers',
+    ];
+
+    /**
+     * The attributes that should be searchable in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $searchable_attributes = [
+        'name',
+    ];
+
+    /**
+     * The rules to use for ranking results in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $ranking_rules = [
+        'desc(visits_count)',
     ];
 
     /**
@@ -201,5 +223,33 @@ class Space extends Model
     {
         return $this->hasManyDeepFromRelations($this->activeChildVisits(), (new Visit())->user())
             ->whereNotNull('visits.in_time')->whereNull('visits.out_time');
+    }
+
+    /**
+     * Modify the query used to retrieve models when making all of the models searchable.
+     */
+    protected function makeAllSearchableUsing(Builder $query): Builder
+    {
+        return $query->withCount('visits');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array<string,int|string>
+     */
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        if (! array_key_exists('visits_count', $array)) {
+            $array['visits_count'] = $this->visits()->count();
+        }
+
+        $array['users_id'] = $this->users()->get()->modelKeys();
+
+        $array['spaces_id'] = $this->parent_id;
+
+        return $array;
     }
 }

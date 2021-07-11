@@ -42,6 +42,7 @@ return [
         'PhanUnreferencedClass',
         'PhanUnreferencedClosure',
         'PhanUnreferencedPHPDocProperty',
+        'PhanUnreferencedProtectedMethod',
         'PhanUnreferencedProtectedProperty',
         'PhanUnreferencedPublicMethod',
         'PhanUnreferencedPublicProperty',
