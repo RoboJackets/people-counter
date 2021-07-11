@@ -3803,9 +3803,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-7caf590d32760a304772419303a109261406763a-zip-03ac5e.zip",
+                "url": "https://composer.robojackets.org/1626016176/oitnetworkservices/buzzapiclient/oitnetworkservices-buzzapiclient-7caf590d32760a304772419303a109261406763a-zip-03ac5e.zip",
                 "reference": "7caf590d32760a304772419303a109261406763a",
-                "shasum": "ce57eb2e8010e6c50cca88b49b1e7d8f4d0d7c52"
+                "shasum": "1159dc22bf07c03ee67811fee7de5cd5d824a289"
             },
             "require": {
                 "ext-json": "*",
@@ -6394,9 +6394,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/robojackets/apiary-user/robojackets-apiary-user-b398508db0b2179bd60c2897045a859d5a9f5da0-zip-518cbc.zip",
+                "url": "https://composer.robojackets.org/1626016176/robojackets/apiary-user/robojackets-apiary-user-b398508db0b2179bd60c2897045a859d5a9f5da0-zip-518cbc.zip",
                 "reference": "b398508db0b2179bd60c2897045a859d5a9f5da0",
-                "shasum": "28f59cc45960e6543f022e0c550912b4afc92e9a"
+                "shasum": "a07c4f5bb2bad71142b26bd9e4cf1af8bef6fbe1"
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.2"
@@ -6446,9 +6446,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/robojackets/auth-stickler/robojackets-auth-stickler-014d2261078db6c985dae8628907c49488773a46-zip-fc802a.zip",
+                "url": "https://composer.robojackets.org/1626016176/robojackets/auth-stickler/robojackets-auth-stickler-014d2261078db6c985dae8628907c49488773a46-zip-fc802a.zip",
                 "reference": "014d2261078db6c985dae8628907c49488773a46",
-                "shasum": "180d57dbadbcc689d6f687db4989e3c4d3a05917"
+                "shasum": "9793305f85c7bf94039b624d957b731362e96553"
             },
             "require": {
                 "apereo/phpcas": "^1.3",
@@ -6494,9 +6494,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/robojackets/error-pages/robojackets-error-pages-ce83cc96d3f3ba637b76480a71d6d7adba1fa134-zip-30c6c2.zip",
+                "url": "https://composer.robojackets.org/1626016176/robojackets/error-pages/robojackets-error-pages-ce83cc96d3f3ba637b76480a71d6d7adba1fa134-zip-30c6c2.zip",
                 "reference": "ce83cc96d3f3ba637b76480a71d6d7adba1fa134",
-                "shasum": "70ee9ffce371cafe4dd96e7047ec62663929d9f5"
+                "shasum": "1cafcbae4936f6e4a1d69da8a9356f82006ac639"
             },
             "require": {
                 "twig/twig": "^2.0"
@@ -6531,17 +6531,17 @@
         },
         {
             "name": "robojackets/meilisearch-index-settings-helper",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "git@github.gatech.edu:RoboJackets/meilisearch-index-settings-helper.git",
-                "reference": "e3c6e5cebe5a23065ee8b4d3d75ac059d68324a2"
+                "reference": "71dccf47bd8ef67013da2149e1415b6dbb04aa01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/robojackets/meilisearch-index-settings-helper/robojackets-meilisearch-index-settings-helper-e3c6e5cebe5a23065ee8b4d3d75ac059d68324a2-zip-af6913.zip",
-                "reference": "e3c6e5cebe5a23065ee8b4d3d75ac059d68324a2",
-                "shasum": "959ee0e8aa570fe646c48ab91e2141255f13d975"
+                "url": "https://composer.robojackets.org/1626016176/robojackets/meilisearch-index-settings-helper/robojackets-meilisearch-index-settings-helper-71dccf47bd8ef67013da2149e1415b6dbb04aa01-zip-957d95.zip",
+                "reference": "71dccf47bd8ef67013da2149e1415b6dbb04aa01",
+                "shasum": "499467d5f320c181101fd8365607741551ddc8b7"
             },
             "require": {
                 "haydenpierce/class-finder": "^0.4.3",
@@ -6593,9 +6593,9 @@
             "description": "Manage Meilisearch indexing settings in Eloquent models",
             "homepage": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper",
             "support": {
-                "source": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper/tree/v0.1.1"
+                "source": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper/tree/v0.1.2"
             },
-            "time": "2021-07-11T14:55:14+00:00"
+            "time": "2021-07-11T15:06:39+00:00"
         },
         {
             "name": "robojackets/network-check",
@@ -6607,9 +6607,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/robojackets/network-check/robojackets-network-check-9afdebbc97394d6dbff68d697271a64e8314ebe7-zip-bd4da1.zip",
+                "url": "https://composer.robojackets.org/1626016176/robojackets/network-check/robojackets-network-check-9afdebbc97394d6dbff68d697271a64e8314ebe7-zip-bd4da1.zip",
                 "reference": "9afdebbc97394d6dbff68d697271a64e8314ebe7",
-                "shasum": "9b65e1b54aac32d278aa22da667da47f40fa3b34"
+                "shasum": "250a703fb41b19bc4665e626df72747e0eecd505"
             },
             "require-dev": {
                 "phpstan/extension-installer": "^1.0",
@@ -12992,9 +12992,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1626015514/robojackets/static-analysis/robojackets-static-analysis-0906526a8b0546d43b1eaec8832f26e1ca6640b7-zip-2eb0ee.zip",
+                "url": "https://composer.robojackets.org/1626016176/robojackets/static-analysis/robojackets-static-analysis-0906526a8b0546d43b1eaec8832f26e1ca6640b7-zip-2eb0ee.zip",
                 "reference": "0906526a8b0546d43b1eaec8832f26e1ca6640b7",
-                "shasum": "70579e2483fb359d22e9488063fbc046717066d9"
+                "shasum": "4df2fc4e6e802102f6d69566798ddac66f1793b9"
             },
             "require": {
                 "phan/phan": "*",
