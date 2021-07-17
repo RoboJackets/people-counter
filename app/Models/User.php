@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -33,6 +34,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasRoles;
+    use HasPermissions;
     use Notifiable;
     use Searchable;
 
@@ -149,6 +151,10 @@ class User extends Authenticatable
         }
 
         $array['spaces_id'] = $this->spaces()->get()->modelKeys();
+
+        $array['roles_id'] = $this->roles()->get()->modelKeys();
+
+        $array['permissions_id'] = $this->permissions()->get()->modelKeys();
 
         return $array;
     }
