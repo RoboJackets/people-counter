@@ -44,7 +44,7 @@
         "vyuldashev/nova-permission": "2.11.1"
     },
     "require-dev": {
-        "facade/ignition": "2.11.0",
+        "facade/ignition": "2.11.2",
         "fakerphp/faker": "1.15.0",
         "mockery/mockery": "1.4.3",
         "nunomaduro/collision": "5.5.0",
