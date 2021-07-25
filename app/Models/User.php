@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
+use RoboJackets\MeilisearchIndexSettingsHelper\FirstNameSynonyms;
 
 /**
  * Represents a single User.
@@ -37,6 +38,7 @@ class User extends Authenticatable
     use HasPermissions;
     use Notifiable;
     use Searchable;
+    use FirstNameSynonyms;
 
     /**
      * Attributes that are not mass assignable.
