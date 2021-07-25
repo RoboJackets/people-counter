@@ -12,9 +12,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
+use RoboJackets\MeilisearchIndexSettingsHelper\FirstNameSynonyms;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
-use RoboJackets\MeilisearchIndexSettingsHelper\FirstNameSynonyms;
 
 /**
  * Represents a single User.
