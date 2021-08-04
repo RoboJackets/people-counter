@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e83e58a8b6ccfd82bb32fa4d0560ad1a",
+    "content-hash": "9b3565413696dc27c3f866065263595a",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2682,23 +2682,23 @@
         },
         {
             "name": "laravie/serialize-queries",
-            "version": "v0.3.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravie/serialize-queries.git",
-                "reference": "e6e5498ed80727cc2eac345e5394f7608aeb3f8c"
+                "reference": "28a02c387f04bf167db816a9fce87e5d80bbe0e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravie/serialize-queries/zipball/e6e5498ed80727cc2eac345e5394f7608aeb3f8c",
-                "reference": "e6e5498ed80727cc2eac345e5394f7608aeb3f8c",
+                "url": "https://api.github.com/repos/laravie/serialize-queries/zipball/28a02c387f04bf167db816a9fce87e5d80bbe0e6",
+                "reference": "28a02c387f04bf167db816a9fce87e5d80bbe0e6",
                 "shasum": ""
             },
             "require": {
                 "illuminate/database": "^5.8 || ^6.0 || ^7.0 || ^8.0",
                 "illuminate/queue": "^5.8 || ^6.0 || ^7.0 || ^8.0",
                 "opis/closure": "^3.4.2",
-                "php": ">=7.1"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "~3.8.6 || ^4.16 || ^5.18 || ^6.17"
@@ -2712,7 +2712,10 @@
             "autoload": {
                 "psr-4": {
                     "Laravie\\SerializesQuery\\": "src/"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2727,7 +2730,7 @@
             "description": "Serializable Laravel Query Builder",
             "support": {
                 "issues": "https://github.com/laravie/serialize-queries/issues",
-                "source": "https://github.com/laravie/serialize-queries/tree/v0.3.0"
+                "source": "https://github.com/laravie/serialize-queries/tree/v1.0.0"
             },
             "funding": [
                 {
@@ -2739,7 +2742,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-04-18T15:42:48+00:00"
+            "time": "2021-08-01T10:00:52+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3164,21 +3167,21 @@
         },
         {
             "name": "maatwebsite/laravel-nova-excel",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Nova-Excel.git",
-                "reference": "1e579d35cc815e7739b6e46113b0220b3200ea7e"
+                "reference": "c6f9441b62a9e0fa74466202838b77673abb0167"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Nova-Excel/zipball/1e579d35cc815e7739b6e46113b0220b3200ea7e",
-                "reference": "1e579d35cc815e7739b6e46113b0220b3200ea7e",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Nova-Excel/zipball/c6f9441b62a9e0fa74466202838b77673abb0167",
+                "reference": "c6f9441b62a9e0fa74466202838b77673abb0167",
                 "shasum": ""
             },
             "require": {
                 "laravel/nova": "*",
-                "laravie/serialize-queries": "^0.3",
+                "laravie/serialize-queries": "^0.3|^1.0",
                 "maatwebsite/excel": "^3.1",
                 "php": ">=7.1.0"
             },
@@ -3216,9 +3219,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Maatwebsite/Laravel-Nova-Excel/issues",
-                "source": "https://github.com/Maatwebsite/Laravel-Nova-Excel/tree/1.2.5"
+                "source": "https://github.com/Maatwebsite/Laravel-Nova-Excel/tree/1.2.6"
             },
-            "time": "2021-05-21T08:40:29+00:00"
+            "time": "2021-08-04T09:49:32+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
