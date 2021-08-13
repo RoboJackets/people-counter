@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "768f0ac39a32e70d5db3d4a32f080534",
+    "content-hash": "98818e970a5ba84b8be943a8b92fb87f",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -11842,16 +11842,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.7.0",
+            "version": "v5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "0f0f46b6345ee788325b5ce9d53c4e851b2293a0"
+                "reference": "0c3c393462eada1233513664e2d22bb9f69ca393"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0f0f46b6345ee788325b5ce9d53c4e851b2293a0",
-                "reference": "0f0f46b6345ee788325b5ce9d53c4e851b2293a0",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0c3c393462eada1233513664e2d22bb9f69ca393",
+                "reference": "0c3c393462eada1233513664e2d22bb9f69ca393",
                 "shasum": ""
             },
             "require": {
@@ -11926,7 +11926,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-08-12T13:56:54+00:00"
+            "time": "2021-08-13T14:23:01+00:00"
         },
         {
             "name": "nunomaduro/larastan",
