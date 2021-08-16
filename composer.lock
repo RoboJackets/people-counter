@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98818e970a5ba84b8be943a8b92fb87f",
+    "content-hash": "7207551d6650f9bad39b9b38bdf6944f",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -3167,16 +3167,16 @@
         },
         {
             "name": "maatwebsite/laravel-nova-excel",
-            "version": "1.2.6",
+            "version": "1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Nova-Excel.git",
-                "reference": "c6f9441b62a9e0fa74466202838b77673abb0167"
+                "reference": "9912e8d520967b629c038321d671d41185f9330c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Nova-Excel/zipball/c6f9441b62a9e0fa74466202838b77673abb0167",
-                "reference": "c6f9441b62a9e0fa74466202838b77673abb0167",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Nova-Excel/zipball/9912e8d520967b629c038321d671d41185f9330c",
+                "reference": "9912e8d520967b629c038321d671d41185f9330c",
                 "shasum": ""
             },
             "require": {
@@ -3219,9 +3219,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Maatwebsite/Laravel-Nova-Excel/issues",
-                "source": "https://github.com/Maatwebsite/Laravel-Nova-Excel/tree/1.2.6"
+                "source": "https://github.com/Maatwebsite/Laravel-Nova-Excel/tree/1.2.7"
             },
-            "time": "2021-08-04T09:49:32+00:00"
+            "time": "2021-08-16T11:36:02+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
