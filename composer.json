@@ -20,7 +20,7 @@
         "jeffbeltran/sanctum-tokens": "1.5.5",
         "laravel/framework": "8.55.0",
         "laravel/horizon": "5.7.11",
-        "laravel/nova": "3.28.0",
+        "laravel/nova": "3.29.0",
         "laravel/sanctum": "2.11.2",
         "laravel/scout": "9.2.6",
         "laravel/tinker": "2.6.1",
