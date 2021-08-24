@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0562ad7afda5a35934634d7519575ac",
+    "content-hash": "89b2a6c8bc13516c5380c03f0c91dd0e",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2488,16 +2488,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v9.2.6",
+            "version": "v9.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "35db193a88f150e64951ebd29b4a294a91d87dbd"
+                "reference": "0c2e25a431113cc0510ddc9680cdec6ef115be4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/35db193a88f150e64951ebd29b4a294a91d87dbd",
-                "reference": "35db193a88f150e64951ebd29b4a294a91d87dbd",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/0c2e25a431113cc0510ddc9680cdec6ef115be4e",
+                "reference": "0c2e25a431113cc0510ddc9680cdec6ef115be4e",
                 "shasum": ""
             },
             "require": {
@@ -2556,7 +2556,7 @@
                 "issues": "https://github.com/laravel/scout/issues",
                 "source": "https://github.com/laravel/scout"
             },
-            "time": "2021-08-17T16:06:22+00:00"
+            "time": "2021-08-24T12:57:33+00:00"
         },
         {
             "name": "laravel/tinker",
