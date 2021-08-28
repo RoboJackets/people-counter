@@ -75,6 +75,17 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes that can be used for filtering in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $filterable_attributes = [
+        'spaces_id',
+        'roles_id',
+        'permissions_id',
+    ];
+
+    /**
      * The rules to use for ranking results in Meilisearch.
      *
      * @var array<string>

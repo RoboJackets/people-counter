@@ -47,6 +47,16 @@ class Visit extends Model
     ];
 
     /**
+     * The attributes that can be used for filtering in Meilisearch.
+     *
+     * @var array<string>
+     */
+    public $filterable_attributes = [
+        'users_id',
+        'spaces_id',
+    ];
+
+    /**
      * Get the user that owns the visit.
      */
     public function user(): BelongsTo
