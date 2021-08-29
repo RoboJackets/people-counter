@@ -136,6 +136,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | CAS will support version 1.0, 2.0, 3.0 of the protocol.  It is recommended
+    | to use version 2.0, 3.0, or SAML 1.1.  If you enable SAML, then that
+    | will override this configuration.
+    |--------------------------------------------------------------------------
+    */
+    'cas_version'         => env('CAS_VERSION', "2.0"),
+
+    /*
+    |--------------------------------------------------------------------------
     | Enable PHPCas Debug Mode
     | Options are:
     | 1) true (defaults logfile creation to /tmp/phpCAS.log)
@@ -159,5 +168,5 @@ return [
     | This should only be used for developmental purposes. Attributes that would
     | normally be sent by CAS can be set manually in .env as needed.
      */
-    'cas_masquerade' => env('CAS_MASQUERADE', null),
+    'cas_masquerade'      => env('CAS_MASQUERADE', null),
 ];
