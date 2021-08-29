@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75623d26a1cb7440a416e1199119f7ea",
+    "content-hash": "cf032fc12746cada7a64e59fb0c754fc",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -6859,17 +6859,17 @@
         },
         {
             "name": "robojackets/meilisearch-index-settings-helper",
-            "version": "v0.3.0",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "git@github.gatech.edu:RoboJackets/meilisearch-index-settings-helper.git",
-                "reference": "f48ef6e26d692e404b1af7986f28ef306d9aeef8"
+                "reference": "f6dec89ccd9826b75bd325465802cefd8d2cc943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://composer.robojackets.org/1630184849/robojackets/meilisearch-index-settings-helper/robojackets-meilisearch-index-settings-helper-f48ef6e26d692e404b1af7986f28ef306d9aeef8-zip-d7e7e2.zip",
-                "reference": "f48ef6e26d692e404b1af7986f28ef306d9aeef8",
-                "shasum": "f9b257a0672d853ca708d7d0bd0657751f9346ac"
+                "url": "https://composer.robojackets.org/1630259515/robojackets/meilisearch-index-settings-helper/robojackets-meilisearch-index-settings-helper-f6dec89ccd9826b75bd325465802cefd8d2cc943-zip-7ab4bc.zip",
+                "reference": "f6dec89ccd9826b75bd325465802cefd8d2cc943",
+                "shasum": "bd63572ee183161dff63eee2d7c311d09bba1338"
             },
             "require": {
                 "haydenpierce/class-finder": "^0.4.3",
@@ -6921,9 +6921,9 @@
             "description": "Manage Meilisearch indexing settings in Eloquent models",
             "homepage": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper",
             "support": {
-                "source": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper/tree/v0.3.0"
+                "source": "https://github.gatech.edu/RoboJackets/meilisearch-index-settings-helper/tree/v0.3.1"
             },
-            "time": "2021-08-28T21:03:38+00:00"
+            "time": "2021-08-29T17:47:23+00:00"
         },
         {
             "name": "robojackets/network-check",
