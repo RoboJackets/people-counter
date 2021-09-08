@@ -47,8 +47,8 @@ class SendSignOutReminderEmail implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param \App\Models\User $user The user
-     * @param \App\Models\Visit $visit The visit that triggered this notification
+     * @param  \App\Models\User  $user  The user
+     * @param  \App\Models\Visit  $visit  The visit that triggered this notification
      */
     public function __construct(User $user, Visit $visit)
     {

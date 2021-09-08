@@ -24,7 +24,7 @@ class SpaceManagerMorningReport extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      *
-     * @param \App\Models\Space $space The space to report on
+     * @param  \App\Models\Space  $space  The space to report on
      *
      * @return void
      */

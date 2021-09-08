@@ -42,7 +42,10 @@
         <exclude-pattern>/app/Policies/</exclude-pattern>
     </rule>
 
-    <rule ref="Generic.CodeAnalysis"/>
+    <rule ref="Generic.Commenting">
+        <!-- StyleCI has its own opinions, not sure if I can build those in here -->
+        <exclude name="Generic.Commenting.DocComment.TagValueIndent"/>
+    </rule>
 
     <rule ref="Generic.Commenting"/>
 

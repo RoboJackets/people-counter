@@ -21,9 +21,9 @@ class VisitState extends BooleanFilter
     /**
      * Apply the filter to the given query.
      *
-     * @param \Illuminate\Http\Request  $request
-     * @param \Illuminate\Database\Eloquent\Builder  $query
-     * @param array<bool> $value
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  array<bool>  $value
      *
      * @return \Illuminate\Database\Eloquent\Builder
      *
@@ -38,7 +38,7 @@ class VisitState extends BooleanFilter
     /**
      * Get the filter's available options.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<string,string>
      */

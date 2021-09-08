@@ -20,9 +20,9 @@ trait CreateOrUpdateUserFromBuzzAPI
     /**
      * Execute the job.
      *
-     * @param string|int $identifier
-     * @param bool $is_frontend
-     * @param bool $update
+     * @param  string|int  $identifier
+     * @param  bool  $is_frontend
+     * @param  bool  $update
      *
      * @return User|null
      */

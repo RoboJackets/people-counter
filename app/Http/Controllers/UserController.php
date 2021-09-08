@@ -44,7 +44,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreUser $request
+     * @param  StoreUser  $request
      *
      * @return \App\Http\Resources\User
      */
@@ -58,7 +58,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return \App\Http\Resources\User
      */
@@ -75,7 +75,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\User $user
+     * @param  \App\Models\User  $user
      *
      * @return \App\Http\Resources\User
      */
@@ -92,8 +92,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateUser $request
-     * @param User $user
+     * @param  UpdateUser  $request
+     * @param  User  $user
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -112,8 +112,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateUserSpaces $request
-     * @param User $user
+     * @param  UpdateUserSpaces  $request
+     * @param  User  $user
      *
      * @return \Illuminate\Http\JsonResponse
      */
