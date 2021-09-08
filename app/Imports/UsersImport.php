@@ -36,7 +36,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     /**
      * UsersImport constructor.
      *
-     * @param string $space
+     * @param  string  $space
      */
     public function __construct(string $space)
     {
@@ -46,7 +46,7 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
     /**
      * Converts a row to a user.
      *
-     * @param Row $row
+     * @param  Row  $row
      *
      * @return \App\Models\User|null
      *

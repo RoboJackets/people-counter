@@ -30,8 +30,8 @@ class ExposureNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      *
-     * @param string $date
-     * @param string $body
+     * @param  string  $date
+     * @param  string  $body
      *
      * @return void
      */

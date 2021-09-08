@@ -44,7 +44,7 @@ class Space extends Model
     /**
      * Allowed relationships to be dynamically included via request parameter.
      *
-     * @var      array<string>
+     * @var array<string>
      * @suppress PhanReadOnlyPublicProperty
      */
     public static $allowedIncludes = [

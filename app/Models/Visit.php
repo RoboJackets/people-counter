@@ -77,7 +77,7 @@ class Visit extends Model
     /**
      * Active Visits (In, but no Out).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -89,7 +89,7 @@ class Visit extends Model
     /**
      * Inactive Visits (In and Out).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -101,8 +101,8 @@ class Visit extends Model
     /**
      * Active Visits for a given user via GTID.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param int $gtid
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  int  $gtid
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

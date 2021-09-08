@@ -49,7 +49,7 @@ class SpaceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Space  $space
+     * @param  \App\Models\Space  $space
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -70,7 +70,7 @@ class SpaceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Models\Space  $space
+     * @param  \App\Models\Space  $space
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -82,7 +82,7 @@ class SpaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Space  $space
+     * @param  \App\Models\Space  $space
      *
      * @return \Illuminate\Http\JsonResponse
      */

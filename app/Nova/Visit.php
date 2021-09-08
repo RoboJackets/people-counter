@@ -46,7 +46,7 @@ class Visit extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<\Laravel\Nova\Fields\Field>
      */
@@ -65,7 +65,7 @@ class Visit extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<\Laravel\Nova\Card>
      */
@@ -77,7 +77,7 @@ class Visit extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<\Laravel\Nova\Filters\Filter>
      */
@@ -92,7 +92,7 @@ class Visit extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<\Laravel\Nova\Lenses\Lens>
      */
@@ -104,7 +104,7 @@ class Visit extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<\Laravel\Nova\Actions\Action>
      */

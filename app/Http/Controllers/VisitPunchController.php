@@ -27,7 +27,7 @@ class VisitPunchController extends Controller
     /**
      * Record a new in/out punch for a Visit.
      *
-     * @param StoreVisitPunch $request
+     * @param  StoreVisitPunch  $request
      *
      * @return \Illuminate\Http\JsonResponse
      */

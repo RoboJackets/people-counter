@@ -16,7 +16,7 @@ class User extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return array<mixed>
      */
@@ -41,7 +41,7 @@ class User extends JsonResource
     /**
      * Determine if GTID should be returned in the request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return bool
      */

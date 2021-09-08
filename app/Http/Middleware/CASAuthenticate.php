@@ -40,8 +40,8 @@ class CASAuthenticate
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param  Request  $request
+     * @param  Closure  $next
      *
      * @return \Illuminate\Http\Response|Closure
      */
