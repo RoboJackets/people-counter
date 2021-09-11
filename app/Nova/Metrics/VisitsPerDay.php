@@ -15,7 +15,6 @@ class VisitsPerDay extends Trend
      * Calculate the value of the metric.
      *
      * @param  Request  $request
-     *
      * @return TrendResult
      */
     public function calculate(Request $request): TrendResult

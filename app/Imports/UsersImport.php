@@ -47,7 +47,6 @@ class UsersImport implements WithProgressBar, WithValidation, WithHeadingRow, On
      * Converts a row to a user.
      *
      * @param  Row  $row
-     *
      * @return \App\Models\User|null
      *
      * @throws \Exception

@@ -27,7 +27,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $last_name
  * @property string $username
  * @property string $primary_affiliation
- *
  * @property-read \Illuminate\Database\Eloquent\Collection $spaces
  */
 class User extends Authenticatable

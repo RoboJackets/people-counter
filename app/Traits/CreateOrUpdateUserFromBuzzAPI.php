@@ -23,7 +23,6 @@ trait CreateOrUpdateUserFromBuzzAPI
      * @param  string|int  $identifier
      * @param  bool  $is_frontend
      * @param  bool  $update
-     *
      * @return User|null
      */
     public function createOrUpdateUserFromBuzzAPI($identifier, bool $is_frontend = true, bool $update = false)

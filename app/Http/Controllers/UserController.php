@@ -45,7 +45,6 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreUser  $request
-     *
      * @return \App\Http\Resources\User
      */
     public function store(StoreUser $request)
@@ -59,7 +58,6 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \App\Http\Resources\User
      */
     public function showSelf(Request $request)
@@ -76,7 +74,6 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\User  $user
-     *
      * @return \App\Http\Resources\User
      */
     public function show(User $user)
@@ -94,7 +91,6 @@ class UserController extends Controller
      *
      * @param  UpdateUser  $request
      * @param  User  $user
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateUser $request, User $user)
@@ -114,7 +110,6 @@ class UserController extends Controller
      *
      * @param  UpdateUserSpaces  $request
      * @param  User  $user
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function updateSpaces(UpdateUserSpaces $request, User $user)

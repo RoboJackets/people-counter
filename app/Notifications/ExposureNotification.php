@@ -32,7 +32,6 @@ class ExposureNotification extends Notification implements ShouldQueue
      *
      * @param  string  $date
      * @param  string  $body
-     *
      * @return void
      */
     public function __construct(string $date, string $body)

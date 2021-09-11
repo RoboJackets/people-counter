@@ -42,7 +42,6 @@ class CASAuthenticate
      *
      * @param  Request  $request
      * @param  Closure  $next
-     *
      * @return \Illuminate\Http\Response|Closure
      */
     public function handle(Request $request, Closure $next)

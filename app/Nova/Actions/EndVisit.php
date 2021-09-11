@@ -24,7 +24,6 @@ class EndVisit extends DestructiveAction
      *
      * @param  \Laravel\Nova\Fields\ActionFields  $fields
      * @param  \Illuminate\Support\Collection  $models
-     *
      * @return array<string>
      */
     public function handle(ActionFields $fields, Collection $models)
