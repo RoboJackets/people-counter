@@ -20,7 +20,6 @@ class ExportVisits extends DownloadExcel implements WithMapping
      * Prepare values of each Visit to be exported.
      *
      * @param  \App\Models\Visit  $row
-     *
      * @return array<string, \Carbon\Carbon|string|null>
      */
     public function map($row): array

@@ -24,7 +24,6 @@ class VisitState extends BooleanFilter
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  array<bool>  $value
-     *
      * @return \Illuminate\Database\Eloquent\Builder
      *
      * @suppress PhanTypePossiblyInvalidDimOffset
@@ -39,7 +38,6 @@ class VisitState extends BooleanFilter
      * Get the filter's available options.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array<string,string>
      */
     public function options(Request $request): array

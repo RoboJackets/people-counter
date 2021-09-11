@@ -78,7 +78,6 @@ class Visit extends Model
      * Active Visits (In, but no Out).
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
-     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive(Builder $query): Builder
@@ -90,7 +89,6 @@ class Visit extends Model
      * Inactive Visits (In and Out).
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
-     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeInactive(Builder $query): Builder
@@ -103,7 +101,6 @@ class Visit extends Model
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  int  $gtid
-     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActiveForUser(Builder $query, int $gtid): Builder
