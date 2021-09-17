@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39152d54bb3fb5872c454028724b1a08",
+    "content-hash": "57f7294303bf1c386b18694df3d39a2b",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2035,16 +2035,16 @@
         },
         {
             "name": "jeffbeltran/sanctum-tokens",
-            "version": "v1.5.5",
+            "version": "v1.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JeffBeltran/sanctum-tokens.git",
-                "reference": "44f3e88468bf3b97f39d6252f31bb6ccc1c0d5cf"
+                "reference": "fe4190515564073b104d7ebb51fa21496dcc2282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/44f3e88468bf3b97f39d6252f31bb6ccc1c0d5cf",
-                "reference": "44f3e88468bf3b97f39d6252f31bb6ccc1c0d5cf",
+                "url": "https://api.github.com/repos/JeffBeltran/sanctum-tokens/zipball/fe4190515564073b104d7ebb51fa21496dcc2282",
+                "reference": "fe4190515564073b104d7ebb51fa21496dcc2282",
                 "shasum": ""
             },
             "require": {
@@ -2074,9 +2074,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JeffBeltran/sanctum-tokens/issues",
-                "source": "https://github.com/JeffBeltran/sanctum-tokens/tree/v1.5.5"
+                "source": "https://github.com/JeffBeltran/sanctum-tokens/tree/v1.5.8"
             },
-            "time": "2021-08-05T13:13:18+00:00"
+            "time": "2021-09-17T16:37:59+00:00"
         },
         {
             "name": "laravel/framework",
