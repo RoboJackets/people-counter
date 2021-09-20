@@ -47,7 +47,7 @@
         "facade/ignition": "2.13.1",
         "fakerphp/faker": "1.16.0",
         "mockery/mockery": "1.4.4",
-        "nunomaduro/collision": "5.9.0",
+        "nunomaduro/collision": "5.10.0",
         "nunomaduro/larastan": "0.7.12",
         "phpstan/extension-installer": "1.1.0",
         "psalm/plugin-laravel": "*",
