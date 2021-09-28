@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4",
-        "ampeco/nova-date-range-filter": "0.1.2",
+        "ampeco/nova-date-range-filter": "0.1.3",
         "apereo/phpcas": "1.4.0",
         "beyondcode/laravel-websockets": "1.12.0",
         "doctrine/dbal": "2.13.3",
