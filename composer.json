@@ -40,7 +40,7 @@
         "spatie/once": "2.2.1",
         "staudenmeir/eloquent-has-many-deep": "*",
         "subfission/cas": "4.1.0",
-        "ukfast/laravel-health-check": "1.13.0",
+        "ukfast/laravel-health-check": "1.13.1",
         "vyuldashev/nova-permission": "2.11.1"
     },
     "require-dev": {
