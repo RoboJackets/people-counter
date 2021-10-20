@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27e326a03a77bde2cbafdda1dbf83669",
+    "content-hash": "8c89fb8972532add4cfed2f8884538fa",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -318,16 +318,16 @@
         },
         {
             "name": "brick/money",
-            "version": "0.5.2",
+            "version": "0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/money.git",
-                "reference": "f5a372df99c17c805c6816b3057eb057a357735c"
+                "reference": "49e6597470da74f6a9f1dd7d5286ea3b4756b7e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/money/zipball/f5a372df99c17c805c6816b3057eb057a357735c",
-                "reference": "f5a372df99c17c805c6816b3057eb057a357735c",
+                "url": "https://api.github.com/repos/brick/money/zipball/49e6597470da74f6a9f1dd7d5286ea3b4756b7e0",
+                "reference": "49e6597470da74f6a9f1dd7d5286ea3b4756b7e0",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "ext-pdo": "*",
                 "php-coveralls/php-coveralls": "^2.2",
                 "phpunit/phpunit": "^7.5.15 || ^8.0 || ^9.0",
-                "vimeo/psalm": "4.6.4"
+                "vimeo/psalm": "4.9.2"
             },
             "suggest": {
                 "ext-intl": "Required to format Money objects"
@@ -363,7 +363,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/money/issues",
-                "source": "https://github.com/brick/money/tree/0.5.2"
+                "source": "https://github.com/brick/money/tree/0.5.3"
             },
             "funding": [
                 {
@@ -375,20 +375,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-03T20:56:48+00:00"
+            "time": "2021-10-10T11:59:43+00:00"
         },
         {
             "name": "cakephp/chronos",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "556e14da67307ffc2e68beeb7df0694dc8d1207d"
+                "reference": "3ecd6e7ae191c676570cd1bed51fd561de4606dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/556e14da67307ffc2e68beeb7df0694dc8d1207d",
-                "reference": "556e14da67307ffc2e68beeb7df0694dc8d1207d",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/3ecd6e7ae191c676570cd1bed51fd561de4606dd",
+                "reference": "3ecd6e7ae191c676570cd1bed51fd561de4606dd",
                 "shasum": ""
             },
             "require": {
@@ -434,7 +434,7 @@
                 "issues": "https://github.com/cakephp/chronos/issues",
                 "source": "https://github.com/cakephp/chronos"
             },
-            "time": "2021-06-17T13:49:10+00:00"
+            "time": "2021-10-17T02:44:05+00:00"
         },
         {
             "name": "cboden/ratchet",
@@ -2413,17 +2413,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "3.29.0",
+            "version": "3.30.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "bd32015c9dce9060fe327f09e96abbe729900648"
+                "reference": "0a8ec5b37dc3ca29f4b79c7318c9278e5a5d2c1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-bd32015c9dce9060fe327f09e96abbe729900648-zip-243691.zip",
-                "reference": "bd32015c9dce9060fe327f09e96abbe729900648",
-                "shasum": "e63517436e61edef25b8311e97b31a9dfd384b97"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-0a8ec5b37dc3ca29f4b79c7318c9278e5a5d2c1a-zip-7e4351.zip",
+                "reference": "0a8ec5b37dc3ca29f4b79c7318c9278e5a5d2c1a",
+                "shasum": "e7ac64939c9b64726f89219af065d170a4d340bb"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2502,9 +2502,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v3.29.0"
+                "source": "https://github.com/laravel/nova/tree/v3.30.0"
             },
-            "time": "2021-08-17T18:57:47+00:00"
+            "time": "2021-10-19T20:42:33+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -8699,16 +8699,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v5.3.7",
+            "version": "v5.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "1af1675221f35dec23b13193873139338c784290"
+                "reference": "dc9e9cdefb52ff436ee27af6d9631e455d201a3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/1af1675221f35dec23b13193873139338c784290",
-                "reference": "1af1675221f35dec23b13193873139338c784290",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/dc9e9cdefb52ff436ee27af6d9631e455d201a3d",
+                "reference": "dc9e9cdefb52ff436ee27af6d9631e455d201a3d",
                 "shasum": ""
             },
             "require": {
@@ -8767,7 +8767,7 @@
                 "localization"
             ],
             "support": {
-                "source": "https://github.com/symfony/intl/tree/v5.3.7"
+                "source": "https://github.com/symfony/intl/tree/v5.3.8"
             },
             "funding": [
                 {
@@ -8783,7 +8783,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-09T09:00:11+00:00"
+            "time": "2021-09-14T15:57:41+00:00"
         },
         {
             "name": "symfony/mime",
