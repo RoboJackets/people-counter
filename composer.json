@@ -48,7 +48,7 @@
         "fakerphp/faker": "1.16.0",
         "mockery/mockery": "1.4.4",
         "nunomaduro/collision": "5.10.0",
-        "nunomaduro/larastan": "0.7.13",
+        "nunomaduro/larastan": "0.7.14",
         "phpstan/extension-installer": "1.1.0",
         "psalm/plugin-laravel": "*",
         "robojackets/static-analysis": "1.4",
