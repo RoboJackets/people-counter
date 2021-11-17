@@ -26,7 +26,7 @@
         "laravel/tinker": "2.6.2",
         "maatwebsite/excel": "3.1.33",
         "maatwebsite/laravel-nova-excel": "1.2.9",
-        "meilisearch/meilisearch-php": "0.19.2",
+        "meilisearch/meilisearch-php": "0.19.3",
         "oitnetworkservices/buzzapiclient": "0.1.3",
         "predis/predis": "1.1.9",
         "pusher/pusher-php-server": "4.1.5",
