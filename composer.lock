@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "274c37e4be8267b253715798bffb63d5",
+    "content-hash": "ad057ef431008b7ca2d3235bd3f36b01",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2569,16 +2569,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v9.3.1",
+            "version": "v9.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "31dc6fadb1648d3a7d60e56662bed80848264279"
+                "reference": "0137c70efb164eeeb8115a9ebb1517263b6a64ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/31dc6fadb1648d3a7d60e56662bed80848264279",
-                "reference": "31dc6fadb1648d3a7d60e56662bed80848264279",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/0137c70efb164eeeb8115a9ebb1517263b6a64ac",
+                "reference": "0137c70efb164eeeb8115a9ebb1517263b6a64ac",
                 "shasum": ""
             },
             "require": {
@@ -2637,7 +2637,7 @@
                 "issues": "https://github.com/laravel/scout/issues",
                 "source": "https://github.com/laravel/scout"
             },
-            "time": "2021-10-12T15:53:08+00:00"
+            "time": "2021-11-16T16:59:12+00:00"
         },
         {
             "name": "laravel/serializable-closure",
