@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82493d73c8d6164a9961d4d6655aa3d9",
+    "content-hash": "7bbced4e3e8c26167217dda1bbe3730b",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2334,16 +2334,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v5.7.15",
+            "version": "v5.7.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "7bdc99af890966a683dbbfd8e69c8449d8d491b6"
+                "reference": "393e0a9a66a1028d236fc7067eb2f8ba655e2e15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/7bdc99af890966a683dbbfd8e69c8449d8d491b6",
-                "reference": "7bdc99af890966a683dbbfd8e69c8449d8d491b6",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/393e0a9a66a1028d236fc7067eb2f8ba655e2e15",
+                "reference": "393e0a9a66a1028d236fc7067eb2f8ba655e2e15",
                 "shasum": ""
             },
             "require": {
@@ -2405,9 +2405,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/horizon/issues",
-                "source": "https://github.com/laravel/horizon/tree/v5.7.15"
+                "source": "https://github.com/laravel/horizon/tree/v5.7.16"
             },
-            "time": "2021-10-26T15:50:24+00:00"
+            "time": "2021-11-23T17:27:41+00:00"
         },
         {
             "name": "laravel/nova",
