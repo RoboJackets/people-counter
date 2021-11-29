@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d7e6e54579cc6019c9ad316cf142c37",
+    "content-hash": "4564d281f06fafe4334c5296a3f7130d",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -11301,16 +11301,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.17.1",
+            "version": "2.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "317f6110c1977b50e06365bbb155fbe5079035ec"
+                "reference": "af3cd70d58ca3ef5189ff0e59efbe5a5c043e2d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/317f6110c1977b50e06365bbb155fbe5079035ec",
-                "reference": "317f6110c1977b50e06365bbb155fbe5079035ec",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/af3cd70d58ca3ef5189ff0e59efbe5a5c043e2d2",
+                "reference": "af3cd70d58ca3ef5189ff0e59efbe5a5c043e2d2",
                 "shasum": ""
             },
             "require": {
@@ -11375,7 +11375,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-11-25T10:26:30+00:00"
+            "time": "2021-11-29T14:04:22+00:00"
         },
         {
             "name": "fakerphp/faker",
