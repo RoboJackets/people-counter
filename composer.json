@@ -38,7 +38,7 @@
         "spatie/laravel-permission": "3.18.0",
         "spatie/laravel-query-builder": "3.6.1",
         "spatie/once": "2.2.1",
-        "staudenmeir/eloquent-has-many-deep": "*",
+        "staudenmeir/eloquent-has-many-deep": "1.14.3",
         "subfission/cas": "4.1.0",
         "ukfast/laravel-health-check": "1.13.1",
         "vyuldashev/nova-permission": "2.11.1"
@@ -50,7 +50,7 @@
         "nunomaduro/collision": "5.10.0",
         "nunomaduro/larastan": "0.7.15",
         "phpstan/extension-installer": "1.1.0",
-        "psalm/plugin-laravel": "*",
+        "psalm/plugin-laravel": "1.5.1",
         "robojackets/static-analysis": "1.4",
         "slevomat/coding-standard": "6.4.1"
     },
