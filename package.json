@@ -31,6 +31,6 @@
         "vue": "2.6.14",
         "vue-moment": "4.1.0",
         "vue-sweetalert2": "3.0.8",
-        "vue2-timeago": "2.0.4"
+        "vue2-timeago": "2.0.5"
     }
 }
