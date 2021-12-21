@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29dc6ced89c163c446704a9f9073ec79",
+    "content-hash": "9798630761e4b8cef74b7689d509e60e",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -5045,23 +5045,23 @@
         },
         {
             "name": "phpseclib/bcmath_compat",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/bcmath_compat.git",
-                "reference": "fd896dfceffc13d8cf45d2ee3470777a70026f3c"
+                "reference": "2ffea8bfe1702b4535a7b3c2649c4301968e9a3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/bcmath_compat/zipball/fd896dfceffc13d8cf45d2ee3470777a70026f3c",
-                "reference": "fd896dfceffc13d8cf45d2ee3470777a70026f3c",
+                "url": "https://api.github.com/repos/phpseclib/bcmath_compat/zipball/2ffea8bfe1702b4535a7b3c2649c4301968e9a3c",
+                "reference": "2ffea8bfe1702b4535a7b3c2649c4301968e9a3c",
                 "shasum": ""
             },
             "require": {
                 "phpseclib/phpseclib": "^3.0"
             },
             "provide": {
-                "ext-bcmath": "8.0.0"
+                "ext-bcmath": "8.1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
@@ -5090,7 +5090,7 @@
                     "homepage": "http://phpseclib.sourceforge.net"
                 }
             ],
-            "description": "PHP 5.x/7.x polyfill for bcmath extension",
+            "description": "PHP 5.x-8.x polyfill for bcmath extension",
             "keywords": [
                 "BigInteger",
                 "bcmath",
@@ -5103,7 +5103,7 @@
                 "issues": "https://github.com/phpseclib/bcmath_compat/issues",
                 "source": "https://github.com/phpseclib/bcmath_compat"
             },
-            "time": "2020-12-22T16:38:51+00:00"
+            "time": "2021-12-16T02:35:52+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -6130,16 +6130,16 @@
         },
         {
             "name": "react/dns",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "2a5a74ab751e53863b45fb87e1d3913884f88248"
+                "reference": "6d38296756fa644e6cb1bfe95eff0f9a4ed6edcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/2a5a74ab751e53863b45fb87e1d3913884f88248",
-                "reference": "2a5a74ab751e53863b45fb87e1d3913884f88248",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/6d38296756fa644e6cb1bfe95eff0f9a4ed6edcb",
+                "reference": "6d38296756fa644e6cb1bfe95eff0f9a4ed6edcb",
                 "shasum": ""
             },
             "require": {
@@ -6147,7 +6147,7 @@
                 "react/cache": "^1.0 || ^0.6 || ^0.5",
                 "react/event-loop": "^1.2",
                 "react/promise": "^3.0 || ^2.7 || ^1.2.1",
-                "react/promise-timer": "^1.2"
+                "react/promise-timer": "^1.8"
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
@@ -6194,7 +6194,7 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/dns/issues",
-                "source": "https://github.com/reactphp/dns/tree/v1.8.0"
+                "source": "https://github.com/reactphp/dns/tree/v1.9.0"
             },
             "funding": [
                 {
@@ -6206,7 +6206,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-11T12:40:34+00:00"
+            "time": "2021-12-20T08:46:54+00:00"
         },
         {
             "name": "react/event-loop",
@@ -9871,16 +9871,16 @@
         },
         {
             "name": "ukfast/laravel-health-check",
-            "version": "v1.13.1",
+            "version": "v1.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ukfast/laravel-health-check.git",
-                "reference": "62e35026a684d45bb774c559b889f6e28c198f09"
+                "reference": "db0a1350e932033fbeb6305f9d3ef9d75a51a27b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ukfast/laravel-health-check/zipball/62e35026a684d45bb774c559b889f6e28c198f09",
-                "reference": "62e35026a684d45bb774c559b889f6e28c198f09",
+                "url": "https://api.github.com/repos/ukfast/laravel-health-check/zipball/db0a1350e932033fbeb6305f9d3ef9d75a51a27b",
+                "reference": "db0a1350e932033fbeb6305f9d3ef9d75a51a27b",
                 "shasum": ""
             },
             "require": {
@@ -9953,7 +9953,7 @@
                 "issues": "https://github.com/ukfast/laravel-health-check/issues",
                 "source": "https://github.com/ukfast/laravel-health-check/tree/master"
             },
-            "time": "2021-10-13T08:06:50+00:00"
+            "time": "2021-12-21T09:20:39+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -15104,16 +15104,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.32.1",
+            "version": "1.32.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "73baa5d216865480f0c67cac5cb4dedd1a00f4f1"
+                "reference": "c8534bcd14528a721c246ebc289d3cb480468431"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/73baa5d216865480f0c67cac5cb4dedd1a00f4f1",
-                "reference": "73baa5d216865480f0c67cac5cb4dedd1a00f4f1",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/c8534bcd14528a721c246ebc289d3cb480468431",
+                "reference": "c8534bcd14528a721c246ebc289d3cb480468431",
                 "shasum": ""
             },
             "require": {
@@ -15123,8 +15123,8 @@
                 "ramsey/uuid": "^3.0|^4.1",
                 "spatie/backtrace": "^1.1",
                 "spatie/macroable": "^1.0|^2.0",
-                "symfony/stopwatch": "^4.0|^5.1",
-                "symfony/var-dumper": "^4.2|^5.1"
+                "symfony/stopwatch": "^4.0|^5.1|^6.0",
+                "symfony/var-dumper": "^4.2|^5.1|^6.0"
             },
             "require-dev": {
                 "illuminate/support": "6.x|^8.18",
@@ -15163,7 +15163,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.32.1"
+                "source": "https://github.com/spatie/ray/tree/1.32.2"
             },
             "funding": [
                 {
@@ -15175,7 +15175,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-11-30T15:52:12+00:00"
+            "time": "2021-12-20T18:53:49+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
