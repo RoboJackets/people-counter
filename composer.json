@@ -22,7 +22,7 @@
         "laravel/horizon": "5.7.17",
         "laravel/nova": "3.30.0",
         "laravel/sanctum": "2.13.0",
-        "laravel/scout": "9.3.3",
+        "laravel/scout": "9.3.4",
         "laravel/tinker": "2.6.3",
         "maatwebsite/excel": "3.1.34",
         "maatwebsite/laravel-nova-excel": "1.2.9",
@@ -32,7 +32,7 @@
         "pusher/pusher-php-server": "4.1.5",
         "robojackets/apiary-user": "1.0.3",
         "robojackets/auth-stickler": "0.5",
-        "robojackets/meilisearch-index-settings-helper": "0.4.0",
+        "robojackets/meilisearch-index-settings-helper": "0.5.0",
         "saumini/count": "1.0.1",
         "sentry/sentry-laravel": "2.10.2",
         "spatie/laravel-permission": "3.18.0",
@@ -44,7 +44,7 @@
         "vyuldashev/nova-permission": "2.11.1"
     },
     "require-dev": {
-        "facade/ignition": "2.17.2",
+        "facade/ignition": "2.17.3",
         "fakerphp/faker": "1.17.0",
         "mockery/mockery": "1.4.4",
         "nunomaduro/collision": "5.10.0",
@@ -83,6 +83,11 @@
         "sort-packages": true,
         "platform": {
             "php": "7.4.13"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "extra": {
