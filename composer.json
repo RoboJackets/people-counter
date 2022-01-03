@@ -14,7 +14,7 @@
         "beyondcode/laravel-websockets": "1.12.0",
         "doctrine/dbal": "2.13.6",
         "fideloper/proxy": "4.4.1",
-        "fruitcake/laravel-cors": "2.0.4",
+        "fruitcake/laravel-cors": "2.0.5",
         "guzzlehttp/guzzle": "7.4.1",
         "http-interop/http-factory-guzzle": "1.2.0",
         "jeffbeltran/sanctum-tokens": "1.5.8",
