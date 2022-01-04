@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ff867cd848c662910b36f1b368e2117",
+    "content-hash": "48825086a5194b115bc2e53f587a0aa7",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -1334,23 +1334,20 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.13.0",
+            "version": "v4.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
-                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
-            },
-            "require-dev": {
-                "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
             },
             "type": "library",
             "autoload": {
@@ -1382,9 +1379,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/master"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
             },
-            "time": "2020-06-29T00:56:53+00:00"
+            "time": "2021-12-25T01:21:49+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -3234,16 +3231,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "3.1.34",
+            "version": "3.1.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
-                "reference": "d7446f0e808d83be128835c4b403c9e4a65b20f3"
+                "reference": "6f171c8b79e1c0fb254f3ec40f7a11ac79289eaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/d7446f0e808d83be128835c4b403c9e4a65b20f3",
-                "reference": "d7446f0e808d83be128835c4b403c9e4a65b20f3",
+                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/6f171c8b79e1c0fb254f3ec40f7a11ac79289eaa",
+                "reference": "6f171c8b79e1c0fb254f3ec40f7a11ac79289eaa",
                 "shasum": ""
             },
             "require": {
@@ -3296,7 +3293,7 @@
             ],
             "support": {
                 "issues": "https://github.com/SpartnerNL/Laravel-Excel/issues",
-                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.34"
+                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.35"
             },
             "funding": [
                 {
@@ -3308,7 +3305,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-02T16:17:16+00:00"
+            "time": "2022-01-04T15:05:43+00:00"
         },
         {
             "name": "maatwebsite/laravel-nova-excel",
@@ -7789,16 +7786,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.4.1",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4"
+                "reference": "a2c6b7ced2eb7799a35375fb9022519282b5405e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4",
-                "reference": "9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a2c6b7ced2eb7799a35375fb9022519282b5405e",
+                "reference": "a2c6b7ced2eb7799a35375fb9022519282b5405e",
                 "shasum": ""
             },
             "require": {
@@ -7868,7 +7865,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.4.1"
+                "source": "https://github.com/symfony/console/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -7884,7 +7881,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-09T11:22:43+00:00"
+            "time": "2021-12-20T16:11:12+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -10922,16 +10919,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.2.6",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "83e511e247de329283478496f7a1e114c9517506"
+                "reference": "deac27056b57e46faf136fae7b449eeaa71661ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/83e511e247de329283478496f7a1e114c9517506",
-                "reference": "83e511e247de329283478496f7a1e114c9517506",
+                "url": "https://api.github.com/repos/composer/semver/zipball/deac27056b57e46faf136fae7b449eeaa71661ee",
+                "reference": "deac27056b57e46faf136fae7b449eeaa71661ee",
                 "shasum": ""
             },
             "require": {
@@ -10983,7 +10980,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.2.6"
+                "source": "https://github.com/composer/semver/tree/3.2.7"
             },
             "funding": [
                 {
@@ -10999,7 +10996,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-25T11:34:17+00:00"
+            "time": "2022-01-04T09:57:54+00:00"
         },
         {
             "name": "composer/spdx-licenses",
@@ -15543,16 +15540,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "v4.15.0",
+            "version": "4.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "a1b5e489e6fcebe40cb804793d964e99fc347820"
+                "reference": "6f4707aa41c9174353a6434bba3fc8840f981d9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/a1b5e489e6fcebe40cb804793d964e99fc347820",
-                "reference": "a1b5e489e6fcebe40cb804793d964e99fc347820",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/6f4707aa41c9174353a6434bba3fc8840f981d9c",
+                "reference": "6f4707aa41c9174353a6434bba3fc8840f981d9c",
                 "shasum": ""
             },
             "require": {
@@ -15560,7 +15557,7 @@
                 "amphp/byte-stream": "^1.5",
                 "composer/package-versions-deprecated": "^1.8.0",
                 "composer/semver": "^1.4 || ^2.0 || ^3.0",
-                "composer/xdebug-handler": "^1.1 || ^2.0",
+                "composer/xdebug-handler": "^1.1 || ^2.0 || ^3.0",
                 "dnoegel/php-xdg-base-dir": "^0.1.1",
                 "ext-ctype": "*",
                 "ext-dom": "*",
@@ -15643,9 +15640,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/v4.15.0"
+                "source": "https://github.com/vimeo/psalm/tree/4.17.0"
             },
-            "time": "2021-12-07T11:25:29+00:00"
+            "time": "2022-01-01T18:39:47+00:00"
         },
         {
             "name": "webmozart/path-util",
