@@ -34,7 +34,7 @@
         "robojackets/auth-stickler": "0.5",
         "robojackets/meilisearch-index-settings-helper": "0.5.0",
         "saumini/count": "1.0.1",
-        "sentry/sentry-laravel": "2.10.2",
+        "sentry/sentry-laravel": "2.11.0",
         "spatie/laravel-permission": "3.18.0",
         "spatie/laravel-query-builder": "3.6.2",
         "spatie/once": "2.2.1",
