@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1baf7d592957962a61bcede1c23d5c0f",
+    "content-hash": "dc1d79b97c7b705fa85b66b4bff2ca0f",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -3823,16 +3823,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.55.2",
+            "version": "2.57.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "8c2a18ce3e67c34efc1b29f64fe61304368259a2"
+                "reference": "4a54375c21eea4811dbd1149fe6b246517554e78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8c2a18ce3e67c34efc1b29f64fe61304368259a2",
-                "reference": "8c2a18ce3e67c34efc1b29f64fe61304368259a2",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a54375c21eea4811dbd1149fe6b246517554e78",
+                "reference": "4a54375c21eea4811dbd1149fe6b246517554e78",
                 "shasum": ""
             },
             "require": {
@@ -3849,7 +3849,7 @@
                 "kylekatarnls/multi-tester": "^2.0",
                 "phpmd/phpmd": "^2.9",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12.54",
+                "phpstan/phpstan": "^0.12.54 || ^1.0",
                 "phpunit/phpunit": "^7.5.20 || ^8.5.14",
                 "squizlabs/php_codesniffer": "^3.4"
             },
@@ -3915,7 +3915,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-03T14:59:52+00:00"
+            "time": "2022-02-13T18:13:33+00:00"
         },
         {
             "name": "nette/schema",
@@ -9501,16 +9501,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.4.2",
+            "version": "v5.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "ff8bb2107b6a549dc3c5dd9c498dcc82c9c098ca"
+                "reference": "a7ca9fdfffb0174209440c2ffa1dee228e15d95b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/ff8bb2107b6a549dc3c5dd9c498dcc82c9c098ca",
-                "reference": "ff8bb2107b6a549dc3c5dd9c498dcc82c9c098ca",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/a7ca9fdfffb0174209440c2ffa1dee228e15d95b",
+                "reference": "a7ca9fdfffb0174209440c2ffa1dee228e15d95b",
                 "shasum": ""
             },
             "require": {
@@ -9578,7 +9578,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v5.4.2"
+                "source": "https://github.com/symfony/translation/tree/v5.4.6"
             },
             "funding": [
                 {
@@ -9594,7 +9594,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-25T19:45:36+00:00"
+            "time": "2022-03-02T12:56:28+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -9898,31 +9898,31 @@
         },
         {
             "name": "ukfast/laravel-health-check",
-            "version": "v1.13.2",
+            "version": "v1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ukfast/laravel-health-check.git",
-                "reference": "db0a1350e932033fbeb6305f9d3ef9d75a51a27b"
+                "reference": "bea6e9bb2ef64564359e65445e542653351350f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ukfast/laravel-health-check/zipball/db0a1350e932033fbeb6305f9d3ef9d75a51a27b",
-                "reference": "db0a1350e932033fbeb6305f9d3ef9d75a51a27b",
+                "url": "https://api.github.com/repos/ukfast/laravel-health-check/zipball/bea6e9bb2ef64564359e65445e542653351350f3",
+                "reference": "bea6e9bb2ef64564359e65445e542653351350f3",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/console": "^5.4|^6.0|^7.0|^8.0",
-                "illuminate/http": "^5.4|^6.0|^7.0|^8.0",
-                "illuminate/support": "^5.4|^6.0|^7.0|^8.0",
+                "illuminate/console": "^5.4|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/http": "^5.4|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^5.4|^6.0|^7.0|^8.0|^9.0",
                 "nesbot/carbon": "^1.26.3|^2.0",
                 "php": ">=5.6"
             },
             "require-dev": {
                 "guzzlehttp/guzzle": ">=5.6.3",
-                "illuminate/database": "^5.4|^6.0|^7.0|^8.0",
-                "illuminate/log": "^5.4|^6.0|^7.0|^8.0",
-                "illuminate/redis": "^5.4|^6.0|^7.0|^8.0",
+                "illuminate/database": "^5.4|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/log": "^5.4|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/redis": "^5.4|^6.0|^7.0|^8.0|^9.0",
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0",
                 "phpunit/phpunit": ">=5.0"
@@ -9980,7 +9980,7 @@
                 "issues": "https://github.com/ukfast/laravel-health-check/issues",
                 "source": "https://github.com/ukfast/laravel-health-check/tree/master"
             },
-            "time": "2021-12-21T09:20:39+00:00"
+            "time": "2022-02-22T11:54:48+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
