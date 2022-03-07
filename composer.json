@@ -11,7 +11,7 @@
         "php": "^7.4",
         "ampeco/nova-date-range-filter": "0.1.3",
         "apereo/phpcas": "1.4.0",
-        "beyondcode/laravel-websockets": "1.12.0",
+        "beyondcode/laravel-websockets": "1.13.1",
         "doctrine/dbal": "2.13.7",
         "fideloper/proxy": "4.4.1",
         "fruitcake/laravel-cors": "2.0.5",
