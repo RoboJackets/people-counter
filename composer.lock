@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7edc4b1840bfc3988533b1dbfaaa2b45",
+    "content-hash": "eb64683d1b9b461c9e0a1749eaa38b17",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2829,40 +2829,40 @@
         },
         {
             "name": "laravie/serialize-queries",
-            "version": "v1.0.1",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravie/serialize-queries.git",
-                "reference": "11093aa3d2c646a5492d4b81f716b8bbdc654117"
+                "reference": "5e18b5417cca6a86db212af09d68c17565faadd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravie/serialize-queries/zipball/11093aa3d2c646a5492d4b81f716b8bbdc654117",
-                "reference": "11093aa3d2c646a5492d4b81f716b8bbdc654117",
+                "url": "https://api.github.com/repos/laravie/serialize-queries/zipball/5e18b5417cca6a86db212af09d68c17565faadd6",
+                "reference": "5e18b5417cca6a86db212af09d68c17565faadd6",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^5.8.35 || ^6.20.26 || ^7.30.3 || ^8.63",
-                "illuminate/queue": "^5.8.35 || ^6.20.26 || ^7.30.3 || ^8.63",
-                "opis/closure": "^3.4.2",
-                "php": "^7.1 || ^8.0"
+                "illuminate/database": "^8.67 || ^9.0",
+                "illuminate/queue": "^8.67 || ^9.0",
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.8.6 || ^4.16 || ^5.18 || ^6.22"
+                "orchestra/testbench": "^6.22 || ^7.0",
+                "phpstan/phpstan": "^1.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Laravie\\SerializesQuery\\": "src/"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Laravie\\SerializesQuery\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2877,7 +2877,7 @@
             "description": "Serializable Laravel Query Builder",
             "support": {
                 "issues": "https://github.com/laravie/serialize-queries/issues",
-                "source": "https://github.com/laravie/serialize-queries/tree/v1.0.1"
+                "source": "https://github.com/laravie/serialize-queries/tree/v2.0.1"
             },
             "funding": [
                 {
@@ -2889,7 +2889,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-12-12T15:18:21+00:00"
+            "time": "2022-02-12T09:23:29+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3306,21 +3306,21 @@
         },
         {
             "name": "maatwebsite/laravel-nova-excel",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Maatwebsite/Laravel-Nova-Excel.git",
-                "reference": "3641b8b0ce2f4a2470084067a867714b149b52e7"
+                "url": "https://github.com/SpartnerNL/Laravel-Nova-Excel.git",
+                "reference": "a7fe3ad5c729339b3fc824b002109d01318173db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Nova-Excel/zipball/3641b8b0ce2f4a2470084067a867714b149b52e7",
-                "reference": "3641b8b0ce2f4a2470084067a867714b149b52e7",
+                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Nova-Excel/zipball/a7fe3ad5c729339b3fc824b002109d01318173db",
+                "reference": "a7fe3ad5c729339b3fc824b002109d01318173db",
                 "shasum": ""
             },
             "require": {
                 "laravel/nova": "*",
-                "laravie/serialize-queries": "^0.3|^1.0",
+                "laravie/serialize-queries": "^1.0|^2.0",
                 "maatwebsite/excel": "^3.1",
                 "php": ">=7.1.0"
             },
@@ -3357,10 +3357,10 @@
                 "phpspreadsheet"
             ],
             "support": {
-                "issues": "https://github.com/Maatwebsite/Laravel-Nova-Excel/issues",
-                "source": "https://github.com/Maatwebsite/Laravel-Nova-Excel/tree/1.2.9"
+                "issues": "https://github.com/SpartnerNL/Laravel-Nova-Excel/issues",
+                "source": "https://github.com/SpartnerNL/Laravel-Nova-Excel/tree/1.2.10"
             },
-            "time": "2021-10-11T10:57:20+00:00"
+            "time": "2022-02-09T21:42:18+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -4260,16 +4260,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.6.2",
+            "version": "3.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "06e2ebd25f2869e54a306dda991f7db58066f7f6"
+                "reference": "3d81e4309d2a927abbe66df935f4bb60082805ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/06e2ebd25f2869e54a306dda991f7db58066f7f6",
-                "reference": "06e2ebd25f2869e54a306dda991f7db58066f7f6",
+                "url": "https://api.github.com/repos/opis/closure/zipball/3d81e4309d2a927abbe66df935f4bb60082805ad",
+                "reference": "3d81e4309d2a927abbe66df935f4bb60082805ad",
                 "shasum": ""
             },
             "require": {
@@ -4286,12 +4286,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Opis\\Closure\\": "src/"
-                },
                 "files": [
                     "functions.php"
-                ]
+                ],
+                "psr-4": {
+                    "Opis\\Closure\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4319,9 +4319,9 @@
             ],
             "support": {
                 "issues": "https://github.com/opis/closure/issues",
-                "source": "https://github.com/opis/closure/tree/3.6.2"
+                "source": "https://github.com/opis/closure/tree/3.6.3"
             },
-            "time": "2021-04-09T13:42:10+00:00"
+            "time": "2022-01-27T09:35:39+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
