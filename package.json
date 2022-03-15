@@ -25,7 +25,7 @@
         "@sentry/vue": "6.16.1",
         "bootstrap": "4.6.1",
         "jquery": "3.6.0",
-        "laravel-echo": "1.11.3",
+        "laravel-echo": "1.11.4",
         "popper.js": "1.16.1",
         "pusher-js": "6.0.3",
         "vue": "2.6.14",
