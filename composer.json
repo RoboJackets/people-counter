@@ -15,7 +15,7 @@
         "doctrine/dbal": "2.13.8",
         "fideloper/proxy": "4.4.1",
         "fruitcake/laravel-cors": "2.2.0",
-        "guzzlehttp/guzzle": "7.4.1",
+        "guzzlehttp/guzzle": "7.4.2",
         "http-interop/http-factory-guzzle": "1.2.0",
         "jeffbeltran/sanctum-tokens": "1.5.8",
         "laravel/framework": "8.83.5",
