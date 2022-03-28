@@ -50,7 +50,7 @@
         "nunomaduro/collision": "5.11.0",
         "nunomaduro/larastan": "0.7.15",
         "phpstan/extension-installer": "1.1.0",
-        "psalm/plugin-laravel": "1.5.3",
+        "psalm/plugin-laravel": "1.6.0",
         "robojackets/static-analysis": "1.4",
         "slevomat/coding-standard": "6.4.1"
     },
