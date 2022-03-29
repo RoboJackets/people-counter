@@ -19,7 +19,7 @@
         "http-interop/http-factory-guzzle": "1.2.0",
         "jeffbeltran/sanctum-tokens": "1.5.8",
         "laravel/framework": "8.83.6",
-        "laravel/horizon": "5.9.3",
+        "laravel/horizon": "5.9.4",
         "laravel/nova": "3.31.0",
         "laravel/sanctum": "2.14.2",
         "laravel/scout": "9.4.5",
