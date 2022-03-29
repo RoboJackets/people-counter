@@ -23,7 +23,7 @@
         "laravel/nova": "3.31.0",
         "laravel/sanctum": "2.14.2",
         "laravel/scout": "9.4.6",
-        "laravel/tinker": "2.7.1",
+        "laravel/tinker": "2.7.2",
         "maatwebsite/excel": "3.1.38",
         "maatwebsite/laravel-nova-excel": "1.2.10",
         "meilisearch/meilisearch-php": "0.20.0",
