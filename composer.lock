@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e764fd4f94ee1147ed0de8cdf24a8f53",
+    "content-hash": "adea3202f6b57edede43abaf0145182c",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2469,17 +2469,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "3.31.0",
+            "version": "3.32.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "7f4781370193d23e9ffa218ae2c03fee3883821e"
+                "reference": "32cec324c30f6ebc8e97c877ba5ca0ae95a18cee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-7f4781370193d23e9ffa218ae2c03fee3883821e-zip-54dd0e.zip",
-                "reference": "7f4781370193d23e9ffa218ae2c03fee3883821e",
-                "shasum": "a09e6d2bad5f8dcde3c3dce647835e86c06cdf47"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-32cec324c30f6ebc8e97c877ba5ca0ae95a18cee-zip-35edd0.zip",
+                "reference": "32cec324c30f6ebc8e97c877ba5ca0ae95a18cee",
+                "shasum": "e0406c9d5eb280fa71eaa685e822089491e44b0c"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2495,7 +2495,6 @@
                 "symfony/process": "^5.4|^6.0"
             },
             "require-dev": {
-                "laravel/legacy-factories": "^1.3",
                 "laravel/nova-dusk-suite": "8.3.x-dev|9.3.x-dev",
                 "mockery/mockery": "^1.4.4",
                 "orchestra/testbench-dusk": "^6.23|^7.0",
@@ -2562,9 +2561,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v3.31.0"
+                "source": "https://github.com/laravel/nova/tree/v3.32.0"
             },
-            "time": "2022-02-08T17:30:45+00:00"
+            "time": "2022-04-05T05:12:32+00:00"
         },
         {
             "name": "laravel/sanctum",
